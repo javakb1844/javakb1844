@@ -1,0 +1,59 @@
+.table_action > a{
+	color:#656565 !important;		
+	margin-right:10px;
+}
+.table_action > a:hover{
+	text-decoration:none !important;
+}
+.table_action > em{
+	cursor:pointer;
+	margin-right:10px;
+}
+.multilevel-child{
+	margin-left:20px !important;
+}
+.error {
+    color:red;
+}
+.required{
+  color:red;
+}
+.checkboxProcess {
+    position: relative;
+    display: block;
+    /* margin-top: 10px; */
+    /* margin-bottom: 10px; */
+}
+.current {
+    background: #5d9cec !important;
+    color: #fff !important;
+}
+.first{
+    background: #fff;
+    padding:20px 15px;
+    color: #000;
+    margin-bottom:30px;
+    font-weight:bold;
+    font-family: Arial;
+    /*display:none;*/
+   cursor:pointer;
+}
+.btn-employee{
+        width: 236px;
+    font-size: 2rem !important;
+}
+.right-padding-0{
+    padding-right: 0px !important;
+}
+.lr-padding-0{
+    padding-right: 0px !important;
+    padding-left: 6px !important;
+}
+.left-padding-0{
+    padding-left: 0px !important;
+}
+.lr-padding-5{
+    padding-right: 5px !important;
+    padding-left: 5px !important;
+}
+    

@@ -1,0 +1,881 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="hrm_ilaanModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="HRMSdb" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Applicants" EntityType="hrm_ilaanModel.Applicant" />
+    <EntitySet Name="ApplicantAttachments" EntityType="hrm_ilaanModel.ApplicantAttachment" />
+    <EntitySet Name="ApplicantInterviews" EntityType="hrm_ilaanModel.ApplicantInterview" />
+    <EntitySet Name="ApplicantStatusChanges" EntityType="hrm_ilaanModel.ApplicantStatusChange" />
+    <EntitySet Name="BioMetricDatas" EntityType="hrm_ilaanModel.BioMetricData" />
+    <EntitySet Name="BiometricSchedules" EntityType="hrm_ilaanModel.BiometricSchedule" />
+    <EntitySet Name="BiometricSyncs" EntityType="hrm_ilaanModel.BiometricSync" />
+    <EntitySet Name="Employees" EntityType="hrm_ilaanModel.Employee" />
+    <EntitySet Name="EmployeeAppliedLeaves" EntityType="hrm_ilaanModel.EmployeeAppliedLeave" />
+    <EntitySet Name="EmployeeAttachments" EntityType="hrm_ilaanModel.EmployeeAttachment" />
+    <EntitySet Name="EmployeeAttendances" EntityType="hrm_ilaanModel.EmployeeAttendance" />
+    <EntitySet Name="EmployeeEducations" EntityType="hrm_ilaanModel.EmployeeEducation" />
+    <EntitySet Name="EmployeeExperienceHistories" EntityType="hrm_ilaanModel.EmployeeExperienceHistory" />
+    <EntitySet Name="EmployeeLeaves" EntityType="hrm_ilaanModel.EmployeeLeave" />
+    <EntitySet Name="EmployeeLeaveStatusHistories" EntityType="hrm_ilaanModel.EmployeeLeaveStatusHistory" />
+    <EntitySet Name="EmployeeLeaveSummaries" EntityType="hrm_ilaanModel.EmployeeLeaveSummary" />
+    <EntitySet Name="EmployeeLogs" EntityType="hrm_ilaanModel.EmployeeLog" />
+    <EntitySet Name="EmployeePolicies" EntityType="hrm_ilaanModel.EmployeePolicy" />
+    <EntitySet Name="EmployeesDependents" EntityType="hrm_ilaanModel.EmployeesDependent" />
+    <EntitySet Name="EventLogs" EntityType="hrm_ilaanModel.EventLog" />
+    <EntitySet Name="HRPolicies" EntityType="hrm_ilaanModel.HRPolicy" />
+    <EntitySet Name="HRPolicyByCaptions" EntityType="hrm_ilaanModel.HRPolicyByCaption" />
+    <EntitySet Name="HRPolicyCaptions" EntityType="hrm_ilaanModel.HRPolicyCaption" />
+    <EntitySet Name="HRRecruitmentProcesses" EntityType="hrm_ilaanModel.HRRecruitmentProcess" />
+    <EntitySet Name="LeftMenus" EntityType="hrm_ilaanModel.LeftMenu" />
+    <EntitySet Name="LogInHistories" EntityType="hrm_ilaanModel.LogInHistory" />
+    <EntitySet Name="LookBranches" EntityType="hrm_ilaanModel.LookBranch" />
+    <EntitySet Name="LookBranchTypes" EntityType="hrm_ilaanModel.LookBranchType" />
+    <EntitySet Name="LookCities" EntityType="hrm_ilaanModel.LookCity" />
+    <EntitySet Name="LookCountries" EntityType="hrm_ilaanModel.LookCountry" />
+    <EntitySet Name="LookDepartments" EntityType="hrm_ilaanModel.LookDepartment" />
+    <EntitySet Name="LookDesignations" EntityType="hrm_ilaanModel.LookDesignation" />
+    <EntitySet Name="LookEmployeeTypes" EntityType="hrm_ilaanModel.LookEmployeeType" />
+    <EntitySet Name="LookGenders" EntityType="hrm_ilaanModel.LookGender" />
+    <EntitySet Name="LookGrades" EntityType="hrm_ilaanModel.LookGrade" />
+    <EntitySet Name="LookInstitutions" EntityType="hrm_ilaanModel.LookInstitution" />
+    <EntitySet Name="LookJobTypes" EntityType="hrm_ilaanModel.LookJobType" />
+    <EntitySet Name="LookLeaveStatus" EntityType="hrm_ilaanModel.LookLeaveStatu" />
+    <EntitySet Name="LookOrganizations" EntityType="hrm_ilaanModel.LookOrganization" />
+    <EntitySet Name="LookPayRollStatus" EntityType="hrm_ilaanModel.LookPayRollStatu" />
+    <EntitySet Name="LookPolicies" EntityType="hrm_ilaanModel.LookPolicy" />
+    <EntitySet Name="LookPolicyGroups" EntityType="hrm_ilaanModel.LookPolicyGroup" />
+    <EntitySet Name="LookQualifications" EntityType="hrm_ilaanModel.LookQualification" />
+    <EntitySet Name="LookQualificationTypes" EntityType="hrm_ilaanModel.LookQualificationType" />
+    <EntitySet Name="LookSelectionProcesses" EntityType="hrm_ilaanModel.LookSelectionProcess" />
+    <EntitySet Name="PayRolls" EntityType="hrm_ilaanModel.PayRoll" />
+    <EntitySet Name="PayRollDetails" EntityType="hrm_ilaanModel.PayRollDetail" />
+    <EntitySet Name="PayRollSummaries" EntityType="hrm_ilaanModel.PayRollSummary" />
+    <EntitySet Name="Permissions" EntityType="hrm_ilaanModel.Permission" />
+    <EntitySet Name="ProductSaleProfiles" EntityType="hrm_ilaanModel.ProductSaleProfile" />
+    <EntitySet Name="PublicHolidays" EntityType="hrm_ilaanModel.PublicHoliday" />
+    <EntitySet Name="Recruitments" EntityType="hrm_ilaanModel.Recruitment" />
+    <EntitySet Name="RecruitmentApprovals" EntityType="hrm_ilaanModel.RecruitmentApproval" />
+    <EntitySet Name="RoleMenus" EntityType="hrm_ilaanModel.RoleMenu" />
+    <EntitySet Name="RolePermissions" EntityType="hrm_ilaanModel.RolePermission" />
+    <EntitySet Name="Roles" EntityType="hrm_ilaanModel.Role" />
+    <EntitySet Name="ShiftSettings" EntityType="hrm_ilaanModel.ShiftSetting" />
+    <EntitySet Name="Taxes" EntityType="hrm_ilaanModel.Tax" />
+    <EntitySet Name="Users" EntityType="hrm_ilaanModel.User" />
+    <EntitySet Name="BioMetricInfoes" EntityType="hrm_ilaanModel.BioMetricInfo" />
+  </EntityContainer>
+  <EntityType Name="Applicant">
+    <Key>
+      <PropertyRef Name="ApplicantId" />
+    </Key>
+    <Property Name="ApplicantId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FullName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="Gender" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="MaritalStatus" Type="Int64" />
+    <Property Name="CNIC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PresentAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="PermanentAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="MobileNo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="ConatctInfo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
+    <Property Name="ShortSummary" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="CoveringLetter" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Resume" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="NoYearsOfExperience" Type="Int64" />
+    <Property Name="Salary" Type="Double" />
+    <Property Name="LookQualificationId" Type="Int64" />
+    <Property Name="HRRemarks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="ApplicantRemarks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="LookOrganizationId" Type="Int64" />
+    <Property Name="ReferenceName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="ReferenceEmail" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="ExpectedDateOfJoining" Type="DateTime" Precision="3" />
+    <Property Name="LookEmployeeTypeId" Type="Int64" />
+    <Property Name="LookDepartmentId" Type="Int64" />
+    <Property Name="LookDesignationId" Type="Int64" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Int64" />
+    <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="Int64" />
+    <Property Name="LookApplicantStatusId" Type="Int64" />
+    <Property Name="SelectionGrade" Type="Int64" />
+  </EntityType>
+  <EntityType Name="ApplicantAttachment">
+    <Key>
+      <PropertyRef Name="ApplicantAttachmentId" />
+    </Key>
+    <Property Name="ApplicantAttachmentId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AttachmentTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="AttachmentPath" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="ApplicantId" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ApplicantInterview">
+    <Key>
+      <PropertyRef Name="ApplicantInterviewId" />
+    </Key>
+    <Property Name="ApplicantInterviewId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MeetingTime" Type="Time" Precision="7" />
+    <Property Name="ApplicantId" Type="Int64" />
+    <Property Name="Points" Type="Int64" />
+    <Property Name="Status" Type="Int64" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Int64" />
+    <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="Int64" />
+    <Property Name="MeetingDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="ApplicantStatusChange">
+    <Key>
+      <PropertyRef Name="ApplicantStatusChangeId" />
+    </Key>
+    <Property Name="ApplicantStatusChangeId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LookApplicantStatusId" Type="Int64" Nullable="false" />
+    <Property Name="CreatedBy" Type="Int64" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Comments" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="ApplicantId" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BioMetricData">
+    <Key>
+      <PropertyRef Name="BioMetricDataId" />
+    </Key>
+    <Property Name="BioMetricDataId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BioMetricId" Type="Int32" Nullable="false" />
+    <Property Name="DateTimeRecord" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="OnBioMetricName" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="DateOnly" Type="DateTime" Precision="0" />
+    <Property Name="TimeOnly" Type="DateTime" Precision="3" />
+    <Property Name="dwInOutMode" Type="Int32" />
+    <Property Name="IsEdit" Type="Boolean" />
+    <Property Name="UpdatedBy" Type="Int64" />
+    <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+    <Property Name="EmployeeId" Type="Int64" />
+    <Property Name="ProductSaleProfileId" Type="Int32" />
+    <Property Name="BioMetricSerialNo" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="BioMetricDeviceBrand" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="BioMetricInfoId" Type="Int64" />
+  </EntityType>
+  <EntityType Name="BiometricSchedule">
+    <Key>
+      <PropertyRef Name="BiometricScheduleId" />
+    </Key>
+    <Property Name="BiometricScheduleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TimeSchedule" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="ProductSaleProfileId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="BiometricSync">
+    <Key>
+      <PropertyRef Name="BiometricSyncId" />
+    </Key>
+    <Property Name="BiometricSyncId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StartDate" Type="DateTime" Precision="3" />
+    <Property Name="EndDateTime" Type="DateTime" Precision="3" />
+    <Property Name="ProductSaleProfileId" Type="Int32" />
+    <Property Name="BioMetricInfoId" Type="Int64" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="EmployeeId" />
+    </Key>
+    <Property Name="EmployeeId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FullName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="EmployeeGuid" Type="Guid" />
+    <Property Name="EmployeeNum" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="FatherName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="HusbandName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="Gender" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="MaritalStatus" Type="Int64" />
+    <Property Name="CNIC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsDisable" Type="Boolean" Nullable="false" />
+    <Property Name="DisableDetail" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="PresentAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="PermanentAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="MobileNo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="ConatctInfo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="ICEContactInfo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
+    <Property Name="Starttime" Type="Time" Precision="7" />
+    <Property Name="OffTime" Type="Time" Precision="7" />
+    <Property Name="ShortSummary" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="HRRemarks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="NoYearsOfExperience" Type="Int64" />
+    <Property Name="StartSalary" Type="Double" />
+    <Property Name="ReferenceName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="ReferenceEmail" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="DateOfJoining" Type="DateTime" Precision="3" />
+    <Property Name="ManagerId" Type="Int64" />
+    <Property Name="LookEmployeeTypeId" Type="Int64" />
+    <Property Name="LookDepartmentId" Type="Int64" />
+    <Property Name="LookDesignationId" Type="Int64" />
+    <Property Name="ExitDate" Type="DateTime" Precision="3" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Int64" />
+    <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="Int64" />
+    <Property Name="ApplicantId" Type="Int64" />
+    <Property Name="ShiftSettingId" Type="Int64" />
+    <Property Name="LookGradeId" Type="Int64" />
+    <Property Name="BioMetricId" Type="Int32" />
+    <Property Name="LookOrganizationId" Type="Int64" />
+    <Property Name="RoleId" Type="Int64" />
+    <Property Name="LookOrganizationIds" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="SubLeadIds" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="HasSubOrdinates" Type="Boolean" />
+    <Property Name="WorkingHourPolicyId" Type="Int32" />
+    <Property Name="IsUserOnly" Type="Boolean" Nullable="false" />
+    <Property Name="ProductSaleProfileId" Type="Int32" Nullable="false" />
+    <Property Name="BioMetricInfoId" Type="Int64" />
+  </EntityType>
+  <EntityType Name="EmployeeAppliedLeave">
+    <Key>
+      <PropertyRef Name="EmployeeAppliedLeaveId" />
+    </Key>
+    <Property Name="EmployeeAppliedLeaveId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmployeeId" Type="Int64" Nullable="false" />
+    <Property Name="LeaveTimeStart" Type="DateTime" Precision="3" />
+    <Property Name="LaveTimeEnd" Type="DateTime" Precision="3" />
+    <Property Name="ActualTimeIn" Type="DateTime" Precision="3" />
+    <Property Name="ActualTimOut" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="Int64" Nullable="false" />
+    <Property Name="LookPolicyId" Type="Int64" />
+    <Property Name="ForDate" Type="DateTime" Precision="0" />
+    <Property Name="Reason" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="HRRemarks" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="UpdatedBy" Type="Int64" />
+    <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Int64" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="EmployeeAttachment">
+    <Key>
+      <PropertyRef Name="EmployeeAttachmentId" />
+    </Key>
+    <Property Name="EmployeeAttachmentId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmployeeId" Type="Int64" Nullable="false" />
+    <Property Name="AttachmentTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="AttachmentPath" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="EmployeeAttendance">
+    <Key>
+      <PropertyRef Name="EmployeeAttendanceId" />
+    </Key>
+    <Property Name="EmployeeAttendanceId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmployeeId" Type="Int64" Nullable="false" />
+    <Property Name="TimeIn" Type="DateTime" Precision="3" />
+    <Property Name="TimeOut" Type="DateTime" Precision="3" />
+    <Property Name="ActualTimeIn" Type="DateTime" Precision="3" />
+    <Property Name="ActualTimOut" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="Int64" Nullable="false" />
+    <Property Name="LookPolicyId" Type="Int64" />
+    <Property Name="ForDate" Type="DateTime" Precision="0" />
+    <Property Name="ProductSaleProfileId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="EmployeeEducation">
+    <Key>
+      <PropertyRef Name="EmployeeEducationId" />
+    </Key>
+    <Property Name="EmployeeEducationId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmployeeId" Type="Int64" Nullable="false" />
+    <Property Name="LookQualificationId" Type="Int64" />
+    <Property Name="EducationYear" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LookInstitutionId" Type="Int64" />
+    <Property Name="Grade" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="EmployeeExperienceHistory">
+    <Key>
+      <PropertyRef Name="EmployeeExperienceHistoryId" />
+    </Key>
+    <Property Name="EmployeeExperienceHistoryId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmployeeId" Type="Int64" Nullable="false" />
+    <Property Name="LookOrganizationId" Type="Int64" />
+    <Property Name="FromDate" Type="DateTime" Precision="3" />
+    <Property Name="ToDate" Type="DateTime" Precision="3" />
+    <Property Name="JobTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="JobDescription" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="LookCityId" Type="Int64" />
+    <Property Name="LookCountryId" Type="Int64" />
+    <Property Name="Salary" Type="Double" />
+  </EntityType>
+  <EntityType Name="EmployeeLeave">
+    <Key>
+      <PropertyRef Name="EmployeeLeaveId" />
+    </Key>
+    <Property Name="EmployeeLeaveId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmployeePolicyId" Type="Int64" />
+    <Property Name="PolicyName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="LeaveValue" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="LookLeaveStatusId" Type="Int64" Nullable="false" />
+    <Property Name="LeaveDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EmployeeId" Type="Int64" Nullable="false" />
+    <Property Name="PolicyUnit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Year" Type="Int64" />
+    <Property Name="LookPolicyId" Type="Int64" />
+    <Property Name="EmployeeLeaveSummaryId" Type="Int64" />
+    <Property Name="LookLeaveRequestStatusId" Type="Int64" />
+    <Property Name="LookLeaveRequestDate" Type="DateTime" Precision="3" />
+    <Property Name="LeaveApprovedById" Type="Int64" />
+    <Property Name="LeaveApprovedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="EmployeeLeaveStatusHistory">
+    <Key>
+      <PropertyRef Name="EmployeeLeaveStatusHistoryId" />
+    </Key>
+    <Property Name="EmployeeLeaveStatusHistoryId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmplyeeLeaveId" Type="Int64" Nullable="false" />
+    <Property Name="LeaveStatusId" Type="Int64" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Int64" />
+  </EntityType>
+  <EntityType Name="EmployeeLeaveSummary">
+    <Key>
+      <PropertyRef Name="EmployeeLeaveSummaryId" />
+    </Key>
+    <Property Name="EmployeeLeaveSummaryId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmployeePolicyId" Type="Int64" Nullable="false" />
+    <Property Name="StartLeaveDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EndLeaveDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ShortLeaves" Type="Int64" />
+    <Property Name="HalfLeaves" Type="Int64" />
+    <Property Name="Leaves" Type="Int64" />
+    <Property Name="EmployeeId" Type="Int64" Nullable="false" />
+    <Property Name="LookLeaveStatusId" Type="Int64" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Int64" />
+    <Property Name="StatusUpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="EmployeeLog">
+    <Key>
+      <PropertyRef Name="EmployeeLogId" />
+    </Key>
+    <Property Name="EmployeeLogId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmployeeId" Type="Int64" Nullable="false" />
+    <Property Name="FullName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="FatherName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="HusbandName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Gender" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="MaritalStatus" Type="Int64" />
+    <Property Name="CNIC" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="IsDisable" Type="Boolean" Nullable="false" />
+    <Property Name="DisableDetail" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="PresentAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="PermanentAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="MobileNo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="ConatctInfo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="ICEContactInfo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
+    <Property Name="ShortSummary" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="HRRemarks" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="NoYearsOfExperience" Type="Int64" />
+    <Property Name="StartSalary" Type="Double" />
+    <Property Name="ReferenceName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="ReferenceEmail" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="DateOfJoining" Type="DateTime" Precision="3" />
+    <Property Name="ManagerId" Type="Int64" />
+    <Property Name="LookEmployeeTypeId" Type="Int64" />
+    <Property Name="LookDepartmentId" Type="Int64" />
+    <Property Name="LookDesignationId" Type="Int64" />
+    <Property Name="ExitDate" Type="DateTime" Precision="3" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Int64" />
+    <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="DateTime" Precision="3" />
+    <Property Name="LogCreateDate" Type="DateTime" Precision="3" />
+    <Property Name="LogCeatedBy" Type="Int64" />
+  </EntityType>
+  <EntityType Name="EmployeePolicy">
+    <Key>
+      <PropertyRef Name="EmployeePolicyId" />
+    </Key>
+    <Property Name="EmployeePolicyId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LookPolicyId" Type="Int64" />
+    <Property Name="PolicyName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="PolicyUnit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LookPolicyGroupId" Type="Int64" />
+    <Property Name="PolicyValue" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="EmployeeId" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EmployeesDependent">
+    <Key>
+      <PropertyRef Name="EmployeesDependentId" />
+    </Key>
+    <Property Name="EmployeesDependentId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmployeeId" Type="Int64" />
+    <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Relation" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Gender" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+  </EntityType>
+  <EntityType Name="EventLog">
+    <Key>
+      <PropertyRef Name="LogID" />
+    </Key>
+    <Property Name="LogID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ControllerName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ActionName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Query" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreateDate" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="AppID" Type="Int64" />
+    <Property Name="InsertDate" Type="DateTime" Precision="3" />
+    <Property Name="ProjectName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="Int64" />
+  </EntityType>
+  <EntityType Name="HRPolicy">
+    <Key>
+      <PropertyRef Name="HRPolicyId" />
+    </Key>
+    <Property Name="HRPolicyId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LookDesignationId" Type="Int64" Nullable="false" />
+    <Property Name="LookPolicyId" Type="Int64" Nullable="false" />
+    <Property Name="PolicyValue" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="GroupTypeId" Type="Int64" Nullable="false" />
+    <Property Name="ProductSaleProfileId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="HRPolicyByCaption">
+    <Key>
+      <PropertyRef Name="HRPolicyByCaptionId" />
+    </Key>
+    <Property Name="HRPolicyByCaptionId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HRPolicyCaptionId" Type="Int32" Nullable="false" />
+    <Property Name="HRPolicyCaption" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="LookPolicyId" Type="Int64" Nullable="false" />
+    <Property Name="PolicyValue" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="GroupTypeId" Type="Int64" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Int64" />
+    <Property Name="PolicyName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="LookPolicyGroupId" Type="Int64" />
+    <Property Name="TimeIn" Type="Time" Precision="7" />
+    <Property Name="TimeOut" Type="Time" Precision="7" />
+    <Property Name="ProductSaleProfileId" Type="Int32" />
+    <Property Name="LookOrganizationId" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HRPolicyCaption">
+    <Key>
+      <PropertyRef Name="HRPolicyCaptionId" />
+    </Key>
+    <Property Name="HRPolicyCaptionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PolicyCaption" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Int64" />
+    <Property Name="IsVariableTiming" Type="Boolean" />
+    <Property Name="ProductSaleProfileId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="HRRecruitmentProcess">
+    <Key>
+      <PropertyRef Name="HRRecruitmentProcessId" />
+    </Key>
+    <Property Name="HRRecruitmentProcessId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProcessId" Type="Int64" />
+    <Property Name="RecruitmentId" Type="Int64" />
+  </EntityType>
+  <EntityType Name="LeftMenu">
+    <Key>
+      <PropertyRef Name="LeftMenuId" />
+    </Key>
+    <Property Name="LeftMenuId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MenuName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="ControllerName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="ActionName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="IconClass" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="ParentId" Type="Int64" Nullable="false" />
+    <Property Name="HaveChild" Type="Boolean" Nullable="false" />
+    <Property Name="DisplayOrder" Type="Int64" />
+    <Property Name="NewParentId" Type="Int64" />
+  </EntityType>
+  <EntityType Name="LogInHistory">
+    <Key>
+      <PropertyRef Name="LogInId" />
+    </Key>
+    <Property Name="LogInId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="Query" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="ProductSaleProfileId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="LookBranch">
+    <Key>
+      <PropertyRef Name="LookBranchId" />
+    </Key>
+    <Property Name="LookBranchId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BranchName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="LookBranchTypeId" Type="Int64" />
+    <Property Name="ParentBranchId" Type="Int64" />
+  </EntityType>
+  <EntityType Name="LookBranchType">
+    <Key>
+      <PropertyRef Name="LookBranchTypeId" />
+    </Key>
+    <Property Name="LookBranchTypeId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BranchType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="LookCity">
+    <Key>
+      <PropertyRef Name="LookCityId" />
+    </Key>
+    <Property Name="LookCityId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CityName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="ProductSaleProfileId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="LookCountry">
+    <Key>
+      <PropertyRef Name="LookCountryId" />
+    </Key>
+    <Property Name="LookCountryId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CountryName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="LookDepartment">
+    <Key>
+      <PropertyRef Name="LookDepartmentId" />
+    </Key>
+    <Property Name="LookDepartmentId" Type="Int64" Nullable="false" />
+    <Property Name="DepartmentName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="ProductSaleProfileId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="LookDesignation">
+    <Key>
+      <PropertyRef Name="LookDesignationId" />
+    </Key>
+    <Property Name="LookDesignationId" Type="Int64" Nullable="false" />
+    <Property Name="DesignationName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="LookDepartmentId" Type="Int64" />
+    <Property Name="ProductSaleProfileId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="LookEmployeeType">
+    <Key>
+      <PropertyRef Name="LookEmployeeTypeId" />
+    </Key>
+    <Property Name="LookEmployeeTypeId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmployeeTypeName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="ProductSaleProfileId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="LookGender">
+    <Key>
+      <PropertyRef Name="LookGenderId" />
+    </Key>
+    <Property Name="LookGenderId" Type="Int64" Nullable="false" />
+    <Property Name="LookGenderName" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="LookGrade">
+    <Key>
+      <PropertyRef Name="LookGradeId" />
+    </Key>
+    <Property Name="LookGradeId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GradeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="GradeValue" Type="Decimal" Precision="18" Scale="1" />
+    <Property Name="ProductSaleProfileId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="LookInstitution">
+    <Key>
+      <PropertyRef Name="LookInstitutionId" />
+    </Key>
+    <Property Name="LookInstitutionId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InstitutionName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="LookJobType">
+    <Key>
+      <PropertyRef Name="LookJobTypeId" />
+    </Key>
+    <Property Name="LookJobTypeId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="JobTypeName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="LookLeaveStatu">
+    <Key>
+      <PropertyRef Name="LookLeaveStatusId" />
+    </Key>
+    <Property Name="LookLeaveStatusId" Type="Int64" Nullable="false" />
+    <Property Name="RequestStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AccessGroupId" Type="Int32" />
+    <Property Name="IsActive" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="LookOrganization">
+    <Key>
+      <PropertyRef Name="LookOrganizationId" />
+    </Key>
+    <Property Name="LookOrganizationId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrganizationName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="OrganizationURL" Type="String" MaxLength="350" FixedLength="false" Unicode="false" />
+    <Property Name="LookCompanyStatusId" Type="Int32" Nullable="false" />
+    <Property Name="ProductSaleProfileId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="LookPayRollStatu">
+    <Key>
+      <PropertyRef Name="LookPayRollStatusId" />
+    </Key>
+    <Property Name="LookPayRollStatusId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StatusName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="LookPolicy">
+    <Key>
+      <PropertyRef Name="LookPolicyId" />
+    </Key>
+    <Property Name="LookPolicyId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PolicyName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="PolicyUnit" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="LookPolicyGroupId" Type="Int32" Nullable="false" />
+    <Property Name="ValueType" Type="Int32" />
+    <Property Name="IsPercentage" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="LookPolicyGroup">
+    <Key>
+      <PropertyRef Name="LookPolicyGroupId" />
+    </Key>
+    <Property Name="LookPolicyGroupId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PolicyGroupName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="GroupTypeId" Type="Int64" />
+  </EntityType>
+  <EntityType Name="LookQualification">
+    <Key>
+      <PropertyRef Name="LookQualificationId" />
+    </Key>
+    <Property Name="LookQualificationId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="QualificationName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="LookQualificationTypeId" Type="Int64" />
+  </EntityType>
+  <EntityType Name="LookQualificationType">
+    <Key>
+      <PropertyRef Name="LookQualificationTypeId" />
+    </Key>
+    <Property Name="LookQualificationTypeId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="QualificationType" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="LookSelectionProcess">
+    <Key>
+      <PropertyRef Name="LookSelectionProcessId" />
+    </Key>
+    <Property Name="LookSelectionProcessId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SelectionProcess" Type="String" MaxLength="450" FixedLength="false" Unicode="true" />
+    <Property Name="Type" Type="Int64" />
+  </EntityType>
+  <EntityType Name="PayRoll">
+    <Key>
+      <PropertyRef Name="PayRollId" />
+    </Key>
+    <Property Name="PayRollId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmployeeId" Type="Int64" Nullable="false" />
+    <Property Name="MonthNumber" Type="Int64" Nullable="false" />
+    <Property Name="YearNumber" Type="Int64" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreatedBy" Type="Int64" Nullable="false" />
+    <Property Name="GrossPay" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="NetPay" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="IncomeTax" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="WorkingDaysRequired" Type="Int64" />
+    <Property Name="PublicHolidays" Type="Int64" />
+    <Property Name="Leaves" Type="Int64" />
+    <Property Name="Absents" Type="Int64" />
+    <Property Name="Attendance" Type="Int64" />
+    <Property Name="TotalHoursRequired" Type="Int64" />
+    <Property Name="TotalHours" Type="Int64" />
+    <Property Name="LookPayRollStatusId" Type="Int64" />
+    <Property Name="StatusUpdatedBy" Type="Int64" />
+    <Property Name="StatusUpdateDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="PayRollDetail">
+    <Key>
+      <PropertyRef Name="PayRollDetailId" />
+    </Key>
+    <Property Name="PayRollDetailId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PayRollId" Type="Int64" Nullable="false" />
+    <Property Name="EmployeePolicyId" Type="Int64" Nullable="false" />
+    <Property Name="LookPolicyId" Type="Int64" Nullable="false" />
+    <Property Name="PolicyName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="PolicyUnit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LookPolicyGroupId" Type="Int64" />
+    <Property Name="PolicyValue" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="ValueType" Type="Int64" />
+    <Property Name="IsPercentage" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="PayRollSummary">
+    <Key>
+      <PropertyRef Name="PayRollSummaryId" />
+    </Key>
+    <Property Name="PayRollSummaryId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="YearNumber" Type="Int32" Nullable="false" />
+    <Property Name="MonthNumber" Type="Int32" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreatedBy" Type="Int64" Nullable="false" />
+    <Property Name="SalaryCount" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Permission">
+    <Key>
+      <PropertyRef Name="PermissionId" />
+    </Key>
+    <Property Name="PermissionId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="Attribute" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MenuId" Type="Int64" />
+    <Property Name="LookDepartmentId" Type="Int64" />
+    <Property Name="PermissionLevel" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductSaleProfile">
+    <Key>
+      <PropertyRef Name="ProductSaleProfileId" />
+    </Key>
+    <Property Name="ProductSaleProfileId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="LookCityId" Type="Int64" />
+    <Property Name="LookCountryId" Type="Int64" />
+    <Property Name="Address" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="LookCustomerStatusId" Type="Int32" Nullable="false" />
+    <Property Name="RegistrationDatePk" Type="DateTime" Precision="3" />
+    <Property Name="UITCDateTime" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="PublicHoliday">
+    <Key>
+      <PropertyRef Name="PublicHolidayId" />
+    </Key>
+    <Property Name="PublicHolidayId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HoIidayDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Detail" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="Recruitment">
+    <Key>
+      <PropertyRef Name="RecruitmentId" />
+    </Key>
+    <Property Name="RecruitmentId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LookDesignationId" Type="Int64" />
+    <Property Name="LookBranchId" Type="Int64" />
+    <Property Name="LookEmployeeTypeId" Type="Int64" />
+    <Property Name="Preferred_Start_Date" Type="DateTime" Precision="3" />
+    <Property Name="AdClosingDate" Type="DateTime" Precision="3" />
+    <Property Name="LookJobTypeId" Type="Int64" />
+    <Property Name="LookDepartmentId" Type="Int64" />
+    <Property Name="ReportingEmployeeId" Type="Int64" />
+    <Property Name="Length_Of_Term" Type="Int64" />
+    <Property Name="LookRecruitmentStatusId" Type="Int64" Nullable="false" />
+    <Property Name="NoOfPositions" Type="Int64" />
+    <Property Name="LookGenderId" Type="Int64" />
+    <Property Name="PositionDescription" Type="String" MaxLength="450" FixedLength="false" Unicode="true" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreatedBy" Type="Int64" Nullable="false" />
+    <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="Int64" />
+    <Property Name="ForApprovalEmployeeId" Type="Int64" />
+    <Property Name="ShortSummary" Type="String" MaxLength="1500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="RecruitmentApproval">
+    <Key>
+      <PropertyRef Name="RecruitmentApprovalId" />
+    </Key>
+    <Property Name="RecruitmentApprovalId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RecruitmentId" Type="Int64" Nullable="false" />
+    <Property Name="EmployeeId" Type="Int64" Nullable="false" />
+    <Property Name="ApprovedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Remarks" Type="String" MaxLength="450" FixedLength="false" Unicode="true" />
+    <Property Name="ForwardToEmployeeId" Type="Int64" />
+    <Property Name="LookRecruitmentStatusId" Type="Int64" />
+  </EntityType>
+  <EntityType Name="RoleMenu">
+    <Key>
+      <PropertyRef Name="RoleMenuId" />
+    </Key>
+    <Property Name="RoleMenuId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MenuId" Type="Int64" Nullable="false" />
+    <Property Name="RoleId" Type="Int64" Nullable="false" />
+    <Property Name="DefaultControllerName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DefaultActionName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IsDefault" Type="Boolean" />
+    <Property Name="ProductSaleProfileId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="RolePermission">
+    <Key>
+      <PropertyRef Name="RolePermissionId" />
+    </Key>
+    <Property Name="RolePermissionId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleId" Type="Int64" Nullable="false" />
+    <Property Name="PermissionId" Type="Int64" Nullable="false" />
+    <Property Name="ProductSaleProfileId" Type="Int32" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Int64" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Int64" />
+    <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="Int64" />
+    <Property Name="ProductSaleProfileId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="ShiftSetting">
+    <Key>
+      <PropertyRef Name="ShiftSettingId" />
+    </Key>
+    <Property Name="ShiftSettingId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ShiftName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="StartTime" Type="Time" Precision="7" />
+    <Property Name="EndTime" Type="Time" Precision="7" />
+    <Property Name="IsActive" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="Tax">
+    <Key>
+      <PropertyRef Name="TaxId" />
+    </Key>
+    <Property Name="TaxId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LimitName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="StartLimit" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="MaxLimit" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="FixTax" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="TaxPercentageToMaxLimit" Type="Decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="EmployeeId" Type="Int64" />
+    <Property Name="PasswordHash" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="Updatedate" Type="DateTime" Precision="3" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="VerificationKey" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsLockedOut" Type="Boolean" />
+    <Property Name="LastLoginDate" Type="DateTime" Precision="3" />
+    <Property Name="LastPasswordChangedDate" Type="DateTime" Precision="3" />
+    <Property Name="LastLockoutDate" Type="DateTime" Precision="3" />
+    <Property Name="FailedPasswordAttemptCount" Type="Int64" />
+    <Property Name="UserGuid" Type="Guid" />
+    <Property Name="FirstName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Token" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="RoleId" Type="Int64" Nullable="false" />
+    <Property Name="Coments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MobileNumber" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="Postcode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedBy" Type="Int64" />
+    <Property Name="UpdatedBy" Type="Int64" />
+    <Property Name="TempPassword" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="TempPasswordDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="BioMetricInfo">
+    <Key>
+      <PropertyRef Name="BioMetricInfoId" />
+    </Key>
+    <Property Name="BioMetricInfoId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductSaleProfileId" Type="Int32" />
+    <Property Name="BioMetricSerialNo" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="BioMetricDeviceBrand" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="IPAddress" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="IsPublicIp" Type="Boolean" />
+  </EntityType>
+</Schema>

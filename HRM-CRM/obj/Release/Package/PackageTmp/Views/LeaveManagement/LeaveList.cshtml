@@ -1,0 +1,163 @@
+﻿@model List<VM.HRMS.TeamLeaveViewModel>
+@using VM.Look;
+@using Library.Lookups;
+@{
+    ViewBag.Title = "EmployeeLeaveList";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<div class="content-wrapper">
+    <h3>
+        Team Leave Detail
+        @*<a href="@Url.Action("Create","EmployeeLeave")">
+                <button type="button" class="btn btn-primary pull-right"><i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;Add New EmployeeLeave</button>
+            </a>*@
+    </h3>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    EmployeeLeave Info
+                </div>
+                <div class="panel-body">
+                    <table id="datatable1" class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>S.NO.</th>
+                                <th>Name</th>
+                                <th>Detail</th>
+                                <th>Start Date</th>
+                                <th>ToDate</th>
+                                <th>Leaves</th>
+                                <th>HalfLeaves</th>
+                                <th>Short Leaves</th>
+                                <th>Apply Date</th>
+                                <th>Leave Status</th>
+                                <th>Action</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model != null)
+                            {
+                                string iconColor = "";
+                                string submitTitle = "";
+                                var count = 0;
+                                List<LookPolicyViewModel> leavePolicy = ViewBag.employeePolicy;
+                                foreach (var item in Model)
+                                {
+                                    // long remainingShortLeaves = Convert.ToInt64(ViewBag.PolicyShortLeave) - Convert.ToInt64(ViewBag.AvailedShortLeave);
+                                    //   long remainingHalfLeaves = Convert.ToInt64(ViewBag.PolicyHalfLeave) - Convert.ToInt64(ViewBag.AvailedHalfLeave);
+
+                                    string error = "";
+
+                                    var Submit_record = "Confirm_record";
+                                    //  var policyName = leavePolicy.Where(x => x.EmployeePolicyId == item.EmployeePolicyId).FirstOrDefault().PolicyName;
+                                    count = count + 1;
+                                    iconColor = "color:green";
+                                    submitTitle = "click to Confirm";
+                                    if (item.LookLeaveStatusId == (long)EnumLeaveStatus.Confirmed)
+                                    {
+                                        submitTitle = "Confirmed";
+                                        iconColor = "";
+                                        Submit_record = "";
+                                    }
+                                    //  if (item.HalfLeaves > remainingHalfLeaves || item.ShortLeaves > remainingShortLeaves)
+                                    // {
+                                    //    error = "error";
+                                    //    submitTitle = "Out of Limit";
+                                    //   Submit_record = "";
+                                    //  }
+                                    <tr class="gradeX">
+                                        <td>@count</td>
+                                        <td>@item.Email</td>
+                                        <td>@item.PolicyName</td>
+                                        <td>@item.StartLeaveDate.ToShortDateString()</td>
+                                        <td>@item.EndLeaveDate.ToShortDateString()</td>
+                                        <td class="@error">@item.Leaves</td>
+                                        <td class="@error">@item.HalfLeaves</td>
+                                        <td class="@error">@item.ShortLeaves </td>
+                                        <td class="@error">@item.StatusUpdateDate.ToShortDateString()</td>
+                                        <td>@Enum.GetName(typeof(EnumLeaveStatus), item.LookLeaveStatusId)</td>
+                                        <td class="table_action">
+                                            @*<em class="@Submit_record icon-login" title="@submitTitle" style="font-size:18px;@iconColor" rel="@item.EmployeeLeaveSummaryId"></em>*@
+                                            @*<a href="@Url.Action("Create","EmployeeLeave",new {id=item.EmployeeLeaveId })" title="Edit Department">
+                                                <em class="icon-note" style="font-size: 18px;"></em></a>*@
+                                           @if (item.LookLeaveStatusId == (long)EnumLeaveStatus.Approved)
+                                           {
+                                            <em class="@Submit_record icon-login" title="@submitTitle" style="font-size:18px;@iconColor" rel="@item.EmployeeLeaveSummaryId"></em>
+                                           }
+                                           else if (item.LookLeaveStatusId > (long)EnumLeaveStatus.Approved)
+                                           {
+                                            <em class="icon-login" title="Change Status to UnApproved " style="font-size:18px;color:gray" rel="@item.EmployeeLeaveSummaryId"></em>
+                                           }
+                                            
+                                             <a href="/EmployeeLeave/LeaveDetailList?id=@item.EmployeeLeaveSummaryId&empId=@item.EmployeeId" title="Leave Detail"><em class="icon-note" style="font-size: 18px;"></em></a>
+                                            @*<em class="delete_record icon-close" title="Delete Department" style="font-size:18px;color:red" rel="51"></em>*@
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                    @*<div class="row" style="margin-top: 10px;">
+                            <div class="col-xs-6">
+                                <div class="dataTables_info" id="datatable1_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div>
+                            </div><div class="col-xs-6">
+                                <div class="dataTables_paginate paging_simple_numbers" id="datatable1_paginate">
+                                    <ul class="pagination">
+                                        <li class="paginate_button previous disabled" aria-controls="datatable1" tabindex="0" id="datatable1_previous">
+                                            <a href="#">Previous</a>
+                                        </li>
+                                        <li class="paginate_button active" aria-controls="datatable1" tabindex="0"><a href="#">1</a></li>
+                                        <li class="paginate_button " aria-controls="datatable1" tabindex="0"><a href="#">2</a></li>
+                                        <li class="paginate_button " aria-controls="datatable1" tabindex="0"><a href="#">3</a></li>
+                                        <li class="paginate_button " aria-controls="datatable1" tabindex="0"><a href="#">4</a></li>
+                                        <li class="paginate_button " aria-controls="datatable1" tabindex="0"><a href="#">5</a></li>
+                                        <li class="paginate_button " aria-controls="datatable1" tabindex="0"><a href="#">6</a></li>
+                                        <li class="paginate_button next" aria-controls="datatable1" tabindex="0" id="datatable1_next"><a href="#">Next</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>*@
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $(document).off("click", ".Confirm_record").on("click", ".Confirm_record", function (event) {
+        event.preventDefault();
+        //    alert('wasim');
+        debugger;
+        var id = $(this).attr('rel');
+        $.ajax({
+            url: '/LeaveManagement/ConfirmLeave?id=' + id,
+            type: 'POST',
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+           // data: JSON.stringify(EmpLeave),
+            success: function (response) {
+                debugger;
+                alert(response);
+             
+
+            },
+            error: function (response) {
+                debugger;
+                alert("Ajax Call Error");
+                //window.location.href = "@Url.Action("No505","Error")";
+            }
+        });
+        });
+
+    });
+
+
+
+</script>
+

@@ -1,0 +1,893 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="hrm_ilaanModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Applicant">
+    <Key>
+      <PropertyRef Name="ApplicantId" />
+    </Key>
+    <Property Name="ApplicantId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FullName" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="LastName" Type="varchar" MaxLength="250" />
+    <Property Name="Email" Type="varchar" MaxLength="250" />
+    <Property Name="Gender" Type="char" MaxLength="10" />
+    <Property Name="MaritalStatus" Type="bigint" />
+    <Property Name="CNIC" Type="varchar" MaxLength="50" />
+    <Property Name="PresentAddress" Type="varchar" MaxLength="500" />
+    <Property Name="PermanentAddress" Type="varchar" MaxLength="500" />
+    <Property Name="MobileNo" Type="varchar" MaxLength="250" />
+    <Property Name="ConatctInfo" Type="varchar" MaxLength="250" />
+    <Property Name="DateOfBirth" Type="date" />
+    <Property Name="ShortSummary" Type="varchar" MaxLength="500" />
+    <Property Name="CoveringLetter" Type="varchar" MaxLength="200" />
+    <Property Name="Resume" Type="varchar" MaxLength="200" />
+    <Property Name="NoYearsOfExperience" Type="bigint" />
+    <Property Name="Salary" Type="float" />
+    <Property Name="LookQualificationId" Type="bigint" />
+    <Property Name="HRRemarks" Type="varchar" MaxLength="500" />
+    <Property Name="ApplicantRemarks" Type="varchar" MaxLength="500" />
+    <Property Name="LookOrganizationId" Type="bigint" />
+    <Property Name="ReferenceName" Type="varchar" MaxLength="250" />
+    <Property Name="ReferenceEmail" Type="varchar" MaxLength="250" />
+    <Property Name="ExpectedDateOfJoining" Type="datetime" />
+    <Property Name="LookEmployeeTypeId" Type="bigint" />
+    <Property Name="LookDepartmentId" Type="bigint" />
+    <Property Name="LookDesignationId" Type="bigint" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="bigint" />
+    <Property Name="UpdateDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="bigint" />
+    <Property Name="LookApplicantStatusId" Type="bigint" />
+    <Property Name="SelectionGrade" Type="bigint" />
+  </EntityType>
+  <EntityType Name="ApplicantAttachment">
+    <Key>
+      <PropertyRef Name="ApplicantAttachmentId" />
+    </Key>
+    <Property Name="ApplicantAttachmentId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AttachmentTitle" Type="varchar" MaxLength="250" />
+    <Property Name="AttachmentPath" Type="varchar" MaxLength="250" />
+    <Property Name="ApplicantId" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ApplicantInterview">
+    <Key>
+      <PropertyRef Name="ApplicantInterviewId" />
+    </Key>
+    <Property Name="ApplicantInterviewId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MeetingTime" Type="time" Precision="7" />
+    <Property Name="ApplicantId" Type="bigint" />
+    <Property Name="Points" Type="bigint" />
+    <Property Name="Status" Type="bigint" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="bigint" />
+    <Property Name="UpdateDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="bigint" />
+    <Property Name="MeetingDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ApplicantStatusChange">
+    <Key>
+      <PropertyRef Name="ApplicantStatusChangeId" />
+    </Key>
+    <Property Name="ApplicantStatusChangeId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LookApplicantStatusId" Type="bigint" Nullable="false" />
+    <Property Name="CreatedBy" Type="bigint" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="Comments" Type="nvarchar" MaxLength="500" />
+    <Property Name="ApplicantId" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BioMetricData">
+    <Key>
+      <PropertyRef Name="BioMetricDataId" />
+    </Key>
+    <Property Name="BioMetricDataId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BioMetricId" Type="int" Nullable="false" />
+    <Property Name="DateTimeRecord" Type="datetime" Nullable="false" />
+    <Property Name="OnBioMetricName" Type="varchar" MaxLength="1000" />
+    <Property Name="DateOnly" Type="date" />
+    <Property Name="TimeOnly" Type="datetime" />
+    <Property Name="dwInOutMode" Type="int" />
+    <Property Name="IsEdit" Type="bit" />
+    <Property Name="UpdatedBy" Type="bigint" />
+    <Property Name="UpdateDate" Type="datetime" />
+    <Property Name="EmployeeId" Type="bigint" />
+    <Property Name="ProductSaleProfileId" Type="int" />
+    <Property Name="BioMetricSerialNo" Type="varchar" MaxLength="300" />
+    <Property Name="BioMetricDeviceBrand" Type="varchar" MaxLength="300" />
+    <Property Name="BioMetricInfoId" Type="bigint" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'HRM.dbo.BioMetricInfo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="BioMetricInfo">
+    <Key>
+      <PropertyRef Name="BioMetricInfoId" />
+    </Key>
+    <Property Name="BioMetricInfoId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductSaleProfileId" Type="int" />
+    <Property Name="BioMetricSerialNo" Type="varchar" MaxLength="300" />
+    <Property Name="BioMetricDeviceBrand" Type="varchar" MaxLength="300" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="IPAddress" Type="varchar" MaxLength="300" />
+    <Property Name="IsPublicIp" Type="bit" />
+  </EntityType>
+  <EntityType Name="BiometricSchedule">
+    <Key>
+      <PropertyRef Name="BiometricScheduleId" />
+    </Key>
+    <Property Name="BiometricScheduleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TimeSchedule" Type="time" Precision="7" Nullable="false" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="ProductSaleProfileId" Type="int" />
+  </EntityType>
+  <EntityType Name="BiometricSync">
+    <Key>
+      <PropertyRef Name="BiometricSyncId" />
+    </Key>
+    <Property Name="BiometricSyncId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StartDate" Type="datetime" />
+    <Property Name="EndDateTime" Type="datetime" />
+    <Property Name="ProductSaleProfileId" Type="int" />
+    <Property Name="BioMetricInfoId" Type="bigint" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="EmployeeId" />
+    </Key>
+    <Property Name="EmployeeId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FullName" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="PasswordHash" Type="varchar" MaxLength="250" />
+    <Property Name="EmployeeGuid" Type="uniqueidentifier" />
+    <Property Name="EmployeeNum" Type="varchar" MaxLength="40" />
+    <Property Name="LastName" Type="varchar" MaxLength="250" />
+    <Property Name="Email" Type="varchar" MaxLength="250" />
+    <Property Name="FatherName" Type="varchar" MaxLength="250" />
+    <Property Name="HusbandName" Type="varchar" MaxLength="250" />
+    <Property Name="Gender" Type="char" MaxLength="10" />
+    <Property Name="MaritalStatus" Type="bigint" />
+    <Property Name="CNIC" Type="varchar" MaxLength="50" />
+    <Property Name="IsDisable" Type="bit" Nullable="false" />
+    <Property Name="DisableDetail" Type="varchar" MaxLength="250" />
+    <Property Name="PresentAddress" Type="varchar" MaxLength="500" />
+    <Property Name="PermanentAddress" Type="varchar" MaxLength="500" />
+    <Property Name="MobileNo" Type="varchar" MaxLength="250" />
+    <Property Name="ConatctInfo" Type="varchar" MaxLength="250" />
+    <Property Name="ICEContactInfo" Type="varchar" MaxLength="250" />
+    <Property Name="DateOfBirth" Type="date" />
+    <Property Name="Starttime" Type="time" Precision="7" />
+    <Property Name="OffTime" Type="time" Precision="7" />
+    <Property Name="ShortSummary" Type="varchar" MaxLength="500" />
+    <Property Name="HRRemarks" Type="varchar" MaxLength="500" />
+    <Property Name="NoYearsOfExperience" Type="bigint" />
+    <Property Name="StartSalary" Type="float" />
+    <Property Name="ReferenceName" Type="varchar" MaxLength="250" />
+    <Property Name="ReferenceEmail" Type="varchar" MaxLength="250" />
+    <Property Name="DateOfJoining" Type="datetime" />
+    <Property Name="ManagerId" Type="bigint" />
+    <Property Name="LookEmployeeTypeId" Type="bigint" />
+    <Property Name="LookDepartmentId" Type="bigint" />
+    <Property Name="LookDesignationId" Type="bigint" />
+    <Property Name="ExitDate" Type="datetime" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="bigint" />
+    <Property Name="UpdateDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="bigint" />
+    <Property Name="ApplicantId" Type="bigint" />
+    <Property Name="ShiftSettingId" Type="bigint" />
+    <Property Name="LookGradeId" Type="bigint" />
+    <Property Name="BioMetricId" Type="int" />
+    <Property Name="LookOrganizationId" Type="bigint" />
+    <Property Name="RoleId" Type="bigint" />
+    <Property Name="LookOrganizationIds" Type="varchar" MaxLength="100" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="SubLeadIds" Type="varchar" MaxLength="100" />
+    <Property Name="HasSubOrdinates" Type="bit" />
+    <Property Name="WorkingHourPolicyId" Type="int" />
+    <Property Name="IsUserOnly" Type="bit" Nullable="false" />
+    <Property Name="ProductSaleProfileId" Type="int" Nullable="false" />
+    <Property Name="BioMetricInfoId" Type="bigint" />
+  </EntityType>
+  <EntityType Name="EmployeeAppliedLeave">
+    <Key>
+      <PropertyRef Name="EmployeeAppliedLeaveId" />
+    </Key>
+    <Property Name="EmployeeAppliedLeaveId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmployeeId" Type="bigint" Nullable="false" />
+    <Property Name="LeaveTimeStart" Type="datetime" />
+    <Property Name="LaveTimeEnd" Type="datetime" />
+    <Property Name="ActualTimeIn" Type="datetime" />
+    <Property Name="ActualTimOut" Type="datetime" />
+    <Property Name="Status" Type="bigint" Nullable="false" />
+    <Property Name="LookPolicyId" Type="bigint" />
+    <Property Name="ForDate" Type="date" />
+    <Property Name="Reason" Type="nvarchar" MaxLength="400" />
+    <Property Name="HRRemarks" Type="nvarchar" MaxLength="400" />
+    <Property Name="UpdatedBy" Type="bigint" />
+    <Property Name="UpdateDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="bigint" />
+    <Property Name="CreateDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="EmployeeAttachment">
+    <Key>
+      <PropertyRef Name="EmployeeAttachmentId" />
+    </Key>
+    <Property Name="EmployeeAttachmentId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmployeeId" Type="bigint" Nullable="false" />
+    <Property Name="AttachmentTitle" Type="nvarchar" MaxLength="250" />
+    <Property Name="AttachmentPath" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="EmployeeAttendance">
+    <Key>
+      <PropertyRef Name="EmployeeAttendanceId" />
+    </Key>
+    <Property Name="EmployeeAttendanceId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmployeeId" Type="bigint" Nullable="false" />
+    <Property Name="TimeIn" Type="datetime" />
+    <Property Name="TimeOut" Type="datetime" />
+    <Property Name="ActualTimeIn" Type="datetime" />
+    <Property Name="ActualTimOut" Type="datetime" />
+    <Property Name="Status" Type="bigint" Nullable="false" />
+    <Property Name="LookPolicyId" Type="bigint" />
+    <Property Name="ForDate" Type="date" />
+    <Property Name="ProductSaleProfileId" Type="int" />
+  </EntityType>
+  <EntityType Name="EmployeeEducation">
+    <Key>
+      <PropertyRef Name="EmployeeEducationId" />
+    </Key>
+    <Property Name="EmployeeEducationId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmployeeId" Type="bigint" Nullable="false" />
+    <Property Name="LookQualificationId" Type="bigint" />
+    <Property Name="EducationYear" Type="nvarchar" MaxLength="50" />
+    <Property Name="LookInstitutionId" Type="bigint" />
+    <Property Name="Grade" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="EmployeeExperienceHistory">
+    <Key>
+      <PropertyRef Name="EmployeeExperienceHistoryId" />
+    </Key>
+    <Property Name="EmployeeExperienceHistoryId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmployeeId" Type="bigint" Nullable="false" />
+    <Property Name="LookOrganizationId" Type="bigint" />
+    <Property Name="FromDate" Type="datetime" />
+    <Property Name="ToDate" Type="datetime" />
+    <Property Name="JobTitle" Type="nvarchar" MaxLength="250" />
+    <Property Name="JobDescription" Type="nvarchar" MaxLength="300" />
+    <Property Name="LookCityId" Type="bigint" />
+    <Property Name="LookCountryId" Type="bigint" />
+    <Property Name="Salary" Type="float" />
+  </EntityType>
+  <EntityType Name="EmployeeLeave">
+    <Key>
+      <PropertyRef Name="EmployeeLeaveId" />
+    </Key>
+    <Property Name="EmployeeLeaveId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmployeePolicyId" Type="bigint" />
+    <Property Name="PolicyName" Type="nvarchar" MaxLength="100" />
+    <Property Name="LeaveValue" Type="nvarchar" MaxLength="100" />
+    <Property Name="LookLeaveStatusId" Type="bigint" Nullable="false" />
+    <Property Name="LeaveDate" Type="datetime" Nullable="false" />
+    <Property Name="EmployeeId" Type="bigint" Nullable="false" />
+    <Property Name="PolicyUnit" Type="nvarchar" MaxLength="50" />
+    <Property Name="Year" Type="bigint" />
+    <Property Name="LookPolicyId" Type="bigint" />
+    <Property Name="EmployeeLeaveSummaryId" Type="bigint" />
+    <Property Name="LookLeaveRequestStatusId" Type="bigint" />
+    <Property Name="LookLeaveRequestDate" Type="datetime" />
+    <Property Name="LeaveApprovedById" Type="bigint" />
+    <Property Name="LeaveApprovedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="EmployeeLeaveStatusHistory">
+    <Key>
+      <PropertyRef Name="EmployeeLeaveStatusHistoryId" />
+    </Key>
+    <Property Name="EmployeeLeaveStatusHistoryId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmplyeeLeaveId" Type="bigint" Nullable="false" />
+    <Property Name="LeaveStatusId" Type="bigint" Nullable="false" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="bigint" />
+  </EntityType>
+  <EntityType Name="EmployeeLeaveSummary">
+    <Key>
+      <PropertyRef Name="EmployeeLeaveSummaryId" />
+    </Key>
+    <Property Name="EmployeeLeaveSummaryId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmployeePolicyId" Type="bigint" Nullable="false" />
+    <Property Name="StartLeaveDate" Type="datetime" Nullable="false" />
+    <Property Name="EndLeaveDate" Type="datetime" Nullable="false" />
+    <Property Name="ShortLeaves" Type="bigint" />
+    <Property Name="HalfLeaves" Type="bigint" />
+    <Property Name="Leaves" Type="bigint" />
+    <Property Name="EmployeeId" Type="bigint" Nullable="false" />
+    <Property Name="LookLeaveStatusId" Type="bigint" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="bigint" />
+    <Property Name="StatusUpdateDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EmployeeLog">
+    <Key>
+      <PropertyRef Name="EmployeeLogId" />
+    </Key>
+    <Property Name="EmployeeLogId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmployeeId" Type="bigint" Nullable="false" />
+    <Property Name="FullName" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="250" />
+    <Property Name="Email" Type="nvarchar" MaxLength="250" />
+    <Property Name="FatherName" Type="nvarchar" MaxLength="250" />
+    <Property Name="HusbandName" Type="nvarchar" MaxLength="250" />
+    <Property Name="Gender" Type="char" MaxLength="10" />
+    <Property Name="MaritalStatus" Type="bigint" />
+    <Property Name="CNIC" Type="nvarchar" MaxLength="15" />
+    <Property Name="IsDisable" Type="bit" Nullable="false" />
+    <Property Name="DisableDetail" Type="nvarchar" MaxLength="250" />
+    <Property Name="PresentAddress" Type="nvarchar" MaxLength="500" />
+    <Property Name="PermanentAddress" Type="nvarchar" MaxLength="500" />
+    <Property Name="MobileNo" Type="nvarchar" MaxLength="250" />
+    <Property Name="ConatctInfo" Type="nvarchar" MaxLength="250" />
+    <Property Name="ICEContactInfo" Type="nvarchar" MaxLength="250" />
+    <Property Name="DateOfBirth" Type="date" />
+    <Property Name="ShortSummary" Type="nvarchar" MaxLength="500" />
+    <Property Name="HRRemarks" Type="nvarchar" MaxLength="500" />
+    <Property Name="NoYearsOfExperience" Type="bigint" />
+    <Property Name="StartSalary" Type="float" />
+    <Property Name="ReferenceName" Type="nvarchar" MaxLength="250" />
+    <Property Name="ReferenceEmail" Type="nvarchar" MaxLength="250" />
+    <Property Name="DateOfJoining" Type="datetime" />
+    <Property Name="ManagerId" Type="bigint" />
+    <Property Name="LookEmployeeTypeId" Type="bigint" />
+    <Property Name="LookDepartmentId" Type="bigint" />
+    <Property Name="LookDesignationId" Type="bigint" />
+    <Property Name="ExitDate" Type="datetime" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="bigint" />
+    <Property Name="UpdateDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="datetime" />
+    <Property Name="LogCreateDate" Type="datetime" />
+    <Property Name="LogCeatedBy" Type="bigint" />
+  </EntityType>
+  <EntityType Name="EmployeePolicy">
+    <Key>
+      <PropertyRef Name="EmployeePolicyId" />
+    </Key>
+    <Property Name="EmployeePolicyId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LookPolicyId" Type="bigint" />
+    <Property Name="PolicyName" Type="nvarchar" MaxLength="150" />
+    <Property Name="PolicyUnit" Type="nvarchar" MaxLength="50" />
+    <Property Name="LookPolicyGroupId" Type="bigint" />
+    <Property Name="PolicyValue" Type="nvarchar" MaxLength="100" />
+    <Property Name="EmployeeId" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EmployeesDependents">
+    <Key>
+      <PropertyRef Name="EmployeesDependentId" />
+    </Key>
+    <Property Name="EmployeesDependentId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmployeeId" Type="bigint" />
+    <Property Name="Name" Type="nvarchar" MaxLength="250" />
+    <Property Name="Relation" Type="nvarchar" MaxLength="250" />
+    <Property Name="Gender" Type="char" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="EventLog">
+    <Key>
+      <PropertyRef Name="LogID" />
+    </Key>
+    <Property Name="LogID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ControllerName" Type="nvarchar" MaxLength="100" />
+    <Property Name="ActionName" Type="nvarchar" MaxLength="100" />
+    <Property Name="Query" Type="ntext" />
+    <Property Name="CreateDate" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="AppID" Type="bigint" />
+    <Property Name="InsertDate" Type="datetime" />
+    <Property Name="ProjectName" Type="nvarchar" MaxLength="100" />
+    <Property Name="UserId" Type="bigint" />
+  </EntityType>
+  <EntityType Name="HRPolicy">
+    <Key>
+      <PropertyRef Name="HRPolicyId" />
+    </Key>
+    <Property Name="HRPolicyId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LookDesignationId" Type="bigint" Nullable="false" />
+    <Property Name="LookPolicyId" Type="bigint" Nullable="false" />
+    <Property Name="PolicyValue" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="GroupTypeId" Type="bigint" Nullable="false" />
+    <Property Name="ProductSaleProfileId" Type="int" />
+  </EntityType>
+  <EntityType Name="HRPolicyByCaption">
+    <Key>
+      <PropertyRef Name="HRPolicyByCaptionId" />
+    </Key>
+    <Property Name="HRPolicyByCaptionId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HRPolicyCaptionId" Type="int" Nullable="false" />
+    <Property Name="HRPolicyCaption" Type="varchar" MaxLength="250" />
+    <Property Name="LookPolicyId" Type="bigint" Nullable="false" />
+    <Property Name="PolicyValue" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="GroupTypeId" Type="bigint" Nullable="false" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="bigint" />
+    <Property Name="PolicyName" Type="varchar" MaxLength="250" />
+    <Property Name="LookPolicyGroupId" Type="bigint" />
+    <Property Name="TimeIn" Type="time" Precision="7" />
+    <Property Name="TimeOut" Type="time" Precision="7" />
+    <Property Name="ProductSaleProfileId" Type="int" />
+    <Property Name="LookOrganizationId" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HRPolicyCaption">
+    <Key>
+      <PropertyRef Name="HRPolicyCaptionId" />
+    </Key>
+    <Property Name="HRPolicyCaptionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PolicyCaption" Type="varchar" MaxLength="250" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="bigint" />
+    <Property Name="IsVariableTiming" Type="bit" />
+    <Property Name="ProductSaleProfileId" Type="int" />
+  </EntityType>
+  <EntityType Name="HRRecruitmentProcess">
+    <Key>
+      <PropertyRef Name="HRRecruitmentProcessId" />
+    </Key>
+    <Property Name="HRRecruitmentProcessId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProcessId" Type="bigint" />
+    <Property Name="RecruitmentId" Type="bigint" />
+  </EntityType>
+  <EntityType Name="LeftMenu">
+    <Key>
+      <PropertyRef Name="LeftMenuId" />
+    </Key>
+    <Property Name="LeftMenuId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MenuName" Type="nvarchar" MaxLength="150" />
+    <Property Name="ControllerName" Type="nvarchar" MaxLength="150" />
+    <Property Name="ActionName" Type="nvarchar" MaxLength="150" />
+    <Property Name="IconClass" Type="nvarchar" MaxLength="500" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="ParentId" Type="bigint" Nullable="false" />
+    <Property Name="HaveChild" Type="bit" Nullable="false" />
+    <Property Name="DisplayOrder" Type="bigint" />
+    <Property Name="NewParentId" Type="bigint" />
+  </EntityType>
+  <EntityType Name="LogInHistory">
+    <Key>
+      <PropertyRef Name="LogInId" />
+    </Key>
+    <Property Name="LogInId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IP" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="Query" Type="nvarchar" MaxLength="1000" />
+    <Property Name="ProductSaleProfileId" Type="int" />
+  </EntityType>
+  <EntityType Name="LookBranch">
+    <Key>
+      <PropertyRef Name="LookBranchId" />
+    </Key>
+    <Property Name="LookBranchId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BranchName" Type="nvarchar" MaxLength="250" />
+    <Property Name="LookBranchTypeId" Type="bigint" />
+    <Property Name="ParentBranchId" Type="bigint" />
+  </EntityType>
+  <EntityType Name="LookBranchTypes">
+    <Key>
+      <PropertyRef Name="LookBranchTypeId" />
+    </Key>
+    <Property Name="LookBranchTypeId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BranchType" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LookCity">
+    <Key>
+      <PropertyRef Name="LookCityId" />
+    </Key>
+    <Property Name="LookCityId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CityName" Type="nvarchar" MaxLength="250" />
+    <Property Name="ProductSaleProfileId" Type="int" />
+  </EntityType>
+  <EntityType Name="LookCountry">
+    <Key>
+      <PropertyRef Name="LookCountryId" />
+    </Key>
+    <Property Name="LookCountryId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CountryName" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="LookDepartment">
+    <Key>
+      <PropertyRef Name="LookDepartmentId" />
+    </Key>
+    <Property Name="LookDepartmentId" Type="bigint" Nullable="false" />
+    <Property Name="DepartmentName" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="ProductSaleProfileId" Type="int" />
+  </EntityType>
+  <EntityType Name="LookDesignation">
+    <Key>
+      <PropertyRef Name="LookDesignationId" />
+    </Key>
+    <Property Name="LookDesignationId" Type="bigint" Nullable="false" />
+    <Property Name="DesignationName" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="LookDepartmentId" Type="bigint" />
+    <Property Name="ProductSaleProfileId" Type="int" />
+  </EntityType>
+  <EntityType Name="LookEmployeeType">
+    <Key>
+      <PropertyRef Name="LookEmployeeTypeId" />
+    </Key>
+    <Property Name="LookEmployeeTypeId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmployeeTypeName" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="ProductSaleProfileId" Type="int" />
+  </EntityType>
+  <EntityType Name="LookGender">
+    <Key>
+      <PropertyRef Name="LookGenderId" />
+    </Key>
+    <Property Name="LookGenderId" Type="bigint" Nullable="false" />
+    <Property Name="LookGenderName" Type="nvarchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="LookGrade">
+    <Key>
+      <PropertyRef Name="LookGradeId" />
+    </Key>
+    <Property Name="LookGradeId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GradeName" Type="varchar" MaxLength="50" />
+    <Property Name="GradeValue" Type="decimal" Precision="18" Scale="1" />
+    <Property Name="ProductSaleProfileId" Type="int" />
+  </EntityType>
+  <EntityType Name="LookInstitution">
+    <Key>
+      <PropertyRef Name="LookInstitutionId" />
+    </Key>
+    <Property Name="LookInstitutionId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="InstitutionName" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="LookJobType">
+    <Key>
+      <PropertyRef Name="LookJobTypeId" />
+    </Key>
+    <Property Name="LookJobTypeId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="JobTypeName" Type="nvarchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="LookLeaveStatus">
+    <Key>
+      <PropertyRef Name="LookLeaveStatusId" />
+    </Key>
+    <Property Name="LookLeaveStatusId" Type="bigint" Nullable="false" />
+    <Property Name="RequestStatus" Type="varchar" MaxLength="50" />
+    <Property Name="AccessGroupId" Type="int" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="LookOrganization">
+    <Key>
+      <PropertyRef Name="LookOrganizationId" />
+    </Key>
+    <Property Name="LookOrganizationId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrganizationName" Type="varchar" MaxLength="250" />
+    <Property Name="OrganizationURL" Type="varchar" MaxLength="350" />
+    <Property Name="LookCompanyStatusId" Type="int" Nullable="false" />
+    <Property Name="ProductSaleProfileId" Type="int" />
+  </EntityType>
+  <EntityType Name="LookPayRollStatus">
+    <Key>
+      <PropertyRef Name="LookPayRollStatusId" />
+    </Key>
+    <Property Name="LookPayRollStatusId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StatusName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="LookPolicy">
+    <Key>
+      <PropertyRef Name="LookPolicyId" />
+    </Key>
+    <Property Name="LookPolicyId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PolicyName" Type="varchar" MaxLength="250" />
+    <Property Name="PolicyUnit" Type="varchar" MaxLength="100" />
+    <Property Name="LookPolicyGroupId" Type="int" Nullable="false" />
+    <Property Name="ValueType" Type="int" />
+    <Property Name="IsPercentage" Type="bit" />
+  </EntityType>
+  <EntityType Name="LookPolicyGroup">
+    <Key>
+      <PropertyRef Name="LookPolicyGroupId" />
+    </Key>
+    <Property Name="LookPolicyGroupId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PolicyGroupName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="GroupTypeId" Type="bigint" />
+  </EntityType>
+  <EntityType Name="LookQualification">
+    <Key>
+      <PropertyRef Name="LookQualificationId" />
+    </Key>
+    <Property Name="LookQualificationId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="QualificationName" Type="nvarchar" MaxLength="100" />
+    <Property Name="LookQualificationTypeId" Type="bigint" />
+  </EntityType>
+  <EntityType Name="LookQualificationType">
+    <Key>
+      <PropertyRef Name="LookQualificationTypeId" />
+    </Key>
+    <Property Name="LookQualificationTypeId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="QualificationType" Type="nvarchar" MaxLength="250" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LookSelectionProcess">
+    <Key>
+      <PropertyRef Name="LookSelectionProcessId" />
+    </Key>
+    <Property Name="LookSelectionProcessId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SelectionProcess" Type="nvarchar" MaxLength="450" />
+    <Property Name="Type" Type="bigint" />
+  </EntityType>
+  <EntityType Name="PayRoll">
+    <Key>
+      <PropertyRef Name="PayRollId" />
+    </Key>
+    <Property Name="PayRollId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmployeeId" Type="bigint" Nullable="false" />
+    <Property Name="MonthNumber" Type="bigint" Nullable="false" />
+    <Property Name="YearNumber" Type="bigint" Nullable="false" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="CreatedBy" Type="bigint" Nullable="false" />
+    <Property Name="GrossPay" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="NetPay" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="IncomeTax" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="WorkingDaysRequired" Type="bigint" />
+    <Property Name="PublicHolidays" Type="bigint" />
+    <Property Name="Leaves" Type="bigint" />
+    <Property Name="Absents" Type="bigint" />
+    <Property Name="Attendance" Type="bigint" />
+    <Property Name="TotalHoursRequired" Type="bigint" />
+    <Property Name="TotalHours" Type="bigint" />
+    <Property Name="LookPayRollStatusId" Type="bigint" />
+    <Property Name="StatusUpdatedBy" Type="bigint" />
+    <Property Name="StatusUpdateDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="PayRollDetail">
+    <Key>
+      <PropertyRef Name="PayRollDetailId" />
+    </Key>
+    <Property Name="PayRollDetailId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PayRollId" Type="bigint" Nullable="false" />
+    <Property Name="EmployeePolicyId" Type="bigint" Nullable="false" />
+    <Property Name="LookPolicyId" Type="bigint" Nullable="false" />
+    <Property Name="PolicyName" Type="nvarchar" MaxLength="250" />
+    <Property Name="PolicyUnit" Type="nvarchar" MaxLength="50" />
+    <Property Name="LookPolicyGroupId" Type="bigint" />
+    <Property Name="PolicyValue" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ValueType" Type="bigint" />
+    <Property Name="IsPercentage" Type="bit" />
+  </EntityType>
+  <EntityType Name="PayRollSummary">
+    <Key>
+      <PropertyRef Name="PayRollSummaryId" />
+    </Key>
+    <Property Name="PayRollSummaryId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="YearNumber" Type="int" Nullable="false" />
+    <Property Name="MonthNumber" Type="int" Nullable="false" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="CreatedBy" Type="bigint" Nullable="false" />
+    <Property Name="SalaryCount" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Permission">
+    <Key>
+      <PropertyRef Name="PermissionId" />
+    </Key>
+    <Property Name="PermissionId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="Attribute" Type="nvarchar" MaxLength="100" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="MenuId" Type="bigint" />
+    <Property Name="LookDepartmentId" Type="bigint" />
+    <Property Name="PermissionLevel" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductSaleProfile">
+    <Key>
+      <PropertyRef Name="ProductSaleProfileId" />
+    </Key>
+    <Property Name="ProductSaleProfileId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="250" />
+    <Property Name="LookCityId" Type="bigint" />
+    <Property Name="LookCountryId" Type="bigint" />
+    <Property Name="Address" Type="varchar" MaxLength="1000" />
+    <Property Name="LookCustomerStatusId" Type="int" Nullable="false" />
+    <Property Name="RegistrationDatePk" Type="datetime" />
+    <Property Name="UITCDateTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PublicHoliday">
+    <Key>
+      <PropertyRef Name="PublicHolidayId" />
+    </Key>
+    <Property Name="PublicHolidayId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HoIidayDate" Type="date" Nullable="false" />
+    <Property Name="Detail" Type="nvarchar" MaxLength="200" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="Recruitment">
+    <Key>
+      <PropertyRef Name="RecruitmentId" />
+    </Key>
+    <Property Name="RecruitmentId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LookDesignationId" Type="bigint" />
+    <Property Name="LookBranchId" Type="bigint" />
+    <Property Name="LookEmployeeTypeId" Type="bigint" />
+    <Property Name="Preferred_Start_Date" Type="datetime" />
+    <Property Name="AdClosingDate" Type="datetime" />
+    <Property Name="LookJobTypeId" Type="bigint" />
+    <Property Name="LookDepartmentId" Type="bigint" />
+    <Property Name="ReportingEmployeeId" Type="bigint" />
+    <Property Name="Length_Of_Term" Type="bigint" />
+    <Property Name="LookRecruitmentStatusId" Type="bigint" Nullable="false" />
+    <Property Name="NoOfPositions" Type="bigint" />
+    <Property Name="LookGenderId" Type="bigint" />
+    <Property Name="PositionDescription" Type="nvarchar" MaxLength="450" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="CreatedBy" Type="bigint" Nullable="false" />
+    <Property Name="UpdateDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="bigint" />
+    <Property Name="ForApprovalEmployeeId" Type="bigint" />
+    <Property Name="ShortSummary" Type="nvarchar" MaxLength="1500" />
+  </EntityType>
+  <EntityType Name="RecruitmentApproval">
+    <Key>
+      <PropertyRef Name="RecruitmentApprovalId" />
+    </Key>
+    <Property Name="RecruitmentApprovalId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RecruitmentId" Type="bigint" Nullable="false" />
+    <Property Name="EmployeeId" Type="bigint" Nullable="false" />
+    <Property Name="ApprovedDate" Type="datetime" Nullable="false" />
+    <Property Name="Remarks" Type="nvarchar" MaxLength="450" />
+    <Property Name="ForwardToEmployeeId" Type="bigint" />
+    <Property Name="LookRecruitmentStatusId" Type="bigint" />
+  </EntityType>
+  <EntityType Name="RoleMenus">
+    <Key>
+      <PropertyRef Name="RoleMenuId" />
+    </Key>
+    <Property Name="RoleMenuId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MenuId" Type="bigint" Nullable="false" />
+    <Property Name="RoleId" Type="bigint" Nullable="false" />
+    <Property Name="DefaultControllerName" Type="nvarchar" MaxLength="100" />
+    <Property Name="DefaultActionName" Type="nvarchar" MaxLength="100" />
+    <Property Name="IsDefault" Type="bit" />
+    <Property Name="ProductSaleProfileId" Type="int" />
+  </EntityType>
+  <EntityType Name="RolePermissions">
+    <Key>
+      <PropertyRef Name="RolePermissionId" />
+    </Key>
+    <Property Name="RolePermissionId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleId" Type="bigint" Nullable="false" />
+    <Property Name="PermissionId" Type="bigint" Nullable="false" />
+    <Property Name="ProductSaleProfileId" Type="int" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="bigint" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="bigint" />
+    <Property Name="UpdateDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="bigint" />
+    <Property Name="ProductSaleProfileId" Type="int" />
+  </EntityType>
+  <EntityType Name="ShiftSetting">
+    <Key>
+      <PropertyRef Name="ShiftSettingId" />
+    </Key>
+    <Property Name="ShiftSettingId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ShiftName" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="StartTime" Type="time" Precision="7" />
+    <Property Name="EndTime" Type="time" Precision="7" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="Tax">
+    <Key>
+      <PropertyRef Name="TaxId" />
+    </Key>
+    <Property Name="TaxId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LimitName" Type="nvarchar" MaxLength="50" />
+    <Property Name="StartLimit" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="MaxLimit" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="FixTax" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="TaxPercentageToMaxLimit" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="250" />
+    <Property Name="EmployeeId" Type="bigint" />
+    <Property Name="PasswordHash" Type="nvarchar" MaxLength="250" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="Updatedate" Type="datetime" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="VerificationKey" Type="nvarchar(max)" />
+    <Property Name="IsLockedOut" Type="bit" />
+    <Property Name="LastLoginDate" Type="datetime" />
+    <Property Name="LastPasswordChangedDate" Type="datetime" />
+    <Property Name="LastLockoutDate" Type="datetime" />
+    <Property Name="FailedPasswordAttemptCount" Type="bigint" />
+    <Property Name="UserGuid" Type="uniqueidentifier" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="250" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="250" />
+    <Property Name="Token" Type="varchar" MaxLength="250" />
+    <Property Name="RoleId" Type="bigint" Nullable="false" />
+    <Property Name="Coments" Type="ntext" />
+    <Property Name="MobileNumber" Type="varchar" MaxLength="250" />
+    <Property Name="PhoneNumber" Type="varchar" MaxLength="250" />
+    <Property Name="Address" Type="varchar" MaxLength="300" />
+    <Property Name="Postcode" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedBy" Type="bigint" />
+    <Property Name="UpdatedBy" Type="bigint" />
+    <Property Name="TempPassword" Type="nvarchar" MaxLength="250" />
+    <Property Name="TempPasswordDate" Type="datetime" />
+  </EntityType>
+  <EntityContainer Name="hrm_ilaanModelStoreContainer">
+    <EntitySet Name="Applicant" EntityType="Self.Applicant" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ApplicantAttachment" EntityType="Self.ApplicantAttachment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ApplicantInterview" EntityType="Self.ApplicantInterview" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ApplicantStatusChange" EntityType="Self.ApplicantStatusChange" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BioMetricData" EntityType="Self.BioMetricData" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BiometricSchedule" EntityType="Self.BiometricSchedule" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BiometricSync" EntityType="Self.BiometricSync" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmployeeAppliedLeave" EntityType="Self.EmployeeAppliedLeave" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmployeeAttachment" EntityType="Self.EmployeeAttachment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmployeeAttendance" EntityType="Self.EmployeeAttendance" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmployeeEducation" EntityType="Self.EmployeeEducation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmployeeExperienceHistory" EntityType="Self.EmployeeExperienceHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmployeeLeave" EntityType="Self.EmployeeLeave" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmployeeLeaveStatusHistory" EntityType="Self.EmployeeLeaveStatusHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmployeeLeaveSummary" EntityType="Self.EmployeeLeaveSummary" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmployeeLog" EntityType="Self.EmployeeLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmployeePolicy" EntityType="Self.EmployeePolicy" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmployeesDependents" EntityType="Self.EmployeesDependents" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EventLog" EntityType="Self.EventLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HRPolicy" EntityType="Self.HRPolicy" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HRPolicyByCaption" EntityType="Self.HRPolicyByCaption" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HRPolicyCaption" EntityType="Self.HRPolicyCaption" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HRRecruitmentProcess" EntityType="Self.HRRecruitmentProcess" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LeftMenu" EntityType="Self.LeftMenu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LogInHistory" EntityType="Self.LogInHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LookBranch" EntityType="Self.LookBranch" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LookBranchTypes" EntityType="Self.LookBranchTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LookCity" EntityType="Self.LookCity" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LookCountry" EntityType="Self.LookCountry" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LookDepartment" EntityType="Self.LookDepartment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LookDesignation" EntityType="Self.LookDesignation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LookEmployeeType" EntityType="Self.LookEmployeeType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LookGender" EntityType="Self.LookGender" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LookGrade" EntityType="Self.LookGrade" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LookInstitution" EntityType="Self.LookInstitution" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LookJobType" EntityType="Self.LookJobType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LookLeaveStatus" EntityType="Self.LookLeaveStatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LookOrganization" EntityType="Self.LookOrganization" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LookPayRollStatus" EntityType="Self.LookPayRollStatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LookPolicy" EntityType="Self.LookPolicy" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LookPolicyGroup" EntityType="Self.LookPolicyGroup" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LookQualification" EntityType="Self.LookQualification" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LookQualificationType" EntityType="Self.LookQualificationType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LookSelectionProcess" EntityType="Self.LookSelectionProcess" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PayRoll" EntityType="Self.PayRoll" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PayRollDetail" EntityType="Self.PayRollDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PayRollSummary" EntityType="Self.PayRollSummary" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Permission" EntityType="Self.Permission" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductSaleProfile" EntityType="Self.ProductSaleProfile" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PublicHoliday" EntityType="Self.PublicHoliday" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Recruitment" EntityType="Self.Recruitment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RecruitmentApproval" EntityType="Self.RecruitmentApproval" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RoleMenus" EntityType="Self.RoleMenus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RolePermissions" EntityType="Self.RolePermissions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ShiftSetting" EntityType="Self.ShiftSetting" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tax" EntityType="Self.Tax" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BioMetricInfo" EntityType="Self.BioMetricInfo" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [BioMetricInfo].[BioMetricInfoId] AS [BioMetricInfoId], 
+    [BioMetricInfo].[ProductSaleProfileId] AS [ProductSaleProfileId], 
+    [BioMetricInfo].[BioMetricSerialNo] AS [BioMetricSerialNo], 
+    [BioMetricInfo].[BioMetricDeviceBrand] AS [BioMetricDeviceBrand], 
+    [BioMetricInfo].[CreateDate] AS [CreateDate], 
+    [BioMetricInfo].[IPAddress] AS [IPAddress], 
+    [BioMetricInfo].[IsPublicIp] AS [IsPublicIp]
+    FROM [dbo].[BioMetricInfo] AS [BioMetricInfo]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

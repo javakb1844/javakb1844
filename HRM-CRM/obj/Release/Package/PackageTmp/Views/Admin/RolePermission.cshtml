@@ -1,0 +1,118 @@
+﻿@model VM.User.RolePermissionViewModel
+
+@{
+    ViewBag.Title = "RolePermission";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+    var row = "<div class='row'>";
+    var rowEnd = "</div><hr />";
+    long roleid = Convert.ToInt64(System.Web.HttpContext.Current.Session["RoleId"]);
+    int ProductSaleProfileId = Convert.ToInt32(System.Web.HttpContext.Current.Session["ProductSaleProfileId"]);
+}
+<div class="page-content-col">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <i class="icon-settings font-red"></i>
+                    <span class="caption-subject font-red sbold" style="font-size: 20px;">Role Permissions Record</span>
+                </div>
+                <div class="panel-body">
+                    @using (Html.BeginForm("RolePermission", "Admin", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
+                    {
+                        <div class="row">
+                            <div class="form-group" style="margin-bottom:50px">
+                                <label class="control-label col-md-2">
+                                    Role
+                                    <span class="required" aria-required="true"> * </span>
+                                </label>
+                                <div class="col-md-4">
+                                    @Html.DropDownListFor(x => x.Role, new SelectList(Services.Users.RolePermissionService.GetRolesList(roleid, ProductSaleProfileId), "RoleId", "Name"), new { @class = "form-control", id = "ddlRole" })
+
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                        string tempmanu = "";
+                        if (Model.Menus.CountedPositive())
+                        {
+                            foreach (var menu in Model.Menus)
+                            {
+                                var rolePermissions = Model.Permissions.Where(x => x.Menu == menu.LeftMenuId);
+
+                                if (rolePermissions.CountedPositive())
+                                {
+                                <h3>@menu.MenuName</h3>@Html.Raw(row)
+
+                                    string menuName = "";
+                                    foreach (var permission in rolePermissions)
+                                    {
+
+                                        string newMenuName = "";
+                                        string clearfix = "";
+                                        if (permission.IsChild)
+                                        {
+                                            var oook = Model.Menus.Where(x => x.LeftMenuId == permission.ChildMenu).FirstOrDefault();
+                                            if (oook.IsNotNull())
+                                            {
+                                                newMenuName = oook.MenuName;
+
+                                                if (menuName != newMenuName)
+                                                {
+                                                    menuName = newMenuName;
+                                                    tempmanu = menuName;
+                                                    //  newMenuName = "<h4>" + newMenuName + ": </h4>";
+                                                    //  clearfix = "<div class='clearfix'> </div>";
+                                                }
+                                            }
+
+                                        }
+
+                                        if (tempmanu.IsNotNullOrEmpty())
+                                        {
+                        <div class="col-lg-12" style="padding-left:25px; display:block;">
+                            @Html.Raw("<h4>" + newMenuName + ": </h4>")
+                        </div>
+                                            tempmanu = "";
+                                        }
+                    <div class="col-lg-3 col-md-3" style="margin-left: 25px;">
+                        <div class="checkbox c-checkbox">
+                            <label>
+                                @if (permission.Selected)
+                                {
+                                    <input class="form-control" type="checkbox" value="@permission.PermissionId" name="SelectedPermissions" checked>
+                                }
+                                else
+                                {
+                                    <input class="form-control" type="checkbox" value="@permission.PermissionId" name="SelectedPermissions">
+                                }
+                                <span class="fa fa-check"></span> @permission.Name
+                            </label>
+                        </div>
+                    </div>
+
+                                    }
+                                @Html.HiddenFor(m => m.Permissions)
+                                @Html.Raw(rowEnd);
+                                }
+                            }
+                        }
+                        <div class="col-sm-12 text-center">
+                            <input type="submit" class="btn btn-sm btn-primary" value="Save" />
+                            <a href="@Url.Action("Index","Home")"><button type="button" class="btn btn-sm btn-danger"> Cancel </button></a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        $("#ddlRole").change(function () {
+            var role = $("#ddlRole").val();
+            debugger;
+            location.href = "@Url.Action("RolePermission", "Admin")?role=" + role;
+            //alert(role);
+        });
+    });
+</script>

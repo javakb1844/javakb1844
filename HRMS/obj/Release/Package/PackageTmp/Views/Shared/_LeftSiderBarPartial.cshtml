@@ -1,0 +1,135 @@
+﻿@model List<VM.HRMS.LeftMenuViewModel>
+<aside class="aside">
+    <div class="aside-inner">
+        <nav data-sidebar-anyclick-close="" class="sidebar">
+            <ul class="nav page-sidebar-menu">
+                @if (Model != null)
+                {
+                    List<long> allreadyDisplay = new List<long>();
+
+                    var dashboard = Model.Where(x => x.NewParentId == -2).FirstOrDefault();
+                    if (dashboard.IsNotNull())
+                    {
+
+                        var dashboardList = Model.Where(x => x.NewParentId == dashboard.LeftMenuId).ToListSafely();
+                        <li class="removeActive" id="li_@dashboard.LeftMenuId">
+                            @if (dashboard.HaveChild)
+                            {
+                                <a href="#abc_@dashboard.LeftMenuId" title="Multilevel" data-toggle="collapse">
+
+                                    <em class="@dashboard.IconClass"> </em>
+                                    <span>@dashboard.MenuName </span>
+                                </a>
+                                <ul id="abc_@dashboard.LeftMenuId" class="nav sidebar-subnav collapse">
+                                    <li class="removeActive sidebar-subnav-header">@dashboard.MenuName</li>
+                                    @foreach (var subItem in dashboardList)
+                                    {
+
+                                        var temp2 = subItem.ActionName + "_" + subItem.ControllerName;
+
+                                        <li class="removeActive multilevel-child" id="li_@subItem.LeftMenuId">
+                                            <a href="@Url.Action(subItem.ActionName, subItem.ControllerName)" parent="@subItem.ParentId" leftid="@subItem.LeftMenuId" id="a_@temp2">
+                                                <em class="@subItem.IconClass"></em>
+                                                <span>@subItem.MenuName</span>
+                                            </a>
+                                        </li>
+
+
+                                    }
+                                </ul>
+                            }
+                            else
+                            {
+                                <a href="#/">
+                                    <a href="@Url.Action("Dashboard", "Home")" parent="0">
+                                        <em class="icon-home"></em>
+                                        <span>Dashboard * </span>
+                                    </a>
+                                </a>
+                            }
+                        </li>
+                    }
+                    foreach (var item in Model)
+                    {
+                        if (item.ParentId == 0)
+                        {
+                                <li class="removeActive" id="li_@item.LeftMenuId">
+                                    @if (item.HaveChild == false)
+                                    {
+                                        var temp = item.ActionName + "_" + item.ControllerName;
+                                        var result = item.ActionName.Split('?');
+
+                                        if (result.Length > 1)
+                                        {
+                                            var tempaction = result[1].Split('=');
+                                            if (tempaction[0] == "employee")
+                                            {
+                                                <a href="@Url.Action(result[0], item.ControllerName, new { employee = tempaction[1] })" parent="0" leftid="@item.LeftMenuId" id="a_@temp">
+                                                    <em class="@item.IconClass"> </em>
+                                                    <span>@item.MenuName </span>
+                                                </a>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <a href="@Url.Action(item.ActionName, item.ControllerName)" parent="0" leftid="@item.LeftMenuId" id="a_@temp">
+                                                <em class="@item.IconClass"> </em>
+                                                <span>@item.MenuName </span>
+                                            </a>
+
+                                        }
+                                    }
+                                    else
+                                    {
+                                        var submodel = Model.Where(x => x.ParentId == item.LeftMenuId).ToListSafely();
+                                        if (submodel.CountedPositive() && !allreadyDisplay.Contains(item.LeftMenuId))
+                                        {
+                                            allreadyDisplay.Add(item.LeftMenuId);
+
+                                            <a href="#abc_@item.LeftMenuId" title="Multilevel" data-toggle="collapse">
+
+                                                <em class="@item.IconClass"> </em>
+                                                <span>@item.MenuName </span>
+                                            </a>
+                                            <ul id="abc_@item.LeftMenuId" class="nav sidebar-subnav collapse">
+                                                <li class="removeActive sidebar-subnav-header">@item.MenuName</li>
+                                                @foreach (var subItem in submodel)
+                                                {
+
+                                                    var temp2 = subItem.ActionName + "_" + subItem.ControllerName;
+
+                                                    <li class="removeActive multilevel-child" id="li_@subItem.LeftMenuId">
+                                                        <a href="@Url.Action(subItem.ActionName, subItem.ControllerName)" parent="@subItem.ParentId" leftid="@subItem.LeftMenuId" id="a_@temp2">
+                                                            <em class="@subItem.IconClass"></em>
+                                                            <span>@subItem.MenuName </span>
+                                                        </a>
+                                                    </li>
+
+
+                                                }
+                                            </ul>
+                                        }
+                                    }
+                                </li>
+                            }
+                        }
+                    }
+                </ul>
+        </nav>
+    </div>
+</aside>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var pathname = window.location.pathname;
+        var temp = pathname.split('/');
+        var leftLi = $('#a_' + temp[2] + '_' + temp[1]).attr('leftid');
+        var aprenntId = $('#a_' + temp[2] + '_' + temp[1]).attr('parent');
+        $(".removeActive").removeClass("active");
+        $('#li_' + leftLi).addClass("active");
+       
+    });
+
+
+
+</script>
+

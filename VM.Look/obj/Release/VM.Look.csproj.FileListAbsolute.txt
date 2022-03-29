@@ -1,0 +1,11 @@
+D:\HRM-MAIN\HRMDEV\VM.Look\bin\Release\VM.Look.dll
+D:\HRM-MAIN\HRMDEV\VM.Look\bin\Release\VM.Look.pdb
+D:\HRM-MAIN\HRMDEV\VM.Look\obj\Release\VM.Look.csprojResolveAssemblyReference.cache
+D:\HRM-MAIN\HRMDEV\VM.Look\obj\Release\VM.Look.dll
+D:\HRM-MAIN\HRMDEV\VM.Look\obj\Release\VM.Look.pdb
+E:\apps-data\HRMDEV-221217\HRMDEV\VM.Look\bin\Release\VM.Look.dll
+E:\apps-data\HRMDEV-221217\HRMDEV\VM.Look\bin\Release\VM.Look.pdb
+E:\apps-data\HRMDEV-221217\HRMDEV\VM.Look\obj\Release\VM.Look.csprojAssemblyReference.cache
+E:\apps-data\HRMDEV-221217\HRMDEV\VM.Look\obj\Release\VM.Look.csproj.CoreCompileInputs.cache
+E:\apps-data\HRMDEV-221217\HRMDEV\VM.Look\obj\Release\VM.Look.dll
+E:\apps-data\HRMDEV-221217\HRMDEV\VM.Look\obj\Release\VM.Look.pdb

@@ -1,0 +1,120 @@
+﻿@model List<Data.HRMS.LookPolicy>
+@{
+    ViewBag.Title = "PolicyList";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<div class="content-wrapper">
+    <h3>
+        Policy
+        <a href="@Url.Action("Create","Policy")">
+            <button type="button" class="btn btn-primary pull-right"><i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;Add New Policy</button>
+        </a>
+    </h3>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Policy Info
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12 ">
+                        <div class="form-group">
+                            <label  class="col-sm-3 text-right" style="padding-top: 6px;">Policy</label>
+                            <div class="col-sm-4 ">
+                                @Html.DropDownList("LookPolicyGroupId", new SelectList(ViewBag.PolicyGroup, "LookPolicyGroupId", "PolicyGroupName"), "--Please Select Policy Group Type--", new { @class = "form-control ",  placeholder = "Department Name" })
+                            </div>
+                            @*<div class="col-sm-1">
+                                <input type="button" class="btn btn-lg btn-primary" id="btnSearch" style="padding-top: 8px; padding-bottom: 8px;" value="Search">
+                            </div>*@
+                            </div>
+                    </div>
+                </div>
+
+                <div class="panel-body">
+                    <table id="datatable1" class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>S.NO.</th>
+                                <th>Policy Name</th>
+                                <th>Policy Unit</th>
+                                <th>Policy Group</th>
+                                <th>Action</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model != null)
+                            {
+                                var count = 0;
+                                List<Data.HRMS.LookPolicyGroup> grouplist = ViewBag.PolicyGroup;
+                                foreach (var item in Model)
+                                {
+
+                                    var policy =grouplist.Where(x => x.LookPolicyGroupId == item.LookPolicyGroupId).FirstOrDefault();
+                                    count = count + 1;
+
+                                    <tr class="gradeX">
+                                        <td>@count</td>
+                                        <td>@item.PolicyName</td>
+                                        <td>@item.PolicyUnit</td>
+                                        <td>@policy.PolicyGroupName</td>
+                                        <td class="table_action">
+                                            <a href="@Url.Action("Create","Policy",new {id=item.LookPolicyId })" title="Edit Policy"><em class="icon-note" style="font-size: 18px;"></em></a>
+                                            <em class="delete_record icon-close" title="Delete Policy" style="font-size:18px;color:red" rel="51"></em>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                    @*<div class="row" style="margin-top: 10px;">
+                            <div class="col-xs-6">
+                                <div class="dataTables_info" id="datatable1_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div>
+                            </div><div class="col-xs-6">
+                                <div class="dataTables_paginate paging_simple_numbers" id="datatable1_paginate">
+                                    <ul class="pagination">
+                                        <li class="paginate_button previous disabled" aria-controls="datatable1" tabindex="0" id="datatable1_previous">
+                                            <a href="#">Previous</a>
+                                        </li>
+                                        <li class="paginate_button active" aria-controls="datatable1" tabindex="0"><a href="#">1</a></li>
+                                        <li class="paginate_button " aria-controls="datatable1" tabindex="0"><a href="#">2</a></li>
+                                        <li class="paginate_button " aria-controls="datatable1" tabindex="0"><a href="#">3</a></li>
+                                        <li class="paginate_button " aria-controls="datatable1" tabindex="0"><a href="#">4</a></li>
+                                        <li class="paginate_button " aria-controls="datatable1" tabindex="0"><a href="#">5</a></li>
+                                        <li class="paginate_button " aria-controls="datatable1" tabindex="0"><a href="#">6</a></li>
+                                        <li class="paginate_button next" aria-controls="datatable1" tabindex="0" id="datatable1_next"><a href="#">Next</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>*@
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(document).off("change", "#LookPolicyGroupId").on("change", "#LookPolicyGroupId", function (event) {
+            event.preventDefault();
+
+
+
+        });
+      /*  $(document).off("click", ".paginate_button").on("click", ".paginate_button", function (event) {
+            //event.preventDefault();
+            alert('wasim');
+
+        });*/
+
+    });
+
+
+
+</script>
+
+
+

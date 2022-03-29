@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{987CBD52-F311-41D5-909C-29DACF150620}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Library.Core</RootNamespace>
+    <AssemblyName>Library.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\DLL\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.Extended">
+      <HintPath>..\DLL\EntityFramework.Extended.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\DLL\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Kaliko.ImageLibrary">
+      <HintPath>..\DLL\Kaliko.ImageLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLL\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Api\ApiRequest.cs" />
+    <Compile Include="Consoles\ConsoleCSS.cs" />
+    <Compile Include="Data\CodeFirstDefaultDbConfig.cs" />
+    <Compile Include="Data\GenericRepository.cs" />
+    <Compile Include="Data\IRepository.cs" />
+    <Compile Include="Data\ITranslator.cs" />
+    <Compile Include="Data\Repository.cs" />
+    <Compile Include="Data\SharedDbConfiguration.cs" />
+    <Compile Include="Imaging\ThumbnailHelper.cs" />
+    <Compile Include="Logging\LogBuilder.cs" />
+    <Compile Include="Logging\LogContext.cs" />
+    <Compile Include="Logging\LogModel\LogItemDictionary.cs" />
+    <Compile Include="Logging\LogModel\LogItem.cs" />
+    <Compile Include="Logging\LogModel\LogDataType.cs" />
+    <Compile Include="Logging\LogModel\LogItemType.cs" />
+    <Compile Include="Logging\LogModel\LogGroupDictionary.cs" />
+    <Compile Include="Logging\LogModel\LogGroupFilter.cs" />
+    <Compile Include="Logging\LogModel\LogGroup.cs" />
+    <Compile Include="Logging\LogRepository.cs" />
+    <Compile Include="Logging\Values\LogDataTypeValues.cs" />
+    <Compile Include="Logging\Values\LogItemTypeValues.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\IMapper.cs" />
+    <Compile Include="Services\MethodControl.cs" />
+    <Compile Include="SharedUtilities.cs" />
+    <Compile Include="TimerConsole\TimerApp.cs" />
+    <Compile Include="Services\BaseService.cs" />
+    <Compile Include="Services\Result.cs" />
+    <Compile Include="Services\ServiceResultType.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Data\Project TODOs.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Library.Extensions\Library.Extensions.csproj">
+      <Project>{ad00c902-2106-45ac-9323-4a76b279651c}</Project>
+      <Name>Library.Extensions</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="Logging\ClassDiagram1.cd" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

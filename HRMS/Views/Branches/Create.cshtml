@@ -1,0 +1,64 @@
+﻿@model Data.HRMS.LookBranch
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<div class="content-wrapper">
+    <h3>
+        Add Branch
+    </h3>
+    <div class="row">
+        <div class="col-sm-6 col-lg-offset-3">
+            <!-- START panel-->
+            <div class="panel panel-default">
+                <div class="panel-heading"> Branch info</div>
+                <div class="panel-body">
+                    @using (Html.BeginForm("Create", "Branches", FormMethod.Post, new { role = "form", id = "frmInsert" }))
+                    {
+                        <div class="form-group">
+                            <label>Branch Type Name<span class='required'>*</span></label>
+                            @Html.DropDownListFor(m => m.LookBranchTypeId, ViewBag.BranchType as SelectList, new { @class = "form-control", placeholder = "Branch" })
+                        </div> 
+                        <div class="form-group">
+                            <label>Branch Name<span class='required'>*</span></label>
+                            @Html.TextBoxFor(m => m.BranchName, new { @class = "form-control", placeholder = "Branch Name" })
+                            @Html.HiddenFor(m => m.LookBranchId)
+                        </div>
+                        <div class="form-group">
+                            <label>Main Branch<span class='required'>*</span></label>
+                            @Html.DropDownListFor(m => m.ParentBranchId, ViewBag.ParntBranch as SelectList, new { @class = "form-control", placeholder = "Branch" })
+                        </div>
+                        <div class="col-sm-12 text-center">
+                            <input type="submit" class="btn btn-sm btn-primary" value="Save" />
+                        </div>
+                    }
+
+                </div>
+            </div>
+            <!-- END panel-->
+        </div>
+
+    </div>
+</div>
+<script>
+    // just for the demos, avoids form submit
+   /* jQuery.validator.setDefaults({
+        debug: true,
+        success: "valid"
+    });*/
+    $("#frmInsert").validate({
+        rules: {
+            LookDepartmentId: {
+                required: true
+            },
+            BranchName: {
+        required: true
+    }
+        },
+        submitHandler: function (form) {
+            form.submit();
+        }
+    });
+</script>

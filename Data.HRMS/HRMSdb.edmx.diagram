@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2c5381d26908498aa3b00bea6977c150" Name="Diagram1" ZoomLevel="75">
+        <EntityTypeShape EntityType="hrm_ilaanModel.Applicant" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="hrm_ilaanModel.ApplicantAttachment" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="hrm_ilaanModel.ApplicantInterview" Width="1.5" PointX="2.75" PointY="3.75" />
+        <EntityTypeShape EntityType="hrm_ilaanModel.ApplicantStatusChange" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="hrm_ilaanModel.BioMetricData" Width="1.5" PointX="4.75" PointY="3.75" />
+        <EntityTypeShape EntityType="hrm_ilaanModel.BiometricSchedule" Width="1.5" PointX="6.75" PointY="0.75" />
+        <EntityTypeShape EntityType="hrm_ilaanModel.BiometricSync" Width="1.5" PointX="6.75" PointY="3.75" />
+        <EntityTypeShape EntityType="hrm_ilaanModel.Employee" Width="1.5" PointX="6.75" PointY="6.75" />
+        <EntityTypeShape EntityType="hrm_ilaanModel.EmployeeAppliedLeave" Width="1.5" PointX="8.75" PointY="0.75" />
+        <EntityTypeShape EntityType="hrm_ilaanModel.EmployeeAttachment" Width="1.5" PointX="2.75" PointY="8.75" />
+        <EntityTypeShape EntityType="hrm_ilaanModel.EmployeeAttendance" Width="1.5" PointX="8.75" PointY="5.75" />
+        <EntityTypeShape EntityType="hrm_ilaanModel.EmployeeEducation" Width="1.5" PointX="8.75" PointY="9.75" />
+        <EntityTypeShape EntityType="hrm_ilaanModel.EmployeeExperienceHistory" Width="1.5" PointX="10.75" PointY="0.75" />
+        <EntityTypeShape EntityType="hrm_ilaanModel.EmployeeLeave" Width="1.5" PointX="10.75" PointY="4.75" />
+        <EntityTypeShape EntityType="hrm_ilaanModel.EmployeeLeaveStatusHistory" Width="1.5" PointX="10.75" PointY="9.75" />
+        <EntityTypeShape EntityType="hrm_ilaanModel.EmployeeLeaveSummary" Width="1.5" PointX="0.75" PointY="11.75" />
+        <EntityTypeShape EntityType="hrm_ilaanModel.EmployeeLog" Width="1.5" PointX="2.75" PointY="11.75" />
+        <EntityTypeShape EntityType="hrm_ilaanModel.EmployeePolicy" Width="1.5" PointX="12.75" PointY="0.75" />
+        <EntityTypeShape EntityType="hrm_ilaanModel.EmployeesDependent" Width="1.5" PointX="12.75" PointY="4.75" />
+        <EntityTypeShape EntityType="hrm_ilaanModel.EventLog" Width="1.5" PointX="12.75" PointY="7.75" />
+        <EntityTypeShape EntityType="hrm_ilaanModel.HRPolicy" Width="1.5" PointX="8.75" PointY="12.75" />
+        <EntityTypeShape EntityType="hrm_ilaanModel.HRPolicyByCaption" Width="1.5" PointX="10.75" PointY="12.75" />
+        <EntityTypeShape EntityType="hrm_ilaanModel.HRPolicyCaption" Width="1.5" PointX="12.75" PointY="11.75" />
+        <EntityTypeShape EntityType="hrm_ilaanModel.HRRecruitmentProcess" Width="1.5" PointX="14.75" PointY="0.75" />
+        <EntityTypeShape EntityType="hrm_ilaanModel.LeftMenu" Width="1.5" PointX="14.75" PointY="3.75" />
+        <EntityTypeShape EntityType="hrm_ilaanModel.LogInHistory" Width="1.5" PointX="14.75" PointY="7.75" />
+        <EntityTypeShape EntityType="hrm_ilaanModel.LookBranch" Width="1.5" PointX="14.75" PointY="10.75" />
+        <EntityTypeShape EntityType="hrm_ilaanModel.LookBranchType" Width="1.5" PointX="12.75" PointY="14.75" />
+        <EntityTypeShape EntityType="hrm_ilaanModel.LookCity" Width="1.5" PointX="14.75" PointY="13.75" />
+        <EntityTypeShape EntityType="hrm_ilaanModel.LookCountry" Width="1.5" PointX="16.75" PointY="0.75" />
+        <EntityTypeShape EntityType="hrm_ilaanModel.LookDepartment" Width="1.5" PointX="16.75" PointY="3.75" />
+        <EntityTypeShape EntityType="hrm_ilaanModel.LookDesignation" Width="1.5" PointX="16.75" PointY="6.75" />
+        <EntityTypeShape EntityType="hrm_ilaanModel.LookEmployeeType" Width="1.5" PointX="16.75" PointY="9.75" />
+        <EntityTypeShape EntityType="hrm_ilaanModel.LookGender" Width="1.5" PointX="16.75" PointY="12.75" />
+        <EntityTypeShape EntityType="hrm_ilaanModel.LookGrade" Width="1.5" PointX="14.75" PointY="16.75" />
+        <EntityTypeShape EntityType="hrm_ilaanModel.LookInstitution" Width="1.5" PointX="16.75" PointY="15.75" />
+        <EntityTypeShape EntityType="hrm_ilaanModel.LookJobType" Width="1.5" PointX="8.75" PointY="17.75" />
+        <EntityTypeShape EntityType="hrm_ilaanModel.LookLeaveStatu" Width="1.5" PointX="10.75" PointY="17.75" />
+        <EntityTypeShape EntityType="hrm_ilaanModel.LookOrganization" Width="1.5" PointX="18.75" PointY="0.75" />
+        <EntityTypeShape EntityType="hrm_ilaanModel.LookPayRollStatu" Width="1.5" PointX="18.75" PointY="3.75" />
+        <EntityTypeShape EntityType="hrm_ilaanModel.LookPolicy" Width="1.5" PointX="4.75" PointY="18.75" />
+        <EntityTypeShape EntityType="hrm_ilaanModel.LookPolicyGroup" Width="1.5" PointX="18.75" PointY="6.75" />
+        <EntityTypeShape EntityType="hrm_ilaanModel.LookQualification" Width="1.5" PointX="18.75" PointY="9.75" />
+        <EntityTypeShape EntityType="hrm_ilaanModel.LookQualificationType" Width="1.5" PointX="18.75" PointY="12.75" />
+        <EntityTypeShape EntityType="hrm_ilaanModel.LookSelectionProcess" Width="1.5" PointX="18.75" PointY="15.75" />
+        <EntityTypeShape EntityType="hrm_ilaanModel.PayRoll" Width="1.5" PointX="16.75" PointY="18.75" />
+        <EntityTypeShape EntityType="hrm_ilaanModel.PayRollDetail" Width="1.5" PointX="18.75" PointY="18.75" />
+        <EntityTypeShape EntityType="hrm_ilaanModel.PayRollSummary" Width="1.5" PointX="12.75" PointY="19.75" />
+        <EntityTypeShape EntityType="hrm_ilaanModel.Permission" Width="1.5" PointX="20.75" PointY="0.75" />
+        <EntityTypeShape EntityType="hrm_ilaanModel.ProductSaleProfile" Width="1.5" PointX="0.75" PointY="20.75" />
+        <EntityTypeShape EntityType="hrm_ilaanModel.PublicHoliday" Width="1.5" PointX="20.75" PointY="4.75" />
+        <EntityTypeShape EntityType="hrm_ilaanModel.Recruitment" Width="1.5" PointX="6.75" PointY="20.75" />
+        <EntityTypeShape EntityType="hrm_ilaanModel.RecruitmentApproval" Width="1.5" PointX="20.75" PointY="7.75" />
+        <EntityTypeShape EntityType="hrm_ilaanModel.RoleMenu" Width="1.5" PointX="8.75" PointY="20.75" />
+        <EntityTypeShape EntityType="hrm_ilaanModel.RolePermission" Width="1.5" PointX="20.75" PointY="11.75" />
+        <EntityTypeShape EntityType="hrm_ilaanModel.Role" Width="1.5" PointX="20.75" PointY="14.75" />
+        <EntityTypeShape EntityType="hrm_ilaanModel.ShiftSetting" Width="1.5" PointX="20.75" PointY="18.75" />
+        <EntityTypeShape EntityType="hrm_ilaanModel.Tax" Width="1.5" PointX="2.75" PointY="21.75" />
+        <EntityTypeShape EntityType="hrm_ilaanModel.User" Width="1.5" PointX="20.75" PointY="21.75" />
+        <EntityTypeShape EntityType="hrm_ilaanModel.BioMetricInfo" Width="1.5" PointX="22.75" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

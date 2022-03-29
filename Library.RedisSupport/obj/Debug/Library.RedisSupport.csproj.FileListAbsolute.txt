@@ -1,0 +1,4 @@
+D:\HRM-MAIN\HRMDEV\Library.RedisSupport\bin\Debug\Library.RedisSupport.dll
+D:\HRM-MAIN\HRMDEV\Library.RedisSupport\bin\Debug\Library.RedisSupport.pdb
+D:\HRM-MAIN\HRMDEV\Library.RedisSupport\obj\Debug\Library.RedisSupport.dll
+D:\HRM-MAIN\HRMDEV\Library.RedisSupport\obj\Debug\Library.RedisSupport.pdb

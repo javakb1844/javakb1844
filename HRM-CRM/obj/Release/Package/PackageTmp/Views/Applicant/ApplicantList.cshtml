@@ -1,0 +1,652 @@
+﻿@model List<Data.HRMS.Applicant>
+@using Library.Lookups;
+@using System.Web.Script.Serialization;
+@{
+    ViewBag.Title = "ApplicantList";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+    var designationList = new JavaScriptSerializer().Serialize(ViewBag.DesignatioList);
+}
+
+<div class="content-wrapper">
+    <h3>
+        Applicants
+        <a href="@Url.Action("Create","Applicant")">
+            <button type="button" class="btn btn-primary pull-right"><i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;Add New Applicant</button>
+        </a>
+    </h3>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    ApplicantListInfo
+                </div>
+                <div class="panel-body">
+
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label>Applied for Job Title</label>
+                                @Html.DropDownList("LookDesignationId", ViewBag.jobTitleList as SelectList, "--Please Select Designaton Type--", new { @class = "form-control", placeholder = "Department Name" })
+
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label>Email</label>
+                                <label id="FirstName-error" class="error" for="FirstName" style="float: right;"></label>
+                                @*@Html.TextBoxFor("asda", new { @class = "form-control", placeholder = "First Name" })*@
+                                <input class="form-control" id="Email" name="Email" placeholder="Email" type="text" value="">
+                            </div>
+
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label>Contact</label>
+                                <label id="FirstName-error" class="error" for="FirstName" style="float: right;"></label>
+                                <input class="form-control Mobilephone" id="Contact" name="Contact" placeholder="Contact info" type="text" value="">
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label>Apply From Date</label>
+                                <label id="FirstName-error" class="error" for="FirstName" style="float: right;"></label>
+                                <input class="form-control date" id="ApplyFromDate" name="ApplyFromDate" placeholder="Apply From Date" type="date" value="">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label>Apply To Date</label>
+                                <label id="FirstName-error" class="error" for="FirstName" style="float: right;"></label>
+                                <input class="form-control date" id="ApplyToDate" name="ApplyToDate" placeholder="Apply To Date" type="date" value="">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label>Applicant Status</label>
+                                <label id="FirstName-error" class="error" for="FirstName" style="float: right;"></label>
+                                @Html.DropDownList("LookApplicantStatus", ViewBag.LookApplicantStatus as SelectList, "Select status", new { @class = "form-control", id = "txtLookApplicantStatus" })
+
+                            </div>
+                        </div>
+                        <div class="col-sm-1 col-sm-offset-5">
+                            <input type="button" class="btn btn-lg btn-primary" id="btnSearch" value="Search">
+                        </div>
+                    </div>
+
+                    <div>
+                        <table id="datatable1" class="table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>S.NO.</th>
+                                    <th>Email</th>
+                                    <th>Name</th>
+                                    <th>Job title</th>
+                                    <th>Resume</th>
+                                    <th>Apply Date</th>
+                                    <th>Status/Interview</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="applicantsTable">
+                                @if (Model != null)
+                                {
+                                    var count = 0;
+                                    IEnumerable<SelectListItem> tempDesignation = ViewBag.DesignatioList;
+                                    foreach (var item in Model)
+                                    {
+                                        var Resume = System.Configuration.ConfigurationManager.AppSettings["UploadApplicant"] + item.Resume;
+                                        var CoveringLetter = System.Configuration.ConfigurationManager.AppSettings["UploadApplicant"] + item.CoveringLetter;
+                                        count++;
+                                        <tr class="gradeX">
+                                            <td>@count</td>
+                                            <td>@item.Email</td>
+                                            <td>@item.FullName</td>
+                                            <td>
+                                                @try
+                                                {
+                                                    var designationName = tempDesignation.Where(x => x.Value == item.LookDesignationId.ToString()).FirstOrDefault();
+                                                    @designationName.Text
+                                                }
+                                                catch (Exception e) { }
+                                            </td>
+                                            <td>
+                                                @if (item.CoveringLetter.IsNotNullOrEmpty())
+                                                {
+                                                    <a href="@CoveringLetter" target="_blank" style="">
+                                                        <span> Covering Letter</span>
+                                                    </a>
+                                                }
+                                                @if (item.Resume.IsNotNullOrEmpty())
+                                                {
+                                                    <a href="@Resume" target="_blank" style="margin-left:5px">
+                                                        <span>Resume</span>
+                                                    </a>
+                                                }
+                                            </td>
+                                            <td>
+                                                @try
+                                                {
+                                                    @item.CreateDate.Value.ToString("dd/MM/yyyy")
+                                                }
+                                                catch (Exception e)
+                                                {
+                                                }
+                                            </td>
+
+
+                                            @if (item.LookApplicantStatusId.Equals((long)EnumLookApplicantStatus.JustApplied))
+                                            {
+                                                <td class="SetInterview" id="interview-@item.ApplicantId" style="cursor:pointer;color:#5d9cec" ApplicantId="@item.ApplicantId" ApplicantName="@item.FullName">
+                                                    <em>Set Interview</em>
+                                                </td> }
+                                            else
+                                            {
+                                                if (item.LookApplicantStatusId > ((long)EnumLookApplicantStatus.Offered))
+                                                {
+                                                    <td>
+
+                                                        @try
+                                                        {
+
+                                                            @(((EnumLookApplicantStatus)item.LookApplicantStatusId).GetStringValue())
+                                                        }
+                                                        catch (Exception e)
+                                                        {
+                                                        }
+                                                    </td>
+                                                }
+                                                else
+                                                {
+                                                    <td class="ChangeStatus" style="cursor:pointer;color:#5d9cec" id="interview-@item.ApplicantId" ApplicantId="@item.ApplicantId" ApplicantName="@item.FullName">
+                                                        <em>
+                                                            @try
+                                                            {
+                                                                @(((EnumLookApplicantStatus)item.LookApplicantStatusId).GetStringValue())
+                                                            }
+                                                            catch (Exception e) { }
+                                                        </em>
+                                                    </td>
+                                                }
+                                            }
+                                            <td class="table_action" nowrap>
+
+                                                @if (item.LookApplicantStatusId.Equals((long)EnumLookApplicantStatus.Hired))
+                                                {
+                                                    <em class="promote SetEmployeeJoining" ApplicantId="@item.ApplicantId" title="Create User" ApplicantName="@item.FullName" style="cursor:pointer"><em class="icon-user-follow" style="font-size: 18px;"></em></em>
+                                                }
+                                                else
+                                                {
+                                                    <em class="icon-user-follow" style="font-size: 18px;color:gainsboro"></em>
+                                                }
+                                                <a href="@Url.Action("Create","Applicant",new {id=item.ApplicantId })" title="Edit Applicant Detail"><em class="icon-note" style="font-size: 18px;"></em></a>
+                                                <em class="delete_record icon-close" title="Delete Applicant" style="font-size:18px;color:red" rel="51"></em>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="InterviewModal" class="modal fade" role="dialog">
+    <div class="modal-dialog" style="top:90px">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Set Interview <span id="spnApplicantName"></span></h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Meeting time (24 hours)<span class="required" aria-required="true">*</span></label>
+                    <input class="form-control" type="time" id="txtInterviewTime" name="InterviewTime">
+                </div>
+                <div class="form-group">
+                    <label>Meeting date <span class="required" aria-required="true">*</span></label>
+                    <input class="form-control" type="date" id="txtInterviewDate" name="InterviewDate">
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <img src="/static/admin/theme1/images/curved-bars.svg" class="loadingAnimation">
+            <button type="button" class="btn btn-primary" data-dismiss="modal" id="btnCallInterview">Save</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+
+</div>
+<div id="ApplicantStatusModal" class="modal fade" role="dialog">
+    <div class="modal-dialog" style="top:90px">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Updated Applicant Status  <span id="spnApplicantName"></span></h4>
+            </div>
+            <div class="modal-body">
+              
+                <div class="form-group">
+                    <label>Update status of :<strong><span id="lblApplicantName"></span> </strong> <span class="required" aria-required="true">*</span></label>
+                </div>
+                <div id="addDiv"></div>
+                <div class="form-group">
+                    <div id="divApplicantStatus">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal" id="btnShortlist">Save</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+</div>
+<div id="ApplicantJoiningModal" class="modal fade" role="dialog">
+    <div class="modal-dialog" style="top:90px">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Applicant Joining  </h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Joining Date of <strong><span id="lblEmployeeName"></span> </strong> <span class="required" aria-required="true">*</span></label>
+                </div>
+                <div class="form-group">
+                    <div class="form-group">
+                        <label>Joining date <span class="required" aria-required="true">*</span></label>
+                        <input class="form-control" type="date" id="txtJoiningDate" name="JoiningDate">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <img src="/static/admin/theme1/images/curved-bars.svg" class="loadingAnimation">
+            <button type="button" class="btn btn-primary" data-dismiss="modal" id="btnMakeEmployee">Save</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+
+    var designations=@Html.Raw(designationList);
+
+    function process(Model) {
+        debugger;
+        if (Model != null) {
+            var applicantsTable = "";
+            var count = 0;
+            for (var i = 0; i < Model.length; i++) {
+                var resume = Resume + Model[i].Resume;
+                var coveringLetter = CoveringLetter + Model[i].CoveringLetter;
+                count++;
+                var applicantStatus = "", createdDate = "",makeEmployee='', designation='';
+                if (Model[i].CoveringLetter != null && Model[i].CoveringLetter != "") {
+
+                    coveringLetter = '<a href="' + coveringLetter + '" target="_blank" style="">' +
+                                       '<span>CoveringLetter</span></a>';
+                }
+                else {
+                    coveringLetter = '';
+                }
+                if (Model[i].Resume != null && Model[i].Resume != "") {
+                    resume = '<a href="' + resume + '" target="_blank" style="margin-left:5px">' +
+                               '<span>Resume</span></a>';
+                }
+                else {
+                    resume = '';
+                }
+                if (Model[i].LookApplicantStatusId == 1) {
+                    applicantStatus = ' <td class="SetInterview" id="interview-' + Model[i].ApplicantId + '" style="cursor:pointer;color:#5d9cec" ApplicantId="' + Model[i].ApplicantId + '" ApplicantName="' + Model[i].FullName + '">' +
+                       ' <em>Set Interview</em> </td> ';
+                }
+                else {
+                    var offeredStatus=@((long)EnumLookApplicantStatus.Offered);
+                    if (Model[i].LookApplicantStatusId > offeredStatus) {
+                        applicantStatus = "<td>" + LookApplicantStatus(Model[i].LookApplicantStatusId) + "</td>";
+                    }
+                    else {
+                        applicantStatus = '<td class="ChangeStatus"  id="interview-' + Model[i].ApplicantId + '"   style="cursor:pointer;color:#5d9cec" applicantid="' + Model[i].ApplicantId + '" applicantname="' + Model[i].FullName + '"><em>' + LookApplicantStatus(Model[i].LookApplicantStatusId) + '</em></td>';
+                    }
+                }
+                if (Model[i].LookDesignationId!=null && Model[i].LookDesignationId!="") {
+                    designation=designations.filter(x => x.Value == Model[i].LookDesignationId)[0].Text;
+                }
+                if (Model[i].CreateDate != null && Model[i].CreateDate != '') {
+                    createdDate = ToJavaScriptDate(Model[i].CreateDate);
+                }
+                var hiredStatus= @((long)EnumLookApplicantStatus.Hired);
+                if (Model[i].LookApplicantStatusId==hiredStatus)
+                {
+                    makeEmployee=' <em class="promote SetEmployeeJoining" ApplicantId="'+Model[i].ApplicantId+'" title="Create User" ApplicantName="'+Model[i].FullName+'" style="cursor:pointer"><em class="icon-user-follow" style="font-size: 18px;"></em></em>';
+                }
+                else
+                {
+                    makeEmployee='<em class="icon-user-follow" style="font-size: 18px;color:gainsboro"></em>';
+                }
+                applicantsTable += '<tr class="gradeX">' +
+                    '<td>' + count + '</td>' +
+                '<td>' + Model[i].Email + '</td>' +
+                '<td>' + Model[i].FullName + '</td>' +
+                '<td>'+designation+'</td>'+
+                '<td>' + coveringLetter + resume + '</td>' +
+                '<td>' + createdDate + '</td>'
+                + applicantStatus +
+                '<td class="table_action">' +makeEmployee+
+                    '<a href="/Applicant/Create/' + Model[i].ApplicantId + '" title="Edit Applicant Detail"><em class="icon-note" style="font-size: 18px;"></em></a>' +
+                    '<em class="delete_record icon-close" title="Delete Applicant" style="font-size:18px;color:red" rel="51"></em>' +
+                '</td></tr>';
+            }
+            $("#applicantsTable").empty().append(applicantsTable);
+        }
+
+    }
+    var Resume = "@System.Configuration.ConfigurationManager.AppSettings["UploadApplicant"].Replace("\\", "\\\\")";
+    Resume.replace("\\\\", "\\");
+    var CoveringLetter = "@System.Configuration.ConfigurationManager.AppSettings["UploadApplicant"].Replace("\\", "\\\\")";
+    CoveringLetter.replace("\\\\", "\\");
+   
+    $(document).ready(function () {
+
+        $('.loadingAnimation').hide();
+        $.mask.definitions['~'] = "[+-]";
+        $(".Time").mask("99:99:99", {});
+        $(".Mobile").mask("9999-9999999");
+        $(".cinc").mask("99999-9999999-9");
+        $(".phone").mask("999-99999999");
+       
+        
+
+        $(document).off("click", ".SetEmployeeJoining").on('click', ".SetEmployeeJoining", function (event) {
+            debugger;
+            var applicantName = $(this).attr('ApplicantName');
+            var applicantId = $(this).attr('ApplicantId');
+            $("#ApplicantJoiningModal").modal("show");
+            $("#lblEmployeeName").text(applicantName);
+            $("#btnMakeEmployee").attr("ApplicantId", applicantId);
+            $("#btnMakeEmployee").attr("ApplicantName", applicantName);
+        })
+        $(document).off('click', "#btnMakeEmployee").on('click', "#btnMakeEmployee", function (event) {
+
+            var applicantName = $(this).attr('ApplicantName');
+            var applicantId = $(this).attr('ApplicantId');
+            var joining = $("#txtJoiningDate").val();
+            if (joining == null || joining == "") {
+                alert("Please enter joining date!");
+                return;
+            }
+            $.ajax({
+                url: '/Applicant/MakeEmployee?applicantId=' + applicantId + "&joining=" + joining,
+                type: 'POST',
+                dataType: 'json',
+                contentType: "application/json; chrset=utf-8",
+                async: 'false',
+                success: function (response) {
+                    if (response.Data != null && response.ResultType == 1) {
+                        alert(applicantName + " will be an Employee");
+                    } else if (response.ResultType == 2) {
+                        alert(response.Message);
+                    } else {
+                        alert("Exception Occured");
+                    }
+                },
+                error: function (response) {
+                    alert("Ajax Call Error");
+                }
+
+            });
+        })
+
+        $(document).off("click", ".SetInterview").on("click", ".SetInterview", function (event) {
+            debugger;
+            var applicantId = $(this).attr('ApplicantId');
+            var applicantName = $(this).attr('ApplicantName');
+            $("#spnApplicantName").text("For: " + applicantName);
+            $("#btnCallInterview").attr('ApplicantId', applicantId);
+            $("#btnCallInterview").attr('ApplicantName', applicantName);
+            $("#InterviewModal").modal('show');
+        });
+        $(document).off("click", "#btnCallInterview").on("click", "#btnCallInterview", function (event) {
+            debugger;
+            var Interview = new Object();
+            Interview.ApplicantId = $(this).attr('ApplicantId');
+            Interview.MeetingTime = $("#txtInterviewTime").val();
+            Interview.MeetingDate = $("#txtInterviewDate").val();
+            $('.loadingAnimation').show();
+            $.ajax({
+                url: '/Applicant/CallApplicantInterview',
+                type: 'POST',
+                dataType: "json",
+                async: false,
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(Interview),
+                success: function (response) {
+                    debugger;
+                    if (response.Data != null && response.ResultType == 1) {
+
+                        alert("Meeting Call successfully done!");
+                        $("#interview-" + Interview.ApplicantId)
+                            .toggleClass('SetInterview ChangeStatus')
+                            .html(" <em> Interview Called</em>");
+                        $("#txtInterviewTime").val(null);
+                        $("#txtInterviewDate").val(null);
+                        $('.loadingAnimation').hide();
+                        //location.reload();
+
+                    } else if (response.ResultType == 2) {
+                        alert(response.Message);
+                        $('.loadingAnimation').hide();
+
+                    } else {
+                        alert("Exception Occured");
+                        $('.loadingAnimation').hide();
+                        // window.location.href = "@Url.Action("No505","Error")";
+                    }
+                },
+                error: function (response) {
+                    debugger;
+                    alert("Ajax Call Error");
+                    $('.loadingAnimation').hide();
+                    //window.location.href = "@Url.Action("No505","Error")";
+                }
+            });
+
+        });
+        //$('#shortlisted').change(function () {
+        //    alert("ss");
+        //    $('tbody tr td input[type="checkbox"]').prop('checked', $(this).prop('checked'));
+        //});
+        //var isApplicantSortlisted = false;
+        //$(document).off("change", ".shortlisted").on("change", ".shortlisted", function (event) {
+        //    event.preventDefault();
+        //    isApplicantSortlisted = false;
+        //    var check = $('.shortlisted');
+        //    if (check.length != null && check.length > 0) {
+        //        no = check.length;
+        //        for (var i = 0; i < no; i++) {
+        //            var applicant = check[i];
+        //            applicantSortlist = applicant.checked;
+        //            if (applicantSortlist == true) {
+        //                isApplicantSortlisted = true;
+        //                break;
+        //            }
+        //        }
+        //        if (isApplicantSortlisted) {
+        //            $("#divApplicantStatus").show();
+        //        }
+        //        else {
+        //            $("#divApplicantStatus").hide();
+        //        }
+        //    }
+        //});
+        $(document).off('click', '.ChangeStatus').on('click', '.ChangeStatus', function (event) {
+            $('#ApplicantStatusModal').modal('show');
+            debugger;
+            $("#divApplicantStatus").empty();
+            $('#txtLookApplicantStatus').clone().appendTo("#divApplicantStatus");
+
+            $('#divApplicantStatus select').attr('id', 'ddlApplicantStatus');
+            var thisApplicantName = $(this).attr('ApplicantName');
+            var thisApplicantId = $(this).attr('ApplicantId');
+            $("#lblApplicantName").text(thisApplicantName);
+            currentStatus = $(this).text().trim();
+            
+            currentStatus = LookApplicantStatus(currentStatus);
+            var htmlquery='<div class="form-group">'+
+                    '<label>Comments </label>'+
+                    '<input class="form-control" type="text" id="modalComments" name="modalComments">'+
+                '</div>';
+            if(currentStatus==LookApplicantStatus("Interview Called")){
+             
+              htmlquery=htmlquery+'<div class="form-group">'+
+                   '<label>Evaluation </label>'+                  
+                   '<select class="form-control" id="pointOutOf" name="pointOutOf">'+
+                    '<option value="1">Irrelevant</option>'+
+                    '<option value="2">Not Acceptable</option>'+
+                    '<option value="3">Acceptable</option>'+
+                    '<option value="4">Good </option>'+
+                    '<option value="5">Excellent</option>'+
+                    '</select>'+
+               '</div>';
+              $("#addDiv").html(htmlquery);
+                
+            }else {
+                $("#addDiv").html(htmlquery);
+            }
+            for (var i = 0; i <= currentStatus; i++) {
+                $("#ddlApplicantStatus option[value='" + i + "']").remove();
+            }
+
+            
+
+            $("#ddlApplicantStatus option[value='']").remove();
+            $('#btnShortlist').attr('ApplicantId', thisApplicantId);
+            $('#btnShortlist').attr('ApplicantName', thisApplicantName);
+        })
+        $(document).off("click", "#btnShortlist").on("click", "#btnShortlist", function (event) {
+
+            //var shortlistedApplicants = $('.shortlisted:checkbox:checked');
+            var applicantId = $(this).attr('ApplicantId');
+            var applicantName = $(this).attr('ApplicantName');            
+            var modalComments = $("#modalComments").val();
+            var pointOutOf = $("#pointOutOf").val();
+          
+            debugger;
+            var status = $("#ddlApplicantStatus").val();
+            $('.loadingAnimation').show();
+            debugger;
+            $.ajax({
+                url: '/Applicant/ChangeApplicantsStatus',
+                type: 'POST',
+                dataType: "json",
+                async: false,
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify({ ApplicantId: applicantId, LookApplicantStatusId: status,Points:pointOutOf, Comments:modalComments }),
+                success: function (response) {
+                    if (response.Data != null && response.ResultType == 1) {
+
+                        alert("Applicant: " + applicantName + "\nStatus: " + LookApplicantStatus(status));
+                        $('.loadingAnimation').hide();
+                        location.reload();
+
+                    } else if (response.ResultType == 2) {
+                        $('.loadingAnimation').hide();
+                        alert(response.Message);
+
+                    } else {
+                        alert("Exception Occured");
+                        $('.loadingAnimation').hide();
+                        // window.location.href = "@Url.Action("No505","Error")";
+                    }
+                },
+                error: function (response) {
+                    alert("Ajax Call Error");
+                    $('.loadingAnimation').hide();
+                    //window.location.href = "@Url.Action("No505","Error")";
+                }
+            });
+        });
+
+        $(document).off("click", "#btnSearch").on("click", "#btnSearch", function (event) {
+            event.preventDefault();
+            debugger;
+            //LookDesignationId,Email,Contact,ApplyFromDate,ApplyToDate
+            var program = new Object();
+            program.LookDesignationId = $('#LookDesignationId').val();
+            program.Email = $('#Email').val();
+            program.Contact = $('#Contact').val();
+            program.ApplyFromDate = $('#ApplyFromDate').val();
+            program.ApplyToDate = $('#ApplyToDate').val();
+            program.LookApplicantStatusId = $("#txtLookApplicantStatus").val();
+
+            $.ajax({
+                url: '/Applicant/SearchApplicant',
+                type: 'POST',
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(program),
+                success: function (response) {
+                    var count = 0;
+                    var htmltext = '';
+                    if (response.Data != null && response.ResultType == 1) {
+                        var options = response.Data;
+                        process(options)
+                    } else if (response.ResultType == 2) {
+                        alert(response.Message);
+
+                    } else {
+                        alert("Exception Occured");
+                        // window.location.href = "@Url.Action("No505","Error")";
+                    }
+                },
+                error: function (response) {
+                    alert("Ajax Call Error");
+                    //window.location.href = "@Url.Action("No505","Error")";
+                }
+            });
+        });
+
+    });
+
+    function LookApplicantStatus(status) {
+
+        var myEnum = {
+            "Just Applied": 1,
+            "Interview Called": 2,
+            "Shortlisted": 3,
+            "Deffered": 4,
+            "Selected": 5,
+            "Offered": 6,
+            "Hired": 7,
+            "Rejected": 8,
+            "Joined": 9
+        };
+        if (!isNaN(status)) {
+            for (var key in myEnum) {
+                if (myEnum[key] == status) {
+                    return key;
+                }
+            }
+            return;
+        }
+        else {
+            return myEnum[status];
+        }
+    }
+    function ToJavaScriptDate(value) {
+        if (value == null) return;
+        var pattern = /Date\(([^)]+)\)/;
+        var results = pattern.exec(value);
+        var dt = new Date(parseFloat(results[1]));
+        return dt.getDate() + "/" + (dt.getMonth() + 1) + "/" + dt.getFullYear();
+    }
+</script>

@@ -1,0 +1,767 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{287C057E-F59A-4DA6-897D-236076470760}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HRMS</RootNamespace>
+    <AssemblyName>HRMS</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <Use64BitIISExpress />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.Extended, Version=6.1.0.0, Culture=neutral, PublicKeyToken=05b7e29bdd433584, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\Meesam\Documents\Visual Studio 2015\Projects\HRMS\DLL\EntityFramework.Extended.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.1\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.0.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.0.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.0.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.0.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.0.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.0.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="VsWebSite.Interop, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Global.asax" />
+    <Content Include="scripts\ai.0.22.9-build00167.js" />
+    <Content Include="scripts\ai.0.22.9-build00167.min.js" />
+    <Content Include="static\admin\theme1\css\animate.min.css" />
+    <Content Include="static\admin\theme1\css\app.css" />
+    <Content Include="static\admin\theme1\css\bootstrap-datetimepicker.min.css" />
+    <Content Include="static\admin\theme1\css\bootstrap-fileupload.css" />
+    <Content Include="static\admin\theme1\css\bootstrap.css" />
+    <Content Include="static\admin\theme1\css\chosen-sprite%402x.png" />
+    <Content Include="static\admin\theme1\css\chosen-sprite.png" />
+    <Content Include="static\admin\theme1\css\chosen.min.css" />
+    <Content Include="static\admin\theme1\css\custom.css" />
+    <Content Include="static\admin\theme1\css\dataTables.bootstrap.css" />
+    <Content Include="static\admin\theme1\css\dataTables.colVis.css" />
+    <Content Include="static\admin\theme1\css\datetimepicker.css" />
+    <Content Include="static\admin\theme1\css\font-awesome.min.css" />
+    <Content Include="static\admin\theme1\css\simple-line-icons.css" />
+    <Content Include="static\admin\theme1\css\sweetalert.css" />
+    <Content Include="static\admin\theme1\css\toastr.css" />
+    <Content Include="static\admin\theme1\css\whirl.css" />
+    <Content Include="static\admin\theme1\fonts\fontawesome-webfont.svg" />
+    <Content Include="static\admin\theme1\fonts\Simple-Line-Icons.svg" />
+    <Content Include="static\admin\theme1\images\16X16_.ico" />
+    <Content Include="static\admin\theme1\images\logo_car-.png" />
+    <Content Include="static\admin\theme1\images\logo_car.png" />
+    <Content Include="static\admin\theme1\images\logo_carwash - Copy - Copy.png" />
+    <Content Include="static\admin\theme1\images\logo_carwash - Copy.png" />
+    <Content Include="static\admin\theme1\images\logo_carwash-.png" />
+    <Content Include="static\admin\theme1\images\logo_carwash.png" />
+    <Content Include="static\admin\theme1\images\logo_carwash_.png" />
+    <Content Include="static\admin\theme1\images\logo_car_.png" />
+    <Content Include="static\admin\theme1\images\OasisLogo.jpg" />
+    <Content Include="static\admin\theme1\images\oasis_logo_1.jpg" />
+    <Content Include="static\admin\theme1\images\ttt.ico" />
+    <Content Include="static\admin\theme1\images\xc.ico" />
+    <Content Include="static\admin\theme1\js\animo.js" />
+    <Content Include="static\admin\theme1\js\app.js" />
+    <Content Include="static\admin\theme1\js\bootstrap-datetimepicker.min.js" />
+    <Content Include="static\admin\theme1\js\bootstrap-filestyle.js" />
+    <Content Include="static\admin\theme1\js\bootstrap-fileupload.js" />
+    <Content Include="static\admin\theme1\js\bootstrap-slider.min.js" />
+    <Content Include="static\admin\theme1\js\bootstrap-wysiwyg.js" />
+    <Content Include="static\admin\theme1\js\bootstrap.js" />
+    <Content Include="static\admin\theme1\js\chosen.jquery.min.js" />
+    <Content Include="static\admin\theme1\js\dataTables.bootstrap.js" />
+    <Content Include="static\admin\theme1\js\dataTables.bootstrapPagination.js" />
+    <Content Include="static\admin\theme1\js\dataTables.colVis.js" />
+    <Content Include="static\admin\theme1\js\demo-datatable.js" />
+    <Content Include="static\admin\theme1\js\demo-forms.js" />
+    <Content Include="static\admin\theme1\js\demo-rtl.js" />
+    <Content Include="static\admin\theme1\js\demo-wizard.js" />
+    <Content Include="static\admin\theme1\js\jquery.dataTables.min.js" />
+    <Content Include="static\admin\theme1\js\jquery.easing.js" />
+    <Content Include="static\admin\theme1\js\jquery.inputmask.bundle.min.js" />
+    <Content Include="static\admin\theme1\js\jquery.js" />
+    <Content Include="static\admin\theme1\js\jquery.localize.js" />
+    <Content Include="static\admin\theme1\js\jquery.maskedinput.js" />
+    <Content Include="static\admin\theme1\js\jquery.slimscroll.min.js" />
+    <Content Include="static\admin\theme1\js\jquery.storageapi.js" />
+    <Content Include="static\admin\theme1\js\modernizr.js" />
+    <Content Include="static\admin\theme1\js\moment-with-locales.min.js" />
+    <Content Include="static\admin\theme1\js\moment\min\moment-with-locales.min.js" />
+    <Content Include="static\admin\theme1\js\parsley.min.js" />
+    <Content Include="static\admin\theme1\js\screenfull.js" />
+    <Content Include="static\admin\theme1\js\service.js" />
+    <Content Include="static\admin\theme1\js\sweetalert.min.js" />
+    <Content Include="static\admin\theme1\js\tinymce\changelog.txt" />
+    <Content Include="static\admin\theme1\js\tinymce\license.txt" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\advlist\plugin.min.js" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\anchor\plugin.min.js" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\autolink\plugin.min.js" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\autoresize\plugin.min.js" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\autosave\plugin.min.js" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\bbcode\plugin.min.js" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\charmap\plugin.min.js" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\code\plugin.min.js" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\colorpicker\plugin.min.js" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\compat3x\editable_selects.js" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\compat3x\form_utils.js" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\compat3x\mctabs.js" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\compat3x\tiny_mce_popup.js" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\compat3x\validate.js" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\contextmenu\plugin.min.js" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\directionality\plugin.min.js" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\emoticons\img\smiley-cool.gif" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\emoticons\img\smiley-cry.gif" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\emoticons\img\smiley-embarassed.gif" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\emoticons\img\smiley-foot-in-mouth.gif" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\emoticons\img\smiley-frown.gif" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\emoticons\img\smiley-innocent.gif" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\emoticons\img\smiley-kiss.gif" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\emoticons\img\smiley-laughing.gif" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\emoticons\img\smiley-money-mouth.gif" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\emoticons\img\smiley-sealed.gif" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\emoticons\img\smiley-smile.gif" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\emoticons\img\smiley-surprised.gif" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\emoticons\img\smiley-tongue-out.gif" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\emoticons\img\smiley-undecided.gif" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\emoticons\img\smiley-wink.gif" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\emoticons\img\smiley-yell.gif" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\emoticons\plugin.min.js" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\example\dialog.html" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\example\plugin.min.js" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\example_dependency\plugin.min.js" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\fullpage\plugin.min.js" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\fullscreen\plugin.min.js" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\hr\plugin.min.js" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\imagetools\plugin.min.js" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\image\plugin.min.js" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\importcss\plugin.min.js" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\insertdatetime\plugin.min.js" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\ci\application\config\index.html" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\ci\application\controllers\index.html" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\ci\application\errors\index.html" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\ci\application\helpers\index.html" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\ci\application\index.html" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\ci\application\language\english\index.html" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\ci\application\language\french\index.html" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\ci\application\language\russian\index.html" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\ci\application\views\index.html" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\ci\system\core\index.html" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\ci\system\helpers\index.html" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\ci\system\index.html" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\ci\system\language\english\index.html" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\ci\system\language\index.html" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\ci\system\libraries\index.html" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\css\dialog-v4.css" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\css\dialog.css" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\dialog-v4.htm" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\dialog.htm" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\editor_plugin.js" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\editor_plugin_src.js" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\img\jbimages-bw.gif" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\img\spinner.gif" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\js\dialog-v4.js" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\js\dialog.js" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\langs\en.js" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\langs\en_dlg.js" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\langs\fr.js" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\langs\fr_dlg.js" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\langs\ru.js" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\langs\ru_dlg.js" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\plugin.js" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\plugin.min.js" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\layer\plugin.min.js" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\legacyoutput\plugin.min.js" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\link\plugin.min.js" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\lists\plugin.min.js" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\media\moxieplayer.swf" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\media\plugin.min.js" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\nonbreaking\plugin.min.js" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\noneditable\plugin.min.js" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\pagebreak\plugin.min.js" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\paste\plugin.min.js" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\preview\plugin.min.js" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\print\plugin.min.js" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\responsivefilemanager\img\insertfile.gif" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\responsivefilemanager\plugin.min.js" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\save\plugin.min.js" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\searchreplace\plugin.min.js" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\spellchecker\plugin.min.js" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\tabfocus\plugin.min.js" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\table\plugin.min.js" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\template\plugin.min.js" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\textcolor\plugin.min.js" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\textpattern\plugin.min.js" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\visualblocks\css\visualblocks.css" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\visualblocks\plugin.min.js" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\visualchars\plugin.min.js" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\wordcount\plugin.min.js" />
+    <Content Include="static\admin\theme1\js\tinymce\skins\lightgray\content.inline.min.css" />
+    <Content Include="static\admin\theme1\js\tinymce\skins\lightgray\content.min.css" />
+    <Content Include="static\admin\theme1\js\tinymce\skins\lightgray\fonts\icomoon-small.svg" />
+    <Content Include="static\admin\theme1\js\tinymce\skins\lightgray\fonts\icomoon.svg" />
+    <Content Include="static\admin\theme1\js\tinymce\skins\lightgray\fonts\tinymce-small.svg" />
+    <Content Include="static\admin\theme1\js\tinymce\skins\lightgray\fonts\tinymce.svg" />
+    <Content Include="static\admin\theme1\js\tinymce\skins\lightgray\img\anchor.gif" />
+    <Content Include="static\admin\theme1\js\tinymce\skins\lightgray\img\loader.gif" />
+    <Content Include="static\admin\theme1\js\tinymce\skins\lightgray\img\object.gif" />
+    <Content Include="static\admin\theme1\js\tinymce\skins\lightgray\img\trans.gif" />
+    <Content Include="static\admin\theme1\js\tinymce\skins\lightgray\img\wline.gif" />
+    <Content Include="static\admin\theme1\js\tinymce\skins\lightgray\skin.ie7.min.css" />
+    <Content Include="static\admin\theme1\js\tinymce\skins\lightgray\skin.min.css" />
+    <Content Include="static\admin\theme1\js\tinymce\themes\modern\theme.min.js" />
+    <Content Include="static\admin\theme1\js\tinymce\tinymce.min.js" />
+    <Content Include="static\admin\theme1\js\toastr.js" />
+    <Content Include="static\admin\theme1\vendor\jquery-validation\dist\jquery.validate.js" />
+    <Content Include="static\admin\theme1\vendor\jquery.steps\build\jquery.steps.js" />
+    <Content Include="static\admin\theme1\vendor\jquery\dist\jquery.js" />
+    <Content Include="static\front\theme1\bootstrap\css\bootstrap-grid.css" />
+    <Content Include="static\front\theme1\bootstrap\css\bootstrap-grid.min.css" />
+    <Content Include="static\front\theme1\bootstrap\css\bootstrap-reboot.css" />
+    <Content Include="static\front\theme1\bootstrap\css\bootstrap-reboot.min.css" />
+    <Content Include="static\front\theme1\bootstrap\css\bootstrap.css" />
+    <Content Include="static\front\theme1\bootstrap\css\bootstrap.min.css" />
+    <Content Include="static\front\theme1\bootstrap\js\bootstrap.bundle.js" />
+    <Content Include="static\front\theme1\bootstrap\js\bootstrap.bundle.min.js" />
+    <Content Include="static\front\theme1\bootstrap\js\bootstrap.js" />
+    <Content Include="static\front\theme1\bootstrap\js\bootstrap.min.js" />
+    <Content Include="static\front\theme1\css\resume.css" />
+    <Content Include="static\front\theme1\css\resume.min.css" />
+    <Content Include="static\front\theme1\devicons\css\devicons.css" />
+    <Content Include="static\front\theme1\devicons\css\devicons.min.css" />
+    <Content Include="static\front\theme1\devicons\fonts\devicons.svg" />
+    <Content Include="static\front\theme1\font-awesome\css\font-awesome.css" />
+    <Content Include="static\front\theme1\font-awesome\css\font-awesome.min.css" />
+    <Content Include="static\front\theme1\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="static\front\theme1\images\slices\ae_icon.png" />
+    <Content Include="static\front\theme1\images\slices\bg_search.png" />
+    <Content Include="static\front\theme1\images\slices\car_big.png" />
+    <Content Include="static\front\theme1\images\slices\car_meduim.png" />
+    <Content Include="static\front\theme1\images\slices\car_small.png" />
+    <Content Include="static\front\theme1\images\slices\date_n.png" />
+    <Content Include="static\front\theme1\images\slices\date_p.png" />
+    <Content Include="static\front\theme1\images\slices\delete_icon.png" />
+    <Content Include="static\front\theme1\images\slices\fb_icon.png" />
+    <Content Include="static\front\theme1\images\slices\footer_arrow.png" />
+    <Content Include="static\front\theme1\images\slices\g_icon.png" />
+    <Content Include="static\front\theme1\images\slices\in_icon.png" />
+    <Content Include="static\front\theme1\images\slices\left.jpg" />
+    <Content Include="static\front\theme1\images\slices\logo-1.png" />
+    <Content Include="static\front\theme1\images\slices\logo.png" />
+    <Content Include="static\front\theme1\images\slices\ms_card_icon.png" />
+    <Content Include="static\front\theme1\images\slices\right.jpg" />
+    <Content Include="static\front\theme1\images\slices\slider_arrow_left.png" />
+    <Content Include="static\front\theme1\images\slices\slider_arrow_right.png" />
+    <Content Include="static\front\theme1\images\slices\station_logo_01.jpg" />
+    <Content Include="static\front\theme1\images\slices\station_logo_02.jpg" />
+    <Content Include="static\front\theme1\images\slices\station_logo_03.jpg" />
+    <Content Include="static\front\theme1\images\slices\station_logo_04.jpg" />
+    <Content Include="static\front\theme1\images\slices\t_icon.png" />
+    <Content Include="static\front\theme1\images\slices\visa_icon.png" />
+    <Content Include="static\front\theme1\img\logo for H.R.M.png" />
+    <Content Include="static\front\theme1\img\profile.jpg" />
+    <Content Include="static\front\theme1\jquery-easing\jquery.easing.compatibility.js" />
+    <Content Include="static\front\theme1\jquery-easing\jquery.easing.js" />
+    <Content Include="static\front\theme1\jquery-easing\jquery.easing.min.js" />
+    <Content Include="static\front\theme1\jquery\jquery.js" />
+    <Content Include="static\front\theme1\jquery\jquery.min.js" />
+    <Content Include="static\front\theme1\js\resume.js" />
+    <Content Include="static\front\theme1\js\resume.min.js" />
+    <Content Include="static\front\theme1\simple-line-icons\css\simple-line-icons.css" />
+    <Content Include="static\front\theme1\simple-line-icons\fonts\Simple-Line-Icons.svg" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\ApplicantController.cs" />
+    <Compile Include="Controllers\AttendanceController.cs" />
+    <Compile Include="Controllers\BranchesController.cs" />
+    <Compile Include="Controllers\DepartmentController.cs" />
+    <Compile Include="Controllers\DesignationController.cs" />
+    <Compile Include="Controllers\EmployeeController.cs" />
+    <Compile Include="Controllers\EmployeeLeaveController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\GradeController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HRPolicyController.cs" />
+    <Compile Include="Controllers\InstitutionController.cs" />
+    <Compile Include="Controllers\LeaveManagementController.cs" />
+    <Compile Include="Controllers\MenuController.cs" />
+    <Compile Include="Controllers\OrganizationController.cs" />
+    <Compile Include="Controllers\PermissionController.cs" />
+    <Compile Include="Controllers\PolicyController.cs" />
+    <Compile Include="Controllers\PublicHolidaysController.cs" />
+    <Compile Include="Controllers\QualificationController.cs" />
+    <Compile Include="Controllers\RecruitmentController.cs" />
+    <Compile Include="Controllers\TeamLeaveController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="CustomAuthorizeAttribute.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="packages.config" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\Shared\_MainLayout.cshtml" />
+    <Content Include="Views\Shared\_LeftSiderBarPartial.cshtml" />
+    <Content Include="Views\Shared\_RightSideBarPartial.cshtml" />
+    <Content Include="Views\Shared\_FooterPartial.cshtml" />
+    <Content Include="static\admin\i18n\site-en.json" />
+    <Content Include="static\admin\i18n\site-es.json" />
+    <Content Include="static\admin\theme1\css\Thumbs.db" />
+    <Content Include="static\admin\theme1\fonts\fontawesome-webfont.eot" />
+    <Content Include="static\admin\theme1\fonts\fontawesome-webfont.ttf" />
+    <Content Include="static\admin\theme1\fonts\fontawesome-webfont.woff" />
+    <Content Include="static\admin\theme1\fonts\fontawesome-webfont.woff2" />
+    <Content Include="static\admin\theme1\fonts\FontAwesome.otf" />
+    <Content Include="static\admin\theme1\fonts\Simple-Line-Icons.eot" />
+    <Content Include="static\admin\theme1\fonts\Simple-Line-Icons.ttf" />
+    <Content Include="static\admin\theme1\fonts\Simple-Line-Icons.woff" />
+    <Content Include="static\admin\theme1\images\Thumbs.db" />
+    <Content Include="static\admin\theme1\js\tinymce\langs\readme.md" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\.gitattributes" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\.gitignore" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\ci\application\.htaccess" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\ci\application\config\autoload.php" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\ci\application\config\config.php" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\ci\application\config\constants.php" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\ci\application\config\database.php" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\ci\application\config\doctypes.php" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\ci\application\config\foreign_chars.php" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\ci\application\config\hooks.php" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\ci\application\config\migration.php" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\ci\application\config\mimes.php" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\ci\application\config\profiler.php" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\ci\application\config\routes.php" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\ci\application\config\smileys.php" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\ci\application\config\uploader_settings.php" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\ci\application\config\user_agents.php" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\ci\application\controllers\uploader.php" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\ci\application\errors\error_404.php" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\ci\application\errors\error_db.php" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\ci\application\errors\error_general.php" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\ci\application\errors\error_php.php" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\ci\application\helpers\jbimages_helper.php" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\ci\application\language\english\jbstrings_lang.php" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\ci\application\language\french\imglib_lang.php" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\ci\application\language\french\jbstrings_lang.php" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\ci\application\language\french\upload_lang.php" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\ci\application\language\russian\imglib_lang.php" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\ci\application\language\russian\jbstrings_lang.php" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\ci\application\language\russian\upload_lang.php" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\ci\application\views\ajax_upload_result.php" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\ci\application\views\blank.php" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\ci\index.php" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\ci\system\.htaccess" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\ci\system\core\Benchmark.php" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\ci\system\core\CodeIgniter.php" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\ci\system\core\Common.php" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\ci\system\core\Config.php" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\ci\system\core\Controller.php" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\ci\system\core\Exceptions.php" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\ci\system\core\Hooks.php" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\ci\system\core\Input.php" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\ci\system\core\Lang.php" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\ci\system\core\Loader.php" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\ci\system\core\Model.php" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\ci\system\core\Output.php" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\ci\system\core\Router.php" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\ci\system\core\Security.php" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\ci\system\core\URI.php" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\ci\system\core\Utf8.php" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\ci\system\helpers\language_helper.php" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\ci\system\language\english\imglib_lang.php" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\ci\system\language\english\upload_lang.php" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\ci\system\libraries\Image_lib.php" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\ci\system\libraries\Upload.php" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\config.php" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\is_allowed.php" />
+    <Content Include="static\admin\theme1\js\tinymce\plugins\jbimages\readme" />
+    <Content Include="static\admin\theme1\js\tinymce\skins\lightgray\fonts\icomoon-small.eot" />
+    <Content Include="static\admin\theme1\js\tinymce\skins\lightgray\fonts\icomoon-small.ttf" />
+    <Content Include="static\admin\theme1\js\tinymce\skins\lightgray\fonts\icomoon-small.woff" />
+    <Content Include="static\admin\theme1\js\tinymce\skins\lightgray\fonts\icomoon.eot" />
+    <Content Include="static\admin\theme1\js\tinymce\skins\lightgray\fonts\icomoon.ttf" />
+    <Content Include="static\admin\theme1\js\tinymce\skins\lightgray\fonts\icomoon.woff" />
+    <Content Include="static\admin\theme1\js\tinymce\skins\lightgray\fonts\readme.md" />
+    <Content Include="static\admin\theme1\js\tinymce\skins\lightgray\fonts\tinymce-small.eot" />
+    <Content Include="static\admin\theme1\js\tinymce\skins\lightgray\fonts\tinymce-small.ttf" />
+    <Content Include="static\admin\theme1\js\tinymce\skins\lightgray\fonts\tinymce-small.woff" />
+    <Content Include="static\admin\theme1\js\tinymce\skins\lightgray\fonts\tinymce.eot" />
+    <Content Include="static\admin\theme1\js\tinymce\skins\lightgray\fonts\tinymce.ttf" />
+    <Content Include="static\admin\theme1\js\tinymce\skins\lightgray\fonts\tinymce.woff" />
+    <Content Include="Views\Organization\Department.cshtml" />
+    <Content Include="Views\Organization\CreateDepartment.cshtml" />
+    <Content Include="Views\Organization\GetDepartment.cshtml" />
+    <Content Include="Views\Department\Create.cshtml" />
+    <Content Include="Views\Department\DepartmentList.cshtml" />
+    <Content Include="Views\Applicant\Create.cshtml" />
+    <Content Include="Views\Applicant\ApplicantList.cshtml" />
+    <Content Include="Views\Admin\RolePermission.cshtml" />
+    <Content Include="Views\User\Login.cshtml" />
+    <Content Include="Views\Menu\MenuList.cshtml" />
+    <Content Include="Views\Menu\SubMenuList.cshtml" />
+    <Content Include="uploads\applicant\4b7ecf53-de9e-471c-bc47-86a94c5ef191.pdf" />
+    <Content Include="uploads\applicant\70f2d60d-373f-416d-908b-862dea907e0b.docx" />
+    <Content Include="uploads\applicant\a16fd829-804c-4e90-b9fa-06233d51d943.docx" />
+    <Content Include="uploads\applicant\a910b24f-0d0a-44de-86bb-b8199cfc5107.pdf" />
+    <Content Include="uploads\applicant\c1bb5c1e-65ba-45a5-a2a1-0cf64dcfb413.docx" />
+    <Content Include="uploads\applicant\f5ebec52-fa43-4737-972d-7d57319e00f4.docx" />
+    <Content Include="uploads\applicant\f96c01a6-332b-4ec7-a570-045ef11641de.docx" />
+    <Content Include="uploads\applicant\PropertyDetail.cshtml" />
+    <Content Include="uploads\recruitment\753f89c4-d63b-4789-96aa-3e15dff05980.pdf" />
+    <Content Include="uploads\recruitment\cbe2ab49-accb-494a-a004-014d9d495218.pdf" />
+    <Content Include="Views\Error\No401.cshtml" />
+    <Content Include="Views\Error\No404.cshtml" />
+    <Content Include="Views\Error\No505.cshtml" />
+    <Content Include="Views\EmployeeLeave\Create.cshtml" />
+    <Content Include="Views\EmployeeLeave\EmployeeLeaveDetailList.cshtml" />
+    <Content Include="Views\EmployeeLeave\EmployeeLeaveList.cshtml" />
+    <Content Include="Views\EmployeeLeave\LeaveDetailList.cshtml" />
+    <Content Include="Views\HRPolicy\Create.cshtml" />
+    <Content Include="Views\HRPolicy\HRPolicyList.cshtml" />
+    <Content Include="Views\Institution\Create.cshtml" />
+    <Content Include="Views\Institution\InstitutionList.cshtml" />
+    <Content Include="Views\LeaveManagement\LeaveList.cshtml" />
+    <Content Include="Views\Policy\Create.cshtml" />
+    <Content Include="Views\Policy\CreatePolicyGroup.cshtml" />
+    <Content Include="Views\Policy\PolicyGroupList.cshtml" />
+    <Content Include="Views\Policy\PolicyList.cshtml" />
+    <Content Include="Views\PublicHolidays\HolidaysList.cshtml" />
+    <Content Include="Views\Qualification\Create.cshtml" />
+    <Content Include="Views\Qualification\QualificationList.cshtml" />
+    <Content Include="Views\Qualification\QualificationTypeList.cshtml" />
+    <Content Include="Views\Recruitment\ApprovalList.cshtml" />
+    <Content Include="Views\Recruitment\Create.cshtml" />
+    <Content Include="Views\Recruitment\RecruitmentList.cshtml" />
+    <Content Include="Views\TeamLeave\TeamLeaveList.cshtml" />
+    <Content Include="Views\Attendance\Attendance.cshtml" />
+    <Content Include="Views\Attendance\List.cshtml" />
+    <Content Include="Views\Home\Create.cshtml" />
+    <Content Include="Views\Permission\PermissionList.cshtml" />
+    <Content Include="Views\Permission\Create.cshtml" />
+    <Content Include="Views\Designation\Create.cshtml" />
+    <Content Include="Views\Designation\DesignationList.cshtml" />
+    <Content Include="Views\HRPolicy\HRPolicyGroupList.cshtml" />
+    <Content Include="Views\Menu\_HeaderBarPartial.cshtml" />
+    <Content Include="Views\Shared\_SiteLayout.cshtml" />
+    <Content Include="Views\Grade\Create.cshtml" />
+    <Content Include="Views\Grade\Index.cshtml" />
+    <Content Include="Views\Employee\Create.cshtml" />
+    <Content Include="Views\Employee\EmployeeList.cshtml" />
+    <Content Include="Views\Home\Dashboard.cshtml" />
+    <Content Include="static\front\theme1\devicons\css\devicons.scss" />
+    <Content Include="static\front\theme1\devicons\fonts\devicons.eot" />
+    <Content Include="static\front\theme1\devicons\fonts\devicons.ttf" />
+    <Content Include="static\front\theme1\devicons\fonts\devicons.woff" />
+    <Content Include="static\front\theme1\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="static\front\theme1\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="static\front\theme1\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="static\front\theme1\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="static\front\theme1\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="static\front\theme1\font-awesome\less\animated.less" />
+    <Content Include="static\front\theme1\font-awesome\less\bordered-pulled.less" />
+    <Content Include="static\front\theme1\font-awesome\less\core.less" />
+    <Content Include="static\front\theme1\font-awesome\less\fixed-width.less" />
+    <Content Include="static\front\theme1\font-awesome\less\font-awesome.less" />
+    <Content Include="static\front\theme1\font-awesome\less\icons.less" />
+    <Content Include="static\front\theme1\font-awesome\less\larger.less" />
+    <Content Include="static\front\theme1\font-awesome\less\list.less" />
+    <Content Include="static\front\theme1\font-awesome\less\mixins.less" />
+    <Content Include="static\front\theme1\font-awesome\less\path.less" />
+    <Content Include="static\front\theme1\font-awesome\less\rotated-flipped.less" />
+    <Content Include="static\front\theme1\font-awesome\less\screen-reader.less" />
+    <Content Include="static\front\theme1\font-awesome\less\stacked.less" />
+    <Content Include="static\front\theme1\font-awesome\less\variables.less" />
+    <Content Include="static\front\theme1\font-awesome\scss\font-awesome.scss" />
+    <Content Include="static\front\theme1\font-awesome\scss\_animated.scss" />
+    <Content Include="static\front\theme1\font-awesome\scss\_bordered-pulled.scss" />
+    <Content Include="static\front\theme1\font-awesome\scss\_core.scss" />
+    <Content Include="static\front\theme1\font-awesome\scss\_fixed-width.scss" />
+    <Content Include="static\front\theme1\font-awesome\scss\_icons.scss" />
+    <Content Include="static\front\theme1\font-awesome\scss\_larger.scss" />
+    <Content Include="static\front\theme1\font-awesome\scss\_list.scss" />
+    <Content Include="static\front\theme1\font-awesome\scss\_mixins.scss" />
+    <Content Include="static\front\theme1\font-awesome\scss\_path.scss" />
+    <Content Include="static\front\theme1\font-awesome\scss\_rotated-flipped.scss" />
+    <Content Include="static\front\theme1\font-awesome\scss\_screen-reader.scss" />
+    <Content Include="static\front\theme1\font-awesome\scss\_stacked.scss" />
+    <Content Include="static\front\theme1\font-awesome\scss\_variables.scss" />
+    <Content Include="static\front\theme1\simple-line-icons\fonts\Simple-Line-Icons.eot" />
+    <Content Include="static\front\theme1\simple-line-icons\fonts\Simple-Line-Icons.ttf" />
+    <Content Include="static\front\theme1\simple-line-icons\fonts\Simple-Line-Icons.woff" />
+    <Content Include="static\front\theme1\simple-line-icons\fonts\Simple-Line-Icons.woff2" />
+    <Content Include="static\front\theme1\simple-line-icons\less\simple-line-icons.less" />
+    <Content Include="static\front\theme1\simple-line-icons\scss\simple-line-icons.scss" />
+    <Content Include="Views\Home\AboutUs.cshtml" />
+    <Content Include="Views\Admin\RoleList.cshtml" />
+    <Content Include="Views\Admin\CreateRole.cshtml" />
+    <Content Include="Views\Organization\Organization.cshtml" />
+    <Content Include="Views\User\Create.cshtml" />
+    <Content Include="Views\User\UserList.cshtml" />
+    <Content Include="Views\Branches\BranchList.cshtml" />
+    <Content Include="Views\Branches\Create.cshtml" />
+    <Content Include="Views\Shared\_HeaderBarPartial.cshtml" />
+    <Content Include="Views\Attendance\AttendanceByBId.cshtml" />
+    <Content Include="Views\Admin\NewCustomer.cshtml" />
+    <Content Include="Views\Admin\CustomerList.cshtml" />
+    <Content Include="Views\Employee\GetTimePolicyId.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
+    <Folder Include="static\admin\theme1\js\tinymce\js\" />
+    <Folder Include="uploads\employee\" />
+    <Folder Include="Views\Leave\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Data.HRMS\Data.HRMS.csproj">
+      <Project>{979CF44D-957D-4DC4-9F84-EA0CF1017803}</Project>
+      <Name>Data.HRMS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Library.Core\Library.Core.csproj">
+      <Project>{987cbd52-f311-41d5-909c-29dacf150620}</Project>
+      <Name>Library.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Library.Extensions\Library.Extensions.csproj">
+      <Project>{ad00c902-2106-45ac-9323-4a76b279651c}</Project>
+      <Name>Library.Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Library.Lookups\Library.Lookups.csproj">
+      <Project>{b132a99a-d652-4df4-9017-ca1a5633b45b}</Project>
+      <Name>Library.Lookups</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Services.HRMS\Services.HRMS.csproj">
+      <Project>{ae10a47e-bac0-4de5-bed2-4b9ce23af49c}</Project>
+      <Name>Services.HRMS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Services.Look\Services.Look.csproj">
+      <Project>{16e9a1ad-bf9d-4b9e-bc45-6c902d06734d}</Project>
+      <Name>Services.Look</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Services.Users\Services.Users.csproj">
+      <Project>{DBB99A01-9323-4A2B-B47E-C4B3C006652B}</Project>
+      <Name>Services.Users</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VM.HRMS\VM.HRMS.csproj">
+      <Project>{9cb21f6c-515f-4599-a26b-71ac1986d0ac}</Project>
+      <Name>VM.HRMS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VM.Look\VM.Look.csproj">
+      <Project>{661cd52f-c6cf-4ed0-bec8-478077af4b22}</Project>
+      <Name>VM.Look</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VM.User\VM.User.csproj">
+      <Project>{fbb9575d-9c0d-4531-936c-341750446c47}</Project>
+      <Name>VM.User</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>4</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Excel">
+      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>6</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>50721</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:50721/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,448 @@
+﻿@model List<VM.HRMS.RecruitmentListViewModel>
+@using Library.Lookups;
+@using System.Web.Script.Serialization;
+@{
+    ViewBag.Title = "Recruitment List(Approval)";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+    var enumLookRecruitmentStatus = new JavaScriptSerializer().Serialize(ViewBag.enumLookRecruitmentStatus);
+}
+
+
+<div class="content-wrapper">
+    <h3>
+        Recruitment(Approval)
+        <a href="@Url.Action("Create","Recruitment")">
+            <button type="button" class="btn btn-primary pull-right"><i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;Add New Recruitment</button>
+        </a>
+    </h3>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Recruitment List (Approval)
+                </div>
+                <div class="panel-body">
+                    <table id="datatable1" class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>S.NO.</th>
+                                <th>Job Title</th>
+                                <th>Requested By</th>
+                                <th>Date</th>
+                                <th>For Approval</th>
+                                <th>Status</th>
+                                <th>Action</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model != null)
+                            {
+                                var count = 0;
+                                foreach (var item in Model)
+                                {
+                                    var tempid = item.LookRecruitmentStatusId;
+                                    if (item.LookRecruitmentStatusId == 0)
+                                    {
+                                         tempid = 1;
+
+                                    }
+                                    var temp = ((EnumLookRecruitmentStatus)tempid).GetStringValue();
+                                    count = count + 1;
+                                    <tr class="gradeX">
+                                        <td>@count</td>
+                                        <td>@item.DesignationName (@item.NoOfPositions)</td>
+                                        <td>@item.CreatedByName</td>
+                                        <td>@item.CreateDate.ToShortDateString()</td>
+                                        <td>@item.ForApproval</td>
+                                        <td>@temp</td>
+                                        <td class="table_action">
+                                            @*<a href="@Url.Action("Create","Recruitme",new {id=item.RecruitmentId })" title="Edit PublicHoliday"><em class="icon-note" style="font-size: 18px;"></em></a>*@
+                                            @*@if (item.ForApprovalEmployeeId == (long)Session["UserId"])
+                                            {*@
+                                            <em class="fa fa-thumbs-up Approve" title="Click to Approve" style="font-size:18px;" rel="@item.RecruitmentId"></em>
+                                            @*}*@
+                                         </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                    @*<div class="row" style="margin-top: 10px;">
+                            <div class="col-xs-6">
+                                <div class="dataTables_info" id="datatable1_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div>
+                            </div><div class="col-xs-6">
+                                <div class="dataTables_paginate paging_simple_numbers" id="datatable1_paginate">
+                                    <ul class="pagination">
+                                        <li class="paginate_button previous disabled" aria-controls="datatable1" tabindex="0" id="datatable1_previous">
+                                            <a href="#">Previous</a>
+                                        </li>
+                                        <li class="paginate_button active" aria-controls="datatable1" tabindex="0"><a href="#">1</a></li>
+                                        <li class="paginate_button " aria-controls="datatable1" tabindex="0"><a href="#">2</a></li>
+                                        <li class="paginate_button " aria-controls="datatable1" tabindex="0"><a href="#">3</a></li>
+                                        <li class="paginate_button " aria-controls="datatable1" tabindex="0"><a href="#">4</a></li>
+                                        <li class="paginate_button " aria-controls="datatable1" tabindex="0"><a href="#">5</a></li>
+                                        <li class="paginate_button " aria-controls="datatable1" tabindex="0"><a href="#">6</a></li>
+                                        <li class="paginate_button next" aria-controls="datatable1" tabindex="0" id="datatable1_next"><a href="#">Next</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>*@
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        //
+        var sessionUserId=@Session["EmployeeId"];
+
+        var enumLookRecruitmentStatus=@Html.Raw(enumLookRecruitmentStatus);
+        var Recruitment = "@System.Configuration.ConfigurationManager.AppSettings["UploadRecruitment"].Replace("\\", "\\\\")";
+        Recruitment=Recruitment.replace("\\\\", "\\");
+
+
+        //////$(document).off("click", "#btnPublished").on("click", "#btnPublished", function (event) {
+        //////    var RecruitmentId = $(this).attr('rel');
+        //////   // var nextApprovalId=$('#nextApprovalId').val();
+        //////    debugger;
+        //////    //nextApprovalId
+
+        //////        $.ajax({
+        //////            type: 'GET',
+        //////            url: '/Recruitment/ApproveRecruitmentStatusById?id=' + RecruitmentId+'&nid=0&pub=1',
+        //////            dataType: "json",
+        //////            contentType: "application/json; charset=utf-8",
+        //////            success: function (response, status) {
+        //////                debugger;
+        //////                //  $("#myModalLarge").modal();
+        //////                alert('Status update successfully');
+        //////                $('#myModalLarge').modal({ show: false});
+        //////            },
+        //////            error: function (request, status, error) {
+        //////                alert('try again later');
+        //////                $('#myModalLarge').modal({ show: false});
+        //////                // sessionStorage.removeItem('token');
+        //////                //  sessionStorage.setItem("token", '');
+        //////                //  checkLogin();
+        //////            }
+        //////        });
+        //////});
+
+        $(document).off("click", "#btnApprove").on("click", "#btnApprove", function (event) {
+           
+            if (!$.trim($("#RecruitmentStatus").val()) || $.trim($("#RecruitmentStatus").val()) == '0') {
+                alert("Please Select Status");
+                return;
+            }
+            if ($("#RecruitmentStatus").val() ==2 && !$.trim($("#nextApprovalId").val()) || $.trim($("#nextApprovalId").val()) == '0') {
+                alert("Please Farward to Next");
+                return;
+            }
+            var ApproveRecruitmentStatusViewModel = new Object();
+            ApproveRecruitmentStatusViewModel.RecruitmentId = $(this).attr('rel');
+            ApproveRecruitmentStatusViewModel.ForwardToEmployeeId = $('#nextApprovalId').val();           
+            ApproveRecruitmentStatusViewModel.LookRecruitmentStatusId = $("#RecruitmentStatus").val();
+            ApproveRecruitmentStatusViewModel.Comments = $("#remarks").val();
+            debugger;
+            //nextApprovalId
+            if(ApproveRecruitmentStatusViewModel.LookRecruitmentStatusId>0){
+                $.ajax({                 
+                    url: '/Recruitment/ApproveRecruitmentStatusById',
+                    type: 'POST',
+                    dataType: "json",
+                    async: false,
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify(ApproveRecruitmentStatusViewModel),             
+                    success: function (response, status) {
+                        debugger;
+                        alert('Status update successfully');
+                        $('#myModalLarge').modal({ show: false});
+                    },
+                    error: function (request, status, error) {
+                        alert('try again later');
+                        $('#myModalLarge').modal({ show: false});
+                        // sessionStorage.removeItem('token');
+                        //  sessionStorage.setItem("token", '');
+                        //  checkLogin();
+                    }
+
+                });
+            }else {
+                alert('Please select next Approval');
+            }
+
+        });
+        $(document).off("click", ".Approve").on("click", ".Approve", function (event) {
+        //    //event.preventDefault();
+            //    alert('wasim');
+            var RecruitmentId = $(this).attr('rel');
+            $.ajax({
+                type: 'GET',
+                url: '/Recruitment/RecruitmentById?id=' + RecruitmentId,
+                dataType: "json",
+                headers: { 'Authorization': sessionStorage.token },
+                contentType: "application/json; charset=utf-8",
+                success: function (response, status) {
+                    debugger;
+                    $("#myModalLarge").modal();
+                    //  myModalLargeBody
+
+                    //
+                    var employee=response.ForApprovalList;
+
+                    var empOptions='';
+                    for (var i = 0; i < employee.length; i++) {
+                        empOptions=empOptions+ '<option value="'+employee[i].Value+'">'+employee[i].Text+'</option>';
+                    }
+                    var RecruitmentStatus='';
+                    for (var i = 1; i < enumLookRecruitmentStatus.length; i++) {
+                        RecruitmentStatus=RecruitmentStatus+ '<option value="'+enumLookRecruitmentStatus[i].ID+'">'+enumLookRecruitmentStatus[i].Name+'</option>';
+                    }
+                    
+
+                   var htmltext='<div class="col-sm-4">'+
+                               '<div class="form-group">'+
+                                   '<label>Job Title:</label>' +
+                                   '<span style="margin-left: 10px;">' + response.DesignationName + '</span>' +
+                                   '</div>'+
+                                  '</div>';
+                   htmltext = htmltext+'<div class="col-sm-4">' +
+                              '<div class="form-group">' +
+                                  '<label>Employee Type:</label>' +
+                                  '<span style="margin-left: 10px;">' + response.EmployeeTypeName + '</span>' +
+                                  '</div>' +
+                                 '</div>';
+
+                   htmltext = htmltext + '<div class="col-sm-4">' +
+                            '<div class="form-group">' +
+                                '<label>JobType:</label>' +
+                                '<span style="margin-left: 10px;">' + response.JobTypeName + '</span>' +
+                                '</div>' +
+                               '</div>';
+
+                   htmltext = htmltext + '<div class="col-sm-4">' +
+                        '<div class="form-group">' +
+                            '<label>Gender:</label>' +
+                            '<span style="margin-left: 10px;">' + response.LookGenderName + '</span>' +
+                            '</div>' +
+                           '</div>';
+                   htmltext = htmltext + '<div class="col-sm-4">' +
+                      '<div class="form-group">' +
+                          '<label>Length Of Term:</label>' +
+                          '<span style="margin-left: 10px;">' + response.Length_Of_Term + ' Months</span>' +
+                          '</div>' +
+                         '</div>';
+                   htmltext = htmltext + '<div class="col-sm-4">' +
+                    '<div class="form-group">' +
+                        '<label>Reporting:</label>' +
+                        '<span style="margin-left: 10px;">' + response.Reporting + '</span>' +
+                        '</div>' +
+                       '</div>';
+
+                   htmltext = htmltext + '<div class="col-sm-4">' +
+                    '<div class="form-group">' +
+                        '<label>No Of Positions:</label>' +
+                        '<span style="margin-left: 10px;">' + response.NoOfPositions + '</span>' +
+                        '</div>' +
+                       '</div>';
+                   htmltext = htmltext + '<div class="col-sm-4">' +
+                    '<div class="form-group">' +
+                        '<label>Preferred Start Date:</label>' +
+                        '<span style="margin-left: 10px;">' +ToJavaScriptDate(response.Preferred_Start_Date) + '</span>' +
+                        '</div>' +
+                       '</div>';
+
+                   htmltext = htmltext + '<div class="col-sm-4">' +
+                  '<div class="form-group">' +
+                      '<label>Ad Closing Date:</label>' +
+                      '<span style="margin-left: 10px;">' + ToJavaScriptDate(response.AdClosingDate) + '</span>' +
+                      '</div>' +
+                     '</div>';
+
+                   htmltext = htmltext + '<div class="col-sm-3">' +
+                  '<div class="form-group" style="margin-bottom:5px;">' +
+                    '<label>PositionDescription:</label>' +
+                      '<span style="margin-left: 10px;"><a href="'+Recruitment+response.PositionDescription +'" target="_blank" style=" margin-left:5px">'+
+                                                     '<span>JD</span>'+
+                                                 '</a></span>' +
+                      '</div>' +
+                     '</div>';
+
+
+                   htmltext = '<div class="row">' + htmltext + '</div>';
+
+                   var htmlRow2 = '<div class="col-sm-4">' +
+                      '<div class="form-group">' +
+                          '<label>Requested By:</label>' +
+                          '<span style="margin-left: 10px;">' + response.CreatedByName + '</span>' +
+                          '</div>' +
+                         '</div>';
+
+                   htmlRow2 = htmlRow2 + '<div class="col-sm-6">' +
+                        '<div class="form-group">' +
+                            '<label>Approval In Process:</label>' +
+                            '<span style="margin-left: 10px;">' + response.ForApproval + '</span>' +
+                            '</div>' +
+                           '</div>';
+                   if(sessionUserId==response.ForApprovalEmployeeId && response.LookRecruitmentStatusId<=2) {
+
+                       htmlRow2 = htmlRow2 + '<div class="col-sm-4">' +
+                       '<div class="form-group">' +
+                         '<label>Status for Update:</label>' +
+                           '<select class="form-control" data-val="true" data-val-number="The field LookDesignationId must be a number." id="RecruitmentStatus" name="RecruitmentStatus" placeholder="Job Title">'+
+                            '<option value="">Select </option>'+RecruitmentStatus+
+                            '</select>'+
+                           '</div>' +
+                          '</div>';
+                       htmlRow2 = htmlRow2 + '<div class="col-sm-4">' +
+                   '<div class="form-group">' +
+                     '<label>Comments:</label>' +
+                       
+                        '<input class="form-control" id="remarks" name="remarks" placeholder="Comments" type="text" value="">'+
+                       '</div>' +
+                      '</div>';
+                       htmlRow2 = htmlRow2 + '<div class="col-sm-4">' +
+                       '<div class="form-group">' +
+                         '<label>Forward to HR:</label>' +
+                           '<select class="form-control" data-val="true" data-val-number="The field LookDesignationId must be a number." id="nextApprovalId" name="nextApprovalId" placeholder="Job Title">'+
+                            '<option value="">Forward to Next</option>'+empOptions+
+                            '</select>'+
+                           '</div>' +
+                          '</div>';
+                       //RecruitmentStatus
+                       htmlRow2 = htmlRow2 + '<div class="col-sm-4">' +
+                          '<div class="form-group">' +
+                               '<input type="button" id="btnApprove" rel="' + response.RecruitmentId + '" class="btn btn-sm btn-primary" value="Update"  />' +
+                              '</div>' +
+                             '</div>';
+                   }
+                   ////if(sessionUserId==response.ForApprovalEmployeeId && response.LookRecruitmentStatusId==2) {
+                   ////    htmlRow2 = htmlRow2 + '<div class="col-sm-4">' +
+                   ////         '<div class="form-group">' +
+                   ////              '<input type="button" id="btnPublished" rel="' + response.RecruitmentId + '" class="btn btn-sm btn-primary" value="Publish" />' +
+                   ////             '</div>' +
+                   ////            '</div>';
+                   ////}
+
+
+                   htmltext = htmltext+'<div class="row">' + htmlRow2 + '</div>';
+                   htmlRow2='';
+                   var  htmlRow3='';
+
+                   htmlRow2 = htmlRow2 + '<div class="col-sm-3">' +
+                     '<div class="form-group text-center" style="margin-bottom:5px;">' +
+                       '<label>ApproveBy</label>' +
+
+                         '</div>' +
+                        '</div>';
+                   htmlRow2 = htmlRow2 + '<div class="col-sm-3">' +
+                   '<div class="form-group text-center" style="margin-bottom:5px;">' +
+                     '<label>ApprovedDate</label>' +
+
+                       '</div>' +
+                      '</div>';
+
+                   htmlRow2 = htmlRow2 + '<div class="col-sm-3">' +
+               '<div class="form-group text-center" style="margin-bottom:5px;">' +
+                 '<label>Comments</label>' +
+
+                   '</div>' +
+                  '</div>';
+
+                   htmlRow2 = htmlRow2 + '<div class="col-sm-3">' +
+                  '<div class="form-group text-center" style="margin-bottom:5px;">' +
+                    '<label>Farward To</label>' +
+
+                      '</div>' +
+                     '</div>';
+
+                   htmlRow3 = '<div class="row">' + htmlRow2 + '</div>';
+                   htmlRow2='';
+                   var  approvalHistory=response.RecruitmentApprovalViewModel;
+                   for (var i = 0; i < approvalHistory.length; i++) {
+                       var  statusName='';
+                       try{
+                            statusName=' ('+enumLookRecruitmentStatus.filter(x => x.ID == approvalHistory[i].LookRecruitmentStatusId)[0].Name+')';
+                       }catch(e){
+                         
+                       }
+                       htmlRow2 = htmlRow2 + '<div class="col-sm-3">' +
+                         '<div class="form-group text-center" style="margin-bottom:5px;">' +
+
+                             '<span style="margin-left: 10px;">' + approvalHistory[i].ApproveByName +statusName+'</span>' +
+                             '</div>' +
+                            '</div>';
+                       htmlRow2 = htmlRow2 + '<div class="col-sm-3">' +
+                       '<div class="form-group text-center" style="margin-bottom:5px;">' +
+
+                           '<span style="margin-left: 10px;">' +ToJavaScriptDate(approvalHistory[i].ApprovedDate) + '</span>' +
+                           '</div>' +
+                          '</div>';
+
+                       htmlRow2 = htmlRow2 + '<div class="col-sm-3">' +
+                      '<div class="form-group text-center" style="margin-bottom:5px;">' +
+
+                          '<span style="margin-left: 10px;">' +approvalHistory[i].Remarks + '</span>' +
+                          '</div>' +
+                         '</div>';
+
+                       htmlRow2 = htmlRow2 + '<div class="col-sm-3">' +
+                      '<div class="form-group text-center" style="margin-bottom:5px;">' +
+
+                          '<span style="margin-left: 10px;">' +approvalHistory[i].FarwardApprovalName + '</span>' +
+                          '</div>' +
+                         '</div>';
+
+                       htmlRow3 = htmlRow3+'<div class="row">' + htmlRow2 + '</div>';
+
+
+
+
+
+                       htmlRow2='';
+                   }
+                   htmltext = htmltext+'<div class="row" style="padding-left:15px"><h3> Approval History </h3></div>';
+                   htmltext=htmltext+htmlRow3;
+
+                   $("#myModalLargeBody").html(htmltext);
+                   $("#myModalLargeBody").attr('style', 'padding-left: 40px;');
+                   $("#myModalLargeBody").parent().parent().attr('style', 'top: 50px;border-radius: 6px;border-color: cadetblue;border-style: solid;');
+
+
+
+                   $("#myModalLargeLabel").html('Recruitment Detail');
+                   $("#myModalLargeLabel").attr('style', 'padding-left:20px');
+
+                },
+                error: function (request, status, error) {
+                    // sessionStorage.removeItem('token');
+                    //  sessionStorage.setItem("token", '');
+                    //  checkLogin();
+                }
+
+            });
+
+
+
+
+
+        });
+
+    });
+
+    function ToJavaScriptDate(value) {
+        if (value == null) return;
+        var pattern = /Date\(([^)]+)\)/;
+        var results = pattern.exec(value);
+        var dt = new Date(parseFloat(results[1]));
+        return (dt.getMonth() + 1) + "/" + dt.getDate() + "/" + dt.getFullYear();
+    }
+
+
+
+</script>
+

@@ -1,0 +1,32 @@
+﻿@model Result<List<LookGENPolicyViewModel>>
+@using Library.Core.Services;
+@using VM.Look;
+
+@{
+    if (Model.IsNotNull() && Model.Data.CountedPositive())
+    {
+        foreach (var item in Model.Data)
+        {
+            <tr>
+                <td>@item.PolicyName</td>
+                <td><input class="form-control ShortTime WeekTiming" id="TimeIn_@item.PolicyName" name="TimeIn_@item.PolicyName" placeholder="00:00" type="text" value=""></td>
+                <td><input class="form-control ShortTime WeekTiming" id="TimeOut_@item.PolicyName" name="TimeOut_@item.PolicyName" placeholder="00:00" type="text" value=""></td>
+                <td><span id="TimeHours_@item.PolicyName">@item.PolicyValue @item.PolicyUnit</span></td>
+                <td>@if (item.HRPolicyByCaptionId.IsNotNull() && item.HRPolicyByCaptionId > 0) {@("update") }</td>
+            </tr>
+        }
+    }
+    @*DateTime now = DateTime.Today;
+        for (int i = 0; i < 7; i++)
+        {
+            Console.WriteLine(now.ToString("dddd"));
+            <tr>
+                <td>@now.ToString("dddd")</td>
+                <td><input class="form-control ShortTime WeekTiming" id="TimeIn_@now.ToString("dddd")" name="TimeIn_@now.ToString("dddd")" placeholder="00:00" type="text" value=""></td>
+                <td><input class="form-control ShortTime WeekTiming" id="TimeOut_@now.ToString("dddd")" name="TimeOut_@now.ToString("dddd")" placeholder="00:00" type="text" value=""></td>
+                <td><span id="TimeHours_@now.ToString("dddd")"></span></td>
+                <td>Actions</td>
+            </tr>
+            now = now.AddDays(1);
+        }*@
+}

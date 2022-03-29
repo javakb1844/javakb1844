@@ -1,0 +1,37 @@
+﻿@model Data.HRMS.LookDepartment
+@{
+    ViewBag.Title = "CreateDepartment";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<div class="content-wrapper">
+    <h3>
+        Add Departments
+    </h3>
+    <div class="row">
+        <div class="col-sm-6 col-lg-offset-3">
+            <!-- START panel-->
+            <div class="panel panel-default">
+                <div class="panel-heading">Add Department info</div>
+                <div class="panel-body">
+                    @using (Html.BeginForm("CreateDepartment", "Organization", FormMethod.Post@*, new { @class = "form-horizontal", enctype = "multipart/form-data", id = "frmInsert" }*@))
+                    {
+                        @*<form role="form">*@
+                        <div class="form-group">
+                            <label>Department Name</label>
+                            @* <input type="email" placeholder="Department Name" class="form-control">*@
+                            @Html.TextBoxFor(m => m.DepartmentName, new { @class = "form-control", placeholder = "Department Name" })
+                        </div>
+                        <div class="col-sm-12 text-center">
+                           @* <button type="submit" class="btn btn-sm btn-primary">Submit</button>*@
+                            <input type="submit" class="btn btn-sm btn-primary" value="Save" />
+                        </div>
+                        @*</form>*@
+                    }
+                </div>
+            </div>
+            <!-- END panel-->
+        </div>
+
+    </div>
+</div>

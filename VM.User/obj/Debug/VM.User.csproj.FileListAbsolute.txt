@@ -1,0 +1,11 @@
+D:\HRM-MAIN\HRMDEV\VM.User\bin\Debug\VM.User.dll
+D:\HRM-MAIN\HRMDEV\VM.User\bin\Debug\VM.User.pdb
+D:\HRM-MAIN\HRMDEV\VM.User\obj\Debug\VM.User.csprojResolveAssemblyReference.cache
+D:\HRM-MAIN\HRMDEV\VM.User\obj\Debug\VM.User.dll
+D:\HRM-MAIN\HRMDEV\VM.User\obj\Debug\VM.User.pdb
+E:\apps-data\HRMDEV-221217\HRMDEV\VM.User\bin\Debug\VM.User.dll
+E:\apps-data\HRMDEV-221217\HRMDEV\VM.User\bin\Debug\VM.User.pdb
+E:\apps-data\HRMDEV-221217\HRMDEV\VM.User\obj\Debug\VM.User.csproj.CoreCompileInputs.cache
+E:\apps-data\HRMDEV-221217\HRMDEV\VM.User\obj\Debug\VM.User.dll
+E:\apps-data\HRMDEV-221217\HRMDEV\VM.User\obj\Debug\VM.User.pdb
+E:\apps-data\HRMDEV-221217\HRMDEV\VM.User\obj\Debug\VM.User.csprojAssemblyReference.cache

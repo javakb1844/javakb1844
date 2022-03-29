@@ -1,0 +1,447 @@
+﻿@model Services.HRMS.DropDownListClass
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+  
+<div class="content-wrapper">
+    <h3>
+        Add Applicants
+    </h3>
+    <div class="row">
+        <div class="col-sm-12">
+            <!-- START panel-->
+            <div class="panel panel-default">
+                <div class="panel-heading">Add Applicant info</div>
+                <div class="panel-body">
+                    @using (Html.BeginForm("Create", "Applicant", FormMethod.Post, new { role = "form", enctype = "multipart/form-data", id = "frmInsert" }))
+                    {
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Applied For Job Title</label>
+                                    @Html.DropDownListFor(m => m.LookDesignationId, Model.getDesignation(), "--Please Select Designaton Type--", new { @class = "form-control", placeholder = "Department Name" })
+                                 </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>First Name<span class='required'>*</span></label>
+                                    <label id="FirstName-error" class="error" for="FirstName" style="float: right;"></label>
+                                    @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", placeholder = "First Name" })
+
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Last Name</label>
+                                    @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", placeholder = "Last Name" })
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Full Name <span class='required'>*</span></label>
+                                    <label id="FullName-error" class="error" for="FullName" style="float: right;"></label>
+                                    @Html.TextBoxFor(m => m.FullName, new { @class = "form-control", placeholder = "Full Name" })
+                                    @Html.HiddenFor(m => m.ApplicantId)
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Email<span class='required'>*</span></label>
+                                    <label id="Email-error" class="error" for="Email" style="float: right;"></label>
+                                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email" })
+
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Mobile No<span class='required'>*</span></label>
+                                    @Html.TextBoxFor(m => m.MobileNo, new { @class = "form-control Mobile", placeholder = "Mobile No" })
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Conatct Info</label>
+                                    @Html.TextBoxFor(m => m.ConatctInfo, new { @class = "form-control", placeholder = "Conatct Info" })
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>CNIC</label>
+                                    @Html.TextBoxFor(m => m.CNIC, new { @class = "form-control cinc", placeholder = "Cnic" })
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Marital Status</label>
+                                    @Html.TextBoxFor(m => m.MaritalStatus, new { @class = "form-control", placeholder = "Martial Status" })
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Present Address</label>
+                                    @Html.TextBoxFor(m => m.PresentAddress, new { @class = "form-control", placeholder = "Present Address" })
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Permanent Address</label>
+                                    @Html.TextBoxFor(m => m.PermanentAddress, new { @class = "form-control", placeholder = "Permanent Address" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top:40px">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Short Summary</label>
+                                    @Html.TextBoxFor(m => m.ShortSummary, new { @class = "form-control", placeholder = "Short Summary" })
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Qualification</label>
+                                    <a class="pull-right" data-toggle="modal" data-target="#QualificationModal" style="cursor:pointer">Add another...</a>
+                                    @Html.DropDownListFor(m => m.LookQualificationId, Model.getQualification(), "--Please Select Qualification--", new { @class = "form-control", placeholder = "Department Name" })
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <a class="pull-right" data-toggle="modal" data-target="#OrganizationModal" style="cursor:pointer">Add another...</a>
+                                    <label>Current Organization</label>
+                                    @Html.DropDownListFor(m => m.LookOrganizationId, Model.getOrganization(), "--Please Select Organization--", new { @class = "form-control", placeholder = "Organization Name" })
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Current Salary</label>
+                                    @Html.TextBoxFor(m => m.Salary, new { @class = "form-control", placeholder = "Salary drawn" })
+                                </div>
+                            </div>
+                        
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Applicant Remarks</label>
+                                    @Html.TextBoxFor(m => m.ApplicantRemarks, new { @class = "form-control", placeholder = "Applicant Remarks" })
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Reference Name</label>
+                                    @Html.TextBoxFor(m => m.ReferenceName, new { @class = "form-control", placeholder = "Refernce Name" })
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Reference Email</label>
+                                    @Html.TextBoxFor(m => m.ReferenceEmail, new { @class = "form-control", placeholder = "Refernce Email" })
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>CoveringLatter</label>
+                                    @if (Model.CoveringLetter.IsNotNullOrEmpty())
+                                    {
+                                        var CoveringLetter = @System.Configuration.ConfigurationManager.AppSettings["UploadApplicantPath"] + Model.CoveringLetter;
+                                        <a href="@CoveringLetter" target="_blank" style="float: right;">
+                                            <span>CoveringLatter</span>
+                                        </a>
+                                    }
+                                    @Html.TextBox("CoveringLetter", "", new { @class = "form-control", @type = "file", accept = ".doc,.docx,.xml,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" })
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Resume</label>
+                                    @if (Model.Resume.IsNotNullOrEmpty())
+                                    {
+                                        var Resume = @System.Configuration.ConfigurationManager.AppSettings["UploadApplicantPath"] + Model.Resume;
+                                        <a href="@Resume" target="_blank" style="float: right;">
+                                            <span>Resume</span>
+                                        </a>
+
+
+
+
+                                    }
+                                    @Html.TextBox("Resume", "", new { @class = "form-control", @type = "file", accept = ".doc,.docx,.xml,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" })
+                                    @*else
+                                        {
+                                          @Html.TextBox("Resume", "", new { @class = "form-control", @type = "file", accept = ".doc,.docx,.xml,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" })
+                                        }*@
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="row" style="margin-top:40px">
+
+                            @*<div class="col-sm-6">
+                                    <div class="control-group">
+                                        <label class="control-label"> PostedDate</label>
+                                        <div class="controls">
+                                            <div id="datetimepicker1" class="input-group date">
+
+                                                @Html.TextBoxFor(m => m.ExpectedDateOfJoining, new { @class = "span8", @id = "ExpectedDateOfJoining" })
+
+
+
+                                                <span class="input-group-addon">
+                                                    <span class="fa fa-calendar"></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>*@
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="control-label"> ExpectedDateOfJoining</label>
+                                    <div id="datetimepicker1" class="input-group date">
+                                        @*@if (Model.ExpectedDateOfJoining.IsNullOrEmpty())
+                                            {
+                                                <input class="form-control" data-val="true" id="ExpectedDateOfJoining" name="ExpectedDateOfJoining" type="text" value="@DateTime.Now">
+                                            }
+                                            else
+                                            {*@
+                                        @Html.TextBoxFor(m => m.ExpectedDateOfJoining, new { @class = "form-control", @id = "ExpectedDateOfJoining" })
+
+                                        <span class="input-group-addon">
+                                            <span class="fa fa-calendar"></span>
+                                        </span>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+
+
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Employee Type</label>
+                                    @Html.DropDownListFor(m => m.LookEmployeeTypeId, Model.getEmployeeType(), "--Please Select Employee Type--", new { @class = "form-control", placeholder = "Department Name" })
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Department</label>
+                                    @Html.DropDownListFor(m => m.LookDepartmentId, Model.getDepartment(), "--Please Select Department Name--", new { @class = "form-control", placeholder = "Department Name" })
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Years Of Experience</label>
+                                    @Html.TextBoxFor(m => m.NoYearsOfExperience, new { @class = "form-control", placeholder = "No of Year " })
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label>HR Remarks</label>
+                                    @Html.TextBoxFor(m => m.HRRemarks, new { @class = "form-control", placeholder = "HR Remarks" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 text-center">
+                            <input type="submit" class="btn btn-sm btn-primary" value="Save" />
+                        </div>
+
+                       @*</form>*@
+                    }
+                </div>
+            </div>
+            <!-- END panel-->
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div id="QualificationModal" class="modal fade" role="dialog" >
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Add more education programs</h4>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <label>Profession Name<span class="required" aria-required="true">*</span></label>
+                   @*@Html.DropDownList("LookQualificationTypeId", ViewBag.QualificationType as SelectList, new { @class = "form-control", placeholder = "Qualification",id= "LookQualificationTypeId" })*@
+                    @Html.DropDownListFor(m => m.LookQualificationTypeId, Model.getQualificationType(), new { @class = "form-control", placeholder = "Qualification", id = "LookQualificationTypeId" })                
+                </div>
+                <div class="form-group">
+                    <label>Qualification Name<span class="required" aria-required="true">*</span></label>
+                    <input class="form-control" id="QualificationName" name="QualificationName" placeholder="Qualification Name" type="text" value="">
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" onclick="AddQualification()" class="btn btn-primary" data-dismiss="modal">Save</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+
+</div>
+
+<div id="OrganizationModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Add organizations</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Organization Name<span class="required" aria-required="true">*</span></label>
+                    <input class="form-control" id="OrganizationName" name="OrganizationName" placeholder="Organization Name" type="text" value="">
+                </div>
+
+                <div class="form-group">
+                    <label>Organization URL<span class="required" aria-required="true">*</span></label>
+                    <input class="form-control" id="OrganizationURL" name="OrganizationURL" placeholder="Organization URL" type="text" value="">
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" onclick="AddOrganization()" class="btn btn-primary" data-dismiss="modal">Save</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+
+</div>
+<script type="text/javascript">
+
+        function AddQualification() {
+        var program = new Object();
+        program.LookQualificationTypeId = $("#LookQualificationTypeId").val();
+        program.QualificationName = $("#QualificationName").val();
+        $.ajax({
+            url: '/Qualification/New',
+            type: 'POST',
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify(program),
+            success: function (response) {
+                debugger;
+                if (response.Data != null && response.ResultType == 1) {
+                    var options = response.Data;
+                    var other = "";
+                    other = other + " <option value='" + options.LookQualificationId + "'>" + options.QualificationName + "</option>";
+                    $("#LookQualificationId").append(other);
+                    $("#QualificationName").val("");
+                } else if (response.ResultType == 2) {
+                    alert(response.Message);
+
+                } else {
+                    alert("Exception Occured");
+                    // window.location.href = "@Url.Action("No505","Error")";
+                }
+            },
+            error: function (response) {
+                debugger;
+                alert("Ajax Call Error...")
+                // window.location.href = "@Url.Action("No505","Error")";
+            }
+        });
+    }
+
+    function AddOrganization() {
+        var program = new Object();
+        program.OrganizationName = $("#OrganizationName").val();
+        program.OrganizationURL = $("#OrganizationURL").val();
+        $.ajax({
+            url: '/Organization/CreateOrganization',
+            type: 'POST',
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify(program),
+            success: function (response) {
+                debugger;
+                if (response.Data != null && response.ResultType == 1) {
+                    var options = response.Data;
+                    //var first = "<option value=''>--Please Select Qualification--</option>";
+                    var other = "";
+                    var other = " <option value='" + options.LookOrganizationId + "'>" + options.OrganizationName + "</option>";
+                    $("#LookOrganizationId").append(other);
+                    $("#LookOrganizationName").val("");
+                    $("#LookOrganizationURL").val("");
+                } else if (response.ResultType == 2) {
+                    alert(response.Message);
+
+                } else {
+                    alert("Exception Occured");
+                    // window.location.href = "@Url.Action("No505","Error")";
+                }
+            },
+            error: function (response) {
+                debugger;
+                alert("Ajax Call Error");
+                //window.location.href = "@Url.Action("No505","Error")";
+            }
+        });
+    }
+    $(document).ready(function () {
+        $.mask.definitions['~'] = "[+-]";
+        $(".Time").mask("99:99:99", {});
+        $(".Mobile").mask("9999-9999999");
+        $(".cinc").mask("99999-9999999-9");
+        $(".phone").mask("999-99999999");
+    });
+
+
+    /* $(document).off("change", "#resumeChange").on("change", "#resumeChange", function (event) {
+        // event.preventDefault();
+
+
+
+     });*/
+    // just for the demos, avoids form submit
+    /*  jQuery.validator.setDefaults({
+          debug: true,
+          success: "valid"
+      });*/
+
+
+    $("#frmInsert").validate({
+
+        errorPlacement: function (error, element) {
+            $("#" + element.attr("name") + "-error").text(error);
+        },
+        rules: {
+            FirstName: {
+                required: true
+            },
+            FullName: {
+                required: true
+            },
+            Email: {
+                required: true
+            }
+        },
+        //message: {
+        //    FirstName: {
+        //        required: '*'
+        //    }
+
+        //},
+        submitHandler: function (form) {
+            form.submit();
+        }
+
+
+
+    });
+   
+    
+</script>
+

@@ -1,0 +1,4 @@
+D:\HRM-MAIN\HRMDEV\Data.Configuration\bin\Debug\Data.Configuration.dll
+D:\HRM-MAIN\HRMDEV\Data.Configuration\bin\Debug\Data.Configuration.pdb
+D:\HRM-MAIN\HRMDEV\Data.Configuration\obj\Debug\Data.Configuration.dll
+D:\HRM-MAIN\HRMDEV\Data.Configuration\obj\Debug\Data.Configuration.pdb

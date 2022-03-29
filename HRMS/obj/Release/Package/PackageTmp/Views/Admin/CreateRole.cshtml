@@ -1,0 +1,56 @@
+﻿@model Data.HRMS.Role
+@{
+    ViewBag.Title = "CreateRole";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+<div class="content-wrapper">
+    <h3>
+        Add Role
+    </h3>
+    <div class="row">
+        <div class="col-sm-6 col-lg-offset-3">
+            <!-- START panel-->
+            <div class="panel panel-default">
+                <div class="panel-heading">Add Role info</div>
+                <div class="panel-body">
+                    @using (Html.BeginForm("CreateRole", "Admin", FormMethod.Post, new { role = "form", id = "frmInsert" }))
+                    {
+                        <div class="form-group">
+                            <label>Role Name<span class='required'>*</span></label>
+                            @* <input type="email" placeholder="Department Name" class="form-control">*@
+                            @Html.TextBoxFor(m => m.Name, new { @class = "form-control", placeholder = "Role Name" })
+                            @Html.HiddenFor(m => m.RoleId)
+                        </div>
+                        <div class="col-sm-12 text-center">
+                            @* <button type="submit" class="btn btn-sm btn-primary">Submit</button>*@
+                            <input type="submit" class="btn btn-sm btn-primary" value="Save" />
+                        </div>
+
+                    }
+                </div>
+            </div>
+            <!-- END panel-->
+        </div>
+
+    </div>
+</div>
+<script>
+    // just for the demos, avoids form submit
+    jQuery.validator.setDefaults({
+        debug: true,
+        success: "valid"
+    });
+    $("#frmInsert").validate({
+        rules: {
+            Name: {
+                required: true
+            }
+        },
+        submitHandler: function (form) {
+            form.submit();
+        }
+    });
+</script>
+

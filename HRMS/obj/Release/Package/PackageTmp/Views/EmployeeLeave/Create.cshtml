@@ -1,0 +1,376 @@
+﻿@model VM.HRMS.EmployeeAppliedLeaveViewModel
+@using Library.Lookups;
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+
+<div class="content-wrapper">
+    <h3>
+        Add EmployeeLeave
+    </h3>
+    <div class="row">
+        <div class="col-sm-10 col-lg-offset-1">
+            <!-- START panel-->
+            <div class="panel panel-default">
+                <div class="panel-heading">Add Department info</div>
+                <div class="panel-body">
+                    @using (Html.BeginForm("Create", "EmployeeLeave", FormMethod.Post, new { role = "form", id = "frmInsert" }))
+                    {
+                        <div class="form-group">
+                            <label>Employee Name:</label>
+                            <span style="margin-left: 15px;">
+                                @Model.Email
+                            </span>
+
+                        </div>
+                        <div class="form-group">
+                            <label>Employee Key:</label>
+                            <span style="margin-left: 15px;">
+                                @Model.EmployeeNum
+                            </span>
+
+                        </div>
+
+                        <div class="form-group">
+                            @{
+                                if (ViewBag.ShiftTimePolicy != null )
+                                {
+                                    int counter = 0;
+                                    foreach (var item in ViewBag.ShiftTimePolicy)
+                                    {
+                                        counter++;
+                                    <label>@item.PolicyName:</label>
+                                    <span id="ShiftTimePolicy_@counter" style="margin-left: 15px;margin-right: 30px;">
+                                        @item.EmployeePolicyValue
+                                    </span>
+
+                                    }
+                                }
+                                }
+
+
+                        </div>
+
+                        <div class="form-group" style="margin-bottom:60px">
+                            <label>Select Leave Type<span class='required'>*</span></label>
+                            <select class="form-control valid col-sm-6" data-val="true" data-val-number="The field LookDepartmentId must be a number." id="EmployeePolicyId" name="EmployeePolicyId" placeholder="Department" aria-required="true" aria-invalid="false">
+                                <option value="" policyUnit="" policyLimit="">--- Select Leave Type ---</option>
+                                @{
+                                    if (ViewBag.LeavePolicy != null)
+                                    {
+                                        foreach (var item in ViewBag.LeavePolicy)
+                                        {
+                                    <option value="@item.EmployeePolicyId" policyUnit="@item.PolicyUnit" LookPolicyId="@item.LookPolicyId" policyLimit="@item.EmployeePolicyValue" employeePolicyId="@item.EmployeePolicyId">@item.PolicyName</option>
+                                            }
+                                        }
+                                    }
+                            </select>
+                            <span id="empPolicy" style="display:none" class="error" > Select Leave Type
+                            </span>
+                            @Html.HiddenFor(m => m.PolicyName)
+                            @Html.HiddenFor(m => m.LookPolicyId)
+                            @Html.HiddenFor(m => m.PolicyUnit)
+                            @Html.HiddenFor(m => m.CurrentshortLeaves)
+                            @Html.HiddenFor(m => m.CurrentHalfLeaves)
+                            @Html.HiddenFor(m => m.CurrentLeaves)
+
+
+
+                            @* <input type="email" placeholder="Department Name" class="form-control">*@
+                            @*@Html.TextBoxFor(m => m.DepartmentName, new { @class = "form-control", placeholder = "EmployeeLeave" })
+                                @Html.HiddenFor(m => m.LookDepartmentId)*@
+                        </div>
+                        <div class="form-group">
+                            <label style="display:none">Plolicy Value</label>
+                            <span id="policyLimit">
+                            </span>
+                            <span id="policyUnit" class="policyUnit">
+                            </span>
+
+                        </div>
+                        <div class="form-group">
+                            <label style="display:none">Plolicy Value(availed)</label>
+                            <span id="policyAvailed">
+                            </span>
+                            <span class="policyUnit">
+                            </span>
+
+                        </div>
+
+                        <div class="col-sm-6" style="padding-left: 0px;">
+                            <div class="form-group">
+                                <label class="control-label"> Leave From date</label>
+                                <div id="datetimepicker1" class="input-group date">
+                                    @*@if (Model.LeaveFromDate.IsNullOrEmpty())
+                                            {
+                                                <input class="form-control" data-val="true" id="LeaveFromDate" name="LeaveFromDate" type="text" value="@DateTime.Now">
+                                            }
+                                            else
+                                            {
+                                        @Html.TextBoxFor(m => m.LeaveFromDate, new { @class = "form-control", @id = "LeaveFromDate" })
+                                        }*@
+
+                                    <input class="form-control" data-val="true" id="LeaveFromDate" name="LeaveFromDate" type="text" value="@DateTime.Now">
+
+                                    <span class="input-group-addon">
+                                        <span class="fa fa-calendar"></span>
+                                    </span>
+                                </div>
+                                <span id="spLeaveFromDate" class="error dateError">   </span>
+
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="control-label"> Leave To date</label>
+                                <div id="datetimepicker1_1" class="input-group date">
+                                    @*@if (Model.LeaveToDate.IsNullOrEmpty())
+                                        {
+                                         <input class="form-control" data-val="true" id="LeaveToDate" name="LeaveToDate" type="text" value="@DateTime.Now">
+                                        }
+                                        else
+                                        {
+                                        @Html.TextBoxFor(m => m.LeaveToDate, new { @class = "form-control", @id = "LeaveToDate" })
+                                        }*@
+                                    <input class="form-control" data-val="true" id="LeaveToDate" name="LeaveToDate" type="text" value="@DateTime.Now">
+
+
+                                    <span class="input-group-addon">
+                                        <span class="fa fa-calendar"></span>
+                                    </span>
+                                </div>
+                                <span id="spLeaveToDate" class="error dateError" style="">   </span>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Leave Applied</label>
+                            <span id="LeaveApplied">
+                            </span>
+                          
+
+                        </div>
+
+                        <div class="col-sm-12 text-center">
+                            @* <button type="submit" class="btn btn-sm btn-primary">Submit</button>*@
+                            <input type="button" id="SaveLeave" class="btn btn-sm btn-primary" value="Save" />
+                        </div>
+
+                                }
+                </div>
+            </div>
+            <!-- END panel-->
+        </div>
+
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        var ShortLeavePolicyId=@Convert.ToInt64(EnumLeavePolicy.ShortLeave)
+        var HalfLeavePolicyId=@Convert.ToInt64(EnumLeavePolicy.HalfLeave)
+
+        $(document).off("click", "#SaveLeave").on("click", "#SaveLeave", function (event) {
+            event.preventDefault();
+            debugger;
+            
+            var check=true;
+            if( !$.trim($("#EmployeePolicyId").val()) || $.trim($("#EmployeePolicyId").val()) == '0'){
+               check = false;
+            }else if( !$.trim($("#PolicyName").val()) || $.trim($("#PolicyName").val()) == '0'){
+               check = false;
+            }
+            else if( !$.trim($("#LookPolicyId").val()) || $.trim($("#LookPolicyId").val()) == '0'){
+                toastr.error('Please select date.');check = false;return check;
+            }
+            else if( !$.trim($("#PolicyUnit").val()) || $.trim($("#PolicyUnit").val()) == '0'){
+                check = false;
+            }
+
+            if(dateValidation==true && check==true)
+                $( "#frmInsert" ).submit();
+            else{
+                empPolicy
+                $("#empPolicy").show();
+            }
+        });
+        var dateValidation = false;
+        $(document).off("change", "#EmployeePolicyId").on("change", "#EmployeePolicyId", function (event) {
+
+            $("#PolicyName").val($("#EmployeePolicyId option:selected").text());
+            $("#LookPolicyId").val($("#EmployeePolicyId option:selected").attr('LookPolicyId'));
+            $("#PolicyUnit").val($("#EmployeePolicyId option:selected").attr('policyUnit'));
+
+            leaveDateValidation();
+
+        });
+        $(document).off("blur", "#LeaveFromDate").on("blur", "#LeaveFromDate", function (event) {
+            leaveDateValidation();
+        });
+        $(document).off("blur", "#LeaveToDate").on("blur", "#LeaveToDate", function (event) {
+            leaveDateValidation();
+        });
+        function leaveCount() {
+
+            var EmpLeave = new Object();
+            // LookPolicyId
+            //EmpLeave.Email=
+            //EmpLeave.AvailedLeave { get; set; }
+            EmpLeave.EmployeePolicyId = $('#EmployeePolicyId').val();
+            EmpLeave.PolicyUnit= $("#PolicyUnit").val();
+            EmpLeave.LookPolicyId = $("#LookPolicyId").val();
+
+            // EmpLeave.EmployeeNum="";
+            // EmpLeave.PolicyName="";
+            EmpLeave.LeaveFromDate = $('#LeaveFromDate').val();
+            EmpLeave.LeaveToDate = $('#LeaveToDate').val();
+
+            $.ajax({
+                url: '/EmployeeLeave/LeaveCount',
+                type: 'POST',
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(EmpLeave),
+                success: function (response) {
+                    debugger;
+                    var response=response.Data;
+                    var shortleave=parseInt(response.TotalShortLeave)-parseInt(response.AvailedShortLeave);
+                    var Halfleave=parseInt(response.TotalHalfLeave)-parseInt(response.AvailedHalfLeave);
+                    var fullleave=parseInt(response.TotalFullLeave)-parseInt(response.AvailedFullLeave);
+                    
+
+                    if(ShortLeavePolicyId==EmpLeave.LookPolicyId || HalfLeavePolicyId==EmpLeave.LookPolicyId  ) {
+                       
+                        $('#LeaveApplied').html('<br/><b>Current Short Leave:</b> ' + response.CurrentShortLeave + '<b>            Availed Short Leave:</b>' + response.AvailedShortLeave + '<b>            Total Short Leave:</b>' + response.TotalShortLeave +
+                                          '<br/><b>Current Half Leave:</b>' + response.CurrentHalfLeave + '<b>            Availed Half Leave:</b>' + response.AvailedHalfLeave + '<b>            Total Half Leave:</b>' + response.TotalHalfLeave );
+               
+                    }else {
+                        $('#LeaveApplied').html('<br/><b>Current Short Leave:</b> ' + response.CurrentShortLeave + '<b>            Availed Short Leave:</b>' + response.AvailedShortLeave + '<b>            Total Short Leave:</b>' + response.TotalShortLeave +
+                                        '<br/><b>Current Half Leave:</b>' + response.CurrentHalfLeave + '<b>            Availed Half Leave:</b>' + response.AvailedHalfLeave + '<b>            Total Half Leave:</b>' + response.TotalHalfLeave +
+                                        '<br/><b>Current Full Leaves:</b> ' + response.CurrentFullLeave + '<b>            Availed Full Leave:</b>' + response.AvailedFullLeave + '<b>            Total Full Leave:</b>' + response.TotalFullLeave + '<br/>');
+               
+                         }
+                    if(response.CurrentShortLeave>shortleave || response.CurrentHalfLeave>Halfleave || response.CurrentFullLeave>fullleave){
+                        dateValidation=false;
+                        $('#LeaveApplied').addClass('error');
+                    }
+                   
+                    $('#CurrentshortLeaves').val(response.CurrentShortLeave);
+                    $('#CurrentHalfLeaves').val(response.CurrentHalfLeave);
+                    $('#CurrentLeaves').val(response.CurrentFullLeave);
+
+                },
+                error: function (response) {
+                    debugger;
+                    alert("Ajax Call Error");
+                    //window.location.href = "@Url.Action("No505","Error")";
+                }
+            });
+        }
+        function leaveDateValidation() {
+            debugger;
+            var dfrom = new Date();
+            var dto = new Date();
+            var fromDate = $('#LeaveFromDate').val();
+            var ToDate = $('#LeaveToDate').val();
+            var ShiftTimePolicy_in = $.trim($('#ShiftTimePolicy_1').html());
+            var ShiftTimePolicy_out = $.trim($('#ShiftTimePolicy_2').html());
+            dfrom = fromDate;
+            dto = ToDate;
+            var dfromt = new Date(dfrom);
+            var dtot = new Date(dto);
+            var diff = new Date(dtot - dfromt);
+            var days = diff / 1000 / 60 / 60; /// 24;
+
+            var LookPolicyId = $("#LookPolicyId").val();
+            if(LookPolicyId==ShortLeavePolicyId || LookPolicyId==HalfLeavePolicyId ){
+                if(days>6){
+                    $('.dateError').show();
+                    $('#LeaveApplied').html('');
+                    $('#spLeaveFromDate').html('time differnce must be less then 6 hours');
+                    $('#spLeaveToDate').html('time differnce must be less then 6 hours');
+                    dateValidation = false;
+
+                }
+
+            }
+
+            if (days > 0) {
+                dateValidation = true;
+                $('.dateError').hide();
+                /*
+                var difffromIn = (new Date("1970-1-1 " + dfromt.getHours() + ":" + dfromt.getMinutes() + ":00") - new Date("1970-1-1 " + ShiftTimePolicy_in)) / 1000 / 60 / 60;
+                var difffromOut = (new Date("1970-1-1 " + ShiftTimePolicy_out) - new Date("1970-1-1 " + dfromt.getHours() + ":" + dfromt.getMinutes() + ":00")) / 1000 / 60 / 60;
+                var hourFromLeave = Math.floor(difffromOut);
+                var minFromLeave = Math.floor((difffromOut - hourFromLeave) * 60);
+                var finalFromLeave = Math.floor(days / 24);
+                if (hourFromLeave >= 9 || hourFromLeave<0) {
+                    finalFromLeave = finalFromLeave + 1;
+                    hourFromLeave = 0;
+                    minFromLeave = 0;
+                }
+
+                var diffToIn = (new Date("1970-1-1 " + dtot.getHours() + ":" + dtot.getMinutes() + ":00") - new Date("1970-1-1 " + ShiftTimePolicy_in)) / 1000 / 60 / 60;
+                var diffToOut = (new Date("1970-1-1 " + ShiftTimePolicy_out) - new Date("1970-1-1 " + dtot.getHours() + ":" + dtot.getMinutes() + ":00")) / 1000 / 60 / 60;
+                var hourToLeave = Math.floor(diffToOut);
+                var minToLeave = Math.floor((diffToOut - hourToLeave) * 60);
+                var finalToLeave = Math.floor(days / 24);
+                hourToLeave = 0;
+                if (diffToOut > 0) {
+                    finalToLeave = finalFromLeave - 1
+                    finalFromLeave = finalToLeave;
+                    hourToLeave = 8 - diffToOut;
+                    minToLeave = 0;
+                }
+                */
+                leaveCount();
+
+            } else {
+                $('.dateError').show();
+                $('#LeaveApplied').html('');
+                $('#spLeaveFromDate').html('From date must be less then todate ');
+                $('#spLeaveToDate').html('Todate must be greater then fromdate ');
+                dateValidation = false;
+            }
+        }
+    });
+
+
+
+</script>
+
+<script>
+    // just for the demos, avoids form submit
+    //jQuery.validator.setDefaults({
+    //    debug: true,
+    //    success: "valid",
+    //    submitHandler: function (form) {
+    //        if(dateValidation==true)
+    //            form.submit();
+    //    }
+    //});
+    //$("#frmInsert").validate({
+    //    rules: {
+    //        EmployeePolicyId: {
+    //            required: true
+    //        },
+    //        PolicyName: {
+    //            required: true
+    //        },
+    //        LookPolicyId: {
+    //            required: true
+    //        },
+    //        PolicyUnit: {
+    //            required: true
+    //        }
+
+    //    }
+    //});
+</script>

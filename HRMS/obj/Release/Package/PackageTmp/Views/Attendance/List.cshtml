@@ -1,0 +1,379 @@
+﻿@model VM.HRMS.FilteredAttendanceViewModel
+@using Library.Lookups.Enums;
+@using Library.Core;
+@using Library.Extensions;
+@using Library.Core.Services;
+@using VM.HRMS;
+@using Services.Look;
+@{
+    ViewBag.Title = "Attendance";
+    long EmployeeId = 0;
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+    var leaveStatus = LookLeaveService.GetActiveLeaveStatus();
+    SelectList SelEmployees = null;
+    SelectList EmployeesSubOrdinate = null;
+    if (leaveStatus.IsNotNull() && leaveStatus.Data.CountedPositive())
+    {
+        SelEmployees = new SelectList(leaveStatus.Data.Where(x => x.AccessGroupId == 1).ToListSafely(), "LookLeaveStatusId", "RequestStatus");
+        EmployeesSubOrdinate = new SelectList(leaveStatus.Data, "LookLeaveStatusId", "RequestStatus");
+    }
+    if (Model.IsNotNull() && Model.EmployeeId.IsNotNull())
+    {
+        EmployeeId = Model.EmployeeId;
+    }
+}
+<style>
+    .boxStatus { padding-left: 5px; padding-right: 7px; border-radius: 4px; color: #ffff; padding-top: 1px; padding-bottom: 1px; }
+    .Color-Missing { background-color: #df581d; }
+    .Color-Absent { background-color: #f32408; }
+    .Color-Holiday { background-color: #f38508; }
+    .Color-shorttime { background-color: #df1db0; }
+    .Color-Editted { background-color: #0c08eb; }
+    .red-star { color: red; }
+</style>
+<div class="content-wrapper">
+    <h3>
+        Attendance
+    </h3>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    ApplicantListInfo
+                </div>
+                <div class="panel-body">
+                    <div class="">
+                        @using (Html.BeginForm("List", "Attendance", FormMethod.Post))
+                        {
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="">Employee</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="icon-user-following"></i></span> @*data-live-search="true"*@
+                                        @if (ViewBag.EmployeesWithDepartment == null)
+                                        {
+                                            if (ViewBag.Employees != null)
+                                            {
+                                            @Html.DropDownListFor(m => m.EmployeeId, ViewBag.Employees as SelectList, new { @class = "form-control", required = "required", id = "EmployeeId" })
+                                            }
+                                        }
+                                        else
+                                        {
+                                            var employeelist = ViewBag.EmployeesWithDepartment as List<EmployeeViewModel>;
+                                            var departmentlist = employeelist.DistinctBy(x => x.DepartmentName).OrderBy(a => a.DepartmentName).Select(x => x.DepartmentName).ToArray();
+                                            <select class="form-control" data-val="true" data-val-number="The field EmployeeId must be a number." data-val-required="The EmployeeId field is required." id="EmployeeId" name="EmployeeId" required="required">
+                                                @foreach (var ittem in departmentlist)
+                                                {
+
+                                                    var emplist = employeelist.Where(x => x.DepartmentName == ittem).ToListSafely();
+                                                    if (emplist.CountedPositive())
+                                                    {
+                                                        var ok = ittem;
+                                                        if (ittem.IsNull())
+                                                        {
+                                                            ok = "No Department";
+                                                        }
+
+                                                        <optgroup label="@ok">
+                                                            @foreach (var empitem in emplist)
+                                                            {
+                                                                <option value="@empitem.EmployeeId" @if (EmployeeId == empitem.EmployeeId) { @("selected")} >@empitem.FullName</option>
+                                                            }
+                                                        </optgroup>
+
+                                                    }
+                                                }
+                                            </select>
+                                        }
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="">From</label>
+                                    <div id="datetimepicker1" class="input-group date">
+                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                        @Html.TextBoxFor(m => m.From, new { @class = "form-control", required = "required", id = "From" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="">To</label>
+                                    <div id="datetimepicker1_1" class="input-group date">
+                                        <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                                        @Html.TextBoxFor(m => m.To, new { @class = "form-control", required = "required", id = "To" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-md-offset-1">
+                                <div style="margin-top:25px">
+                                    <button type="submit" class="btn btn-primary pull-right"><i class="fa fa-search"></i>  Search</button>
+                                </div>
+                            </div>
+                        }
+                    </div>
+
+                    <table id="datatable1" class="table table-striped table-hover">
+
+                        <thead>
+                            <tr>
+                                <th>S.NO.</th>
+                                <th>Day</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                                <th>Time In</th>
+                                <th>Time Out</th>
+                                <th>Hours</th>
+                                <th>Action</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model.Attendance.CountedPositive())
+                            {
+                                //   var ok = ViewBag.Policy as Result<List<HRPolicyViewModelNew>>;
+                                var count = 0;
+                                var mindate = Model.Attendance.Min(x => x.InDateOnly) ?? DateTime.Now;
+                                var mxndate = Model.Attendance.Max(x => x.InDateOnly) ?? DateTime.Now;
+                                //foreach (DateTime day in SharedUtilities.EachDay(mindate, mxndate))
+                                //{
+                                //    int hours = 0;
+
+                                //    var item = Model.Attendance.Where(x => x.InDateOnly == day).FirstOrDefault();
+
+                                foreach (var item in Model.Attendance)
+                                {
+                                    if (item.LogDate <= DateTime.Now)
+                                    {
+                                        bool flag = false;
+                                        int hours = 0;
+                                        if (item.IsNotNull() && item.TotalMinutes.IsNotNull())
+                                        {
+                                            hours = (int)Math.Floor((float)item.TotalMinutes / 60);
+                                        }
+                                        count = count + 1;
+
+                                        <tr class="gradeX">
+                                            <td>@count</td>
+                                            <td>   @item.DayCaption</td>
+
+                                            <td>@item.LogDate.Value.ToString("dd-MMM-yyyy")</td>
+                                            <td>
+                                                @if (item.TotalMinutes.IsNotNull() && item.PolicyValue.IsNotNullOrEmpty())
+                                                {
+                                                    if (hours == 0 && item.TimeIn.IsNull() && item.TimeOut.IsNull() && Convert.ToDouble(item.PolicyValue) > 0)
+                                                    {
+                                                        flag = true;
+
+                                                        @Html.Raw("<span class=\"boxStatus Color-Absent\">Absent</span>")
+                                                    }
+                                                    else if (item.PolicyValue.IsNotNullOrEmpty() && Convert.ToDouble(item.PolicyValue) > hours)
+                                                    {
+                                                        if (item.TimeIn.IsNotNull() && item.TimeOut.IsNotNull() && (item.TimeIn == item.TimeOut || hours == 0))
+                                                        {
+                                                            @Html.Raw("<span class=\"boxStatus Color-Missing\">in or out missing</span>")
+                                                        }
+                                                        else
+                                                        {
+                                                            if ((Convert.ToDouble(item.PolicyValue) - 1) > hours)
+                                                            {
+                                                                flag = true;
+                                                            }
+                                                            @Html.Raw("<span  class=\"boxStatus Color-shorttime\">Short Time</span>")
+
+                                                        }
+                                                    }
+                                                    else
+                                                    { @("Present")
+
+                                                }
+
+                                            }
+                                            else if (item.TotalMinutes.IsNull() && item.PolicyValue.IsNotNullOrEmpty())
+                                            {
+                                                if (Convert.ToDouble(item.PolicyValue) > 0)
+                                                {
+                                                    flag = true;
+                                                    if (item.TimeIn.IsNull() && item.TimeOut.IsNotNull())
+                                                    {
+                                                        @Html.Raw("<span class=\"boxStatus Color-Missing\">in time missing</span>")
+                                                    }
+                                                    else if (item.TimeOut.IsNull() && item.TimeIn.IsNotNull())
+                                                    {
+                                                        @Html.Raw("<span class=\"boxStatus Color-Missing\">out time missing</span>")
+                                                    }
+                                                    else
+                                                    {
+                                                        @Html.Raw("<span class=\"boxStatus Color-Absent\">Absent</span>")
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    @Html.Raw("<span class=\"boxStatus Color-Holiday\">Weekend/holiday</span>")
+                                                }
+                                            }
+                                            else if (item.PolicyValue.IsNullOrEmpty() && item.TotalMinutes.IsNotNull() && item.TotalMinutes > 0)
+                                            {
+                                                @Html.Raw("<span class=\"boxStatus Color-Absent\">Policy not Available/Extra Hours</span>")
+                                            }
+                                            </td>
+                                            <td>
+                                                <span class="@if (item.InIsEdit == true){ @("boxStatus Color-Editted")}" title="@if (item.InIsEdit == true){ @("Manually entered")}">
+                                                    @if (item.IsNotNull() && item.TimeIn.IsNotNull())
+                                                    {
+
+                                                        try
+                                                        {
+                                                            @item.TimeIn.Value.ToString("MM-dd-yyyy hh:mm tt")
+
+                                                        }
+                                                        catch
+                                                        {
+
+                                                            @Html.DisplayFor(modelItem => item.TimeIn)
+                                                        }
+
+                                                    }
+                                                </span>
+                                                @if (item.InIsEdit == true)
+                                                {@Html.Raw(" <span class=\"red-star\">★</span>")}
+
+                                            </td>
+                                            <td>
+
+                                                <span class="@if (item.OutIsEdit == true){ @("boxStatus Color-Editted")}" title="@if (item.OutIsEdit == true){ @("Manually entered")}">
+                                                    @if (item.IsNotNull() && item.TimeOut.IsNotNull())
+                                                    {
+
+                                                        try
+                                                        {
+                                                            @item.TimeOut.Value.ToString("MM-dd-yyyy hh:mm tt")
+                                                        }
+                                                        catch
+                                                        {
+                                                            @Html.DisplayFor(modelItem => item.TimeOut)
+                                                        }
+
+                                                    }
+
+                                                </span>
+                                                @if (item.OutIsEdit == true)
+                                                {@Html.Raw(" <span class=\"red-star\">★</span>")}
+                                            </td>
+                                            <td>
+                                                @if (item.IsNotNull() && item.TotalMinutes.IsNotNull())
+                                                {
+                                                    @( hours + ":" + (item.TotalMinutes - hours * 60))
+                                                }
+                                            </td>
+                                            <td class="table_action">
+                                                @if (flag)
+                                                {
+                                                    if (item.EmployeeId == Convert.ToInt64(HttpContext.Current.Session["EmployeeId"]))
+                                                    {
+                                                        @Html.DropDownListFor(m => m.EmployeeId, SelEmployees, "-- Select Leave --", new { @class = "form-control", required = "required", id = "EmployeeId" })
+                                                    }
+                                                    else
+                                                    {
+                                                        @Html.DropDownListFor(m => m.EmployeeId, EmployeesSubOrdinate, "-- Select Leave --", new { @class = "form-control", required = "required", id = "EmployeeId" })
+
+                                                    }
+                                                }
+                                                <button class="btn btn-primary btn-lg show-detail" data-toggle="modal" data-target="#myModal" dd="@item.LogDate.Value.ToString("yyyy-MM-dd")" bio="@item.BiometricId">
+                                                    <em class="icon-eye" style="font-size: 18px;"></em>
+                                                </button>
+                                                @*<a href="#myModal" title="Edit Applicant Detail" data-toggle="modal" data-target="#myModal"><em class="icon-note" style="font-size: 18px;"></em>Detail</a>*@
+                                                @*<em class="delete_record icon-close" title="Delete Applicant" style="font-size:18px;color:red" rel="51"></em>*@
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+    $(function () {
+        $("#EmployeeId").change(function () {
+            var employeeId = $("#EmployeeId").val();
+
+            // location.href = "@Url.Action("List","Attendance")?employee=" + employeeId;
+        })
+        var ajaxRequest = "";
+        $(document).off("click", ".show-detail").on("click", ".show-detail", function (event) {
+            var obj = new Object();
+            obj.BioMetricId = $(this).attr("bio");
+            obj.LogDate = $(this).attr("dd");
+            ajaxRequest = $.ajax({
+                url: '/Attendance/AttendanceByBId',
+                type: 'POST',
+                data: JSON.stringify(obj),
+                contentType: 'application/json; charset=utf-8',
+                cache: false,
+                async: true,
+                beforeSend: function () {
+                      if (ajaxRequest != null) {
+                      //  ajaxRequest.abort();
+                    }
+                },
+                success: function (response) {
+                    $("#myModal .modal-body").html(response);
+
+                },
+                error: function (xhr, status, exception) {
+
+                }
+            });
+        });
+        $(document).off("click", "#updateTime").on("click", "#updateTime", function (event) {
+            var bioid = $(this).attr("biom");
+            var ldate = $(this).attr("ldate");
+            var LogTime = $("#newRecordDateTme").val();
+            var InOutStatusId = $("#newInOut").val();
+            debugger;
+            var obj = new Object();
+            obj.BioMetricId = bioid;
+            obj.LogDate = ldate;
+            obj.LogTime = LogTime;
+            obj.InOutStatusId = InOutStatusId;
+
+            ajaxRequest = $.ajax({
+                url: '/Attendance/UpdateAttendanceByBId',
+                type: 'POST',
+                data: JSON.stringify(obj),
+                contentType: 'application/json; charset=utf-8',
+                cache: false,
+                async: true,
+                beforeSend: function () {
+                    if (ajaxRequest != null) {
+                        //  ajaxRequest.abort();
+                    }
+                },
+                success: function (response) {
+                    $("#myModal .modal-body").html(response);
+
+
+                },
+                error: function (xhr, status, exception) {
+
+                }
+            });
+
+        });
+    });
+</script>

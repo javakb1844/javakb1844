@@ -1,0 +1,688 @@
+﻿@model Services.HRMS.DropDownListClass
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+@*<script src="~/static/admin/theme1/vendor/jquery/dist/jquery.js"></script>
+
+    <script src="~/static/admin/theme1/js/demo-rtl.js"></script>
+    <!-- JQUERY STEPS-->
+
+    <script src="~/static/admin/theme1/vendor/jquery.steps/build/jquery.steps.js"></script>
+    <script src="~/static/admin/theme1/js/demo-wizard.js"></script>
+    <script src="~/static/admin/theme1/vendor/jquery-validation/dist/jquery.validate.js"></script>
+
+*@
+<section>
+    <!-- Page content-->
+    <div class="content-wrapper">
+        <h3>Add Employee</h3>
+        <div class="panel panel-default">
+            <div class="col-sm-12">
+                <div class="panel-heading col-sm-6">
+                    Add Employee Info
+                   
+                </div>
+                <div >
+                    <select class="form-control" data-val="true" style="float: right;  width: 200px; margin-top: 5px; display:none" data-val-number="The field LookDesignationId must be a number." id="Gender" name="Gender" placeholder="M,F,N">
+                        <option value="1">Potrait Mode</option>
+                        <option value="2">Tab Mod</option>
+                    </select>
+
+                </div>
+            </div>
+            <div class="panel-body">
+                @*<form id="example-form" action="#">*@
+                @using (Html.BeginForm("Create", "Employee", FormMethod.Post, new { id = "example-form", enctype = "multipart/form-data" }))
+                {   
+                    <div class="col-sm-3 first current">
+                        <span style="font-size:23px">1.</span>Add Bio data<br />
+                        <small style="font-weight:normal;">Nam egestas, leo eu gravida tincidunt</small>
+                    </div>
+                    <div class="col-sm-3 first">
+                        <span style="font-size:23px">2.</span>Profile<br />
+                        <small style="font-weight:normal;color:#909fa7">Nam egestas, leo eu gravida tincidunt</small>
+                    </div>
+                    <div class="col-sm-3 first">
+                        <span style="font-size:23px">3.</span>Education<br />
+                        <small style="font-weight:normal;color:#909fa7">Nam egestas, leo eu gravida tincidunt</small>
+                    </div>
+                    <div class="col-sm-3 first">
+                        <span style="font-size:23px">4.</span>Experience<br />
+                        <small style="font-weight:normal;color:#909fa7">Nam egestas, leo eu gravida tincidunt</small>
+                    </div>
+                    <div class="col-sm-12">
+                        <h4>
+                            Bio Info
+                            <br>
+                            <small>Add Bio data</small>
+                        </h4>
+
+                        <fieldset>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>First Name<span class='required'>*</span></label>
+                                    @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", placeholder = "First Name" })
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Last Name</label>
+                                    @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", placeholder = "Last Name" })
+
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Father Name <span class='required'>*</span></label>
+                                    @Html.TextBoxFor(m => m.FatherName, new { @class = "form-control", placeholder = "Father Name" })
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Husband Name <span class='required'>*</span></label>
+                                    @Html.TextBoxFor(m => m.HusbandName, new { @class = "form-control", placeholder = "Husband Name" })
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Full Name <span class='required'>*</span></label>
+                                    @Html.TextBoxFor(m => m.FullName, new { @class = "form-control", placeholder = "Full Name" })
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Email<span class='required'>*</span></label>
+                                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email" })
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Mobile No<span class='required'>*</span></label>
+                                    @Html.TextBoxFor(m => m.MobileNo, new { @class = "form-control", placeholder = "Mobile No" })
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Conatct Info</label>
+                                    @Html.TextBoxFor(m => m.ConatctInfo, new { @class = "form-control", placeholder = "Conatct Info" })
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>CNIC</label>
+                                    @Html.TextBoxFor(m => m.CNIC, new { @class = "form-control", placeholder = "Cnic" })
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Marital Status</label>
+                                    @Html.TextBoxFor(m => m.MaritalStatus, new { @class = "form-control", placeholder = "Martial Status" })
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Present Address</label>
+                                    @Html.TextBoxFor(m => m.PresentAddress, new { @class = "form-control", placeholder = "Present Address" })
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Permanent Address</label>
+                                    @Html.TextBoxFor(m => m.PermanentAddress, new { @class = "form-control", placeholder = "Permanent Address" })
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Gender<span class='required'>*</span></label>
+                                    @* @Html.RadioButtonFor(m => m.Gender, new { @class = "form-control", placeholder = "Gender" })*@
+                                    @*@Html.RadioButtonFor(x => x.Gender, "M")*@
+                                    <select class="form-control" data-val="true" data-val-number="The field LookDesignationId must be a number." id="Gender" name="Gender" placeholder="M,F,N">
+                                        <option value="">--Please Select M,F, N --</option>
+                                        <option value="M">M</option>
+                                        <option value="F">F</option>
+                                        <option value="N">N</option>
+                                        </select>
+
+                                </div>
+                            </div>
+                            @*<div class="col-sm-6">
+
+
+                                    <div class="form-group ">
+                                        <label class="col-sm-2 control-label ">DateTimePicker</label>
+                                        <div class="col-sm-10">
+                                            <div id="datetimepicker1" class="input-group date">
+                                                @Html.TextBoxFor(m => m.DateOfBirth, new { @class = "form-control", placeholder = "Date Of Birth" })
+                                                <span class="input-group-addon">
+                                                    <span class="fa fa-calendar"></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>*@
+
+                            @*<div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Date Of Birth</label>
+                                    <div id="datetimepicker1" class="input-group date" style="">
+                                        @Html.TextBoxFor(m => m.DateOfBirth, new { @class = "form-control", placeholder = "Date Of Birth" })                                       
+                                        <span class="input-group-addon"> <span class="fa fa-calendar"></span> </span>
+                                    </div>
+
+                                </div>
+                            </div>*@
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="control-label"> Date Of Birth</label>                                           
+                                                <div id="datetimepicker1" class="input-group date">                                                 
+                                                    @Html.TextBoxFor(m => m.DateOfBirth, new { @class = "form-control", @id = "ExpectedDateOfJoining" })                                                 
+                                                        <span class="input-group-addon">
+                                                        <span class="fa fa-calendar"></span>
+                                                    </span>
+                                                </div>                                            
+                                        </div>
+                                        </div>
+
+
+
+
+                            <div class="col-sm-12" style="margin-top:20px">
+                                <div class="form-group" style="text-align: center;">
+
+                                    <input type="submit" class="btn btn-sm btn-primary btn-employee" value="Save" />
+                                </div>
+                            </div>
+                        </fieldset>
+
+
+                        <h4>
+                            Profile
+                            <br>
+                            <small>Nam egestas, leo eu gravida tincidunt</small>
+                        </h4>
+                        <fieldset>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Short Summary</label>
+                                    @Html.TextBoxFor(m => m.ShortSummary, new { @class = "form-control", placeholder = "Short Summary" })
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>ICE Contact Info</label>
+                                    @Html.TextBoxFor(m => m.ICEContactInfo, new { @class = "form-control", placeholder = "ICE Contact Info" })
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Is Disable</label>
+                                    @Html.CheckBoxFor(m => m.IsDisable, new { @class = "form-control", placeholder = "Permanent Address" })
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Disable Detail</label>
+                                    @Html.TextBoxFor(m => m.DisableDetail, new { @class = "form-control", placeholder = "Disable Detail" })
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>HR Remarks</label>
+                                    @Html.TextBoxFor(m => m.HRRemarks, new { @class = "form-control", placeholder = "Permanent Address" })
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Years Of Experience</label>
+                                    @Html.TextBoxFor(m => m.NoYearsOfExperience, new { @class = "form-control", placeholder = "Permanent Address" })
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Start Salary</label>
+                                    @Html.TextBoxFor(m => m.StartSalary, new { @class = "form-control", placeholder = "Permanent Address" })
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div>
+                                    <div class="form-group">
+                                        <label>Reference Name</label>
+                                        @Html.TextBoxFor(m => m.ReferenceName, new { @class = "form-control", placeholder = "Permanent Address" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Reference Email</label>
+                                    @Html.TextBoxFor(m => m.ReferenceEmail, new { @class = "form-control", placeholder = "Permanent Address" })
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Date Of Joining</label>
+                                    <div id="datetimepicker1_1"  class="input-group date" style="">
+                                        @Html.TextBoxFor(m => m.DateOfJoining, new { @class = "form-control", placeholder = "Date Of Birth" })
+                                        @*<input type="text" name="end_date" value="" id="end_date" class="form-control " required="required">*@
+                                        <span class="input-group-addon"> <span class="fa fa-calendar"></span> </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Manager</label>
+                                    @Html.TextBoxFor(m => m.ManagerId, new { @class = "form-control", placeholder = "Permanent Address" })
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Employee Type</label>
+                                    @* @Html.TextBoxFor(m => m.LookEmployeeTypeId, new { @class = "form-control", placeholder = "Permanent Address" })*@
+                                    @Html.DropDownListFor(m => m.LookEmployeeTypeId, Model.getEmployeeType(), "--Please Select Employee Type--", new { @class = "form-control", placeholder = "Department Name" })
+
+
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Department</label>
+                                    @* @Html.TextBoxFor(m => m.LookDepartmentId, new { @class = "form-control", placeholder = "Permanent Address" })*@
+                                    @Html.DropDownListFor(m => m.LookDepartmentId, Model.getDepartment(), "--Please Select Department Name--", new { @class = "form-control", placeholder = "Department Name" })
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Current Job Title</label>
+                                    @Html.DropDownListFor(m => m.LookDesignationId, Model.getDesignation(), "--Please Select Designaton Type--", new { @class = "form-control", placeholder = "Department Name" })
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Exit Date</label>
+                                    <div id="datetimepicker1_2"  class="input-group date" style="">
+                                        @Html.TextBoxFor(m => m.ExitDate, new { @class = "form-control", placeholder = "Date Of Birth" })
+                                        @*<input type="text" name="end_date" value="" id="end_date" class="form-control " required="required">*@
+                                        <span class="input-group-addon"> <span class="fa fa-calendar"></span> </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12" style="margin-top:20px">
+                                <div class="form-group"  style="text-align: center;">
+                                    @Html.HiddenFor(m => m.EmployeeId, new { @id="EmployeeId"})
+                                    <input type="submit" class="btn btn-sm btn-primary btn-employee" value="Save" />
+                                  
+                                </div>
+                            </div>
+                        </fieldset>
+                        <h4>
+                            Education
+                            <br>
+                            <small>Nam egestas, leo eu gravida tincidunt</small>
+                        </h4>
+                        <fieldset>
+                            @* <p class="lead text-center">Almost there!</p>*@
+                            <div id="QualificationContainer">
+                                <div id="qualicationNo-0">
+                                    <div id="qualification">
+
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <label>Qualification</label>
+                                                @Html.DropDownListFor(m => m.EmployeeEducation.LookQualificationId, Model.getQualification() , new { @class = "form-control QualificationType", placeholder = "Short Summary" })
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <label>Education Year</label>
+                                                @Html.TextBoxFor(m => m.EmployeeEducation.EducationYear, new { @class = "form-control Year", placeholder = "Short Summary" })
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <label>Institution Name</label>
+                                                @Html.DropDownListFor(m => m.EmployeeEducation.LookInstitutionId, Model.getInstitution(), new { @class = "form-control Institute", placeholder = "Short Summary" })
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <label>Grade</label>
+                                                @Html.TextBoxFor(m => m.EmployeeEducation.Grade, new { @class = "form-control Grades", placeholder = "Short Summary" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                           
+                            <div class="col-sm-12" >
+                                <input type="button" style="margin-top:10px; float:right" class="btn btn-sm btn-primary"  value="Add More" id="moreQualification" />
+                            </div>
+                                <div class="col-sm-12" >
+                                  
+                                    <div class="form-group" style="text-align: center;">
+                                        @Html.HiddenFor(m => m.EmployeeId)
+                                        <input type="button" style="margin-top:10px" class="btn btn-sm btn-primary btn-employee" value="Save" id="btnAjax" />
+
+                                    </div>
+                                </div>
+
+</fieldset>
+                        <h4>
+                            Experience
+                            <br>
+                            <small>Nam egestas, leo eu gravida tincidunt</small>
+                        </h4>
+                        <fieldset>
+                            @* <p class="lead text-center">Almost there!</p>*@
+                            <div id="ExperienceContainer">
+                                <div id="experienceNo-0">
+                                   
+                                        <div class="col-sm-2">
+                                            <div class="form-group">
+                                                <label>Organization</label>
+                                                @Html.DropDownListFor(m => m.EmployeeExperienceHistory.LookOrganizationId, Model.getOrganization(), new { @class = "form-control Organization", placeholder = "Short Summary" })
+                                            </div>
+                                        </div>                                      
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <label>To Date</label>
+                                                <div id="datetimepicker1_3" class="input-group date" style="">
+                                                    @Html.TextBoxFor(m => m.EmployeeExperienceHistory.ToDate, new { @class = "form-control ToDate", placeholder = "To Date" })
+                                                    @*<input type="text" name="end_date" value="" id="end_date" class="form-control " required="required">*@
+                                                    <span class="input-group-addon"> <span class="fa fa-calendar"></span> </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <label>From Date</label>
+                                                <div id="datetimepicker1_4" class="input-group date" style="">
+                                                    @Html.TextBoxFor(m => m.EmployeeExperienceHistory.FromDate, new { @class = "form-control FromDate", placeholder = "From Date" })
+                                                    @*<input type="text" name="end_date" value="" id="end_date" class="form-control " required="required">*@
+                                                    <span class="input-group-addon"> <span class="fa fa-calendar"></span> </span>
+                                                </div>
+                                            </div>
+                                        </div>                                      
+                                        <div class="col-sm-2">
+                                            <div class="form-group">
+                                                <label>Job Title</label>
+                                                @Html.TextBoxFor(m => m.EmployeeExperienceHistory.JobTitle, new { @class = "form-control JobTitle", placeholder = "Job Title" })
+                                            </div>
+                                        </div>                                       
+                                        <div class="col-sm-2">
+                                            <div class="form-group">
+                                                <label>Salary</label>
+                                                @Html.TextBoxFor(m => m.EmployeeExperienceHistory.Salary, new { @class = "form-control Salary", placeholder = "Salary" })
+                                            </div>
+                                        </div>                                                                               
+                                  
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12">
+                                <input type="button" style="margin-top:10px; float:right" class="btn btn-sm btn-primary" value="Add More" id="moreExperience" />
+                             </div>
+                            <div class="col-sm-12">
+                                <div class="form-group" style="text-align: center;">                                   
+                                    <input type="button" style="margin-top:10px" class="btn btn-sm btn-primary btn-employee" value="Save" id="btnExperience" />                                  
+                                </div>
+                            </div>
+
+                           
+
+                        </fieldset>
+
+
+                        <h4>
+                           Dependents
+                            <br>
+                            <small>Nam egestas, leo eu gravida tincidunt</small>
+                        </h4>
+                        <fieldset>
+
+                            <div id="DependentContainer">
+                                <div id="dependentNo-0">
+                                    <div id="dependent">
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label>Name<span class='required'>*</span></label>
+                                                @Html.TextBoxFor(m => m.EmployeeDependents.Name, new { @class = "form-control Name", placeholder = "First Name" })
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label>Relation</label>
+                                                @Html.TextBoxFor(m => m.EmployeeDependents.Relation, new { @class = "form-control Relation", placeholder = "Last Name" })
+
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label>Gender<span class='required'>*</span></label>
+                                                @* @Html.RadioButtonFor(m => m.Gender, new { @class = "form-control", placeholder = "Gender" })*@
+                                              @*  @Html.RadioButtonFor(x => x.EmployeeDependents.Gender, "M",new { @class = "form-control Gender" })*@
+
+                                                <select class="form-control" data-val="true" data-val-number="The field LookDesignationId must be a number." id="EmployeeDependents_Gender" name="EmployeeDependents.Gender" placeholder="M,F,N">
+                                                    <option value="">--Please Select M,F, N --</option>
+                                                    <option value="M">M</option>
+                                                    <option value="F">F</option>
+                                                    <option value="N">N</option>
+                                                </select>
+
+                                            </div>
+                                        </div>
+                                      
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="col-sm-12">                                
+                                <input type="button" style="margin-top:10px; float:right" class="btn btn-sm btn-primary" value="Add More" id="moreDependent" />
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="form-group" style="text-align: center;">                                
+                                    <input type="button" style="margin-top:10px" class="btn btn-sm btn-primary btn-employee" value="Save" id="btnDependent" />
+                                </div>
+                            </div>
+                        </fieldset>
+
+
+                    </div>
+                }
+                @*</form>*@
+            </div>
+        </div>
+    </div>
+</section>
+
+<script type="text/javascript">
+    var qualificationHtml = null;
+    var qualificationCount = 1;
+    var experienceHtml = null;
+    var experienceCount = 1;
+    var dependentHtml = null;
+    var dependentCount = 1;
+  
+    $(document).ready(function () {
+
+
+
+        $('#moreQualification').click(function () {
+            var newHtml = "";
+            debugger;
+            if (qualificationHtml == null) {
+                qualificationHtml = $('#qualification').html();
+            }
+            newHtml = "  <div id='qualicationNo-" + qualificationCount + "'>" + qualificationHtml + "</div>";
+            qualificationCount++;
+            $('#QualificationContainer').append(newHtml);
+        });
+                    
+        $('#btnAjax').click(function () {
+            debugger;
+            var obj = [];
+            var newObj = new Object();
+            var EmployeeEducationViewModel = new Object();
+            obj[0] = newObj;
+            var employeeId = $("#EmployeeId").val();
+            EmployeeEducationViewModel.EmployeeId = employeeId;
+            for (var i = 0; i < qualificationCount; i++) {
+                var newQualification = new Object();
+                newQualification.EmployeeId = employeeId;
+                newQualification.LookQualificationId = $("#qualicationNo-" + i + " .QualificationType").val();
+                newQualification.EducationYear = $("#qualicationNo-" + i + " .Year").val();
+                newQualification.LookInstitutionId = $("#qualicationNo-" + i + " .Institute").val();
+                newQualification.Grade = $("#qualicationNo-" + i + " .Grades").val();
+                obj[i] = newQualification;
+            }         
+            var qualifications = obj;
+            EmployeeEducationViewModel.EmployeeEducation = obj
+            $.ajax({
+                url: '/Employee/CreateEducation',
+                type: 'POST',
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(EmployeeEducationViewModel),
+                success: function (response) {
+                    debugger;
+                    alert(response)
+                },
+                error: function (response) {
+                    debugger;
+                    alert("error")
+                }
+            });
+        });
+
+
+        $('#moreExperience').click(function () {
+            var newHtml = "";
+            
+            debugger;
+            
+                experienceHtml = $('#experienceNo-0').html();
+           
+            var fromdate = "datetimepicker1_3";
+            var newfromdate = "datetimepicker1_3_" + experienceCount;
+            var todate = "datetimepicker1_4";
+            var newTodate = "datetimepicker1_4_" + experienceCount;
+            experienceHtml = experienceHtml.replace(fromdate, newfromdate);
+            experienceHtml = experienceHtml.replace(todate, newTodate);
+            newHtml = "  <div id='experienceNo-" + experienceCount + "'>" + experienceHtml + "</div>";
+            experienceCount++;
+            $('#ExperienceContainer').append(newHtml);
+
+            $('#' + newfromdate).datetimepicker({
+                icons: {
+                    time: 'fa fa-clock-o',
+                    date: 'fa fa-calendar',
+                    up: 'fa fa-chevron-up',
+                    down: 'fa fa-chevron-down',
+                    previous: 'fa fa-chevron-left',
+                    next: 'fa fa-chevron-right',
+                    today: 'fa fa-crosshairs',
+                    clear: 'fa fa-trash'
+                }
+            });
+            $('#' + newTodate).datetimepicker({
+                icons: {
+                    time: 'fa fa-clock-o',
+                    date: 'fa fa-calendar',
+                    up: 'fa fa-chevron-up',
+                    down: 'fa fa-chevron-down',
+                    previous: 'fa fa-chevron-left',
+                    next: 'fa fa-chevron-right',
+                    today: 'fa fa-crosshairs',
+                    clear: 'fa fa-trash'
+                }
+            });
+        });
+
+        
+        $('#btnExperience').click(function () {
+            debugger;
+            var obj = [];
+            var newObj = new Object();
+            var EmployeeExperienceViewModel = new Object();
+            obj[0] = newObj;
+            var employeeId = $("#EmployeeId").val();
+            EmployeeExperienceViewModel.EmployeeId = employeeId;
+            for (var i = 0; i < qualificationCount; i++) {
+                var newQualification = new Object();
+                newQualification.EmployeeId = employeeId;
+                newQualification.LookOrganizationId = $("#experienceNo-" + i + " .Organization").val();
+                newQualification.ToDate = $("#experienceNo-" + i + " .ToDate").val();
+                newQualification.FromDate = $("#experienceNo-" + i + " .FromDate").val();
+                newQualification.JobTitle = $("#experienceNo-" + i + " .JobTitle").val();
+                newQualification.Salary = $("#experienceNo-" + i + " .Salary").val();
+                obj[i] = newQualification;
+            }
+            var qualifications = obj;
+            EmployeeExperienceViewModel.EmployeeExperienceHistory = obj
+            $.ajax({
+                url: '/Employee/CreateExperience',
+                type: 'POST',
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(EmployeeExperienceViewModel),
+                success: function (response) {
+                    debugger;
+                    alert(response)
+                },
+                error: function (response) {
+                    debugger;
+                    alert("error")
+                }
+            });
+        });
+
+        $('#moreDependent').click(function () {
+            var newHtml = "";
+            debugger;
+            if (dependentHtml == null) {
+                dependentHtml = $('#dependent').html();
+            }
+            newHtml = "  <div id='dependentNo-" + dependentCount + "'>" + dependentHtml + "</div>";
+            dependentCount++;
+            $('#DependentContainer').append(newHtml);
+        });
+
+        $('#btnDependent').click(function () {
+            debugger;
+            var obj = [];
+            var newObj = new Object();
+            var EmployeeDependentViewModel = new Object();
+            obj[0] = newObj;
+            var employeeId = $("#EmployeeId").val();
+            EmployeeDependentViewModel.EmployeeId = employeeId;
+            for (var i = 0; i < qualificationCount; i++) {
+                var newQualification = new Object();
+                newQualification.EmployeeId = employeeId;
+                newQualification.Name = $("#dependentNo-" + i + " .Name").val();
+                newQualification.Relation = $("#dependentNo-" + i + " .Relation").val();
+                newQualification.Gender = $("#dependentNo-" + i + " .Gender").val();
+                obj[i] = newQualification;
+            }
+            var qualifications = obj;
+            EmployeeDependentViewModel.EmployeesDependent = obj
+            $.ajax({
+                url: '/Employee/CreateDependent',
+                type: 'POST',
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(EmployeeDependentViewModel),
+                success: function (response) {
+                    debugger;
+                    alert(response)
+                },
+                error: function (response) {
+                    debugger;
+                    alert("error")
+                }
+            });
+        });
+        
+    });
+</script>

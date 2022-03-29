@@ -1,0 +1,2003 @@
+﻿@model VM.Property.SimilarSoldPropertiesViewModel
+@{
+    ViewBag.Title = "ilaan.com";
+    Layout = "~/Views/Shared/header_Layout.cshtml";
+ var tempMainTag = ViewBag.Meta;
+    var fooArray = tempMainTag.Split('<');
+    var Ftag = "";
+
+    foreach (var abc in fooArray)
+    {
+        var temp = abc.Contains("og:description");
+        if (temp == true)
+        {
+            Ftag += "<" + abc.Replace("og:", "");
+            var keywords = "<" + abc.Replace("og:description", "keywords");
+            keywords = keywords.Replace("For Sale:", "For Sale,");
+            keywords = keywords.Replace("For Rent:", "For Rent,");
+            keywords = keywords.Replace("For", "property portal, real estate marketplace, buy, sell, rent, For");
+            Ftag += keywords;
+        }
+        var temp2 = abc.Contains("og:title");
+        if (temp2 == true)
+        {
+            Ftag += "<" + abc.Replace("og:", "");
+
+        }
+    }
+    tempMainTag = Ftag + tempMainTag;
+    ViewBag.Meta = tempMainTag;
+}
+<script>
+    $(document).ready(function () {
+        $(document).ajaxStart(function () {
+            $(".se-pre-con").show();
+        }).ajaxStop(function () {
+            $(".se-pre-con").hide();
+        });
+    });
+
+    //some ajax function
+</script>
+<script src="~/Assets/js/jquery-1.11.3.min.js"></script>
+<script src="~/Assets/js/jssor.slider-26.1.5.min.js"></script>
+<script type="text/javascript">
+</script>
+<style>
+    /* jssor slider loading skin spin css */
+    .jssorl-009-spin img {
+        animation-name: jssorl-009-spin;
+        animation-duration: 1.6s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+    }
+    /*keyframes jssorl-009-spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }*/
+    .jssora093 {
+        display: block;
+        position: absolute;
+        cursor: pointer;
+    }
+
+        .jssora093 .c {
+            fill: none;
+            stroke: #fff;
+            stroke-width: 400;
+            stroke-miterlimit: 10;
+        }
+
+        .jssora093 .a {
+            fill: none;
+            stroke: #fff;
+            stroke-width: 400;
+            stroke-miterlimit: 10;
+        }
+
+        .jssora093:hover {
+            opacity: .8;
+        }
+
+        .jssora093.jssora093dn {
+            opacity: .6;
+        }
+
+        .jssora093.jssora093ds {
+            opacity: .3;
+            pointer-events: none;
+        }
+
+    .jssort101 .p {
+        position: absolute;
+        top: 0;
+        left: 0;
+        box-sizing: border-box;
+        background: #000;
+    }
+
+        .jssort101 .p .cv {
+            position: relative;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 1px solid #555;
+            box-sizing: border-box;
+            z-index: 1;
+        }
+
+    .jssort101 .a {
+        fill: none;
+        stroke: #fff;
+        stroke-width: 400;
+        stroke-miterlimit: 10;
+        visibility: hidden;
+    }
+
+    .jssort101 .p:hover .cv, .jssort101 .p.pdn .cv {
+        border: none;
+        border-color: transparent;
+    }
+
+    .jssort101 .p:hover {
+        padding: 2px;
+    }
+
+        .jssort101 .p:hover .cv {
+            background-color: rgba(0,0,0,6);
+            opacity: .35;
+        }
+
+        .jssort101 .p:hover.pdn {
+            padding: 0;
+        }
+
+            .jssort101 .p:hover.pdn .cv {
+                border: 2px solid #fff;
+                background: none;
+                opacity: .35;
+            }
+
+    .jssort101 .pav .cv {
+        border-color: #fff;
+        opacity: .35;
+    }
+
+    .jssort101 .pav .a, .jssort101 .p:hover .a {
+        visibility: visible;
+    }
+
+    .jssort101 .t {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+        opacity: .6;
+    }
+
+    .jssort101 .pav .t, .jssort101 .p:hover .t {
+        opacity: 1;
+    }
+</style>
+
+<style>
+    .property-price-single {
+        font-size: 22px;
+        font-weight: 700;
+        color: #ec1c41;
+        text-align: right;
+        line-height: 1.4;
+    }
+
+    .icon_feature {
+        width: 30px;
+    }
+
+    .property-single-item {
+        margin-bottom: 1px;
+        background: white;
+        padding: 30px;
+    }
+
+    .pro-agent {
+        width: 90%;
+        float: left;
+        padding: 10px 0;
+        margin: 0 5%;
+        font-size: 15px;
+        text-align: center;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.09);
+    }
+
+    .property-single-item .property-details-single td {
+        border-right: 1px solid rgba(238, 238, 238, 0.18);
+        width: 25%;
+        text-align: center;
+        padding: 20px 0px;
+    }
+
+    h4.side {
+        background: url('../../Assets/global/css/img/trow.png');
+        padding: 0.8em 1em;
+        color: black;
+        text-transform: initial;
+        font-size: 25px;
+        margin-bottom: 0px;
+        font-weight: bold;
+        text-align: left;
+    }
+
+    .widget-area {
+        width: 400px;
+        padding: 30px 20px;
+        background-color: #141414;
+        color: #aaaaaa;
+        height: 100%;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        position: fixed;
+        box-sizing: border-box;
+        z-index: unset;
+    }
+
+    .sold-slider{
+        width: 262px;
+    }
+    .soldsliderimage{
+        height:167px;
+    }
+     
+        .property-address {
+          display: block; /* Fallback for non-webkit */
+          display: -webkit-box;
+          max-width: 100%;
+          height: 15px*29px*2; /* Fallback for non-webkit */
+          margin: 0 auto;
+          font-size: 15px;
+          line-height: 29px;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+
+        .widget-area .widget-area-content {
+            width: 100%;
+            float: left;
+            height: 96%;
+        }
+
+        .widget-area .widget {
+            float: left;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+            .widget-area .widget h3 {
+                text-transform: uppercase;
+                margin-bottom: 20px;
+                letter-spacing: 3px;
+                font-weight: 500;
+            }
+
+    .widget-area-social {
+        width: 100%;
+        float: left;
+        z-index: 1;
+        height: 10%;
+        position: relative;
+    }
+
+        .widget-area-social .widget-area-social-links {
+            width: auto;
+            margin: auto;
+            height: auto;
+            margin-top: 20px;
+        }
+
+            .widget-area-social .widget-area-social-links .link {
+                position: relative;
+                display: inline-block;
+                text-align: center;
+                cursor: pointer;
+                width: 28px;
+                height: 28px;
+                line-height: 28px;
+                margin: 0px 7px;
+                font-size: 16px;
+            }
+
+                .widget-area-social .widget-area-social-links .link.big {
+                    width: 42px;
+                    height: 42px;
+                    font-size: 20px;
+                    line-height: 42px;
+                }
+
+                .widget-area-social .widget-area-social-links .link .link-background,
+                .widget-area-social .widget-area-social-links .link .link-overlay {
+                    display: block;
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    left: 0;
+                    right: 0;
+                    top: 0;
+                    z-index: 1;
+                }
+
+                .widget-area-social .widget-area-social-links .link .link-background {
+                    -webkit-transition: all .4s ease-in-out;
+                    transition: all .4s ease-in-out;
+                }
+
+                .widget-area-social .widget-area-social-links .link:hover .link-background {
+                    opacity: 0;
+                }
+
+                .widget-area-social .widget-area-social-links .link .link-overlay {
+                    -webkit-transform: scale(0);
+                    transform: scale(0);
+                    background: #3b5998;
+                    opacity: 0;
+                    -webkit-transition: all .4s ease-in-out;
+                    transition: all .4s ease-in-out;
+                }
+
+                .widget-area-social .widget-area-social-links .link:hover .link-overlay {
+                    opacity: 1;
+                    -webkit-transform: scale(1);
+                    transform: scale(1);
+                }
+
+                .widget-area-social .widget-area-social-links .link i {
+                    position: absolute;
+                    display: inline-block;
+                    z-index: 3;
+                    line-height: inherit;
+                    width: 100%;
+                    height: 100%;
+                    left: 0;
+                    -webkit-transition: all .4s ease-in-out;
+                    transition: all .4s ease-in-out;
+                    color: white;
+                }
+
+                .widget-area-social .widget-area-social-links .link:hover i {
+                    color: #fff;
+                }
+
+                .widget-area-social .widget-area-social-links .link.twitter-link .link-overlay {
+                    background: #55acee;
+                }
+
+                .widget-area-social .widget-area-social-links .link.instagram-link .link-overlay {
+                    background: #125688;
+                }
+
+                .widget-area-social .widget-area-social-links .link.youtube-link .link-overlay {
+                    background: #bb0000;
+                }
+
+                .widget-area-social .widget-area-social-links .link.linkedin-link .link-overlay {
+                    background: #007bb5;
+                }
+
+                .widget-area-social .widget-area-social-links .link.google-link .link-overlay {
+                    background: #dd4b39;
+                }
+
+    .property-single-item .property-details-single td {
+        border-right: 1px solid rgba(238, 238, 238, 0.18);
+        width: 78px;
+        text-align: center;
+        padding: 10px 0px;
+    }
+
+
+    .property-price-single {
+        font-size: 22px;
+        font-weight: 700;
+        color: #ec1c41;
+        text-align: center;
+        line-height: 1.4;
+    }
+
+    #hearts {
+        color: #ec1c41;
+    }
+
+    #hearts-existing {
+        color: #87bad7;
+    }
+
+    #slideshow.fullscreen {
+        height: 500px !important;
+        position: relative !important;
+    }
+</style>
+
+<section class="subheader">
+    <div class="container">
+        <div class="row toptitle">
+            <p id="heading"></p>
+            <a href="javascript:void(0)" onclick="backToSearch()" class="right"><span class="fa fa-angle-left" aria-hidden="true"></span> back</a>
+        </div>
+    </div>
+</section>
+
+<section class="container">
+    <!-- property slider and features section -->
+    <div class="col-xs-12 col-sm-12 col-md-12 allpadding">
+        <div id="jssor_1" style="position:relative;margin:0 auto;top:0px;left:0px;width:960px;height:480px;overflow:hidden;visibility:hidden;background-color:#24262e;">
+            <!-- Loading Screen -->
+            <div data-u="loading" class="jssorl-009-spin" style="position:absolute;top:0px;left:0px;width:100%;height:100%;text-align:center;background-color:rgba(0,0,0,0.7);">
+                <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="/Assets/img/spin.svg" />
+            </div>
+            <div data-u="slides" style="cursor:default;position:relative;top:0px;left:240px;width:720px;height:480px;overflow:hidden;" id="propertySlider">
+
+
+
+            </div>
+            <!-- Thumbnail Navigator -->
+            <div data-u="thumbnavigator" class="jssort101" style="position:absolute;left:0px;top:0px;width:240px;height:480px;background-color:#eee;" data-autocenter="2" data-scale-left="0.75">
+                <div data-u="slides">
+                    <div data-u="prototype" class="p" style="width:99px;height:66px;">
+                        <div data-u="thumbnailtemplate" class="t"></div>
+                        @*<svg viewbox="0 0 16000 16000" class="cv">
+                                <circle class="a" cx="8000" cy="8000" r="3238.1"></circle>
+                                <line class="a" x1="6190.5" y1="8000" x2="9809.5" y2="8000"></line>
+                                <line class="a" x1="8000" y1="9809.5" x2="8000" y2="6190.5"></line>
+                            </svg>*@
+                    </div>
+                </div>
+            </div>
+            <!-- Arrow Navigator -->
+            <div data-u="arrowleft" class="jssora093" style="width:50px;height:50px;top:0px;left:270px;" data-autocenter="2">
+                <svg viewbox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
+                    <circle class="c" cx="8000" cy="8000" r="5920"></circle>
+                    <polyline class="a" points="7777.8,6080 5857.8,8000 7777.8,9920 "></polyline>
+                    <line class="a" x1="10142.2" y1="8000" x2="5857.8" y2="8000"></line>
+                </svg>
+            </div>
+            <div data-u="arrowright" class="jssora093" style="width:50px;height:50px;top:0px;right:30px;" data-autocenter="2">
+                <svg viewbox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
+                    <circle class="c" cx="8000" cy="8000" r="5920"></circle>
+                    <polyline class="a" points="8222.2,6080 10142.2,8000 8222.2,9920 "></polyline>
+                    <line class="a" x1="5857.8" y1="8000" x2="10142.2" y2="8000"></line>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="property-single-item property-main" id="loadMainFeature">
+
+    </div>
+
+    <!-- description section -->
+    <div class="row rowmargin">
+        <div class="col-xs-12 col-sm-4 col-md-3" style="padding: 0 0 3px 0;">
+            <h4 class="side"><span style="color:transparent;">.</span></h4>
+            <div class="col-md-12 allpadding" id="socialmedia" style="margin-bottom:20px !important;s">
+
+            </div>
+        </div>
+
+
+        <div class="col-xs-12 col-sm-8 col-md-9  nopadding-rightbar">
+            <h4 class="side">Features</h4>
+            <div class="col-md-12 allpadding" id="descriptionDiv">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="row rowmargin">
+        <div class="col-sm-12 allpadding" id="floorPlan2D">
+        </div>
+
+
+    </div>
+
+    <!-- interactive plan -->
+
+    <div class="row rowmargin" id="interactiveplan">
+    </div>
+
+
+
+    <!-- video section -->
+    <div class="row rowmargin prop-detail" id="Videos">
+
+    </div>
+
+    <!-- map section -->
+    <div class="row rowmargin prop-detail">
+        <div class="col-md-12 allpadding pro-detail-map">
+            <div class="col-sm-12 col-md-9 pro-agent-list1" id="map">
+            </div>
+
+            <div class="col-sm-12 col-xs-12 col-md-3" id="agencyDiv">
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- similar and sold properties section -->
+
+    <div class="row allpadding prop-detail pro-similar-sold" id="emptySimilarSold">
+        <div class="col-xs-12 col-sm-8 col-md-9  nopadding-leftbar">
+            <div>
+                <h4 class="side">Similar Properties</h4>
+            </div>
+            <div class="control-round" data-pause="hover">
+                <div id="carousel-example_1" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner" id="similarPropertyContainer">
+
+                    </div>
+
+                    <div id="carousel-example_1" class="control-round" data-target="#carousel-example_1" data-ride="carousel" data-pause="hover" data-interval="5000">
+                        <a class="left carousel-control" data-target="#carousel-example_1" role="button" data-slide="prev">
+                            <span class="fa fa-angle-left" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <!-- Right Control --> 
+                        <a class="right carousel-control" data-target="#carousel-example_1" role="button" data-slide="next">
+                            <span class="fa fa-angle-right" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a><!-- End Carousel -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Properties similar sold -->
+        <div class="col-xs-12 col-sm-4 col-md-3 nopadding-rightbar" id="emptySoldArea">
+            <div>
+                <h4 class="side sidesold">Sold Properties</h4>
+            </div>
+            <div class="control-round" data-pause="hover">
+                <div id="myCarousel2" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner" id="soldPropertyContainer">
+
+                    </div>
+
+                    <div id="myCarousel2" class="control-round" data-target="#myCarousel2" data-ride="carousel" data-pause="hover" data-interval="5000">
+                        <a class="left carousel-control soldsliderleft" data-target="#myCarousel2" role="button" data-slide="prev">
+                            <span class="fa fa-angle-left" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <!-- Right Control -->
+                        <a class="right carousel-control soldsliderright" data-target="#myCarousel2" role="button" data-slide="next">
+                            <span class="fa fa-angle-right" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a><!-- End Carousel -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<script>
+    function dropDownMenu() {
+        $(".loginDropDown").hide();
+        $(".mainDropDown").toggle();
+    }
+
+    function dropDownLogin() {
+        $(".mainDropDown").hide();
+        $(".loginDropDown").toggle();
+    }
+
+    function backToSearch() {
+        window.location.href = document.referrer;
+    }
+</script>
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+<link href="~/Assets/css/slideshow.css" rel="stylesheet" />
+
+<script type="text/javascript">
+    loadPropertyDetail();
+    function loadPropertyDetail() {
+        $(document).ready(function () {
+            var resultJson;
+            var getUrl = document.location.href.split("?");
+            var url = getUrl[1];
+
+            function getURLParameter(name) {
+                return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
+            }
+            if (getURLParameter('ilaanId') != null) {
+                url = 'ilaanId_' + getURLParameter('ilaanId');
+            }
+            $.ajax(
+                 {
+                     type: "GET",
+                     url: '/Api/PropertyDetail/Property?url=' + url,
+                     result: {},
+                     dataType: "json",
+                     contentType: "application/json; charset=utf-8",
+                     success: function (result) {
+                         if (result.ResultType == 1) {
+                             resultJson = result.Data;
+                             document.title = "ilaan.com - " + resultJson.headingField;
+                             if (resultJson != null) {
+                                 if (resultJson.lookPropertyMarketTypeIdField == 1) {
+                                     //addMetaTags(resultJson);
+                                     loaderSliderImages(resultJson);
+
+                                     initializeSlider();
+                                     displaySocialMedia(resultJson);
+                                     displayDescription(resultJson);
+                                     displayMap(resultJson)
+                                     displayAgency(resultJson);
+                                     loadFeature(resultJson);
+                                     floorPlan(resultJson);
+                                     interactiveFloorPlan(resultJson);
+                                     playVideo(resultJson);
+                                     $("#heading").text(resultJson.headingField);
+                                     getSimilarProperty(resultJson);
+                                 }
+                                 else {
+                                     loaderSliderImages(resultJson);
+
+                                     initializeSlider();
+                                     displaySocialMedia(resultJson);
+                                     displayDescription(resultJson);
+                                     displayMap(resultJson)
+                                     displayAgency(resultJson);
+                                     floorPlan(resultJson);
+                                     interactiveFloorPlan(resultJson);
+                                     playVideo(resultJson);
+                                     $("#heading").text(resultJson.headingField);
+                                     getSimilarProperty(resultJson);
+                                 }
+                             }
+                             else {
+                                 location.href = "@Url.Action("Error", "PropertyDetail")";
+                             }
+                         } else {
+                             console.log(result.Exception);
+                             console.log(result.Message);
+                             location.href = "@Url.Action("Error", "PropertyDetail")";
+                         }
+
+                     },
+                     error: function (result) {
+                         var res = result;
+                         if (res.status == 400) {
+                             console.log(result);
+                             location.href = "@Url.Action("Error", "PropertyDetail")";
+                         }
+                     }
+                 });
+        });
+    }
+    function initializeSlider() {
+        var jssor_1_SlideshowTransitions = [
+             { $Duration: 1200, $Zoom: 1, $Easing: { $Zoom: $Jease$.$InCubic, $Opacity: $Jease$.$OutQuad }, $Opacity: 2 },
+             { $Duration: 1000, $Zoom: 11, $SlideOut: true, $Easing: { $Zoom: $Jease$.$InExpo, $Opacity: $Jease$.$Linear }, $Opacity: 2 },
+             //{ $Duration: 1200, $Zoom: 1, $Rotate: 1, $During: { $Zoom: [0.2, 0.8], $Rotate: [0.2, 0.8] }, $Easing: { $Zoom: $Jease$.$Swing, $Opacity: $Jease$.$Linear, $Rotate: $Jease$.$Swing }, $Opacity: 2, $Round: { $Rotate: 0.5 } },
+             //{ $Duration: 1000, $Zoom: 11, $Rotate: 1, $SlideOut: true, $Easing: { $Zoom: $Jease$.$InExpo, $Opacity: $Jease$.$Linear, $Rotate: $Jease$.$InExpo }, $Opacity: 2, $Round: { $Rotate: 0.8 } },
+             //{ $Duration: 1200, x: 0.5, $Cols: 2, $Zoom: 1, $Assembly: 2049, $ChessMode: { $Column: 15 }, $Easing: { $Left: $Jease$.$InCubic, $Zoom: $Jease$.$InCubic, $Opacity: $Jease$.$Linear }, $Opacity: 2 },
+             //{ $Duration: 1200, x: 4, $Cols: 2, $Zoom: 11, $SlideOut: true, $Assembly: 2049, $ChessMode: { $Column: 15 }, $Easing: { $Left: $Jease$.$InExpo, $Zoom: $Jease$.$InExpo, $Opacity: $Jease$.$Linear }, $Opacity: 2 },
+             //{ $Duration: 1200, x: 0.6, $Zoom: 1, $Rotate: 1, $During: { $Left: [0.2, 0.8], $Zoom: [0.2, 0.8], $Rotate: [0.2, 0.8] }, $Easing: $Jease$.$Swing, $Opacity: 2, $Round: { $Rotate: 0.5 } },
+             //{ $Duration: 1000, x: -4, $Zoom: 11, $Rotate: 1, $SlideOut: true, $Easing: { $Left: $Jease$.$InExpo, $Zoom: $Jease$.$InExpo, $Opacity: $Jease$.$Linear, $Rotate: $Jease$.$InExpo }, $Opacity: 2, $Round: { $Rotate: 0.8 } },
+             //{ $Duration: 1200, x: -0.6, $Zoom: 1, $Rotate: 1, $During: { $Left: [0.2, 0.8], $Zoom: [0.2, 0.8], $Rotate: [0.2, 0.8] }, $Easing: $Jease$.$Swing, $Opacity: 2, $Round: { $Rotate: 0.5 } },
+             //{ $Duration: 1000, x: 4, $Zoom: 11, $Rotate: 1, $SlideOut: true, $Easing: { $Left: $Jease$.$InExpo, $Zoom: $Jease$.$InExpo, $Opacity: $Jease$.$Linear, $Rotate: $Jease$.$InExpo }, $Opacity: 2, $Round: { $Rotate: 0.8 } },
+             //{ $Duration: 1200, x: 0.5, y: 0.3, $Cols: 2, $Zoom: 1, $Rotate: 1, $Assembly: 2049, $ChessMode: { $Column: 15 }, $Easing: { $Left: $Jease$.$InCubic, $Top: $Jease$.$InCubic, $Zoom: $Jease$.$InCubic, $Opacity: $Jease$.$OutQuad, $Rotate: $Jease$.$InCubic }, $Opacity: 2, $Round: { $Rotate: 0.7 } },
+             //{ $Duration: 1000, x: 0.5, y: 0.3, $Cols: 2, $Zoom: 1, $Rotate: 1, $SlideOut: true, $Assembly: 2049, $ChessMode: { $Column: 15 }, $Easing: { $Left: $Jease$.$InExpo, $Top: $Jease$.$InExpo, $Zoom: $Jease$.$InExpo, $Opacity: $Jease$.$Linear, $Rotate: $Jease$.$InExpo }, $Opacity: 2, $Round: { $Rotate: 0.7 } },
+             //{ $Duration: 1200, x: -4, y: 2, $Rows: 2, $Zoom: 11, $Rotate: 1, $Assembly: 2049, $ChessMode: { $Row: 28 }, $Easing: { $Left: $Jease$.$InCubic, $Top: $Jease$.$InCubic, $Zoom: $Jease$.$InCubic, $Opacity: $Jease$.$OutQuad, $Rotate: $Jease$.$InCubic }, $Opacity: 2, $Round: { $Rotate: 0.7 } },
+             //{ $Duration: 1200, x: 1, y: 2, $Cols: 2, $Zoom: 11, $Rotate: 1, $Assembly: 2049, $ChessMode: { $Column: 19 }, $Easing: { $Left: $Jease$.$InCubic, $Top: $Jease$.$InCubic, $Zoom: $Jease$.$InCubic, $Opacity: $Jease$.$OutQuad, $Rotate: $Jease$.$InCubic }, $Opacity: 2, $Round: { $Rotate: 0.8 } }
+        ];
+        var jssor_1_options = {
+            $AutoPlay: 1,
+            $SlideshowOptions: {
+                $Class: $JssorSlideshowRunner$,
+                $Transitions: jssor_1_SlideshowTransitions,
+                $TransitionsOrder: 1
+            },
+            $ArrowNavigatorOptions: {
+                $Class: $JssorArrowNavigator$
+            },
+            $ThumbnailNavigatorOptions: {
+                $Class: $JssorThumbnailNavigator$,
+                $Rows: 2,
+                $Cols: 6,
+                $SpacingX: 14,
+                $SpacingY: 12,
+                $Orientation: 2,
+                $Align: 156
+            }
+        };
+        var jssor_1_slider = new $JssorSlider$("jssor_1", jssor_1_options);
+        /*#region responsive code begin*/
+        var MAX_WIDTH = 1200;
+        function ScaleSlider() {
+            var containerElement = jssor_1_slider.$Elmt.parentNode;
+            var containerWidth = containerElement.clientWidth;
+            if (containerWidth) {
+                var expectedWidth = Math.min(MAX_WIDTH || containerWidth, containerWidth);
+                jssor_1_slider.$ScaleWidth(expectedWidth);
+            }
+            else {
+                window.setTimeout(ScaleSlider, 30);
+            }
+        }
+        ScaleSlider();
+        $(window).bind("load", ScaleSlider);
+        $(window).bind("resize", ScaleSlider);
+        $(window).bind("orientationchange", ScaleSlider);
+        //jQuery(document).ready(function ($) {
+        //    alert("say hi");
+
+        //    /*#endregion responsive code end*/
+        //});
+    }
+    function addMetaTags(propertyData) {
+        if (propertyData.headingField != null) {
+            var ogTitle = propertyData.headingField
+            $('head').prepend('\n <meta name="og:title" content="' + ogTitle + '">');
+            $('head').prepend('\n <meta name="twitter:title" content="' + ogTitle + '">');
+        }
+
+        var ogDescription = '';
+        if (propertyData.descriptionField != null) {
+            ogDescription = propertyData.descriptionField;
+
+            $('head').prepend('\n <meta name="og:description" content="' + ogDescription + '">');
+            $('head').prepend('\n <meta name="twitter:description" content="' + ogDescription + '">');
+        }
+
+        var ogImage = ''
+        if (propertyData.mediaPropertyImages != null) {
+            imageObj = propertyData.mediaPropertyImages[0];
+            var parentUrl = imageObj.UrlPath;
+            var sliderImageUrl = parentUrl.replace("Parent", "965x633");
+            var sliderImageUrlArr = parentUrl.split(".");
+            var res = "." + sliderImageUrlArr[sliderImageUrlArr.length - 1];
+            var imageUrl = sliderImageUrl.replace(res, '_965_633' + res);
+            $('head').prepend('\n <meta name="og:image" content="' + imageUrl + '">');
+            $('head').prepend('\n <meta property="og:image:width" content="560">')
+            $('head').prepend('\n <meta property="og:image:height" content="315">');
+            $('head').prepend('\n <meta name="twitter:image" content="' + imageUrl + '">');
+        }
+
+    }
+
+    function getSimilarProperty(propertyObj) {
+        var propertyType = propertyObj.lookPropertyTypeIdField;
+        var marketType = propertyObj.lookPropertyMarketTypeIdField;
+        var categoryType = propertyObj.lookPropertyCategoryIdField;
+        var thisProperty = propertyObj.propertyGuidField;
+        $.ajax({
+            type: "GET",
+            url: '/Api/PropertyDetail/GetSimilarProperty?propertType=' + propertyType + '&marketTypeId=' + marketType + '&categoryTypeId=' + categoryType + '&propertyGuid=' + thisProperty,
+            result: {},
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (result) {
+                if (result.ResultType == 1) {
+                    var resultJson = result.Data;
+                    if (resultJson != null && resultJson.length > 0) {
+                        if (resultJson.length <= 2) {
+                            $('#emptySimilarSold').empty();
+                            $('#emptySimilarSold').hide();
+                        }
+                        else {
+                            renderSimilarSoldProperties(resultJson);
+                            getSoldProperty(resultJson);
+                        }
+                    }
+                    else {
+                        $('#emptySimilarSold').empty();
+                    }
+                }
+                else {
+                    $('#emptySimilarSold').empty();
+                }
+            },
+            error: function (result) {
+                var res = result;
+                if (res.status == 400) {
+                    location.href = "@Url.Action("Error", "PropertyDetail")";
+                }
+            }
+        });
+    }
+
+    function getSoldProperty(resultJson) {
+        var marketType = resultJson[0].LookPropertyMarketTypeId;
+        var categoryType = resultJson[0].LookPropertyCategoryId;
+        $.ajax({
+            type: "GET",
+            url: '/Api/PropertyDetail/GetSoldProperty?marketTypeId=' + marketType + '&categoryId=' + categoryType,
+            result: {},
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (result) {
+                if (result.ResultType == 1) {
+                    var resultJson = result.Data;
+                    if (resultJson != null) {
+                        renderSoldProperties(resultJson);
+                    } else {
+                        $("#emptySoldArea").hide();
+                    }
+                }
+                else {
+                    $("#emptySoldArea").hide();
+                }
+            },
+            error: function (result) {
+                var res = result;
+                if (res.status == 400) {
+                    location.href = "@Url.Action("Error", "PropertyDetail")";
+                }
+            }
+        });
+    }
+
+    function fbshareCurrentPage() {
+        window.open("https://www.facebook.com/sharer/sharer.php?u=" + escape(window.location.href), '',
+        'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');
+        return false;
+    }
+
+    function renderSoldProperties(propertiesObj) {
+        var notAssigned = 'N/A';
+        var secondDivClass = ' hidden-xs';
+        var thirdDivClass = ' hidden-sm hidden-xs';
+        var activeItemStartDiv = '<div class="item active exm" style="padding:0;"> ';
+        var itemStartDiv = '<div class="item exm" style="padding:0">';
+        var similarPropertyImageStyle = '';
+        var propertyStartDiv = '';
+        var similarProperties = propertiesObj;
+        var count = 0;
+        var simPropertyDiv = '';
+        var divClass = '';
+        var feature = '';
+        if (similarProperties != null) {
+            $.each(similarProperties, function (key, value) {
+                var PropertyURL = "@Url.Action("PropertyDetail", "PropertyDetail")" + '?' + value.propertyUrl;
+
+                {
+                    if (value.PropertyType == null || value.PropertyType == '') {
+                        value.PropertyType = notAssigned;
+                    }
+                    if (value.Image == null || value.Image == '') {
+                        value.Image = '/Assets/img/No_Img.jpg';
+                    }
+                    if (value.Heading == null || value.Heading == '') {
+                        value.Heading = '<span style="color:transparent">.</span>';
+                    }
+                    if (value.Address == null || value.Address == '') {
+                        value.Address = '<span style="color:transparent">.</span>';
+                    }
+                    else {
+                        var address = value.Address;
+                        value.Address = '<p class="property-address"><i class="fa fa-map-marker icon" tilte="address"></i>' + address + '</p>';
+                    }
+                    if (value.Price == null || value.Price == '') {
+                        value.Price = notAssigned;
+                    }
+                    if ((value.LookPropertyCategoryId == 1 && value.LookPropertyMarketTypeId == 1) ||
+                          (value.LookPropertyCategoryId == 3 && value.LookPropertyMarketTypeId == 1)) {
+                        if ((value.NumberofBeds != null && value.NumberofBeds != 0) && (value.NumberofBaths != null && value.NumberofBaths != 0) && (value.Area != null && value.Area != 0)) {
+                            feature = '<td><i class="fa fa-bed"></i> ' + value.NumberofBeds + ' Beds</td>' +
+                                '<td><i class="fa fa-tint"></i> ' + value.NumberofBaths + ' Baths</td>' +
+                                '<td><i class="fa fa-expand"></i> ' + value.Area + ' ' + value.AreaUnit + '</td>';
+                        }
+                        else if ((value.NumberofBeds == null || value.NumberofBeds == 0) && (value.NumberofBaths == null || value.NumberofBaths == 0) && (value.Area != null && value.Area != 0)) {
+                            feature = '<td><i class="fa fa-expand"></i> ' + value.Area + ' ' + value.AreaUnit + '</td>';
+                        }
+                        else if ((value.NumberofBeds != null && value.NumberofBeds != 0) && (value.NumberofBaths != null && value.NumberofBaths != 0) && (value.Area == null || value.Area == 0)) {
+                            feature = '<td><i class="fa fa-bed"></i> ' + value.NumberofBeds + ' Beds</td>' +
+                                '<td><i class="fa fa-tint"></i> ' + value.NumberofBaths + ' Baths</td>';
+                        }
+                        else {
+                            feature = '<div style="height:16px"></div>';
+                        }
+                    }
+                    else if ((value.LookPropertyCategoryId == 2 && value.LookPropertyMarketTypeId == 2) ||
+                        (value.LookPropertyCategoryId == 4 && value.LookPropertyMarketTypeId == 2) ||
+                        (value.LookPropertyCategoryId == 5 && value.LookPropertyMarketTypeId == 2) ||
+                        (value.LookPropertyCategoryId == 7 && value.LookPropertyMarketTypeId == 2) ||
+                        (value.LookPropertyCategoryId == 8 && value.LookPropertyMarketTypeId == 2) ||
+                        (value.LookPropertyCategoryId == 9 && value.LookPropertyMarketTypeId == 2) ||
+                        (value.LookPropertyCategoryId == 10 && value.LookPropertyMarketTypeId == 2) ||
+                        (value.LookPropertyCategoryId == 11 && value.LookPropertyMarketTypeId == 2)) {
+                        if ((value.NumberofBaths != null && value.NumberofBaths != 0) && (value.Area != null && value.Area != 0) && (value.NumberofBeds == null || value.NumberofBeds == 0)) {
+                            feature = '<td><i class="fa fa-tint"></i> ' + value.NumberofBaths + ' Baths</td>' +
+                               '<td><i class="fa fa-expand"></i> ' + value.Area + ' ' + value.AreaUnit + '</td>';
+                        }
+                        else if ((value.Area == null || value.Area == 0) && (value.NumberofBaths != null && value.NumberofBaths != 0) && (value.NumberofBeds == null || value.NumberofBeds == 0)) {
+                            feature = '<td><i class="fa fa-tint"></i> ' + value.NumberofBaths + ' Baths</td>';
+                        }
+                        else if ((value.Area != null && value.Area != 0) && (value.NumberofBaths == null || value.NumberofBaths == 0) && (value.NumberofBeds == null || value.NumberofBeds == 0)) {
+                            feature = '<td><i class="fa fa-expand"></i> ' + value.Area + ' ' + value.AreaUnit + '</td>';
+                        }
+                        else if ((value.NumberofBaths != null && value.NumberofBaths != 0) && (value.NumberofBeds != null && value.NumberofBeds != 0) && (value.Area != null && value.Area != 0)) {
+                            feature = '<td><i class="fa fa-bed"></i> ' + value.NumberofBeds + ' Beds</td>' +
+                               '<td><i class="fa fa-tint"></i> ' + value.NumberofBaths + ' Baths</td>' +
+                               '<td><i class="fa fa-expand"></i> ' + value.Area + ' ' + value.AreaUnit + '</td>';
+                        }
+                        else {
+                            feature = '<div style="height:16px"></div>';
+                        }
+                    }
+                    else {
+                        feature = '<div style="height:16px"></div>';
+                    }
+
+                    //else {
+                    //    var noOfBeds = value.NumberofBeds;
+                    //    value.NumberofBeds = '<td><i class="fa fa-bed"></i> ' + noOfBeds + ' Beds</td>';
+                    //}
+                    //if (value.NumberofBaths == null || value.NumberofBaths == '') {
+                    //    value.NumberofBaths = '';
+                    //}
+                    //else {
+                    //    var noOfBaths = value.NumberofBaths;
+                    //    value.NumberofBaths = '<td><i class="fa fa-tint"></i> ' + noOfBaths + ' Baths</td>';
+                    //}
+                    //if (value.Area == null || value.Area == '') {
+                    //    value.Area = '';
+                    //}
+                    //else {
+                    //    var Area = value.Area;
+                    //    value.Area = '<td><i class="fa fa-expand"></i> ' + Area + ' ' + value.AreaUnit + '</td>';
+                    //}
+                    if (value.AddDays == null || value.AddDays == '') {
+                        value.AddDays = '';
+                    }
+                }
+
+                if (count == 0) {
+                    simPropertyDiv = simPropertyDiv + activeItemStartDiv;
+                }
+                else {
+                    simPropertyDiv = simPropertyDiv + itemStartDiv;
+                }
+                var propertyImageList = propertiesObj[key].MediaPropertyImage;
+                if (propertyImageList != null) {
+                    var imageUrl = null;
+                    var parentUrl = propertyImageList[0].UrlPath;
+                    parentUrl = parentUrl.replace("Parent", "249x164");
+                    var extension = parentUrl.slice(-4);
+                    imageUrl = parentUrl.replace(extension, "_249_164" + extension + "");
+                }
+                if (value.LookPropertyDisplayPriceId != null) {
+                    var FormatedPrice = value.Price;
+                    if (value.LookPropertyDisplayPriceId == 1) {
+                        if (FormatedPrice >= 10000000) FormatedPrice = (FormatedPrice / 10000000).toFixed(2) + ' Crore';
+                        else if (FormatedPrice >= 100000) FormatedPrice = (FormatedPrice / 100000).toFixed(2) + ' Lac';
+                        else if (FormatedPrice >= 1000) FormatedPrice = (FormatedPrice / 1000).toFixed(2) + ' K';
+                        var PropertyPrice = 'PKR ' + FormatedPrice;
+                    }
+                    else if (value.LookPropertyDisplayPriceId == 2) {
+                        var PropertyPrice = value.DisplayText;
+                    }
+                    else if (value.LookPropertyDisplayPriceId == 3) {
+                        if (FormatedPrice >= 10000000) FormatedPrice = (FormatedPrice / 10000000).toFixed(2) + ' Crore';
+                        else if (FormatedPrice >= 100000) FormatedPrice = (FormatedPrice / 100000).toFixed(2) + ' Lac';
+                        else if (FormatedPrice >= 1000) FormatedPrice = (FormatedPrice / 1000).toFixed(2) + ' K';
+                        var PropertyPrice = 'PKR ' + FormatedPrice + ' ' + value.DisplayText;
+                    }
+                    else if (value.LookPropertyDisplayPriceId == 4) {
+                        var PropertyPrice = 'Contact Agent';
+                    }
+                }
+
+                propertyStartDiv = '<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 soldpadding">';
+
+                simPropertyDiv = simPropertyDiv + propertyStartDiv +
+                '<div class="property shadow-hover shade sold-slider">' +
+                            '<a href="javascript:void(0)" class="property-img soldsliderimage" >' +
+                                '<div class="img-fade"></div>' +
+
+                                '<div class="property-tag button status"> Sold</div>' +
+                                '<div class="property-price">' + PropertyPrice + '</div>' +
+                                '<div class="property-color-bar"></div>' +
+                                '<img class="soldsliderimage" src="' + imageUrl + '"' + 'onerror=this.src="../Assets/img/No_Img.jpg" alt="' + value.Heading + '" title="' + value.Heading + '" />' +
+                            '</a>' +
+                            '<div class="property-content">' +
+                               ' <div class="property-title">' +
+                                    '<h4><a href="javascript:void(0)">' + value.Heading + '</a></h4>' + value.Address +
+                                '</div>' +
+                                '<table class="property-details">' +
+                                    '<tr>' + feature +
+                                    '</tr>' +
+                                '</table>' +
+                            '</div>' +
+                            '<div class="property-footer">' +
+                                '<span class="left" style="font-size: 12px;"><i class="fa fa-calendar-o icon"></i>' + value.AddDays + '</span>' +
+                                '<span class="right">' +
+                                '</span>' +
+                                '<div class="clear"></div>' +
+                            '</div>' +
+                        '</div></div></div>';
+                count++;
+            });
+            $('#soldPropertyContainer').empty();
+            $('#soldPropertyContainer').html(simPropertyDiv);
+            $('#soldPropertyContainer').show();
+
+        }
+    }
+
+    function renderSimilarSoldProperties(propertiesObj) {
+        var notAssigned = 'N/A';
+        var secondDivClass = ' hidden-xs';
+        var thirdDivClass = ' hidden-sm hidden-xs';
+        var activeItemStartDiv = '<div class="item active exm" style="padding:0">';
+        var itemStartDiv = '<div class="item exm" style="padding:0">';
+        var similarPropertyImageStyle = '';
+        var propertyStartDiv = '';
+        var similarProperties = propertiesObj;
+        var countFeatures = similarProperties.length;
+        var loopbreaker = countFeatures % 3;
+        var count = 0;
+        var simPropertyDiv = '';
+        var divClass = '';
+        var feature = '';
+		
+        if (loopbreaker > 0) {
+            for (var i = loopbreaker; i > 0; i--) {
+                var splice = (countFeatures - loopbreaker - 1) + i;
+                similarProperties.splice(splice);
+            }
+
+        }
+
+        if (similarProperties != null) {
+            $.each(similarProperties, function (key, value) {
+                var PropertyURL = "@Url.Action("PropertyDetail", "PropertyDetail")" + '?' + value.propertyUrl;
+
+                {
+                    if (value.PropertyType == null || value.PropertyType == '') {
+                        value.PropertyType = notAssigned;
+                    }
+                    if (value.Image == null || value.Image == '') {
+                        value.Image = '/Assets/img/No_Img.jpg';
+                    }
+                    if (value.Heading == null || value.Heading == '') {
+                        value.Heading = '<span style="color:transparent">.</span>';
+                    }
+                    if (value.Address == null || value.Address == '') {
+                        value.Address = '<span style="color:transparent">.</span>';
+                    }
+                    else {
+                        var address = value.Address;
+                        value.Address = '<p class="property-address"><i class="fa fa-map-marker icon"></i>' + address + '</p>';
+                    }
+                    if (value.Price == null || value.Price == '') {
+                        value.Price = notAssigned;
+                    }
+                    if ((value.LookPropertyCategoryId == 1 && value.LookPropertyMarketTypeId == 1) ||
+                         (value.LookPropertyCategoryId == 3 && value.LookPropertyMarketTypeId == 1)) {
+                        if ((value.NumberofBeds != null && value.NumberofBeds != 0) && (value.NumberofBaths != null && value.NumberofBaths != 0) && (value.Area != null && value.Area != 0)) {
+                            feature = '<td><i class="fa fa-bed"></i> ' + value.NumberofBeds + ' Beds</td>' +
+                                '<td><i class="fa fa-tint"></i> ' + value.NumberofBaths + ' Baths</td>' +
+                                '<td><i class="fa fa-expand"></i> ' + value.Area + ' ' + value.AreaUnit + '</td>';
+                        }
+                        else if ((value.NumberofBeds == null || value.NumberofBeds == 0) && (value.NumberofBaths == null || value.NumberofBaths == 0) && (value.Area != null && value.Area != 0)) {
+                            feature = '<td><i class="fa fa-expand"></i> ' + value.Area + ' ' + value.AreaUnit + '</td>';
+                        }
+                        else if ((value.NumberofBeds != null && value.NumberofBeds != 0) && (value.NumberofBaths != null && value.NumberofBaths != 0) && (value.Area == null || value.Area == 0)) {
+                            feature = '<td><i class="fa fa-bed"></i> ' + value.NumberofBeds + ' Beds</td>' +
+                                '<td><i class="fa fa-tint"></i> ' + value.NumberofBaths + ' Baths</td>';
+                        }
+                        else {
+                            feature = '<div style="height:16px"></div>';
+                        }
+                    }
+                    else if ((value.LookPropertyCategoryId == 2 && value.LookPropertyMarketTypeId == 2) ||
+                        (value.LookPropertyCategoryId == 4 && value.LookPropertyMarketTypeId == 2) ||
+                        (value.LookPropertyCategoryId == 5 && value.LookPropertyMarketTypeId == 2) ||
+                        (value.LookPropertyCategoryId == 7 && value.LookPropertyMarketTypeId == 2) ||
+                        (value.LookPropertyCategoryId == 8 && value.LookPropertyMarketTypeId == 2) ||
+                        (value.LookPropertyCategoryId == 9 && value.LookPropertyMarketTypeId == 2) ||
+                        (value.LookPropertyCategoryId == 10 && value.LookPropertyMarketTypeId == 2) ||
+                        (value.LookPropertyCategoryId == 11 && value.LookPropertyMarketTypeId == 2)) {
+                        if ((value.NumberofBaths != null && value.NumberofBaths != 0 ) && (value.Area != null && value.Area != 0) && (value.NumberofBeds == null || value.NumberofBeds == 0)) {
+                            feature = '<td><i class="fa fa-tint"></i> ' + value.NumberofBaths + ' Baths</td>' +
+                               '<td><i class="fa fa-expand"></i> ' + value.Area + ' ' + value.AreaUnit + '</td>';
+                        }
+                        else if ((value.Area == null || value.Area == 0) && (value.NumberofBaths != null && value.NumberofBaths != 0) && (value.NumberofBeds == null || value.NumberofBeds == 0)) {
+                            feature = '<td><i class="fa fa-tint"></i> ' + value.NumberofBaths + ' Baths</td>';
+                        }
+                        else if ((value.Area != null && value.Area != 0) && (value.NumberofBaths == null || value.NumberofBaths == 0) && (value.NumberofBeds == null || value.NumberofBeds == 0)) {
+                            feature = '<td><i class="fa fa-expand"></i> ' + value.Area + ' ' + value.AreaUnit + '</td>';
+                        }
+                        else if ((value.NumberofBaths != null && value.NumberofBaths != 0) && (value.NumberofBeds != null && value.NumberofBeds != 0) && (value.Area != null && value.Area != 0)) {
+                            feature = '<td><i class="fa fa-bed"></i> ' + value.NumberofBeds + ' Beds</td>' +
+                               '<td><i class="fa fa-tint"></i> ' + value.NumberofBaths + ' Baths</td>' +
+                               '<td><i class="fa fa-expand"></i> ' + value.Area + ' ' + value.AreaUnit + '</td>';
+                        }
+                        else {
+                            feature = '<div style="height:16px"></div>';
+                        }
+                    }
+                    else {
+                        feature = '<div style="height:16px"></div>';
+                    }
+                    if (value.AddDays == null || value.AddDays == '') {
+                        value.AddDays = '';
+                    }
+                }
+                var propertyImageList = propertiesObj[key].MediaPropertyImage;
+                if (value.PropertyType == 'Rent' || value.PropertyType == 'For Rent' || value.PropertyType == 'ForRent') {
+                    value.Price = value.Price + '<span>Per Month</span>';
+                }
+                similarPropertyImageStyle = 'style = "height: 180px;"';
+                if (count % 3 == 0) {
+                    divClass = '';
+                }
+                else if (count % 3 == 1) {
+                    divClass = secondDivClass;
+                }
+                else if (count % 3 == 2) {
+                    divClass = thirdDivClass;
+                }
+                if (count % 3 == 0) {
+                    if (count == 0) {
+                        simPropertyDiv = simPropertyDiv + activeItemStartDiv;
+                    }
+                    else {
+                        simPropertyDiv = simPropertyDiv + itemStartDiv;
+                    }
+                }
+                if (propertyImageList != null) {
+                    var imageUrl = null;
+                    var parentUrl = propertyImageList[0].UrlPath;
+                    parentUrl = parentUrl.replace("Parent", "249x164");
+                    var extension = parentUrl.slice(-4);
+                    imageUrl = parentUrl.replace(extension, "_249_164" + extension + "");
+                }
+                if (value.LookPropertyDisplayPriceId != null) {
+                    var FormatedPrice = value.Price;
+                    if (value.LookPropertyDisplayPriceId == 1) {
+                        if (FormatedPrice >= 10000000) FormatedPrice = (FormatedPrice / 10000000).toFixed(2) + ' Crore';
+                        else if (FormatedPrice >= 100000) FormatedPrice = (FormatedPrice / 100000).toFixed(2) + ' Lac';
+                        else if (FormatedPrice >= 1000) FormatedPrice = (FormatedPrice / 1000).toFixed(2) + ' K';
+                        var PropertyPrice = 'PKR ' + FormatedPrice;
+                    }
+                    else if (value.LookPropertyDisplayPriceId == 2) {
+                        var PropertyPrice = value.DisplayText;
+                    }
+                    else if (value.LookPropertyDisplayPriceId == 3) {
+                        if (FormatedPrice >= 10000000) FormatedPrice = (FormatedPrice / 10000000).toFixed(2) + ' Crore';
+                        else if (FormatedPrice >= 100000) FormatedPrice = (FormatedPrice / 100000).toFixed(2) + ' Lac';
+                        else if (FormatedPrice >= 1000) FormatedPrice = (FormatedPrice / 1000).toFixed(2) + ' K';
+                        var PropertyPrice = 'PKR ' + FormatedPrice + ' ' + value.DisplayText;
+                    }
+                    else if (value.LookPropertyDisplayPriceId == 4) {
+                        var PropertyPrice = 'Contact Agent';
+                    }
+                }
+                propertyStartDiv = '<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 ' + divClass + '">';
+
+                simPropertyDiv = simPropertyDiv + propertyStartDiv +
+                '<div class="property shadow-hover shade">' +
+                            '<a href="' + PropertyURL + '" class="property-img">' +
+                                '<div class="img-fade"></div>' +
+
+                                '<div class="property-tag button status"> ' + value.PropertyType + ' </div>' +
+                                '<div class="property-price">' + PropertyPrice + '</div>' +
+                                '<div class="property-color-bar"></div>' +
+                                '<img src="' + imageUrl + '" class="similar-property-detail-img" onerror=this.src="../Assets/img/No_Img.jpg" alt="' + value.Heading + '" title="' + value.Heading + '"/>' +
+                            '</a>' +
+                            '<div class="property-content">' +
+                               ' <div class="property-title">' +
+                                    '<h4><a href="' + PropertyURL + '">' + value.Heading + '</a></h4>' + value.Address +
+                                '</div>' +
+                                '<table class="property-details">' +
+                                    '<tr>' + feature +
+                                    '</tr>' +
+                                '</table>' +
+                            '</div>' +
+                            '<div class="property-footer">' +
+                                '<span class="left" style="font-size: 12px;"><i class="fa fa-calendar-o icon"></i>' + value.AddDays + '</span>' +
+                                '<span class="right">' +
+                                    //'<a href="#"><i class="fa fa-heart-o icon"></i></a>' +
+                                    //'<a href="#"><i class="fa fa-share-alt"></i></a>' +
+                                '</span>' +
+                                '<div class="clear"></div>' +
+                            '</div>' +
+                        '</div></div>';
+
+                if (count % 3 == 2) {
+                    simPropertyDiv = simPropertyDiv + '</div>';
+                }
+                count++;
+            });
+            $('#similarPropertyContainer').empty();
+            $('#similarPropertyContainer').html(simPropertyDiv);
+            $('#similarPropertyContainer').show();
+
+        }
+    }
+
+    function displaySocialMedia(propertyObj) {
+        var temp = '';
+        var tempagents = '';
+        var agents = propertyObj.propertyDetailAgentsField;
+        var agency = propertyObj;
+        var FirstName = 'N/A';
+        var Mobile = 'N/A';
+        if (agents.length != 0) {
+            if (agents[0].FirstName != null) {
+                FirstName = agents[0].FirstName;
+            }
+            if (agents[0].Mobile != null) {
+                Mobile = agents[0].Mobile;
+            }
+            tempagents = tempagents + '<div class="pro-agent-content">' +
+          '<p class="pro-agent-name">Contact agent</p>' +
+          '<p class="pro-agent-info"><i class="fa fa-user icon" alt="name"></i>' + FirstName + '</p>' +
+              '<p class="pro-agent-info"><i class="fa fa-phone icon" alt="mobile" title="mobile"></i>' + Mobile + '</p>' +
+          '</div>';
+        }
+        else {
+            var agencymobile = 'N/A';
+            if (agency.agencyMobileField != null) {
+                agencymobile = agency.agencyMobileField;
+            }
+            tempagents = tempagents + '<div class="pro-agent-content">' +
+         '<p class="pro-agent-name">Contact agency</p>' +
+         '<p class="pro-agent-info"><i class="fa fa-user icon"></i>' + agency.agencyNameField + '</p>' +
+             '<p class="pro-agent-info"><i class="fa fa-phone icon" alt="mobile" title="mobile"></i>' + agencymobile + '</p>' +
+         '</div>';
+        }
+
+        if (propertyObj.lookPropertyPriceDisplayIdField != null) {
+            var FormatedPrice = propertyObj.priceField;
+            if (propertyObj.lookPropertyPriceDisplayIdField == 1) {
+                if (FormatedPrice >= 10000000) FormatedPrice = (FormatedPrice / 10000000).toFixed(2) + ' Crore';
+                else if (FormatedPrice >= 100000) FormatedPrice = (FormatedPrice / 100000).toFixed(2) + ' Lac';
+                else if (FormatedPrice >= 1000) FormatedPrice = (FormatedPrice / 1000).toFixed(2) + ' K';
+                var PropertyPrice = 'PKR ' + FormatedPrice;
+            }
+            else if (propertyObj.lookPropertyPriceDisplayIdField == 2) {
+                var PropertyPrice = '<span class="label label-default detaillabel">' + propertyObj.displayTextField + '</span>';
+            }
+            else if (propertyObj.lookPropertyPriceDisplayIdField == 3) {
+                if (FormatedPrice >= 10000000) FormatedPrice = (FormatedPrice / 10000000).toFixed(2) + ' Crore';
+                else if (FormatedPrice >= 100000) FormatedPrice = (FormatedPrice / 100000).toFixed(2) + ' Lac';
+                else if (FormatedPrice >= 1000) FormatedPrice = (FormatedPrice / 1000).toFixed(2) + ' K';
+                var PropertyPrice = 'PKR ' + FormatedPrice + '<span class="label label-default detaillabel">' + propertyObj.displayTextField + '</span>';
+            }
+            else if (propertyObj.lookPropertyPriceDisplayIdField == 4) {
+                var PropertyPrice = 'Contact Agent';
+            }
+        }
+        temp = temp + '<div class="row text-center">' +
+               '<div class="widget-area-social" >' +
+                   '<div class="widget-area-social-links">' +
+                       '<div class="link facebook-link">' +
+                           '<div class="link-background" style="background: #337ab7;"></div>' +
+                           '<div class="link-overlay"></div>' +
+                            '<a href="javascript:fbshareCurrentPage()"><i class="fa fa-facebook"></i></a>' +
+                       '</div>' +
+                       '<div class="link twitter-link">' +
+                           '<div class="link-background" style="background: #3192e6;"></div>' +
+                           '<div class="link-overlay"></div>' +
+                            '<a href="javascript:tweetCurrentPage(\'' + propertyObj.headingField + '\')"><i class="fa fa-twitter"></i></a>' +
+                       '</div>' +
+                       '<div class="link google-link">' +
+                           '<div class="link-background" style="background: #ec5050;"></div>' +
+                           '<div class="link-overlay"></div>' +
+                          '<a href="javascript:googleCurrentPage()"><i class="fa fa-google"></i></a>' +
+                       '</div>' +
+                   '</div>' +
+               '</div>' +
+           '</div>' +
+           '<div class="property-header">' +
+               '<div class="property-title" style="padding: 18px;">' +
+                   '<h4 style="font-weight: bold;color:red;margin-bottom: -53px; font-size:24px;text-align:center">' + propertyObj.propertTypeField + '</h4>' +
+                   //'<div>' +
+                   //    '<a href="#"><i class="fa fa-heart-o icon" style="font-size: 42px;float: right;margin-top: 24px;"></i></a>' +
+                   //'</div>' +
+                   '<div class="property-price-single text-center" style="margin-top: 80px; color:black;">' +
+                      PropertyPrice +
+                   '</div>' +
+                   '<p class="property-address text-center" style="margin-top: 44px;font-size: 20px;"><i class="fa fa-map-marker icon" alt="address"></i>' + propertyObj.addressField + '</p>' +
+                   '<div class="clear"></div>' +
+               '</div>' +
+           '</div>' + tempagents;
+        $('#socialmedia').empty();
+        $('#socialmedia').append(temp);
+    }
+    function displayMap(propertyObj) {
+        var data = propertyObj;
+        if (data.latitudeField != 0 && data.longitudeField != 0) {
+            var features = propertyObj.propertyFeaturesField;
+            var centerLatLng = { "lat": data.latitudeField, "lng": data.longitudeField };
+            var initialize = new google.maps.Map(document.getElementById("map"), {
+                zoom: 15,
+                center: centerLatLng,
+                disableDefaultUI: true
+            });
+            var latlngbounds = new google.maps.LatLngBounds();
+            var infoWindow = new google.maps.InfoWindow();
+            function disable() {
+                initialize.setOptions({
+                    draggable: false,
+                    zoomControl: false,
+                    scrollwheel: false,
+                    disableDoubleClickZoom: false
+                });
+            }
+            function enable() {
+                initialize.setOptions({
+                    draggable: true,
+                    zoomControl: true,
+                    scrollwheel: true,
+                    disableDoubleClickZoom: true
+                });
+            }
+            var myLatlng = new google.maps.LatLng(data.latitudeField, data.longitudeField);
+            var markerImage1 = '/Assets/Pins-02.png';
+            var markerImage = '/Assets/Pins-03.png';
+            if (data.isPremiumField == true) {
+                var marker = new google.maps.Marker({
+                    position: myLatlng,
+                    map: initialize,
+                    icon: markerImage1,
+                    title: data.headingField
+                });
+            }
+            else {
+                var marker = new google.maps.Marker({
+                    position: myLatlng,
+                    map: initialize,
+                    icon: markerImage,
+                    title: data.headingField
+                });
+            }
+            latlngbounds.extend(marker.position);
+            (function (marker, data) {
+                var imagePath = null;
+                if (data.mediaPropertyImages != null) {
+                    childObj = data.mediaPropertyImages[0].UrlPath;
+                  var  parentUrl = childObj.replace("Parent", "282x185");
+                    var extension = parentUrl.slice(-4);
+                    imagePath = parentUrl.replace(extension, "_282_185" + extension + "");
+                }
+                if (imagePath == null) {
+                    imagePath = '/Assets/img/No_Img.jpg';
+                }
+                if (data.lookPropertyPriceDisplayIdField != null) {
+                    var FormatedPrice = data.priceField;
+                    if (data.lookPropertyPriceDisplayIdField == 1) {
+                        if (FormatedPrice >= 10000000) FormatedPrice = (FormatedPrice / 10000000).toFixed(2) + ' Crore';
+                        else if (FormatedPrice >= 100000) FormatedPrice = (FormatedPrice / 100000).toFixed(2) + ' Lac';
+                        else if (FormatedPrice >= 1000) FormatedPrice = (FormatedPrice / 1000).toFixed(2) + ' K';
+                        var PropertyPrice = 'PKR ' + FormatedPrice;
+                    }
+                    else if (data.lookPropertyPriceDisplayIdField == 2) {
+                        var PropertyPrice = data.displayTextField;
+                    }
+                    else if (data.lookPropertyPriceDisplayIdField == 3) {
+                        if (FormatedPrice >= 10000000) FormatedPrice = (FormatedPrice / 10000000).toFixed(2) + ' Crore';
+                        else if (FormatedPrice >= 100000) FormatedPrice = (FormatedPrice / 100000).toFixed(2) + ' Lac';
+                        else if (FormatedPrice >= 1000) FormatedPrice = (FormatedPrice / 1000).toFixed(2) + ' K';
+                        var PropertyPrice = 'PKR ' + FormatedPrice + ' ' + data.displayTextField;
+                    }
+                    else if (data.lookPropertyPriceDisplayIdField == 4) {
+                        var PropertyPrice = 'Contact Agent';
+                    }
+                }
+                if ((data.lookPropertyCategoryIdField == 1 && data.lookPropertyMarketTypeIdField == 1) ||
+                    (data.lookPropertyCategoryIdField == 2 && data.lookPropertyMarketTypeIdField == 1) ||
+                    (data.lookPropertyCategoryIdField == 3 && data.lookPropertyMarketTypeIdField == 1) ||
+                    (data.lookPropertyCategoryIdField == 6 && data.lookPropertyMarketTypeIdField == 1))
+                {
+                    var bed = '';
+                    var bath = '';
+                    for (i = 0 ; i < features.length ; i++) {
+                        if (features[i].lookPropertyFeatureIdField == 60) {
+                            if (features[i].valueField != 0) {
+                                bed = bed + features[i].valueField + ' <img src= "/Assets/img/icons/bedroom.ico" width= "15">'
+                            }
+                        }
+                        if (features[i].lookPropertyFeatureIdField == 61) {
+                            if (features[i].valueField != 0) {
+                                bath = bath + features[i].valueField + '<img src= "/Assets/img/icons/bathroom.ico" width= "15">'
+                            }
+                        }
+                    }
+                }
+
+               else if ((data.lookPropertyCategoryIdField == 2 && data.lookPropertyMarketTypeIdField == 2) ||
+                    (data.lookPropertyCategoryIdField == 4 && data.lookPropertyMarketTypeIdField == 2) ||
+                    (data.lookPropertyCategoryIdField == 5 && data.lookPropertyMarketTypeIdField == 2) ||
+                    (data.lookPropertyCategoryIdField == 7 && data.lookPropertyMarketTypeIdField == 2) ||
+                    (data.lookPropertyCategoryIdField == 8 && data.lookPropertyMarketTypeIdField == 2) ||
+                    (data.lookPropertyCategoryIdField == 9 && data.lookPropertyMarketTypeIdField == 2) ||
+                    (data.lookPropertyCategoryIdField == 10 && data.lookPropertyMarketTypeIdField == 2) ||
+                    (data.lookPropertyCategoryIdField == 11 && data.lookPropertyMarketTypeIdField == 2))
+                {
+                    var bed = '';
+                    var bath = '';
+                    for (i = 0 ; i < features.length ; i++) {
+                        if (features[i].lookPropertyFeatureIdField == 60) {
+                            if (features[i].valueField != 0) {
+                                bed = bed + features[i].valueField + ' <img src= "/Assets/img/icons/bedroom.ico" width= "15">'
+                            }
+                        }
+                        if (features[i].lookPropertyFeatureIdField == 61) {
+                            if (features[i].valueField != 0) {
+                                bath = bath + features[i].valueField + '<img src= "/Assets/img/icons/bathroom.ico" width= "15">'
+                            }
+                        }
+                    }
+                }
+                else {
+                    bed = '';
+                    bath = '';
+                }
+                if (data.isPremiumField == true) {
+                    var contentString =
+                        '<div class="favourite-pro-border-pre-tile" style="width:600px">' +
+                                     '<div class="col-item" style="border:none">' +
+                                     '<div class="favourite-pro-border-std-img">' +
+                                      '<img id="mapTile" src="' + imagePath + '" width="280" alt= "' + data.addressField + '" />' +
+                                       '</div>' +
+                                        '<div class="favourite-pro-std-caption">' +
+                                        '<div class="favourite-pro-list-title">' + data.headingField + '</div>' +
+                                         '<div class="favourite-pro-list-price">' + PropertyPrice + '</div>' +
+                                           '</div>' +
+                                            '<p class="favourite-pro-std-p" style="display:none;">' + data.descriptionField + '</p>' +
+                                             '<p class="favourite-pro-std-date"><i class="fa fa-calendar-o"></i>' + data.addDaysField + '</p>' +
+                                              '<span class="favourite-pro-std-hr"></span>' +
+                                               '<div class="favourite-pro-std-footer">' +
+                                                '<div class="favourite-pro-left">' +
+                                                  bed +
+                                                  bath +
+                                                   '</div>' +
+                                                    '</div>' +
+                                                    '</div>' +
+                                                  '</div>';
+                }
+                else {
+                    var contentString =
+                                    '<div class="favourite-pro-border-std-tile">' +
+                      '<div class="col-item" style="border:none">' +
+                          '<div class="favourite-pro-border-std-img">' +
+                              '<img src="' + imagePath + '" width="280" alt="a" />' +
+                          '</div>' +
+                          '<div class="favourite-pro-std-caption">' +
+                              '<div class="favourite-pro-list-title">' + data.headingField + '</div>' +
+                              '<div class="favourite-pro-list-price">' + PropertyPrice + '</div>' +
+                          '</div>' +
+
+                          '<p class="favourite-pro-std-p" style="display:none;">' + data.descriptionField + '</p>' +
+
+                          '<p class="favourite-pro-std-date"><i class="fa fa-calendar-o"></i>' + data.addDaysField + '</p>' +
+
+                          '<span class="favourite-pro-std-hr"></span>' +
+
+                          '<div class="favourite-pro-std-footer">' +
+                            '<div class="favourite-pro-left">' +
+                              bed +
+                             bath +
+                            '</div>' +
+                          '</div>' +
+                      '</div>' +
+                    '</div>';
+                }
+                google.maps.event.addListener(marker, "mouseover", function (e) {
+                    infoWindow.setContent(contentString);
+                    infoWindow.open(initialize, marker);
+                });
+                google.maps.event.addListener(marker, "mouseout", function (e) {
+                    infoWindow.setContent(null);
+                    infoWindow.close(initialize, marker);
+                });
+            })(marker, data);
+            ///////////////////***************
+            initialize.setCenter(centerLatLng);
+            google.maps.event.addDomListener(window, 'load', initialize)
+        }
+        else {
+            var centerLatLng = { "lat": 31.5546, "lng": 74.3572 };
+            var initialize = new google.maps.Map(document.getElementById("map"), {
+                zoom: 7,
+                center: centerLatLng,
+                disableDefaultUI: true
+            });
+            initialize.setCenter(centerLatLng);
+            google.maps.event.addDomListener(window, 'load', initialize)
+        }
+    }
+
+    function displayDescription(propertyObj) {
+        $("#descriptionDiv").empty();
+        var indoorF = '';
+        var outdoorF = '';
+        var localityF = '';
+        var features = propertyObj.propertyFeaturesField;
+        var indoorFeatureDisplay = '';
+        var outdoorFeatureDisplay = '';
+        var localityFeatureDisplay = '';
+        for (i = 0 ; i < features.length ; i++) {
+            if (features[i].propertyFeatureCategoryIdField == 1) {
+                indoorF = indoorF + '<div class="form-check"><label class="form-check-label">' + features[i].propertyFeatureNameField + '</label></div>';
+            }
+            if (features[i].propertyFeatureCategoryIdField == 2) {
+                outdoorF = outdoorF + '<div class="form-check"><label class="form-check-label">' + features[i].propertyFeatureNameField + '</label></div>';
+            }
+            if (features[i].propertyFeatureCategoryIdField == 3) {
+                localityF = localityF + '<div class="form-check"><label class="form-check-label">' + features[i].propertyFeatureNameField + '</label></div>';
+            }
+        }
+        if (indoorF.length != 0) {
+            indoorFeatureDisplay = '<div class="form-group col-md-4 col-sm-4 col-xs-12 text-center">' +
+                            '<img src="/Assets/img/f_1.png" class="ic_mar" alt="interior" title="interior">' +
+                           indoorF + '</div>';
+        }
+        if (outdoorF.length != 0) {
+            outdoorFeatureDisplay = '<div class="form-group col-md-4 col-sm-4 col-xs-12 text-center">' +
+                                    '<img src="/Assets/img/f_2.png" class="ic_mar" alt="exterior" title="exterior">' +
+                            outdoorF + '</div>';
+        }
+        if (localityF.length != 0) {
+            localityFeatureDisplay = '<div class="form-group col-md-4 col-sm-4 col-xs-12  text-center" id="localityDiv">' +
+                                           '<img src="/Assets/img/f_3.png" class="ic_mar" alt="locality" title="locality">' +
+                           localityF + '</div>';
+        }
+
+        var descriptiontext = '<div class="col-md-12 descpadding"><div style="display:none">' + propertyObj.descriptionField + '</div>' +
+                            indoorFeatureDisplay +
+                             outdoorFeatureDisplay +
+                            localityFeatureDisplay +
+                         '</div></div>';
+        $("#descriptionDiv").append(descriptiontext);
+        $("#descriptionDiv").show();
+    }
+
+    function displayAgency(propertyObj) {
+        var agency = propertyObj;
+        var agentDiv = '';
+        $("#agencyDiv").empty();
+        var tempAgents = '';
+        var agents = agency.propertyDetailAgentsField;
+        var mobile = 'N/A';
+        var email = 'N/A';
+        var firstName = 'N/A';
+        if (agents.length != 0) {
+            var activeClass = 'active';
+            for (var i = 0; i < agents.length; i++) {
+                if (agents[i].Mobile != null) {
+                    mobile = agents[i].Mobile;
+                }
+                if (agents[i].Email != null) {
+                    email = agents[i].Email;
+                }
+                if (agents[i].FirstName != null) {
+                    firstName = agents[i].FirstName;
+                }
+                tempAgents = tempAgents +
+                    '<div class="item ' + activeClass + '">' +
+                             '<div class="col-sm-5 col-xs-5 col-md-5">' +
+                         '<div class="avatar img-responsive">' +
+                             '<img src="/Assets/img/No_Img.jpg" class="img_border" alt="Sedna Testimonial Avatar" width="100%" />' +
+                                 '</div>' +
+                                      '</div>' +
+                                    '<div class="col-sm-7 col-xs-7 col-md-7 allpadding">' +
+                                       '<p class="pro-agent-slider-title">' + firstName + '</p>' +
+                                        '<p class="pro-agent-slider-mobile"><i class="fa fa-phone icon"></i>' + mobile + '</p>' +
+                                           '<p class="pro-agent-slider-email"><i class="fa fa-envelope icon"></i>' + email + '</p>' +
+                                             '</div>' +
+                                              '</div>';
+                activeClass = '';
+            }
+            agentDiv =
+                '<div class="col-sm-12 col-xs-12 col-md-12 flex_margin pro-agent-slider">' +
+                                       '<div id="bootstrap-touch-slider" class="carousel slide control-round idicators-line" data-ride="carousel" style="padding-top: 20px; padding-bottom: 20px;" data-pause="hover">' +
+                                          '<div class="carousel-inner" role="listbox">' + tempAgents +
+                                                 '</div>' +
+                                           '<a class="left carousel-control" href="#bootstrap-touch-slider" role="button" data-slide="prev">' +
+                                               '<span class="fa fa-angle-left" aria-hidden="true"></span>' +
+                                               '<span class="sr-only">Previous</span>' +
+                                           '</a>' +
+                                           '<a class="right carousel-control" href="#bootstrap-touch-slider" role="button" data-slide="next">' +
+                                              '<span class="fa fa-angle-right" aria-hidden="true"></span>' +
+                                               '<span class="sr-only">Next</span>' +
+                                           '</a>' +
+                                       '</div>' +
+                                   '</div>';
+        }
+        else {
+            agentDiv = '';
+        }
+        var agencymobile = 'N/A';
+        var agencyemail = 'N/A';
+        if (agency.agencyMobileField != null) {
+            agencymobile = agency.agencyMobileField;
+        }
+        if (agency.agencyEmailField != null) {
+            agencyemail = agency.agencyEmailField;
+        }
+        var agencyImage = propertyObj.mediaAgencyImages;
+        var logoUrl = null;
+        if (agencyImage != null) {
+            var parentUrl = agencyImage.UrlPath;
+            parentUrl = parentUrl.replace("Parent", "146x41");
+            var extension = parentUrl.slice(-4);
+            logoUrl = parentUrl.replace(extension, "_146_41" + extension + "");
+        }
+        else {
+            logoUrl = "/Assets/img/No_Img.jpg";
+        }
+
+        var temp = '<div class="col-sm-12 col-xs-12 col-md-12 pro-agent-list" style="margin-bottom:5px;">' +
+                                                '<h2 class="pro-agent">This property is presented by</h2>' +
+                                                '<div class="pro-agent-logo">' +
+                                                    '<img src="' + logoUrl + '" class="img-responsive" alt="'+ agency.agencyNameField +'" alt="'+ agency.agencyNameField +'"  />' +
+                                                '</div>' +
+                                                '<div class="pro-agent-content">' +
+                                                    '<p class="pro-agent-name">' + agency.agencyNameField + '</p>' +
+                                                    '<p class="pro-agent-info"><i class="fa fa-phone icon" alt="mobile"></i> ' + agencymobile + '</p>' +
+                                                    '<p class="pro-agent-info"><i class="fa fa-envelope icon" alt="email"></i>' + agencyemail + '</p>' +
+                                                    '<p class="pro-agent-info"><b>order ID: ' + agency.propertyNum + '</b></p>' +
+                                                '</div>' +
+                                            '</div>' + agentDiv;
+
+        $("#agencyDiv").append(temp);
+        $('#bootstrap-touch-slider').bsTouchSlider();
+    }
+    function loadFeature(propertyObj) {
+        var featureList = propertyObj.propertyFeaturesField;
+        var categoryId = propertyObj.lookPropertyCategoryIdField;
+        var marketTypeId = propertyObj.lookPropertyMarketTypeIdField;
+        var bed = null;
+        var bath = null;
+        var garage = null;
+        var terrace = null;
+        for (i = 0; i < featureList.length; i++) {
+            if (featureList[i].lookPropertyFeatureIdField == 60) {
+                bed = featureList[i].valueField;
+            }
+            if (featureList[i].lookPropertyFeatureIdField == 61) {
+                bath = featureList[i].valueField;
+            }
+            if (featureList[i].lookPropertyFeatureIdField == 62) {
+                terrace = featureList[i].valueField;
+            }
+            if (featureList[i].lookPropertyFeatureIdField == 63) {
+                garage = featureList[i].valueField;
+            }
+        }
+        var countFeatures = featureList.length;
+        var count = countFeatures - 4;
+        if (countFeatures > 4) {
+            for (var i = count; i > 0; i--) {
+                var splice = 3 + i;
+                featureList.splice(splice);
+            }
+        }
+        var startDiv = '<table class="property-details-single"> <tr>';// + '<td><img src="/Assets/img/New Icons-04.png" class="icon_feature" alt="" /></i> <span>sq' + propertyObj.frontAreaField + '</span> ' + propertyObj.unitNameField + '</td>';
+        var loopCount = 0;
+        var loopIndex = '';
+        var temp = '';
+        if ((categoryId == 1 && marketTypeId == 1) ||
+                           (categoryId == 2 && marketTypeId == 1) ||
+                           (categoryId == 3 && marketTypeId == 1) ||
+                           (categoryId == 6 && marketTypeId == 1)) {
+            if (bed != null && bed != 0) {
+                temp = temp + '<td> <img src="/Assets/global/img/New Icons-02.png" class="icon_feature" alt="bed-icon" title="bed"/><br><span>' + bed + '</span> Beds</td>';
+            }
+            else {
+                temp = temp + '';
+            }
+            if (bath != null && bath != 0) {
+                temp = temp + '<td> <img src="/Assets/global/img/New Icons-03.png" class="icon_feature" alt="bath-icon" title="bath" /><br><span>' + bath + '</span> Baths</td>';
+            }
+            else {
+                temp = temp + '';
+            }
+            if ((propertyObj.frontAreaField != 0 && propertyObj.frontAreaField != null) && (propertyObj.unitNameField != 0 && propertyObj.unitNameField != null)) {
+                temp = temp + '<td><img src="/Assets/global/img/New Icons-06.png" class="icon_feature" alt="front-icon" title="frontarea"/></i><br><span>' + propertyObj.frontAreaField + '</span> ' + propertyObj.unitNameField + '</td>';
+            }
+            else {
+                temp = temp + '';
+            }
+            if (terrace != null && terrace != 0) {
+                temp = temp + '<td> <img src="/Assets/global/img/New Icons-05.png" class="icon_feature" alt="terrace-icon" title="terrace"/><br><span>' + terrace + '</span> Terrace</td>';
+            }
+            else {
+                temp = temp + '';
+            }
+            if (garage != null && garage != 0) {
+                temp = temp + '<td> <img src="/Assets/global/img/New Icons-04.png" class="icon_feature" alt="garage-icon" title="carparking" /><br><span>' + garage + '</span> Car Parking</td>';
+            }
+            else {
+                temp = temp + '';
+            }
+        }
+       else if ((categoryId == 2 && marketTypeId == 2) ||
+            (categoryId == 4 && marketTypeId == 2) ||
+            (categoryId == 5 && marketTypeId == 2) ||
+            (categoryId == 7 && marketTypeId == 2) ||
+            (categoryId == 8 && marketTypeId == 2) ||
+            (categoryId == 9 && marketTypeId == 2) ||
+            (categoryId == 10 && marketTypeId == 2) ||
+            (categoryId == 11 && marketTypeId == 2)) {
+            if (bed != null && bed != 0) {
+                temp = temp + '<td> <img src="/Assets/global/img/New Icons-02.png" class="icon_feature" alt="" /><br><span>' + bed + '</span> Beds</td>';
+            }
+            else {
+                temp = temp + '';
+            }
+            if (bath != null && bath != 0) {
+                temp = temp + '<td> <img src="/Assets/global/img/New Icons-03.png" class="icon_feature" alt="" /><br><span>' + bath + '</span> Baths</td>';
+            }
+            else {
+                temp = temp + '';
+            }
+            if ((propertyObj.frontAreaField != 0) && (propertyObj.unitNameField != 0)) {
+                temp = temp + '<td><img src="/Assets/global/img/New Icons-06.png" class="icon_feature" alt="" /></i><br><span>' + propertyObj.frontAreaField + '</span> ' + propertyObj.unitNameField + '</td>';
+            }
+            else {
+                temp = temp + '';
+            }
+            if (terrace != null && terrace != 0) {
+                temp = temp + '<td> <img src="/Assets/global/img/New Icons-05.png" class="icon_feature" alt="" /><br><span>' + terrace + '</span> Terrace</td>';
+            }
+            else {
+                temp = temp + '';
+            }
+            if (garage != null && garage != 0) {
+                temp = temp + '<td> <img src="/Assets/global/img/New Icons-04.png" class="icon_feature" alt="" /><br><span>' + garage + '</span> Car Parking</td>';
+            }
+            else {
+                temp = temp + '';
+            }
+       }
+       else {
+           temp = '';
+       }
+
+        var features = startDiv + temp + ' </tr></table>';
+        $('#loadMainFeature').empty();
+        $('#loadMainFeature').append(features);
+    }
+    function interactiveFloorPlan(propertyObj) {
+        if (propertyObj.propertyInteractiveField != null) {
+            var plan_html = '<div class="col-sm-12 allpadding">' +
+                  '<div>' +
+                      '<h4 class="side">Interactive Floor Plan</h4>' +
+                  '</div>' +
+                  '<div class="prodetailfulldiv"> ' + propertyObj.propertyInteractiveField.interactiveCodeField + '     </div>' +
+              '</div>';
+            //</div>
+            $('#interactiveplan').html(plan_html);
+        }
+        else {
+            $('#interactiveplan').html('');
+            $('#interactiveplan').hide();
+        }
+    }
+    function floorPlan(propertyObj) {
+        if (propertyObj.propertyFloorPlanField != null) {
+            var floorImages = propertyObj.propertyFloorPlanField[0];
+            if (floorImages.urlFloorPathField != null) {
+                $('#floorPlan2D').empty();
+                if (floorImages != null) {
+                    var test = '<div><h4 class="side">2D Floor Plan</div>' +
+                                  '<div class="prodetailfulldiv"><center>' +
+                                  '<img src="' + floorImages.urlFloorPathField + '" class="img-responsive proDetail2d">' + //</a>
+                                  '</center></div>';
+                    $('#floorPlan2D').append(test);
+                }
+                $('#floorPlan2D').show();
+            }
+        }
+        else {
+            $('#floorPlan2D').hide();
+        }
+    }
+    function playVideo(propertyObj) {
+        $("#Videos").empty();
+        if (propertyObj.propertyVideoUrlField != null) {
+            var videoframe = '<div class="col-md-12 allpadding">' +
+                            '<div><h4 class="side">Videos</h4></div>' +
+                             '<div>' +
+                              ' <center><iframe width="100%" height="500" src="' + propertyObj.propertyVideoUrlField + '" frameborder="0" allowfullscreen></iframe></center>' +
+                              '</div></div>';
+            $("#Videos").append(videoframe);
+            $("#Videos").show();
+        }
+        else {
+            $("#Videos").hide();
+        }
+    }
+
+    function loaderSliderImages(propertyObj) {
+        var imageList = propertyObj.mediaPropertyImages;
+        var sliderImage = '';
+        var thumbnailImage = '';
+        var activecls = ' active';
+        var count = 1;
+        if (imageList != null) {
+            $.each(imageList, function (key, value) {
+                var parentUrl = value.UrlPath;
+                var sliderImageUrl = parentUrl.replace("Parent", "743x496");
+                var sliderImageUrlArr = parentUrl.split(".");
+                var res = "." + sliderImageUrlArr[sliderImageUrlArr.length - 1];
+                var imageUrl = sliderImageUrl.replace(res, '_743_496' + res);
+
+                var thumbnailImageUrl = parentUrl.replace("Parent", "120x120");
+                var thumbnailImageUrlArr = parentUrl.split(".");
+                var res = "." + thumbnailImageUrlArr[thumbnailImageUrlArr.length - 1];
+                var thumbnailImageUrl = thumbnailImageUrl.replace(res, '_120_120' + res);
+                /*-----------------------------------*/
+
+                sliderImage = sliderImage + '<div data-idle="4000" >' +
+                '<img data-u="image" src=' + imageUrl + ' onerror=this.src="/Assets/img/No_Img.jpg" alt="' + propertyObj.headingField + '" />' +
+                '<img data-u="thumb" src=' + thumbnailImageUrl + ' onerror=this.src="/Assets/img/No_Img.jpg" alt="' + propertyObj.headingField + '" />' +
+                '</div>';
+            });
+            $('#propertySlider').append(sliderImage);
+        }
+        else {
+            var noImage = '<div>' +
+                '<img data-u="image" src="/Assets/img/No_Img.jpg" alt="' + propertyObj.headingField + '"/>' +
+                '<img data-u="thumb" src="/Assets/img/No_Img.jpg" alt="' + propertyObj.headingField + '"/>' +
+                '</div>';
+            $('#propertySlider').empty();
+            $('#propertySlider').append(noImage);
+        }
+
+        {
+            var newOK = '<div id="jssor_1" style="position:relative;margin:0 auto;top:0px;left:0px;width:960px;height:480px;overflow:hidden;visibility:hidden;background-color:#24262e;">' +
+                '<!-- Loading Screen -->' +
+                '<div data-u="loading" class="jssorl-009-spin" style="position:absolute;top:0px;left:0px;width:100%;height:100%;text-align:center;background-color:rgba(0,0,0,0.7);">' +
+                    '<img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="/Assets/img/spin.svg" />' +
+                '</div>' +
+                '<div data-u="slides" style="cursor:default;position:relative;top:0px;left:240px;width:720px;height:480px;overflow:hidden;" id="propertySlider">' +
+                    '<div>' +
+                           '<img data-u="image" src="/Assets/img/004.jpg" />' +
+                           '<img data-u="thumb" src="/Assets/img/004-s99x66.jpg" /> ' +
+                       '</div>' +
+                       '<div>' +
+                            '<img data-u="image" src="/Assets/img/005.jpg" />' +
+                          '<img data-u="thumb" src="/Assets/img/005-s99x66.jpg" />' +
+                       '</div>' +
+                       '<div>' +
+                           '<img data-u="image" src="/Assets/img/006.jpg" />' +
+                           '<img data-u="thumb" src="/Assets/img/006-s99x66.jpg" />' +
+                       '</div>' +
+                       '<div>' +
+                           '<img data-u="image" src="/Assets/img/007.jpg" />' +
+                           '<img data-u="thumb" src="/Assets/img/007-s99x66.jpg" />' +
+                       '</div>' +
+                       '<div>' +
+                           '<img data-u="image" src="/Assets/img/008.jpg" />' +
+                           '<img data-u="thumb" src="/Assets/img/008-s99x66.jpg" />' +
+                       '</div>' +
+                       '<div>' +
+                           '<img data-u="image" src="/Assets/img/009.jpg" />' +
+                           '<img data-u="thumb" src="/Assets/img/009-s99x66.jpg" />' +
+                       '</div>' +
+                       '<div>' +
+                           '<img data-u="image" src="/Assets/img/010.jpg" />' +
+                           '<img data-u="thumb" src="/Assets/img/010-s99x66.jpg" />' +
+                       '</div>' +
+                       '<div>' +
+                           '<img data-u="image" src="/Assets/img/013.jpg" />' +
+                           '<img data-u="thumb" src="/Assets/img/013-s99x66.jpg" />' +
+                       '</div>' +
+                       '<div>' +
+                           '<img data-u="image" src="/Assets/img/014.jpg" />' +
+                           '<img data-u="thumb" src="/Assets/img/014-s99x66.jpg" />' +
+                       '</div>' +
+                       '<div>' +
+                           '<img data-u="image" src="/Assets/img/015.jpg" />' +
+                           '<img data-u="thumb" src="/Assets/img/015-s99x66.jpg" />' +
+                       '</div>' +
+                       '<div>' +
+                           '<img data-u="image" src="/Assets/img/016.jpg" />' +
+                           '<img data-u="thumb" src="/Assets/img/016-s99x66.jpg" />' +
+                       '</div>' +
+                       '<div>' +
+                           '<img data-u="image" src="/Assets/img/017.jpg" />' +
+                           '<img data-u="thumb" src="/Assets/img/017-s99x66.jpg" />' +
+                       '</div>' +
+                       '<div>' +
+                           '<img data-u="image" src="/Assets/img/018.jpg" />' +
+                           '<img data-u="thumb" src="/Assets/img/018-s99x66.jpg" />' +
+                       '</div>' +
+                       '<div>' +
+                           '<img data-u="image" src="/Assets/img/018.jpg" />' +
+                           '<img data-u="thumb" src="/Assets/img/018-s99x66.jpg" />' +
+                       '</div>' +
+            '</div>' +
+            '<!-- Thumbnail Navigator -->' +
+            '<div data-u="thumbnavigator" class="jssort101" style="position:absolute;left:0px;top:0px;width:240px;height:480px;background-color:#000;" data-autocenter="2" data-scale-left="0.75">' +
+                    '<div data-u="slides">' +
+                        '<div data-u="prototype" class="p" style="width:99px;height:66px;">' +
+                            '<div data-u="thumbnailtemplate" class="t"></div>' +
+
+                        '</div>' +
+                    '</div>' +
+                '</div>' +
+                '<!-- Arrow Navigator -->' +
+                '<div data-u="arrowleft" class="jssora093" style="width:50px;height:50px;top:0px;left:270px;" data-autocenter="2">' +
+                '</div>' +
+                '<div data-u="arrowright" class="jssora093" style="width:50px;height:50px;top:0px;right:30px;" data-autocenter="2">' +
+                '</div>' +
+            '</div>';
+        }
+
+
+        //$('#thumbnail').prepend(thumbnailImage);
+    }
+
+   //function loaderSliderImages(propertyObj) {
+    //    var imageList = propertyObj.mediaPropertyImages;
+    //    var sliderImage = '';
+    //    var thumbnailImage = '';
+    //    var activecls = ' active';
+    //    var count = 1;
+    //    if (imageList != null) {
+    //        $.each(imageList, function (key, value) {
+    //           // childObj = value.Childs;
+    //            var parentUrl = value.UrlPath;
+    //            var sliderImageUrl = parentUrl.replace("Parent", "743x496");
+    //            var sliderImageUrlArr = parentUrl.split(".");
+    //            var res = "." + sliderImageUrlArr[sliderImageUrlArr.length - 1];
+    //            var imageUrl = sliderImageUrl.replace(res, '_743_496' + res);
+    //            var thumbnailImageUrl = parentUrl.replace("Parent", "120x120");
+    //            var thumbnailImageUrlArr = parentUrl.split(".");
+    //            var res = "." + thumbnailImageUrlArr[thumbnailImageUrlArr.length - 1];
+    //            var thumbnailImageUrl = thumbnailImageUrl.replace(res, '_120_120' + res);
+    //            /*-----------------------------------*/
+    //            sliderImage = sliderImage +
+    //                '<div id="img-' + count + '" data-img-id="' + count + '" class="img-wrapper ' + activecls + '" style="background-image: url(\'' + imageUrl + '\'),url(\'/Assets/img/No_Img.jpg\')"></div>';
+    //            thumbnailImage = thumbnailImage +
+    //        '<li id="' + count + '" data-thumb-id="' + count + '" class="thumb' + activecls + '" style="background-image:url(\'' + thumbnailImageUrl + '\'),url(\'/Assets/img/No_Img.jpg\')" onClick="loadClickedImage(this.id)"></li>';
+    //            ++count;
+    //            activecls = '';
+    //        });
+    //    }
+    //    else {
+    //        var noImage = '<div class="img-wrapper active" style="background-image: url(\'/Assets/img/No_Img.jpg\')"></div>';
+    //        $('#slideshow').empty();
+    //        $('#slideshow').html(noImage);
+    //    }
+    //    var thumbnailDivStart = '<div class="thumbs-container bottom" style="display:block !important;"><div id="prev-btn" class="prev"><i class="fa fa-chevron-left fa-3x"></i></div><ul class="thumbs">';
+    //    var thumbnailDivEnd = '</ul><div id="next-btn" class="next"><i class="fa fa-chevron-right fa-3x"></i></div></div>';
+    //    var sliderWithThumbnails = sliderImage + thumbnailDivStart + thumbnailImage + thumbnailDivEnd;
+    //    $('#slideshow').prepend(sliderImage);
+    //    $('#thumbnail').prepend(thumbnailImage);
+    //}
+
+</script>
+
+<script src="~/Assets/js/gallery.js"></script>
+<script>
+    function callImagethumbclick(control) {
+        loadClickedImage(control.id);
+    }
+</script>
+<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDKXY0qjKXOAFzqz1KbS4eMlWUSjyxkCjI&sensor=false&libraries=geometry" type="text/javascript"></script>
+<script language="javascript">
+
+    function tweetCurrentPage(title) {
+        var urlLink = document.location.href;
+        var abc = "https://twitter.com/intent/tweet?text=" + title + "&url=" + urlLink;
+        var abcL = abc.length;
+        if (abcL > 182) {
+            var ss = urlLink.split("_");
+            var ttt = abcL - 182;
+            ss[0] = ss[0].substring(0, (ss[0].length - ttt));
+            var abc = "https://twitter.com/intent/tweet?text=" + title + "&url=" + ss[0] + "_" + ss[1];
+
+        }
+        window.open(abc, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600'); return false;
+    }
+
+</script>
+<script language="javascript">
+    function googleCurrentPage() {
+        window.open("https://plus.google.com/share?text=" + document.title + "&url=" + escape(window.location.href), '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600'); return false;
+    }
+</script>

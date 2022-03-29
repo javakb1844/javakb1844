@@ -1,0 +1,73 @@
+﻿@model Result<List<OutputAttendanceViewModel>>
+@using Library.Lookups.Enums;
+@using Library.Core;
+@using Library.Extensions;
+@using Library.Core.Services;
+@using VM.HRMS;
+@{
+    int BioMetricId = 0;
+    if (ViewBag.BioMetricId != null)
+    {
+        BioMetricId = ViewBag.BioMetricId;
+    }
+
+}
+<div>
+    @*<h2>Basic Table</h2>
+        <p>The .table class adds basic styling (light padding and only horizontal dividers) to a table:</p>*@
+   
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>DateTime</th>
+                <th>Source</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+       
+        <tbody>
+            @if (Model.IsNotNull() && Model.Data.CountedPositive())
+            {
+                foreach (var item in Model.Data)
+                {
+                    BioMetricId = item.BioMetricId;
+                    <tr>
+                        <td>@item.DateOnly.ToString("dd-MMM-yyyy")</td>
+                        <td>@item.DateTimeRecord.ToString("MM-dd-yyyy hh:mm tt")</td>
+                        <td>
+                            @if (item.dwInOutMode == 0)
+                            {@("In Time")}
+                        else
+                        {@("Out Time")}
+
+                        </td>
+                        <td>
+                            @if (item.IsEdit == true)
+                            {@("Manual")
+                        }
+                        else
+                        {@("Auto")}
+                        </td>
+                    </tr>
+                }
+            }
+            <tr>
+                <td></td>
+                <td>
+                    <input type="time" id="newRecordDateTme" name="newRecordDate" />
+                </td>
+                <td>
+                    <select class="form-control" data-val="true" data-val-number="The field EmployeeId must be a number." data-val-required="The EmployeeId field is required." id="newInOut" name="newInOut" required="required">
+                        <option value="">-- in/out --</option>
+                        <option value="0">In</option>
+                        <option value="2">Out</option>
+
+                    </select>
+                </td>
+                <td><button id="updateTime" name="updateTime" biom="@BioMetricId" ldate="@ViewBag.LogdataTime">Update</button></td>
+            </tr>
+        </tbody>
+        </table>
+   
+</div>

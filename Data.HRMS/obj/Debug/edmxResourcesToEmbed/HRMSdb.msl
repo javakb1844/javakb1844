@@ -1,0 +1,881 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="hrm_ilaanModelStoreContainer" CdmEntityContainer="HRMSdb">
+    <EntitySetMapping Name="Applicants">
+      <EntityTypeMapping TypeName="hrm_ilaanModel.Applicant">
+        <MappingFragment StoreEntitySet="Applicant">
+          <ScalarProperty Name="SelectionGrade" ColumnName="SelectionGrade" />
+          <ScalarProperty Name="LookApplicantStatusId" ColumnName="LookApplicantStatusId" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="LookDesignationId" ColumnName="LookDesignationId" />
+          <ScalarProperty Name="LookDepartmentId" ColumnName="LookDepartmentId" />
+          <ScalarProperty Name="LookEmployeeTypeId" ColumnName="LookEmployeeTypeId" />
+          <ScalarProperty Name="ExpectedDateOfJoining" ColumnName="ExpectedDateOfJoining" />
+          <ScalarProperty Name="ReferenceEmail" ColumnName="ReferenceEmail" />
+          <ScalarProperty Name="ReferenceName" ColumnName="ReferenceName" />
+          <ScalarProperty Name="LookOrganizationId" ColumnName="LookOrganizationId" />
+          <ScalarProperty Name="ApplicantRemarks" ColumnName="ApplicantRemarks" />
+          <ScalarProperty Name="HRRemarks" ColumnName="HRRemarks" />
+          <ScalarProperty Name="LookQualificationId" ColumnName="LookQualificationId" />
+          <ScalarProperty Name="Salary" ColumnName="Salary" />
+          <ScalarProperty Name="NoYearsOfExperience" ColumnName="NoYearsOfExperience" />
+          <ScalarProperty Name="Resume" ColumnName="Resume" />
+          <ScalarProperty Name="CoveringLetter" ColumnName="CoveringLetter" />
+          <ScalarProperty Name="ShortSummary" ColumnName="ShortSummary" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="ConatctInfo" ColumnName="ConatctInfo" />
+          <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+          <ScalarProperty Name="PermanentAddress" ColumnName="PermanentAddress" />
+          <ScalarProperty Name="PresentAddress" ColumnName="PresentAddress" />
+          <ScalarProperty Name="CNIC" ColumnName="CNIC" />
+          <ScalarProperty Name="MaritalStatus" ColumnName="MaritalStatus" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="ApplicantId" ColumnName="ApplicantId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ApplicantAttachments">
+      <EntityTypeMapping TypeName="hrm_ilaanModel.ApplicantAttachment">
+        <MappingFragment StoreEntitySet="ApplicantAttachment">
+          <ScalarProperty Name="ApplicantId" ColumnName="ApplicantId" />
+          <ScalarProperty Name="AttachmentPath" ColumnName="AttachmentPath" />
+          <ScalarProperty Name="AttachmentTitle" ColumnName="AttachmentTitle" />
+          <ScalarProperty Name="ApplicantAttachmentId" ColumnName="ApplicantAttachmentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ApplicantInterviews">
+      <EntityTypeMapping TypeName="hrm_ilaanModel.ApplicantInterview">
+        <MappingFragment StoreEntitySet="ApplicantInterview">
+          <ScalarProperty Name="MeetingDate" ColumnName="MeetingDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Points" ColumnName="Points" />
+          <ScalarProperty Name="ApplicantId" ColumnName="ApplicantId" />
+          <ScalarProperty Name="MeetingTime" ColumnName="MeetingTime" />
+          <ScalarProperty Name="ApplicantInterviewId" ColumnName="ApplicantInterviewId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ApplicantStatusChanges">
+      <EntityTypeMapping TypeName="hrm_ilaanModel.ApplicantStatusChange">
+        <MappingFragment StoreEntitySet="ApplicantStatusChange">
+          <ScalarProperty Name="ApplicantId" ColumnName="ApplicantId" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="LookApplicantStatusId" ColumnName="LookApplicantStatusId" />
+          <ScalarProperty Name="ApplicantStatusChangeId" ColumnName="ApplicantStatusChangeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BioMetricDatas">
+      <EntityTypeMapping TypeName="hrm_ilaanModel.BioMetricData">
+        <MappingFragment StoreEntitySet="BioMetricData">
+          <ScalarProperty Name="BioMetricInfoId" ColumnName="BioMetricInfoId" />
+          <ScalarProperty Name="BioMetricDeviceBrand" ColumnName="BioMetricDeviceBrand" />
+          <ScalarProperty Name="BioMetricSerialNo" ColumnName="BioMetricSerialNo" />
+          <ScalarProperty Name="ProductSaleProfileId" ColumnName="ProductSaleProfileId" />
+          <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="IsEdit" ColumnName="IsEdit" />
+          <ScalarProperty Name="dwInOutMode" ColumnName="dwInOutMode" />
+          <ScalarProperty Name="TimeOnly" ColumnName="TimeOnly" />
+          <ScalarProperty Name="DateOnly" ColumnName="DateOnly" />
+          <ScalarProperty Name="OnBioMetricName" ColumnName="OnBioMetricName" />
+          <ScalarProperty Name="DateTimeRecord" ColumnName="DateTimeRecord" />
+          <ScalarProperty Name="BioMetricId" ColumnName="BioMetricId" />
+          <ScalarProperty Name="BioMetricDataId" ColumnName="BioMetricDataId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BiometricSchedules">
+      <EntityTypeMapping TypeName="hrm_ilaanModel.BiometricSchedule">
+        <MappingFragment StoreEntitySet="BiometricSchedule">
+          <ScalarProperty Name="ProductSaleProfileId" ColumnName="ProductSaleProfileId" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="TimeSchedule" ColumnName="TimeSchedule" />
+          <ScalarProperty Name="BiometricScheduleId" ColumnName="BiometricScheduleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BiometricSyncs">
+      <EntityTypeMapping TypeName="hrm_ilaanModel.BiometricSync">
+        <MappingFragment StoreEntitySet="BiometricSync">
+          <ScalarProperty Name="BioMetricInfoId" ColumnName="BioMetricInfoId" />
+          <ScalarProperty Name="ProductSaleProfileId" ColumnName="ProductSaleProfileId" />
+          <ScalarProperty Name="EndDateTime" ColumnName="EndDateTime" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="BiometricSyncId" ColumnName="BiometricSyncId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="hrm_ilaanModel.Employee">
+        <MappingFragment StoreEntitySet="Employee">
+          <ScalarProperty Name="BioMetricInfoId" ColumnName="BioMetricInfoId" />
+          <ScalarProperty Name="ProductSaleProfileId" ColumnName="ProductSaleProfileId" />
+          <ScalarProperty Name="IsUserOnly" ColumnName="IsUserOnly" />
+          <ScalarProperty Name="WorkingHourPolicyId" ColumnName="WorkingHourPolicyId" />
+          <ScalarProperty Name="HasSubOrdinates" ColumnName="HasSubOrdinates" />
+          <ScalarProperty Name="SubLeadIds" ColumnName="SubLeadIds" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="LookOrganizationIds" ColumnName="LookOrganizationIds" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="LookOrganizationId" ColumnName="LookOrganizationId" />
+          <ScalarProperty Name="BioMetricId" ColumnName="BioMetricId" />
+          <ScalarProperty Name="LookGradeId" ColumnName="LookGradeId" />
+          <ScalarProperty Name="ShiftSettingId" ColumnName="ShiftSettingId" />
+          <ScalarProperty Name="ApplicantId" ColumnName="ApplicantId" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="ExitDate" ColumnName="ExitDate" />
+          <ScalarProperty Name="LookDesignationId" ColumnName="LookDesignationId" />
+          <ScalarProperty Name="LookDepartmentId" ColumnName="LookDepartmentId" />
+          <ScalarProperty Name="LookEmployeeTypeId" ColumnName="LookEmployeeTypeId" />
+          <ScalarProperty Name="ManagerId" ColumnName="ManagerId" />
+          <ScalarProperty Name="DateOfJoining" ColumnName="DateOfJoining" />
+          <ScalarProperty Name="ReferenceEmail" ColumnName="ReferenceEmail" />
+          <ScalarProperty Name="ReferenceName" ColumnName="ReferenceName" />
+          <ScalarProperty Name="StartSalary" ColumnName="StartSalary" />
+          <ScalarProperty Name="NoYearsOfExperience" ColumnName="NoYearsOfExperience" />
+          <ScalarProperty Name="HRRemarks" ColumnName="HRRemarks" />
+          <ScalarProperty Name="ShortSummary" ColumnName="ShortSummary" />
+          <ScalarProperty Name="OffTime" ColumnName="OffTime" />
+          <ScalarProperty Name="Starttime" ColumnName="Starttime" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="ICEContactInfo" ColumnName="ICEContactInfo" />
+          <ScalarProperty Name="ConatctInfo" ColumnName="ConatctInfo" />
+          <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+          <ScalarProperty Name="PermanentAddress" ColumnName="PermanentAddress" />
+          <ScalarProperty Name="PresentAddress" ColumnName="PresentAddress" />
+          <ScalarProperty Name="DisableDetail" ColumnName="DisableDetail" />
+          <ScalarProperty Name="IsDisable" ColumnName="IsDisable" />
+          <ScalarProperty Name="CNIC" ColumnName="CNIC" />
+          <ScalarProperty Name="MaritalStatus" ColumnName="MaritalStatus" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="HusbandName" ColumnName="HusbandName" />
+          <ScalarProperty Name="FatherName" ColumnName="FatherName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="EmployeeNum" ColumnName="EmployeeNum" />
+          <ScalarProperty Name="EmployeeGuid" ColumnName="EmployeeGuid" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmployeeAppliedLeaves">
+      <EntityTypeMapping TypeName="hrm_ilaanModel.EmployeeAppliedLeave">
+        <MappingFragment StoreEntitySet="EmployeeAppliedLeave">
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="HRRemarks" ColumnName="HRRemarks" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+          <ScalarProperty Name="ForDate" ColumnName="ForDate" />
+          <ScalarProperty Name="LookPolicyId" ColumnName="LookPolicyId" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="ActualTimOut" ColumnName="ActualTimOut" />
+          <ScalarProperty Name="ActualTimeIn" ColumnName="ActualTimeIn" />
+          <ScalarProperty Name="LaveTimeEnd" ColumnName="LaveTimeEnd" />
+          <ScalarProperty Name="LeaveTimeStart" ColumnName="LeaveTimeStart" />
+          <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+          <ScalarProperty Name="EmployeeAppliedLeaveId" ColumnName="EmployeeAppliedLeaveId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmployeeAttachments">
+      <EntityTypeMapping TypeName="hrm_ilaanModel.EmployeeAttachment">
+        <MappingFragment StoreEntitySet="EmployeeAttachment">
+          <ScalarProperty Name="AttachmentPath" ColumnName="AttachmentPath" />
+          <ScalarProperty Name="AttachmentTitle" ColumnName="AttachmentTitle" />
+          <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+          <ScalarProperty Name="EmployeeAttachmentId" ColumnName="EmployeeAttachmentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmployeeAttendances">
+      <EntityTypeMapping TypeName="hrm_ilaanModel.EmployeeAttendance">
+        <MappingFragment StoreEntitySet="EmployeeAttendance">
+          <ScalarProperty Name="ProductSaleProfileId" ColumnName="ProductSaleProfileId" />
+          <ScalarProperty Name="ForDate" ColumnName="ForDate" />
+          <ScalarProperty Name="LookPolicyId" ColumnName="LookPolicyId" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="ActualTimOut" ColumnName="ActualTimOut" />
+          <ScalarProperty Name="ActualTimeIn" ColumnName="ActualTimeIn" />
+          <ScalarProperty Name="TimeOut" ColumnName="TimeOut" />
+          <ScalarProperty Name="TimeIn" ColumnName="TimeIn" />
+          <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+          <ScalarProperty Name="EmployeeAttendanceId" ColumnName="EmployeeAttendanceId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmployeeEducations">
+      <EntityTypeMapping TypeName="hrm_ilaanModel.EmployeeEducation">
+        <MappingFragment StoreEntitySet="EmployeeEducation">
+          <ScalarProperty Name="Grade" ColumnName="Grade" />
+          <ScalarProperty Name="LookInstitutionId" ColumnName="LookInstitutionId" />
+          <ScalarProperty Name="EducationYear" ColumnName="EducationYear" />
+          <ScalarProperty Name="LookQualificationId" ColumnName="LookQualificationId" />
+          <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+          <ScalarProperty Name="EmployeeEducationId" ColumnName="EmployeeEducationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmployeeExperienceHistories">
+      <EntityTypeMapping TypeName="hrm_ilaanModel.EmployeeExperienceHistory">
+        <MappingFragment StoreEntitySet="EmployeeExperienceHistory">
+          <ScalarProperty Name="Salary" ColumnName="Salary" />
+          <ScalarProperty Name="LookCountryId" ColumnName="LookCountryId" />
+          <ScalarProperty Name="LookCityId" ColumnName="LookCityId" />
+          <ScalarProperty Name="JobDescription" ColumnName="JobDescription" />
+          <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
+          <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+          <ScalarProperty Name="FromDate" ColumnName="FromDate" />
+          <ScalarProperty Name="LookOrganizationId" ColumnName="LookOrganizationId" />
+          <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+          <ScalarProperty Name="EmployeeExperienceHistoryId" ColumnName="EmployeeExperienceHistoryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmployeeLeaves">
+      <EntityTypeMapping TypeName="hrm_ilaanModel.EmployeeLeave">
+        <MappingFragment StoreEntitySet="EmployeeLeave">
+          <ScalarProperty Name="LeaveApprovedDate" ColumnName="LeaveApprovedDate" />
+          <ScalarProperty Name="LeaveApprovedById" ColumnName="LeaveApprovedById" />
+          <ScalarProperty Name="LookLeaveRequestDate" ColumnName="LookLeaveRequestDate" />
+          <ScalarProperty Name="LookLeaveRequestStatusId" ColumnName="LookLeaveRequestStatusId" />
+          <ScalarProperty Name="EmployeeLeaveSummaryId" ColumnName="EmployeeLeaveSummaryId" />
+          <ScalarProperty Name="LookPolicyId" ColumnName="LookPolicyId" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="PolicyUnit" ColumnName="PolicyUnit" />
+          <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+          <ScalarProperty Name="LeaveDate" ColumnName="LeaveDate" />
+          <ScalarProperty Name="LookLeaveStatusId" ColumnName="LookLeaveStatusId" />
+          <ScalarProperty Name="LeaveValue" ColumnName="LeaveValue" />
+          <ScalarProperty Name="PolicyName" ColumnName="PolicyName" />
+          <ScalarProperty Name="EmployeePolicyId" ColumnName="EmployeePolicyId" />
+          <ScalarProperty Name="EmployeeLeaveId" ColumnName="EmployeeLeaveId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmployeeLeaveStatusHistories">
+      <EntityTypeMapping TypeName="hrm_ilaanModel.EmployeeLeaveStatusHistory">
+        <MappingFragment StoreEntitySet="EmployeeLeaveStatusHistory">
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="LeaveStatusId" ColumnName="LeaveStatusId" />
+          <ScalarProperty Name="EmplyeeLeaveId" ColumnName="EmplyeeLeaveId" />
+          <ScalarProperty Name="EmployeeLeaveStatusHistoryId" ColumnName="EmployeeLeaveStatusHistoryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmployeeLeaveSummaries">
+      <EntityTypeMapping TypeName="hrm_ilaanModel.EmployeeLeaveSummary">
+        <MappingFragment StoreEntitySet="EmployeeLeaveSummary">
+          <ScalarProperty Name="StatusUpdateDate" ColumnName="StatusUpdateDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="LookLeaveStatusId" ColumnName="LookLeaveStatusId" />
+          <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+          <ScalarProperty Name="Leaves" ColumnName="Leaves" />
+          <ScalarProperty Name="HalfLeaves" ColumnName="HalfLeaves" />
+          <ScalarProperty Name="ShortLeaves" ColumnName="ShortLeaves" />
+          <ScalarProperty Name="EndLeaveDate" ColumnName="EndLeaveDate" />
+          <ScalarProperty Name="StartLeaveDate" ColumnName="StartLeaveDate" />
+          <ScalarProperty Name="EmployeePolicyId" ColumnName="EmployeePolicyId" />
+          <ScalarProperty Name="EmployeeLeaveSummaryId" ColumnName="EmployeeLeaveSummaryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmployeeLogs">
+      <EntityTypeMapping TypeName="hrm_ilaanModel.EmployeeLog">
+        <MappingFragment StoreEntitySet="EmployeeLog">
+          <ScalarProperty Name="LogCeatedBy" ColumnName="LogCeatedBy" />
+          <ScalarProperty Name="LogCreateDate" ColumnName="LogCreateDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="ExitDate" ColumnName="ExitDate" />
+          <ScalarProperty Name="LookDesignationId" ColumnName="LookDesignationId" />
+          <ScalarProperty Name="LookDepartmentId" ColumnName="LookDepartmentId" />
+          <ScalarProperty Name="LookEmployeeTypeId" ColumnName="LookEmployeeTypeId" />
+          <ScalarProperty Name="ManagerId" ColumnName="ManagerId" />
+          <ScalarProperty Name="DateOfJoining" ColumnName="DateOfJoining" />
+          <ScalarProperty Name="ReferenceEmail" ColumnName="ReferenceEmail" />
+          <ScalarProperty Name="ReferenceName" ColumnName="ReferenceName" />
+          <ScalarProperty Name="StartSalary" ColumnName="StartSalary" />
+          <ScalarProperty Name="NoYearsOfExperience" ColumnName="NoYearsOfExperience" />
+          <ScalarProperty Name="HRRemarks" ColumnName="HRRemarks" />
+          <ScalarProperty Name="ShortSummary" ColumnName="ShortSummary" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="ICEContactInfo" ColumnName="ICEContactInfo" />
+          <ScalarProperty Name="ConatctInfo" ColumnName="ConatctInfo" />
+          <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+          <ScalarProperty Name="PermanentAddress" ColumnName="PermanentAddress" />
+          <ScalarProperty Name="PresentAddress" ColumnName="PresentAddress" />
+          <ScalarProperty Name="DisableDetail" ColumnName="DisableDetail" />
+          <ScalarProperty Name="IsDisable" ColumnName="IsDisable" />
+          <ScalarProperty Name="CNIC" ColumnName="CNIC" />
+          <ScalarProperty Name="MaritalStatus" ColumnName="MaritalStatus" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="HusbandName" ColumnName="HusbandName" />
+          <ScalarProperty Name="FatherName" ColumnName="FatherName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+          <ScalarProperty Name="EmployeeLogId" ColumnName="EmployeeLogId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmployeePolicies">
+      <EntityTypeMapping TypeName="hrm_ilaanModel.EmployeePolicy">
+        <MappingFragment StoreEntitySet="EmployeePolicy">
+          <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+          <ScalarProperty Name="PolicyValue" ColumnName="PolicyValue" />
+          <ScalarProperty Name="LookPolicyGroupId" ColumnName="LookPolicyGroupId" />
+          <ScalarProperty Name="PolicyUnit" ColumnName="PolicyUnit" />
+          <ScalarProperty Name="PolicyName" ColumnName="PolicyName" />
+          <ScalarProperty Name="LookPolicyId" ColumnName="LookPolicyId" />
+          <ScalarProperty Name="EmployeePolicyId" ColumnName="EmployeePolicyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmployeesDependents">
+      <EntityTypeMapping TypeName="hrm_ilaanModel.EmployeesDependent">
+        <MappingFragment StoreEntitySet="EmployeesDependents">
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Relation" ColumnName="Relation" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+          <ScalarProperty Name="EmployeesDependentId" ColumnName="EmployeesDependentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EventLogs">
+      <EntityTypeMapping TypeName="hrm_ilaanModel.EventLog">
+        <MappingFragment StoreEntitySet="EventLog">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+          <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+          <ScalarProperty Name="AppID" ColumnName="AppID" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="Query" ColumnName="Query" />
+          <ScalarProperty Name="ActionName" ColumnName="ActionName" />
+          <ScalarProperty Name="ControllerName" ColumnName="ControllerName" />
+          <ScalarProperty Name="LogID" ColumnName="LogID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HRPolicies">
+      <EntityTypeMapping TypeName="hrm_ilaanModel.HRPolicy">
+        <MappingFragment StoreEntitySet="HRPolicy">
+          <ScalarProperty Name="ProductSaleProfileId" ColumnName="ProductSaleProfileId" />
+          <ScalarProperty Name="GroupTypeId" ColumnName="GroupTypeId" />
+          <ScalarProperty Name="PolicyValue" ColumnName="PolicyValue" />
+          <ScalarProperty Name="LookPolicyId" ColumnName="LookPolicyId" />
+          <ScalarProperty Name="LookDesignationId" ColumnName="LookDesignationId" />
+          <ScalarProperty Name="HRPolicyId" ColumnName="HRPolicyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HRPolicyByCaptions">
+      <EntityTypeMapping TypeName="hrm_ilaanModel.HRPolicyByCaption">
+        <MappingFragment StoreEntitySet="HRPolicyByCaption">
+          <ScalarProperty Name="LookOrganizationId" ColumnName="LookOrganizationId" />
+          <ScalarProperty Name="ProductSaleProfileId" ColumnName="ProductSaleProfileId" />
+          <ScalarProperty Name="TimeOut" ColumnName="TimeOut" />
+          <ScalarProperty Name="TimeIn" ColumnName="TimeIn" />
+          <ScalarProperty Name="LookPolicyGroupId" ColumnName="LookPolicyGroupId" />
+          <ScalarProperty Name="PolicyName" ColumnName="PolicyName" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="GroupTypeId" ColumnName="GroupTypeId" />
+          <ScalarProperty Name="PolicyValue" ColumnName="PolicyValue" />
+          <ScalarProperty Name="LookPolicyId" ColumnName="LookPolicyId" />
+          <ScalarProperty Name="HRPolicyCaption" ColumnName="HRPolicyCaption" />
+          <ScalarProperty Name="HRPolicyCaptionId" ColumnName="HRPolicyCaptionId" />
+          <ScalarProperty Name="HRPolicyByCaptionId" ColumnName="HRPolicyByCaptionId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HRPolicyCaptions">
+      <EntityTypeMapping TypeName="hrm_ilaanModel.HRPolicyCaption">
+        <MappingFragment StoreEntitySet="HRPolicyCaption">
+          <ScalarProperty Name="ProductSaleProfileId" ColumnName="ProductSaleProfileId" />
+          <ScalarProperty Name="IsVariableTiming" ColumnName="IsVariableTiming" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="PolicyCaption" ColumnName="PolicyCaption" />
+          <ScalarProperty Name="HRPolicyCaptionId" ColumnName="HRPolicyCaptionId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HRRecruitmentProcesses">
+      <EntityTypeMapping TypeName="hrm_ilaanModel.HRRecruitmentProcess">
+        <MappingFragment StoreEntitySet="HRRecruitmentProcess">
+          <ScalarProperty Name="RecruitmentId" ColumnName="RecruitmentId" />
+          <ScalarProperty Name="ProcessId" ColumnName="ProcessId" />
+          <ScalarProperty Name="HRRecruitmentProcessId" ColumnName="HRRecruitmentProcessId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LeftMenus">
+      <EntityTypeMapping TypeName="hrm_ilaanModel.LeftMenu">
+        <MappingFragment StoreEntitySet="LeftMenu">
+          <ScalarProperty Name="NewParentId" ColumnName="NewParentId" />
+          <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+          <ScalarProperty Name="HaveChild" ColumnName="HaveChild" />
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IconClass" ColumnName="IconClass" />
+          <ScalarProperty Name="ActionName" ColumnName="ActionName" />
+          <ScalarProperty Name="ControllerName" ColumnName="ControllerName" />
+          <ScalarProperty Name="MenuName" ColumnName="MenuName" />
+          <ScalarProperty Name="LeftMenuId" ColumnName="LeftMenuId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LogInHistories">
+      <EntityTypeMapping TypeName="hrm_ilaanModel.LogInHistory">
+        <MappingFragment StoreEntitySet="LogInHistory">
+          <ScalarProperty Name="ProductSaleProfileId" ColumnName="ProductSaleProfileId" />
+          <ScalarProperty Name="Query" ColumnName="Query" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="IP" ColumnName="IP" />
+          <ScalarProperty Name="LogInId" ColumnName="LogInId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LookBranches">
+      <EntityTypeMapping TypeName="hrm_ilaanModel.LookBranch">
+        <MappingFragment StoreEntitySet="LookBranch">
+          <ScalarProperty Name="ParentBranchId" ColumnName="ParentBranchId" />
+          <ScalarProperty Name="LookBranchTypeId" ColumnName="LookBranchTypeId" />
+          <ScalarProperty Name="BranchName" ColumnName="BranchName" />
+          <ScalarProperty Name="LookBranchId" ColumnName="LookBranchId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LookBranchTypes">
+      <EntityTypeMapping TypeName="hrm_ilaanModel.LookBranchType">
+        <MappingFragment StoreEntitySet="LookBranchTypes">
+          <ScalarProperty Name="BranchType" ColumnName="BranchType" />
+          <ScalarProperty Name="LookBranchTypeId" ColumnName="LookBranchTypeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LookCities">
+      <EntityTypeMapping TypeName="hrm_ilaanModel.LookCity">
+        <MappingFragment StoreEntitySet="LookCity">
+          <ScalarProperty Name="ProductSaleProfileId" ColumnName="ProductSaleProfileId" />
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+          <ScalarProperty Name="LookCityId" ColumnName="LookCityId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LookCountries">
+      <EntityTypeMapping TypeName="hrm_ilaanModel.LookCountry">
+        <MappingFragment StoreEntitySet="LookCountry">
+          <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+          <ScalarProperty Name="LookCountryId" ColumnName="LookCountryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LookDepartments">
+      <EntityTypeMapping TypeName="hrm_ilaanModel.LookDepartment">
+        <MappingFragment StoreEntitySet="LookDepartment">
+          <ScalarProperty Name="ProductSaleProfileId" ColumnName="ProductSaleProfileId" />
+          <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+          <ScalarProperty Name="LookDepartmentId" ColumnName="LookDepartmentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LookDesignations">
+      <EntityTypeMapping TypeName="hrm_ilaanModel.LookDesignation">
+        <MappingFragment StoreEntitySet="LookDesignation">
+          <ScalarProperty Name="ProductSaleProfileId" ColumnName="ProductSaleProfileId" />
+          <ScalarProperty Name="LookDepartmentId" ColumnName="LookDepartmentId" />
+          <ScalarProperty Name="DesignationName" ColumnName="DesignationName" />
+          <ScalarProperty Name="LookDesignationId" ColumnName="LookDesignationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LookEmployeeTypes">
+      <EntityTypeMapping TypeName="hrm_ilaanModel.LookEmployeeType">
+        <MappingFragment StoreEntitySet="LookEmployeeType">
+          <ScalarProperty Name="ProductSaleProfileId" ColumnName="ProductSaleProfileId" />
+          <ScalarProperty Name="EmployeeTypeName" ColumnName="EmployeeTypeName" />
+          <ScalarProperty Name="LookEmployeeTypeId" ColumnName="LookEmployeeTypeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LookGenders">
+      <EntityTypeMapping TypeName="hrm_ilaanModel.LookGender">
+        <MappingFragment StoreEntitySet="LookGender">
+          <ScalarProperty Name="LookGenderName" ColumnName="LookGenderName" />
+          <ScalarProperty Name="LookGenderId" ColumnName="LookGenderId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LookGrades">
+      <EntityTypeMapping TypeName="hrm_ilaanModel.LookGrade">
+        <MappingFragment StoreEntitySet="LookGrade">
+          <ScalarProperty Name="ProductSaleProfileId" ColumnName="ProductSaleProfileId" />
+          <ScalarProperty Name="GradeValue" ColumnName="GradeValue" />
+          <ScalarProperty Name="GradeName" ColumnName="GradeName" />
+          <ScalarProperty Name="LookGradeId" ColumnName="LookGradeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LookInstitutions">
+      <EntityTypeMapping TypeName="hrm_ilaanModel.LookInstitution">
+        <MappingFragment StoreEntitySet="LookInstitution">
+          <ScalarProperty Name="InstitutionName" ColumnName="InstitutionName" />
+          <ScalarProperty Name="LookInstitutionId" ColumnName="LookInstitutionId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LookJobTypes">
+      <EntityTypeMapping TypeName="hrm_ilaanModel.LookJobType">
+        <MappingFragment StoreEntitySet="LookJobType">
+          <ScalarProperty Name="JobTypeName" ColumnName="JobTypeName" />
+          <ScalarProperty Name="LookJobTypeId" ColumnName="LookJobTypeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LookLeaveStatus">
+      <EntityTypeMapping TypeName="hrm_ilaanModel.LookLeaveStatu">
+        <MappingFragment StoreEntitySet="LookLeaveStatus">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="AccessGroupId" ColumnName="AccessGroupId" />
+          <ScalarProperty Name="RequestStatus" ColumnName="RequestStatus" />
+          <ScalarProperty Name="LookLeaveStatusId" ColumnName="LookLeaveStatusId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LookOrganizations">
+      <EntityTypeMapping TypeName="hrm_ilaanModel.LookOrganization">
+        <MappingFragment StoreEntitySet="LookOrganization">
+          <ScalarProperty Name="ProductSaleProfileId" ColumnName="ProductSaleProfileId" />
+          <ScalarProperty Name="LookCompanyStatusId" ColumnName="LookCompanyStatusId" />
+          <ScalarProperty Name="OrganizationURL" ColumnName="OrganizationURL" />
+          <ScalarProperty Name="OrganizationName" ColumnName="OrganizationName" />
+          <ScalarProperty Name="LookOrganizationId" ColumnName="LookOrganizationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LookPayRollStatus">
+      <EntityTypeMapping TypeName="hrm_ilaanModel.LookPayRollStatu">
+        <MappingFragment StoreEntitySet="LookPayRollStatus">
+          <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+          <ScalarProperty Name="LookPayRollStatusId" ColumnName="LookPayRollStatusId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LookPolicies">
+      <EntityTypeMapping TypeName="hrm_ilaanModel.LookPolicy">
+        <MappingFragment StoreEntitySet="LookPolicy">
+          <ScalarProperty Name="IsPercentage" ColumnName="IsPercentage" />
+          <ScalarProperty Name="ValueType" ColumnName="ValueType" />
+          <ScalarProperty Name="LookPolicyGroupId" ColumnName="LookPolicyGroupId" />
+          <ScalarProperty Name="PolicyUnit" ColumnName="PolicyUnit" />
+          <ScalarProperty Name="PolicyName" ColumnName="PolicyName" />
+          <ScalarProperty Name="LookPolicyId" ColumnName="LookPolicyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LookPolicyGroups">
+      <EntityTypeMapping TypeName="hrm_ilaanModel.LookPolicyGroup">
+        <MappingFragment StoreEntitySet="LookPolicyGroup">
+          <ScalarProperty Name="GroupTypeId" ColumnName="GroupTypeId" />
+          <ScalarProperty Name="PolicyGroupName" ColumnName="PolicyGroupName" />
+          <ScalarProperty Name="LookPolicyGroupId" ColumnName="LookPolicyGroupId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LookQualifications">
+      <EntityTypeMapping TypeName="hrm_ilaanModel.LookQualification">
+        <MappingFragment StoreEntitySet="LookQualification">
+          <ScalarProperty Name="LookQualificationTypeId" ColumnName="LookQualificationTypeId" />
+          <ScalarProperty Name="QualificationName" ColumnName="QualificationName" />
+          <ScalarProperty Name="LookQualificationId" ColumnName="LookQualificationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LookQualificationTypes">
+      <EntityTypeMapping TypeName="hrm_ilaanModel.LookQualificationType">
+        <MappingFragment StoreEntitySet="LookQualificationType">
+          <ScalarProperty Name="QualificationType" ColumnName="QualificationType" />
+          <ScalarProperty Name="LookQualificationTypeId" ColumnName="LookQualificationTypeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LookSelectionProcesses">
+      <EntityTypeMapping TypeName="hrm_ilaanModel.LookSelectionProcess">
+        <MappingFragment StoreEntitySet="LookSelectionProcess">
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="SelectionProcess" ColumnName="SelectionProcess" />
+          <ScalarProperty Name="LookSelectionProcessId" ColumnName="LookSelectionProcessId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PayRolls">
+      <EntityTypeMapping TypeName="hrm_ilaanModel.PayRoll">
+        <MappingFragment StoreEntitySet="PayRoll">
+          <ScalarProperty Name="StatusUpdateDate" ColumnName="StatusUpdateDate" />
+          <ScalarProperty Name="StatusUpdatedBy" ColumnName="StatusUpdatedBy" />
+          <ScalarProperty Name="LookPayRollStatusId" ColumnName="LookPayRollStatusId" />
+          <ScalarProperty Name="TotalHours" ColumnName="TotalHours" />
+          <ScalarProperty Name="TotalHoursRequired" ColumnName="TotalHoursRequired" />
+          <ScalarProperty Name="Attendance" ColumnName="Attendance" />
+          <ScalarProperty Name="Absents" ColumnName="Absents" />
+          <ScalarProperty Name="Leaves" ColumnName="Leaves" />
+          <ScalarProperty Name="PublicHolidays" ColumnName="PublicHolidays" />
+          <ScalarProperty Name="WorkingDaysRequired" ColumnName="WorkingDaysRequired" />
+          <ScalarProperty Name="IncomeTax" ColumnName="IncomeTax" />
+          <ScalarProperty Name="NetPay" ColumnName="NetPay" />
+          <ScalarProperty Name="GrossPay" ColumnName="GrossPay" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="YearNumber" ColumnName="YearNumber" />
+          <ScalarProperty Name="MonthNumber" ColumnName="MonthNumber" />
+          <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+          <ScalarProperty Name="PayRollId" ColumnName="PayRollId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PayRollDetails">
+      <EntityTypeMapping TypeName="hrm_ilaanModel.PayRollDetail">
+        <MappingFragment StoreEntitySet="PayRollDetail">
+          <ScalarProperty Name="IsPercentage" ColumnName="IsPercentage" />
+          <ScalarProperty Name="ValueType" ColumnName="ValueType" />
+          <ScalarProperty Name="PolicyValue" ColumnName="PolicyValue" />
+          <ScalarProperty Name="LookPolicyGroupId" ColumnName="LookPolicyGroupId" />
+          <ScalarProperty Name="PolicyUnit" ColumnName="PolicyUnit" />
+          <ScalarProperty Name="PolicyName" ColumnName="PolicyName" />
+          <ScalarProperty Name="LookPolicyId" ColumnName="LookPolicyId" />
+          <ScalarProperty Name="EmployeePolicyId" ColumnName="EmployeePolicyId" />
+          <ScalarProperty Name="PayRollId" ColumnName="PayRollId" />
+          <ScalarProperty Name="PayRollDetailId" ColumnName="PayRollDetailId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PayRollSummaries">
+      <EntityTypeMapping TypeName="hrm_ilaanModel.PayRollSummary">
+        <MappingFragment StoreEntitySet="PayRollSummary">
+          <ScalarProperty Name="SalaryCount" ColumnName="SalaryCount" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="MonthNumber" ColumnName="MonthNumber" />
+          <ScalarProperty Name="YearNumber" ColumnName="YearNumber" />
+          <ScalarProperty Name="PayRollSummaryId" ColumnName="PayRollSummaryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Permissions">
+      <EntityTypeMapping TypeName="hrm_ilaanModel.Permission">
+        <MappingFragment StoreEntitySet="Permission">
+          <ScalarProperty Name="PermissionLevel" ColumnName="PermissionLevel" />
+          <ScalarProperty Name="LookDepartmentId" ColumnName="LookDepartmentId" />
+          <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Attribute" ColumnName="Attribute" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="PermissionId" ColumnName="PermissionId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductSaleProfiles">
+      <EntityTypeMapping TypeName="hrm_ilaanModel.ProductSaleProfile">
+        <MappingFragment StoreEntitySet="ProductSaleProfile">
+          <ScalarProperty Name="UITCDateTime" ColumnName="UITCDateTime" />
+          <ScalarProperty Name="RegistrationDatePk" ColumnName="RegistrationDatePk" />
+          <ScalarProperty Name="LookCustomerStatusId" ColumnName="LookCustomerStatusId" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="LookCountryId" ColumnName="LookCountryId" />
+          <ScalarProperty Name="LookCityId" ColumnName="LookCityId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ProductSaleProfileId" ColumnName="ProductSaleProfileId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PublicHolidays">
+      <EntityTypeMapping TypeName="hrm_ilaanModel.PublicHoliday">
+        <MappingFragment StoreEntitySet="PublicHoliday">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Detail" ColumnName="Detail" />
+          <ScalarProperty Name="HoIidayDate" ColumnName="HoIidayDate" />
+          <ScalarProperty Name="PublicHolidayId" ColumnName="PublicHolidayId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Recruitments">
+      <EntityTypeMapping TypeName="hrm_ilaanModel.Recruitment">
+        <MappingFragment StoreEntitySet="Recruitment">
+          <ScalarProperty Name="ShortSummary" ColumnName="ShortSummary" />
+          <ScalarProperty Name="ForApprovalEmployeeId" ColumnName="ForApprovalEmployeeId" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="PositionDescription" ColumnName="PositionDescription" />
+          <ScalarProperty Name="LookGenderId" ColumnName="LookGenderId" />
+          <ScalarProperty Name="NoOfPositions" ColumnName="NoOfPositions" />
+          <ScalarProperty Name="LookRecruitmentStatusId" ColumnName="LookRecruitmentStatusId" />
+          <ScalarProperty Name="Length_Of_Term" ColumnName="Length_Of_Term" />
+          <ScalarProperty Name="ReportingEmployeeId" ColumnName="ReportingEmployeeId" />
+          <ScalarProperty Name="LookDepartmentId" ColumnName="LookDepartmentId" />
+          <ScalarProperty Name="LookJobTypeId" ColumnName="LookJobTypeId" />
+          <ScalarProperty Name="AdClosingDate" ColumnName="AdClosingDate" />
+          <ScalarProperty Name="Preferred_Start_Date" ColumnName="Preferred_Start_Date" />
+          <ScalarProperty Name="LookEmployeeTypeId" ColumnName="LookEmployeeTypeId" />
+          <ScalarProperty Name="LookBranchId" ColumnName="LookBranchId" />
+          <ScalarProperty Name="LookDesignationId" ColumnName="LookDesignationId" />
+          <ScalarProperty Name="RecruitmentId" ColumnName="RecruitmentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RecruitmentApprovals">
+      <EntityTypeMapping TypeName="hrm_ilaanModel.RecruitmentApproval">
+        <MappingFragment StoreEntitySet="RecruitmentApproval">
+          <ScalarProperty Name="LookRecruitmentStatusId" ColumnName="LookRecruitmentStatusId" />
+          <ScalarProperty Name="ForwardToEmployeeId" ColumnName="ForwardToEmployeeId" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="ApprovedDate" ColumnName="ApprovedDate" />
+          <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+          <ScalarProperty Name="RecruitmentId" ColumnName="RecruitmentId" />
+          <ScalarProperty Name="RecruitmentApprovalId" ColumnName="RecruitmentApprovalId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RoleMenus">
+      <EntityTypeMapping TypeName="hrm_ilaanModel.RoleMenu">
+        <MappingFragment StoreEntitySet="RoleMenus">
+          <ScalarProperty Name="ProductSaleProfileId" ColumnName="ProductSaleProfileId" />
+          <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
+          <ScalarProperty Name="DefaultActionName" ColumnName="DefaultActionName" />
+          <ScalarProperty Name="DefaultControllerName" ColumnName="DefaultControllerName" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+          <ScalarProperty Name="RoleMenuId" ColumnName="RoleMenuId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RolePermissions">
+      <EntityTypeMapping TypeName="hrm_ilaanModel.RolePermission">
+        <MappingFragment StoreEntitySet="RolePermissions">
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="ProductSaleProfileId" ColumnName="ProductSaleProfileId" />
+          <ScalarProperty Name="PermissionId" ColumnName="PermissionId" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="RolePermissionId" ColumnName="RolePermissionId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="hrm_ilaanModel.Role">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="ProductSaleProfileId" ColumnName="ProductSaleProfileId" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShiftSettings">
+      <EntityTypeMapping TypeName="hrm_ilaanModel.ShiftSetting">
+        <MappingFragment StoreEntitySet="ShiftSetting">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="ShiftName" ColumnName="ShiftName" />
+          <ScalarProperty Name="ShiftSettingId" ColumnName="ShiftSettingId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Taxes">
+      <EntityTypeMapping TypeName="hrm_ilaanModel.Tax">
+        <MappingFragment StoreEntitySet="Tax">
+          <ScalarProperty Name="TaxPercentageToMaxLimit" ColumnName="TaxPercentageToMaxLimit" />
+          <ScalarProperty Name="FixTax" ColumnName="FixTax" />
+          <ScalarProperty Name="MaxLimit" ColumnName="MaxLimit" />
+          <ScalarProperty Name="StartLimit" ColumnName="StartLimit" />
+          <ScalarProperty Name="LimitName" ColumnName="LimitName" />
+          <ScalarProperty Name="TaxId" ColumnName="TaxId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="hrm_ilaanModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="TempPasswordDate" ColumnName="TempPasswordDate" />
+          <ScalarProperty Name="TempPassword" ColumnName="TempPassword" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Postcode" ColumnName="Postcode" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+          <ScalarProperty Name="Coments" ColumnName="Coments" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="Token" ColumnName="Token" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="UserGuid" ColumnName="UserGuid" />
+          <ScalarProperty Name="FailedPasswordAttemptCount" ColumnName="FailedPasswordAttemptCount" />
+          <ScalarProperty Name="LastLockoutDate" ColumnName="LastLockoutDate" />
+          <ScalarProperty Name="LastPasswordChangedDate" ColumnName="LastPasswordChangedDate" />
+          <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
+          <ScalarProperty Name="IsLockedOut" ColumnName="IsLockedOut" />
+          <ScalarProperty Name="VerificationKey" ColumnName="VerificationKey" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Updatedate" ColumnName="Updatedate" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BioMetricInfoes">
+      <EntityTypeMapping TypeName="hrm_ilaanModel.BioMetricInfo">
+        <MappingFragment StoreEntitySet="BioMetricInfo">
+          <ScalarProperty Name="IsPublicIp" ColumnName="IsPublicIp" />
+          <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="BioMetricDeviceBrand" ColumnName="BioMetricDeviceBrand" />
+          <ScalarProperty Name="BioMetricSerialNo" ColumnName="BioMetricSerialNo" />
+          <ScalarProperty Name="ProductSaleProfileId" ColumnName="ProductSaleProfileId" />
+          <ScalarProperty Name="BioMetricInfoId" ColumnName="BioMetricInfoId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

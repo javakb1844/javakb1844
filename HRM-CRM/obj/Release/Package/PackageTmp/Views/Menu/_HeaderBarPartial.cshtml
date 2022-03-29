@@ -1,0 +1,79 @@
+﻿@model List<VM.HRMS.LeftMenuViewModel>
+@using VM.HRMS;
+@using Services.Look;
+@using Data.HRMS;
+@{
+    List<LookOrganization> ActiveLookOrganizations = new List<LookOrganization>();
+    long roleid = Convert.ToInt64(System.Web.HttpContext.Current.Session["RoleId"]);
+    int ProductSaleProfileId = Convert.ToInt32(System.Web.HttpContext.Current.Session["ProductSaleProfileId"]);
+    if (roleid == 0)
+    {
+        ProductSaleProfileId = 0;
+    }
+    var Organization = LookOrganizationService.GetOrganizations(1, ProductSaleProfileId);
+
+    string ids = Convert.ToString(HttpContext.Current.Session["LookOrganizationIds"]);
+
+    long SelectedOrganizationId = Convert.ToInt64(System.Web.HttpContext.Current.Session["SelectedOrganizationId"]);
+
+    if (roleid == 0 || roleid == 1)
+    {
+        ActiveLookOrganizations = Organization.Data;
+
+    }
+    else
+    {
+        if (Organization.Data.CountedPositive()) {
+            if (ids.IsNotNullOrEmpty() && Organization.IsNotNull())
+            {
+                var idparts = ids.Split(',');
+                ActiveLookOrganizations = Organization.Data.Where(x => idparts.Contains(x.LookOrganizationId.ToString())).ToListSafely();
+            } else
+            {
+                ActiveLookOrganizations = Organization.Data.Where(x => x.LookOrganizationId== SelectedOrganizationId).ToListSafely();
+            }
+        }
+    }
+}
+<header class="topnavbar-wrapper">
+
+    <nav role="navigation" class="navbar topnavbar">
+        <div class="navbar-header">
+            <a href="#/" class="navbar-brand">
+                <div class="brand-logo" style="padding-top:3px !important"><img src="~/static/admin/theme1/images/logo_carwash11.png" alt="" class="img-responsive" style="height: 50px;">@*<h1 style="color:white; margin-top:-3px;"></h1>*@</div>
+                <div class="brand-logo-collapsed"><img src="~/static/admin/theme1/images/logo_carwash11.png" alt="" class="img-responsive">@*<B style="color:white; margin-top:-10px;">HRMS</B>*@</div>
+            </a>
+        </div>
+
+        <div class="nav-wrapper">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="#" data-toggle-state="aside-collapsed" class="hidden-xs"><em class="icon-list"></em></a>
+                    <a href="#" data-toggle-state="aside-toggled" data-no-persist="true" class="visible-xs sidebar-toggle"><em class="icon-list"></em></a>
+                </li>
+            </ul>
+
+            <ul class="nav navbar-nav form-group">
+                <li class="dropdown dropdown_custom" style="width: 175px;top: 10px;">
+                    <div class="input-group">
+                        <span class="input-group-addon">@*<i class="icon-user-following"></i>*@</span>
+                        <select class="form-control" data-val="true" data-val-number="The field EmployeeId must be a number." data-val-required="The EmployeeId field is required." id="compnayid" name="compnayid" required="required">
+                            @if (ActiveLookOrganizations.CountedPositive())
+                            {
+                                foreach (var og in ActiveLookOrganizations)
+                                {
+                                    <option value="@og.LookOrganizationId" @if (og.LookOrganizationId==SelectedOrganizationId) {@("selected") } >@og.OrganizationName</option>
+                                }
+                            }                          
+                        </select>
+                    </div>
+                </li>
+            </ul>           
+            <ul class="nav navbar-nav navbar-right">
+                <li style="margin-top: 20px;font-size: larger; color:#fff">Hi, @Session["UserEmail"] (Portal Admin)</li>
+                <li class="visible-lg"><a href="#" data-toggle-fullscreen=""><em class="fa fa-expand"></em></a></li>
+                <li><a href="~/User/logout" title="Logout"><em class="icon-lock"></em></a></li>               
+            </ul>
+        </div>
+    </nav>
+</header>

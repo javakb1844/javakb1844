@@ -1,0 +1,44 @@
+﻿<header class="topnavbar-wrapper">
+
+    <nav role="navigation" class="navbar topnavbar">
+        <div class="navbar-header">
+            <a href="#/" class="navbar-brand">
+                <div class="brand-logo" style="padding-top:3px !important"><img src="~/static/admin/theme1/images/logo_carwash11.png" alt="" class="img-responsive" style="height: 50px;">@*<h1 style="color:white; margin-top:-3px;"></h1>*@</div>
+                <div class="brand-logo-collapsed"><img src="~/static/admin/theme1/images/logo_carwash11.png" alt="" class="img-responsive">@*<B style="color:white; margin-top:-10px;">HRMS</B>*@</div>
+            </a>
+        </div>
+
+        <div class="nav-wrapper">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="#" data-toggle-state="aside-collapsed" class="hidden-xs"><em class="icon-list"></em></a>
+                    <a href="#" data-toggle-state="aside-toggled" data-no-persist="true" class="visible-xs sidebar-toggle"><em class="icon-list"></em></a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav">
+                <li class="dropdown dropdown_custom">
+                    <a href="javascript:;" data-toggle="dropdown" class="dropdown-toggle dropdown-toggle-custom">Mr.Mahir <b class="caret caret_custom"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="javascript:;" rel="2">Ilaan</a></li>
+                        <li><a href="javascript:;" rel="3">AbiAya</a></li>
+                    </ul>
+                </li>
+            </ul>
+                <ul class="nav navbar-nav">
+                    <li class="dropdown dropdown_custom">
+                        <a href="javascript:;" data-toggle="dropdown" class="dropdown-toggle dropdown-toggle-custom">HEAD  ttt OFFICE  <b class="caret caret_custom"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="javascript:;" rel="2">Waris 12 Road</a></li>
+                            <li><a href="javascript:;" rel="3">Joher 34 Town</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li style="margin-top: 20px;font-size: larger; color:#fff">Hi, @Session["UserEmail"] (Portal Admin)</li>
+                    <li class="visible-lg"><a href="#" data-toggle-fullscreen=""><em class="fa fa-expand"></em></a></li>
+                    <li><a href="~/User/logout" title="Logout"><em class="icon-lock"></em></a></li>
+                    @*<li><a href="#" data-toggle-state="offsidebar-open" data-no-persist="true"><em class="icon-notebook"></em></a></li>*@
+                </ul>
+</div>
+    </nav>
+</header>

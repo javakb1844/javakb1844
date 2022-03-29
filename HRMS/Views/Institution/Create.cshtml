@@ -1,0 +1,59 @@
+﻿
+@model Data.HRMS.LookInstitution
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<div class="content-wrapper">
+    <h3>
+        Add Institution
+    </h3>
+    <div class="row">
+        <div class="col-sm-6 col-lg-offset-3">
+            <!-- START panel-->
+            <div class="panel panel-default">
+                <div class="panel-heading">Add Department info</div>
+                <div class="panel-body">
+                    @using (Html.BeginForm("Create", "Institution", FormMethod.Post, new { role = "form", id = "frmInsert" }))
+                    {
+                        <div class="form-group">
+                            <label>Department Name<span class='required'>*</span></label>
+                            @* <input type="email" placeholder="Department Name" class="form-control">*@
+                            @Html.TextBoxFor(m => m.InstitutionName, new { @class = "form-control", placeholder = "Institution Name" })
+                            @Html.HiddenFor(m => m.LookInstitutionId)
+                        </div>
+                        <div class="col-sm-12 text-center">
+                            @* <button type="submit" class="btn btn-sm btn-primary">Submit</button>*@
+                            <input type="submit" class="btn btn-sm btn-primary" value="Save" />
+                        </div>
+
+                    }
+                </div>
+            </div>
+            <!-- END panel-->
+        </div>
+
+    </div>
+</div>
+<script>
+    // just for the demos, avoids form submit
+    jQuery.validator.setDefaults({
+        debug: true,
+        success: "valid",
+        submitHandler: function (form) {
+            form.submit();
+        }
+    });
+    $("#frmInsert").validate({
+        rules: {
+            InstitutionName: {
+                required: true
+            }
+        }
+        //,
+        //submitHandler: function (form) {
+        //    form.submit();
+        //}
+    });
+</script>

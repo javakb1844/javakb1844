@@ -1,0 +1,415 @@
+﻿
+@model Services.HRMS.RecruitmentView
+@using Library.Lookups;
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+  
+<div class="content-wrapper">
+    <h3>
+        Add Recruitment
+    </h3>
+    <div class="row">
+        <div class="col-sm-12">
+            <!-- START panel-->
+            <div class="panel panel-default">
+
+                <div class="panel-body">
+                    @using (Html.BeginForm("Create", "Recruitment", FormMethod.Post, new { role = "form", enctype = "multipart/form-data", id = "frmInsert" }))
+                    {
+                        <div class="panel-heading" style="font-size: 1.9rem; color: #5d9cec;">Position Details</div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Job Title<span class='required'>*</span></label>
+                                    <label id="FirstName-error" class="error" for="FirstName" style="float: right;"></label>
+                                    @*@Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", placeholder = "First Name" })*@
+                                    @Html.DropDownListFor(m => m.LookDesignationId, Model.getDesignation(), "--Please Select Job title--", new { @class = "form-control", placeholder = "Job Title" })
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Job Type</label>
+                                    @Html.DropDownListFor(m => m.LookJobTypeId, Model.getJobTypes(), "--Please Select Job Type--", new { @class = "form-control", placeholder = "Job Type" })
+
+
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Employee Type(time)</label>
+                                    @Html.DropDownListFor(m => m.LookEmployeeTypeId, Model.getEmployeeType(), "--Please Select Full,part Time,--", new { @class = "form-control", placeholder = "Job Type" })
+
+
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Length of term (months if not permanent)</label>
+                                    <label id="Email-error" class="error" for="Email" style="float: right;"></label>
+                                    @Html.TextBoxFor(m => m.Length_Of_Term, new { @class = "form-control", placeholder = "Length of term" })
+
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Reporting To</label>
+                                    @Html.DropDownListFor(m => m.ReportingEmployeeId, Model.getReportingEmploye(), "--Please Select Reporting,--", new { @class = "form-control", placeholder = "Job Type" })
+
+
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Approval Required(Next)</label>
+                                    @Html.DropDownListFor(m => m.ForApprovalEmployeeId, Model.getReportingEmploye(), "--Please Select Reporting,--", new { @class = "form-control", placeholder = "Job Type" })
+
+
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="control-group">
+                                    <label class="control-label"> Preferred_Start_Date</label>
+                                    <div class="controls">
+                                        <div id="datetimepicker1" class="input-group date">
+                                            @Html.TextBoxFor(m => m.Preferred_Start_Date, new { @class = "form-control", @id = "Preferred_Start_Datee" })
+                                            <span class="input-group-addon">
+                                                <span class="fa fa-calendar"></span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Gender</label>
+                                    @Html.DropDownListFor(m => m.LookGenderId, Model.getGenders(), "--Please SelectMarital Status--", new { @class = "form-control", placeholder = "Job Type" })
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>No Of Positions<span class='required'>*</span></label>
+                                    <label id="Email-error" class="error" for="Email" style="float: right;"></label>
+                                    @Html.TextBoxFor(m => m.NoOfPositions, new { @class = "form-control", placeholder = "NoOfPositions" })
+
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Position Description</label>
+                                    @if (Model.PositionDescription.IsNotNullOrEmpty())
+                {
+                    var CoveringLetter = @System.Configuration.ConfigurationManager.AppSettings["UploadApplicantPath"] + Model.PositionDescription;
+                                        <a href="@CoveringLetter" target="_blank" stylefloat right;">
+                                            <span>PositionDescription</span>
+                                        </a>
+                                    }
+                                    @Html.TextBox("PositionDescription", "", new { @class = "form-control", @type = "file", accept = ".doc,.docx,.xml,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" })
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Short Summary<span class='required'>*</span></label>
+                                    <label id="Email-error" class="error" for="Email" style="float: right;"></label>
+                                    @Html.TextAreaFor(m => m.ShortSummary, new { @class = "form-control" })
+
+                                </div>
+                            </div>
+                            
+
+
+                           
+
+
+                            <div class="col-sm-6">
+                                <div class="control-group">
+                                    <label class="control-label"> Ad Closing Date</label>
+                                    <div class="controls">
+                                        <div id="datetimepicker1_1" class="input-group date">
+
+                                            @Html.TextBoxFor(m => m.AdClosingDate, new { @class = "form-control", @id = "AdClosingDate" })
+
+
+
+                                            <span class="input-group-addon">
+                                                <span class="fa fa-calendar"></span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row" style="margin-top:10px">
+                            <div class="panel-heading" style="font-size: 1.9rem; color: #5d9cec; margin-bottom:5px">Recruitment and Selection Process Assistance from HR</div>
+                            <div class="col-sm-6">
+                                <div class="panel-heading" style="font-size: 1.7rem; color: #e63d3d; margin-bottom:5px;padding-top: 0px;">Selection Process</div>
+                                @if (Model.LookAppointmentProcess.IsNotNull())
+                                {
+                                    string checkedValue = "";
+                                    foreach (var selectionProcess in Model.LookAppointmentProcess)
+                                    {
+                                        checkedValue = "";
+                                        if (selectionProcess.HRRecruitmentProcessId>0)
+                                        {
+                                            checkedValue = "checked";
+                                        }
+                                        <div class="col-lg-12 col-md-12" style="margin-left: 5px;">
+                                            <div class="checkbox c-checkbox checkboxProcess">
+                                                <label>
+                                                    <input class="form-control" type="checkbox" value="@selectionProcess.LookSelectionProcessId" name="LookSelectionProcessList[]" @checkedValue >
+                                                    <span class="fa fa-check"></span> @selectionProcess.SelectionProcess
+                                                </label>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                             
+
+                            </div>
+                            @Html.HiddenFor(x=>x.RecruitmentId)
+                            <div class="col-sm-6">
+                                <div class="panel-heading" style="font-size: 1.7rem; color: #e63d3d; margin-bottom:5px;padding-top: 0px;">Appointment</div>
+
+                                @if (Model.LookSelectionProcess.IsNotNull())
+                                {
+                                    string tempCheckedValue = "";
+                                    foreach (var appointmentProcess in Model.LookSelectionProcess)
+                                    {
+                                        tempCheckedValue = "";
+                                        if (appointmentProcess.HRRecruitmentProcessId > 0)
+                                        {
+                                            tempCheckedValue = "checked";
+                                        }
+                                        <div class="col-lg-12 col-md-12" style="margin-left: 5px;">
+                                            <div class="checkbox c-checkbox checkboxProcess">
+                                                <label>
+
+
+                                                    <input class="form-control" type="checkbox" value="@appointmentProcess.LookSelectionProcessId" name="LookSelectionProcessList[]" @tempCheckedValue>
+
+                                                    <span class="fa fa-check"></span> @appointmentProcess.SelectionProcess
+                                                </label>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                  
+                        </div>
+                        @*<div class="row" style="margin-top:10px">
+                            <div class="panel-heading" style="font-size: 1.9rem; color: #5d9cec; margin-bottom:5px">Recruitment and Selection Process Assistance from HR</div>
+
+                        </div>*@
+
+
+                      
+                            <div class="col-sm-12 text-center">
+                                <input type="submit" class="btn btn-sm btn-primary" value="Save"  style="width: 150px;font-size: 1.9rem;margin-bottom: 20px;" />
+                            </div>
+                                    @*</form>*@
+                    }
+                </div>
+            </div>
+            <!-- END panel-->
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div id="QualificationModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Add more education programs</h4>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <label>Profession Name<span class="required" aria-required="true">*</span></label>
+                    @*@Html.DropDownList("LookQualificationTypeId", ViewBag.QualificationType as SelectList, new { @class = "form-control", placeholder = "Qualification",id= "LookQualificationTypeId" })*@
+                    @*@Html.DropDownListFor(m => m.LookQualificationTypeId, Model.getQualificationType(), new { @class = "form-control", placeholder = "Qualification", id = "LookQualificationTypeId" })*@
+                </div>
+                <div class="form-group">
+                    <label>Qualification Name<span class="required" aria-required="true">*</span></label>
+                    <input class="form-control" id="QualificationName" name="QualificationName" placeholder="Qualification Name" type="text" value="">
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" onclick="AddQualification()" class="btn btn-primary" data-dismiss="modal">Save</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+
+</div>
+
+<div id="OrganizationModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Add organizations</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Organization Name<span class="required" aria-required="true">*</span></label>
+                    <input class="form-control" id="OrganizationName" name="OrganizationName" placeholder="Organization Name" type="text" value="">
+                </div>
+
+                <div class="form-group">
+                    <label>Organization URL<span class="required" aria-required="true">*</span></label>
+                    <input class="form-control" id="OrganizationURL" name="OrganizationURL" placeholder="Organization URL" type="text" value="">
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" onclick="AddOrganization()" class="btn btn-primary" data-dismiss="modal">Save</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+
+</div>
+<script type="text/javascript">
+   
+    $(function () {
+        // Bootstrap DateTimePicker v4
+        $('#datetimepicker1,#datetimepicker1_1').datetimepicker({
+            format: 'DD/MM/YYYY'
+        });
+    });
+
+    function AddQualification() {
+        var program = new Object();
+        program.LookQualificationTypeId = $("#LookQualificationTypeId").val();
+        program.QualificationName = $("#QualificationName").val();
+        $.ajax({
+            url: '/Qualification/New',
+            type: 'POST',
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify(program),
+            success: function (response) {
+                debugger;
+                if (response.Data != null && response.ResultType == 1) {
+                    var options = response.Data;
+                    var other = "";
+                    other = other + " <option value='" + options.LookQualificationId + "'>" + options.QualificationName + "</option>";
+                    $("#LookQualificationId").append(other);
+                    $("#QualificationName").val("");
+                } else if (response.ResultType == 2) {
+                    alert(response.Message);
+
+                } else {
+                    alert("Exception Occured");
+                    // window.location.href = "@Url.Action("No505","Error")";
+                }
+            },
+            error: function (response) {
+                debugger;
+                alert("Ajax Call Error...")
+                // window.location.href = "@Url.Action("No505","Error")";
+            }
+        });
+    }
+
+    function AddOrganization() {
+        var program = new Object();
+        program.OrganizationName = $("#OrganizationName").val();
+        program.OrganizationURL = $("#OrganizationURL").val();
+        $.ajax({
+            url: '/Organization/CreateOrganization',
+            type: 'POST',
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify(program),
+            success: function (response) {
+                debugger;
+                if (response.Data != null && response.ResultType == 1) {
+                    var options = response.Data;
+                    //var first = "<option value=''>--Please Select Qualification--</option>";
+                    var other = "";
+                    var other = " <option value='" + options.LookOrganizationId + "'>" + options.OrganizationName + "</option>";
+                    $("#LookOrganizationId").append(other);
+                    $("#LookOrganizationName").val("");
+                    $("#LookOrganizationURL").val("");
+                } else if (response.ResultType == 2) {
+                    alert(response.Message);
+
+                } else {
+                    alert("Exception Occured");
+                    // window.location.href = "@Url.Action("No505","Error")";
+                }
+            },
+            error: function (response) {
+                debugger;
+                alert("Ajax Call Error");
+                //window.location.href = "@Url.Action("No505","Error")";
+            }
+        });
+    }
+    $(document).ready(function () {
+        $.mask.definitions['~'] = "[+-]";
+        $(".Time").mask("99:99:99", {});
+        $(".Mobile").mask("9999-9999999");
+        $(".cinc").mask("99999-9999999-9");
+        $(".phone").mask("999-99999999");
+        
+       
+
+    });
+
+
+    /* $(document).off("change", "#resumeChange").on("change", "#resumeChange", function (event) {
+        // event.preventDefault();
+
+
+
+     });*/
+    // just for the demos, avoids form submit
+    /*  jQuery.validator.setDefaults({
+          debug: true,
+          success: "valid"
+      });*/
+
+
+    $("#frmInsert").validate({
+
+        errorPlacement: function (error, element) {
+            $("#" + element.attr("name") + "-error").text(error);
+        },
+        rules: {
+            FirstName: {
+                required: true
+            },
+            FullName: {
+                required: true
+            },
+            Email: {
+                required: true
+            }
+        },
+        //message: {
+        //    FirstName: {
+        //        required: '*'
+        //    }
+
+        //},
+        submitHandler: function (form) {
+            form.submit();
+        }
+
+
+
+    });
+
+
+</script>
+

@@ -1,0 +1,283 @@
+﻿=================================================================================================================
+TODOs LIST
+=================================================================================================================
+
+Entity Framework
+Database
+	Schema Change Required
+	Data Type Mappings
+
+Javascript
+MVC
+
+
+
+
+------------------------------------------------------------------
+JavaScript
+------------------------------------------------------------------
+
+Constructors, Objects, OOP etc. etc.
+http://msdn.microsoft.com/en-us/library/ie/zbbaddzd%28v=vs.94%29.aspx
+http://msdn.microsoft.com/en-us/library/ie/hh924508%28v=vs.94%29.aspx
+http://msdn.microsoft.com/en-us/library/ie/dn569317%28v=vs.94%29.aspx
+
+Nice to study
+http://ejohn.org/apps/learn/
+
+adding custom-attribute/values to an element
+http://stackoverflow.com/questions/8685488/dynamically-give-html-element-a-custom-attribute
+
+
+
+------------------------------------------------------------------
+JQuery
+------------------------------------------------------------------
+
+http://jquery.com/
+http://api.jquery.com/
+http://www.mysamplecode.com/2012/05/jquery-selectoreach-example.html
+http://www.strathweb.com/2012/03/passing-data-to-jquery-events-with-event-data-and-custom-event-object/
+
+
+------------------------------------------------------------------
+HTML
+------------------------------------------------------------------
+
+Browser builtin objects like window, self, document, forms etc. etc.
+http://www.howtocreate.co.uk/tutorials/javascript/browserinspecific
+
+
+
+
+
+------------------------------------------------------------------
+Articles
+------------------------------------------------------------------
+
+File Uploads
+http://www.sitepoint.com/html5-ajax-file-upload/
+http://www.sitepoint.com/html5-javascript-file-upload-progress-bar/
+http://www.codeproject.com/Articles/818561/Multiple-file-upload-with-progress-bar-and-drag-an
+
+
+Enumerations
+http://www.codeproject.com/Tips/818547/Use-of-the-enum-description-with-special-character
+
+
+------------------------------------------------------------------
+MVC
+------------------------------------------------------------------
+
+MVC & EF6 & Forms
+http://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application
+
+Nested Models binding
+Use it: http://dotnetslackers.com/articles/aspnet/Understanding-ASP-NET-MVC-Model-Binding.aspx
+http://geekswithblogs.net/Nettuce/archive/2011/05/20/model-binding-checkboxes-in-mvc.aspx
+
+Other links:
+http://www.codeproject.com/Tips/806415/Model-Binding-using-IModelBinder-and-DefaultModelB
+http://stackoverflow.com/questions/21425111/asp-net-mvc-fill-viewmodel-from-formcollection
+http://odetocode.com/Blogs/scott/archive/2009/04/27/6-tips-for-asp-net-mvc-model-binding.aspx
+http://www.dofactory.com/topic/1038/how-to-extract-key-values-from-formcollection-in-asp-net-mvc-action-method.aspx
+
+
+
+
+Scripts Bundling
+http://www.asp.net/mvc/tutorials/mvc-4/bundling-and-minification
+
+
+AntiforgeryToken "using salt is deprecated with [ValidateAntiForgeryToken]" is not recommended
+http://stackoverflow.com/questions/10851283/antiforgerytoken-deprecated-in-asp-net-mvc-4-rc
+http://stackoverflow.com/questions/9444214/how-to-choose-a-salt-value-for-validateantiforgerytoken
+http://stackoverflow.com/questions/2994550/runtime-loading-of-validateantiforgerytoken-salt-value
+
+
+Custom Helpers
+http://www.codeproject.com/Articles/787320/An-Absolute-Beginners-Tutorial-on-HTML-Helpers-and
+http://www.codeproject.com/Tips/720515/Custom-HTML-Helper-for-MVC-Application
+
+http://stackoverflow.com/questions/4281424/writing-outputting-html-strings-unescaped
+
+
+------------------------------------------------------------------
+Entity Framework
+------------------------------------------------------------------
+
+Conditional Required attribute
+http://mvcdiary.com/2013/02/28/conditional-required-validation-or-field-mandatory-depends-on-another-field-mvc-4/
+
+LINQ
+http://code.msdn.microsoft.com/101-LINQ-Samples-3fb9811b
+
+Explicit, Eager & Lazy loading
+http://www.codeproject.com/Articles/788559/Loading-Related-Entities-with-Entity-Framework-A-B
+
+Task based async pattern in EF
+http://entityframework.codeplex.com/wikipage?title=Task-based%20Asynchronous%20Pattern%20support%20in%20EF.
+
+Working with EF Property Values directly
+http://msdn.microsoft.com/en-us/data/jj592677.aspx
+
+
+EF6 API Documentation
+http://msdn.microsoft.com/en-us/library/dn223258%28v=vs.113%29.aspx
+
+
+Connection Resiliency
+http://thedatafarm.com/data-access/testing-out-the-connection-resiliency-feature-into-ef6/
+
+
+Serialization - Xml, json other
+See: SqlXml project under CommonShare\RnD\... folder
+http://msdn.microsoft.com/en-us/library/2baksw0z%28v=vs.110%29.aspx
+http://stackoverflow.com/questions/7693391/nonserialized-on-property
+
+
+
+
+
+
+
+
+
+
+
+------------------------------------------------------------------
+Database 
+------------------------------------------------------------------
+
+Database Data Type Mappings
+----------------------------
+
+Time(7) to TimeSpan
+http://stackoverflow.com/questions/7578885/equivalent-of-time7-sql-server-2008-datatype-in-net
+
+
+
+
+Batch Insertion, standard or XML
+---------------------------------
+
+http://consultingblogs.emc.com/markharrison/archive/2009/09/15/fastest-way-to-insert-bulk-records-into-sql-server.aspx
+http://www.codeproject.com/Articles/25457/Multiple-Ways-to-do-Multiple-Inserts
+
+
+SCHEMA requirements
+-------------------------
+																				Sep 04 2014
+- Add Tables for 
+		"Agency" and "Agents", with initially least-possible columns
+
+- Add table "__TransactionHistory" to auto-handle Transaction Commit Failure by EF6.x
+
+            CREATE TABLE [dbo].[__TransactionHistory] (
+                [Id]           UNIQUEIDENTIFIER NOT NULL,
+                [CreationTime] DATETIME         NOT NULL,
+                CONSTRAINT [PK_dbo.__TransactionHistory] PRIMARY KEY CLUSTERED ([Id] ASC)
+            );
+
+
+- Add following columns to User Table
+
+GO
+ALTER TABLE [dbo].[User] Add [UserName] NVARCHAR (256) NOT NULL
+ALTER TABLE [dbo].[User] Add [Email] NVARCHAR (256) NULL
+ALTER TABLE [dbo].[User] Add [EmailConfirmed] BIT NULL
+ALTER TABLE [dbo].[User] Add [PasswordHash] NVARCHAR (MAX) NULL
+ALTER TABLE [dbo].[User] Add [SecurityStamp] NVARCHAR (MAX) NULL
+ALTER TABLE [dbo].[User] Add [TwoFactorEnabled] BIT NULL
+
+GO
+CREATE UNIQUE NONCLUSTERED INDEX [UserNameIndex]
+    ON [dbo].[User]([UserName] ASC);
+
+
+-- to be discussed
+    [PhoneNumber]          NVARCHAR (MAX) NULL,
+    [PhoneNumberConfirmed] BIT            NOT NULL,
+    [LockoutEndDateUtc]    DATETIME       NULL,
+    [LockoutEnabled]       BIT            NOT NULL,
+    [AccessFailedCount]    INT            NOT NULL,
+
+
+
+CREATE TABLE [dbo].[]
+
+
+
+[Role] (
+    [RoleId] ...,
+    [Name] NVARCHAR (256) NOT NULL,
+);
+
+
+GO
+CREATE UNIQUE NONCLUSTERED INDEX [RoleNameIndex]
+    ON [dbo].[Role]([Name] ASC);
+
+
+
+GO
+[UserRole] (
+    [UserId] ...,
+    [RoleId] ...,
+);
+
+
+
+
+
+
+
+
+NOTE: ------------ do not ask to create these tables yet, will be created later (might be modified)
+- Add following Tables - required for user authentication & authorization & roles
+------------------------------
+Note: please change Id column names and add SEQ column names as per discussion
+
+
+
+
+------------ do not ask to create that table yet
+CREATE TABLE [dbo].[UserExternalLogin] (
+    [LoginProvider] NVARCHAR (128) NOT NULL,
+    [ProviderKey]   NVARCHAR (128) NOT NULL,
+    [UserId]        NVARCHAR (128) NOT NULL,
+);
+
+
+
+------------ do not ask to create that table yet
+CREATE TABLE [dbo].[AspNetUserClaims] (
+    [Id]         INT            IDENTITY (1, 1) NOT NULL,
+    [UserId]     NVARCHAR (128) NOT NULL,
+    [ClaimType]  NVARCHAR (MAX) NULL,
+    [ClaimValue] NVARCHAR (MAX) NULL,
+    CONSTRAINT [PK_dbo.AspNetUserClaims] PRIMARY KEY CLUSTERED ([Id] ASC),
+    CONSTRAINT [FK_dbo.AspNetUserClaims_dbo.AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [dbo].[AspNetUsers] ([Id]) ON DELETE CASCADE
+);
+
+
+GO
+CREATE NONCLUSTERED INDEX [IX_UserId]
+    ON [dbo].[AspNetUserClaims]([UserId] ASC);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

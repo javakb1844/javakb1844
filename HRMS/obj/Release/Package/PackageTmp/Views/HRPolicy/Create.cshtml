@@ -1,0 +1,131 @@
+﻿@model Data.HRMS.HRPolicy
+@using VM.HRMS;
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<div class="content-wrapper">
+    <h3>
+        Add HR Policy
+    </h3>
+    <div class="row">
+       
+            <!-- START panel-->
+            <div class="panel panel-default">
+                <div class="panel-heading"> Designation info</div>
+                <div class="panel-body">
+                    @using (Html.BeginForm("Create", "HRPolicy", FormMethod.Post, new { role = "form", id = "frmInsert" }))
+                    {
+                        <div class="form-group col-sm-6 col-lg-offset-3" >
+                            <label>Job Title<span class='required'>*</span></label>
+                            @Html.DropDownListFor(m => m.LookDesignationId, ViewBag.LookDesignationList as SelectList, new { @class = "form-control", placeholder = "Designation" })
+                        </div>
+                        <div class="form-group col-sm-6 col-lg-offset-3">
+                            <label>Policy Name<span class='required'>*</span></label>
+                            @Html.DropDownListFor(m => m.LookPolicyId, ViewBag.LookPolicyList as SelectList, new { @class = "form-control", placeholder = "Policy" })
+                        </div>
+                        <div class="form-group col-sm-6 col-lg-offset-3">
+                            <label>Policy Value<span class='required'>*</span></label>
+                            @Html.TextBoxFor(m => m.PolicyValue, new { @class = "form-control", placeholder = "Policy Value" })
+                            @Html.HiddenFor(m => m.HRPolicyId)
+                        </div>
+                        <div class="col-sm-12 text-center ">
+                            <input type="submit" class="btn btn-sm btn-primary" value="Save" style="width: 115px; font-size: 1.9rem;" />
+                        </div>
+                    }
+
+                    <div class="panel-body" style="margin-top:100px; height:700px"> 
+                     
+                        <table id="datatable1" class="table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>S.NO.</th>
+                                    <th>Policy Group</th>
+                                    <th>PolicyName</th>
+                                    <th>Policy Value</th>
+                                    <th>Unit</th>
+                                    @*<th>Action</th>*@
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (ViewBag.HrPolicyDetailList != null)
+                                {
+                                    var count = 0;
+                                    List<PolicyGroupDetailListViewModel> tempDetail = ViewBag.HrPolicyDetailList;
+                                    foreach (var item in tempDetail)
+                                    {
+                                        count = count + 1;
+
+                                        <tr class="gradeX">
+                                            <td>@count</td>
+                                            <td>@item.PolicyGroupName</td>
+                                            <td>@item.PolicyName</td>
+                                            <td>@item.PolicyValue</td>
+                                            <td>@item.PolicyUnit</td>
+
+
+                                            @*<td class="table_action">
+                                                <a href="@Url.Action("Create","HRPolicy",new {id=item.LookPolicyGroupId })" title="Edit Department"><em class="icon-note" style="font-size: 18px;"></em></a>
+                                                <em class="delete_record icon-close" title="Delete HRPolicy" style="font-size:18px;color:red" rel="51"></em>
+                                            </td>*@
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                        @*<div class="row" style="margin-top: 10px;">
+                <div class="col-xs-6">
+                    <div class="dataTables_info" id="datatable1_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div>
+                </div><div class="col-xs-6">
+                    <div class="dataTables_paginate paging_simple_numbers" id="datatable1_paginate">
+                        <ul class="pagination">
+                            <li class="paginate_button previous disabled" aria-controls="datatable1" tabindex="0" id="datatable1_previous">
+                                <a href="#">Previous</a>
+                            </li>
+                            <li class="paginate_button active" aria-controls="datatable1" tabindex="0"><a href="#">1</a></li>
+                            <li class="paginate_button " aria-controls="datatable1" tabindex="0"><a href="#">2</a></li>
+                            <li class="paginate_button " aria-controls="datatable1" tabindex="0"><a href="#">3</a></li>
+                            <li class="paginate_button " aria-controls="datatable1" tabindex="0"><a href="#">4</a></li>
+                            <li class="paginate_button " aria-controls="datatable1" tabindex="0"><a href="#">5</a></li>
+                            <li class="paginate_button " aria-controls="datatable1" tabindex="0"><a href="#">6</a></li>
+                            <li class="paginate_button next" aria-controls="datatable1" tabindex="0" id="datatable1_next"><a href="#">Next</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>*@
+                    </div>
+
+                </div>
+            </div>
+            <!-- END panel-->
+     
+
+    </div>
+   
+
+</div>
+<script>
+    // just for the demos, avoids form submit
+    jQuery.validator.setDefaults({
+        debug: true,
+        success: "valid",
+        submitHandler: function (form) {
+            form.submit();
+        }
+    });
+    $("#frmInsert").validate({
+        rules: {
+            LookDesignationId: {
+                required: true
+            },
+            LookPolicyId: {
+        required: true
+            },
+            PolicyValue: {
+                required: true
+            }
+        }
+       
+    });
+</script>
