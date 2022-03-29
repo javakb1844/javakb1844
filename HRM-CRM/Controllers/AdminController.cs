@@ -21,7 +21,8 @@ namespace HRM_CRM.Controllers
 	    [CustomAuthorize(Permission="ViewRolePermissions")]
 		
         public ActionResult RolePermission(long role=-1)
-        {
+        {  // wasim new push
+
             long roleid = Convert.ToInt64(System.Web.HttpContext.Current.Session["RoleId"]);
             RolePermissionViewModel rolePermissions = new RolePermissionViewModel();
             if (role==0 && roleid>0)
