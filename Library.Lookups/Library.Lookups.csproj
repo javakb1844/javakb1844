@@ -52,6 +52,7 @@
     <Compile Include="EnumLeaveStatus.cs" />
     <Compile Include="EnumLookApplicantStatus.cs" />
     <Compile Include="EnumLookAttendanceStatus.cs" />
+    <Compile Include="EnumLookCustTableInfo.cs" />
     <Compile Include="EnumLookGender.cs" />
     <Compile Include="EnumLookInterviewStatus.cs" />
     <Compile Include="EnumLookRecruitmentStatus.cs" />

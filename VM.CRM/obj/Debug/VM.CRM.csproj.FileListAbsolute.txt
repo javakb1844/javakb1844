@@ -4,3 +4,14 @@ E:\apps-data\HRMDEV-221217\HRMDEV\VM.CRM\obj\Debug\VM.CRM.csprojAssemblyReferenc
 E:\apps-data\HRMDEV-221217\HRMDEV\VM.CRM\obj\Debug\VM.CRM.csproj.CoreCompileInputs.cache
 E:\apps-data\HRMDEV-221217\HRMDEV\VM.CRM\obj\Debug\VM.CRM.dll
 E:\apps-data\HRMDEV-221217\HRMDEV\VM.CRM\obj\Debug\VM.CRM.pdb
+E:\apps-data\HRMCRM\VM.CRM\bin\Debug\VM.CRM.dll
+E:\apps-data\HRMCRM\VM.CRM\bin\Debug\VM.CRM.pdb
+E:\apps-data\HRMCRM\VM.CRM\obj\Debug\VM.CRM.csprojAssemblyReference.cache
+E:\apps-data\HRMCRM\VM.CRM\obj\Debug\VM.CRM.csproj.CoreCompileInputs.cache
+E:\apps-data\HRMCRM\VM.CRM\obj\Debug\VM.CRM.dll
+E:\apps-data\HRMCRM\VM.CRM\obj\Debug\VM.CRM.pdb
+E:\apps-data\HRMCRM\VM.CRM\bin\Debug\System.Web.WebPages.dll
+E:\apps-data\HRMCRM\VM.CRM\bin\Debug\System.Web.WebPages.Deployment.dll
+E:\apps-data\HRMCRM\VM.CRM\bin\Debug\System.Web.WebPages.xml
+E:\apps-data\HRMCRM\VM.CRM\bin\Debug\System.Web.WebPages.Deployment.xml
+E:\apps-data\HRMCRM\VM.CRM\obj\Debug\VM.CRM.csproj.CopyComplete

@@ -15,6 +15,7 @@ namespace VM.User
 
         public bool? IsActive { get; set; }
 
+        public string RetUrl { get; set; }
         public long? RoleId { get; set; }
     }
 }

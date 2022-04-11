@@ -125,7 +125,7 @@
                             <!--end::Menu 1-->
                             <!--end::Filter-->
                             <!--begin::Export-->
-                            <button type="button" class="btn btn-light-primary me-3" data-bs-toggle="modal" data-bs-target="#kt_customers_export_modal">
+                            <button type="button" class="btn btn-light-primary me-3 generic_modal_button" data-h2="Lead List Column Setting"  data-mid="generic_modal" data-aid="LeadList" >
                                 <!--begin::Svg Icon | path: icons/duotune/arrows/arr078.svg-->
                                 <span class="svg-icon svg-icon-2">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -134,7 +134,18 @@
                                         <path d="M18.75 8.25H17.75C17.1977 8.25 16.75 8.69772 16.75 9.25C16.75 9.80228 17.1977 10.25 17.75 10.25C18.3023 10.25 18.75 10.6977 18.75 11.25V18.25C18.75 18.8023 18.3023 19.25 17.75 19.25H5.75C5.19772 19.25 4.75 18.8023 4.75 18.25V11.25C4.75 10.6977 5.19771 10.25 5.75 10.25C6.30229 10.25 6.75 9.80228 6.75 9.25C6.75 8.69772 6.30229 8.25 5.75 8.25H4.75C3.64543 8.25 2.75 9.14543 2.75 10.25V19.25C2.75 20.3546 3.64543 21.25 4.75 21.25H18.75C19.8546 21.25 20.75 20.3546 20.75 19.25V10.25C20.75 9.14543 19.8546 8.25 18.75 8.25Z" fill="#C4C4C4" />
                                     </svg>
                                 </span>
-                                <!--end::Svg Icon-->Export
+                                <!--end::Svg Icon-->List Column Setting
+                            </button>
+                            <button type="button" class="btn btn-light-primary me-3 generic_modal_button" data-h2="Lead Edit Column Setting"   data-mid="generic_modal" data-aid="LeadEdit" >
+                                <!--begin::Svg Icon | path: icons/duotune/arrows/arr078.svg-->
+                                <span class="svg-icon svg-icon-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <rect opacity="0.3" x="12.75" y="4.25" width="12" height="2" rx="1" transform="rotate(90 12.75 4.25)" fill="black" />
+                                        <path d="M12.0573 6.11875L13.5203 7.87435C13.9121 8.34457 14.6232 8.37683 15.056 7.94401C15.4457 7.5543 15.4641 6.92836 15.0979 6.51643L12.4974 3.59084C12.0996 3.14332 11.4004 3.14332 11.0026 3.59084L8.40206 6.51643C8.0359 6.92836 8.0543 7.5543 8.44401 7.94401C8.87683 8.37683 9.58785 8.34458 9.9797 7.87435L11.4427 6.11875C11.6026 5.92684 11.8974 5.92684 12.0573 6.11875Z" fill="black" />
+                                        <path d="M18.75 8.25H17.75C17.1977 8.25 16.75 8.69772 16.75 9.25C16.75 9.80228 17.1977 10.25 17.75 10.25C18.3023 10.25 18.75 10.6977 18.75 11.25V18.25C18.75 18.8023 18.3023 19.25 17.75 19.25H5.75C5.19772 19.25 4.75 18.8023 4.75 18.25V11.25C4.75 10.6977 5.19771 10.25 5.75 10.25C6.30229 10.25 6.75 9.80228 6.75 9.25C6.75 8.69772 6.30229 8.25 5.75 8.25H4.75C3.64543 8.25 2.75 9.14543 2.75 10.25V19.25C2.75 20.3546 3.64543 21.25 4.75 21.25H18.75C19.8546 21.25 20.75 20.3546 20.75 19.25V10.25C20.75 9.14543 19.8546 8.25 18.75 8.25Z" fill="#C4C4C4" />
+                                    </svg>
+                                </span>
+                                <!--end::Svg Icon-->Edit Column Setting
                             </button>
                             <!--end::Export-->
                             <!--begin::Add customer-->
@@ -223,15 +234,9 @@
                                                             }
                                                         }
                                                     }
-
-
-
                                                     <!--begin::Table row-->
                                                     @*<tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
                                                         <th class="w-10px pe-2 sorting_disabled" rowspan="1" colspan="1" aria-label="
-
-
-
                                                         " style="width: 29.25px;">
                                                             <div class="form-check form-check-sm form-check-custom form-check-solid me-3">
                                                                 <input class="form-check-input" type="checkbox" data-kt-check="true" data-kt-check-target="#kt_customers_table .form-check-input" value="1">
@@ -243,6 +248,7 @@
                                                         <th class="min-w-125px sorting" tabindex="0" aria-controls="kt_customers_table" rowspan="1" colspan="1" aria-label="Payment Method: activate to sort column ascending" style="width: 169.625px;">Payment Method</th>
                                                         <th class="min-w-125px sorting" tabindex="0" aria-controls="kt_customers_table" rowspan="1" colspan="1" aria-label="Created Date: activate to sort column ascending" style="width: 217.312px;">Created Date</th>
                                                         <th class="text-end min-w-70px sorting_disabled" rowspan="1" colspan="1" aria-label="Actions" style="width: 133.312px;">Actions</th>*@
+                                                                <th class="text-end min-w-70px sorting_disabled" rowspan="1" colspan="1" aria-label="Actions" style="width: 133.312px;">Actions</th>
                                                 </tr>
                                             }
                                         }
@@ -252,10 +258,6 @@
                                 <!--end::Table head-->
                                 <!--begin::Table body-->
                                 <tbody class="fw-bold text-gray-600">
-
-
-
-
                                     @if (Model.IsNotNull() && Model.Data.CountedPositive())
                                     {
                                         int i = 1;
@@ -271,685 +273,112 @@
                                             if (item.Nodes.IsNotNull() && item.Nodes.CountedPositive())
                                             {
                                                 int j = 0;
-                                                <tr class="@odd">
-                                                    <!--begin::Checkbox-->
-                                                    @foreach (var iteminner in item.Nodes.Where(x => x.ParentKey.ToLower() == "lead").ToListSafely())
-                                                    {
-                                                        var keyparts = iteminner.Key.Split('_');
-                                                        bool visible = true;
-                                                        if (keyparts.CountedPositive())
-                                                        {
-                                                            var lastPart = keyparts[0];
-                                                            if (lastPart == "a")
-                                                            {
-                                                                visible = false;
-                                                            }
-                                                        }
-                                                        if (visible == true)
-                                                        {
-                                                            if (j == 0 && iteminner.HasChild == false)
-                                                            {
-                                                            <td>
-                                                                <div class="form-check form-check-sm form-check-custom form-check-solid">
-                                                                    <input class="form-check-input" type="checkbox" value="1">@iteminner.KeyValue
-                                                                </div>
-                                                            </td>
-                                                                j++;
-                                                            }
-                                                            else
-                                                            {
-                                                                if (iteminner.HasChild == true)
-                                                                {
-                                                                    var temp = item.Nodes.Where(x => x.HasChild == false && x.ParentKey == iteminner.Key && x.Key.ToLower() == "name").FirstOrDefault();
-                                                                    var tempData = item.Nodes.Where(x => x.HasChild == false && x.ParentKey == iteminner.Key && x.Key.ToLower() == "data").FirstOrDefault();
-                                                                    if (temp.IsNotNull())
-                                                                    {
-                                                                    <td>
-                                                                        <a href="view.html" class="text-gray-800 text-hover-primary mb-1" data-ajax="@(tempData.IsNotNull() ? tempData.KeyValue : "")">@temp.KeyValue</a>
-                                                                    </td>
-                                                                        j++;
-                                                                    }
-                                                                }
-                                                                else
-                                                                {
-                                                                    if (iteminner.Key.ToLower().Contains("date"))
-                                                                    {
-                                                                        if (iteminner.KeyValue.IsNotNull())
-                                                                        {
-                                                                            var hh = Convert.ToDateTime(iteminner.KeyValue);
-                                                                        <td>
-                                                                            <a href="view.html" class="text-gray-800 text-hover-primary mb-1">@hh.ToString("yyyy-MM-dd")</a>
-                                                                        </td>
-                                                                        }
-                                                                    }
-                                                                    else
-                                                                    {
-                                                                    <td>
-                                                                        <a href="view.html" class="text-gray-800 text-hover-primary mb-1">@iteminner.KeyValue</a>
-                                                                    </td>
-                                                                    }
-                                                                    j++;
-                                                                }
-                                                            }
-                                                        }
-
-                                                    }
-                                                    <!--end::Checkbox-->
-                                                    <!--begin::Name=-->
-                                                    @*<td>
-                                                            <a href="view.html" class="text-gray-800 text-hover-primary mb-1">Max Smith</a>
-                                                        </td>
-                                                        <!--end::Name=-->
-                                                        <!--begin::Email=-->
-                                                        <td>
-                                                            <a href="#" class="text-gray-600 text-hover-primary mb-1">max@kt.com</a>
-                                                        </td>
-                                                        <!--end::Email=-->
-                                                        <!--begin::Company=-->
-                                                        <td>Bistro Union</td>
-                                                        <!--end::Company=-->
-                                                        <!--begin::Payment method=-->
-                                                        <td data-filter="mastercard">
-                                                            <img src="../../assets/media/svg/card-logos/mastercard.svg" class="w-35px me-3" alt="">**** 3204
-                                                        </td>
-                                                        <!--end::Payment method=-->
-                                                        <!--begin::Date=-->
-                                                        <td data-order="2020-11-12T14:01:00+05:00">12 Nov 2020, 2:01 pm</td>
-                                                        <!--end::Date=-->
-                                                        <!--begin::Action=-->
-                                                        <td class="text-end">
-                                                            <a href="#" class="btn btn-sm btn-light btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-                                                                Actions
-                                                                <!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
-                                                                <span class="svg-icon svg-icon-5 m-0">
-                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                                                        <path d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z" fill="black"></path>
-                                                                    </svg>
-                                                                </span>
-                                                                <!--end::Svg Icon-->
-                                                            </a>
-                                                            <!--begin::Menu-->
-                                                            <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
-                                                                <!--begin::Menu item-->
-                                                                <div class="menu-item px-3">
-                                                                    <a href="view.html" class="menu-link px-3">View</a>
-                                                                </div>
-                                                                <!--end::Menu item-->
-                                                                <!--begin::Menu item-->
-                                                                <div class="menu-item px-3">
-                                                                    <a href="#" class="menu-link px-3" data-kt-customer-table-filter="delete_row">Delete</a>
-                                                                </div>
-                                                                <!--end::Menu item-->
-                                                            </div>
-                                                            <!--end::Menu-->
-                                                        </td>*@
-                                                    <!--end::Action=-->
-                                                </tr>
+                                                string leadId = "0";
+                                    <tr class="@odd">
+                                        <!--begin::Checkbox-->
+                                        @foreach (var iteminner in item.Nodes.Where(x => x.ParentKey.ToLower() == "lead").ToListSafely())
+                                        {
+                                            var keyparts = iteminner.Key.Split('_');
+                                            bool visible = true;
+                                            if (keyparts.CountedPositive())
+                                            {
+                                                var lastPart = keyparts[0];
+                                                if (lastPart == "a")
+                                                {
+                                                    visible = false;
+                                                }
                                             }
+                                            if (visible == true)
+                                            {
+                                                if (j == 0 && iteminner.HasChild == false)
+                                                {
+                                                    leadId = iteminner.KeyValue;
+                                                    <td>
+                                                        <div class="form-check form-check-sm form-check-custom form-check-solid">
+                                                            <input class="form-check-input" type="checkbox" value="1">@iteminner.KeyValue
+                                                        </div>
+                                                    </td>
+                                                    j++;
+                                                }
+                                                else
+                                                {
+                                                    if (iteminner.HasChild == true)
+                                                    {
+                                                        var temp = item.Nodes.Where(x => x.HasChild == false && x.ParentKey == iteminner.Key && x.Key.ToLower() == "name").FirstOrDefault();
+                                                        var tempData = item.Nodes.Where(x => x.HasChild == false && x.ParentKey == iteminner.Key && x.Key.ToLower() == "data").FirstOrDefault();
+                                                        if (temp.IsNotNull())
+                                                        {
+                                                            <td>
+                                                                <a href="view.html" class="text-gray-800 text-hover-primary mb-1" data-ajax="@(tempData.IsNotNull() ? tempData.KeyValue : "")">@temp.KeyValue</a>
+                                                            </td>
+                                                            j++;
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        if (iteminner.Key.ToLower().Contains("date"))
+                                                        {
+                                                            if (iteminner.KeyValue.IsNotNull())
+                                                            {
+                                                                var hh = Convert.ToDateTime(iteminner.KeyValue);
+                                                                <td>
+                                                                    <a href="view.html" class="text-gray-800 text-hover-primary mb-1">@hh.ToString("yyyy-MM-dd")</a>
+                                                                </td>
+                                                            }
+                                                        }
+                                                        else
+                                                        {
+                                                            <td>
+                                                                <a href="view.html" class="text-gray-800 text-hover-primary mb-1">@iteminner.KeyValue</a>
+                                                            </td>
+                                                        }
+                                                        j++;
+                                                    }
+                                                }
+                                            }
+
                                         }
-                                    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                    @* <tr class="odd">
-                                            <!--begin::Checkbox-->
-                                            <td>
-                                                <div class="form-check form-check-sm form-check-custom form-check-solid">
-                                                    <input class="form-check-input" type="checkbox" value="1">
-                                                </div>
-                                            </td>
-                                            <!--end::Checkbox-->
-                                            <!--begin::Name=-->
-                                            <td>
-                                                <a href="view.html" class="text-gray-800 text-hover-primary mb-1">Emma Smith</a>
-                                            </td>
-                                            <!--end::Name=-->
-                                            <!--begin::Email=-->
-                                            <td>
-                                                <a href="#" class="text-gray-600 text-hover-primary mb-1">smith@kpmg.com</a>
-                                            </td>
-                                            <!--end::Email=-->
-                                            <!--begin::Company=-->
-                                            <td>-</td>
-                                            <!--end::Company=-->
-                                            <!--begin::Payment method=-->
-                                            <td data-filter="mastercard">
-                                                <img src="../../assets/media/svg/card-logos/mastercard.svg" class="w-35px me-3" alt="">**** 7910
-                                            </td>
-                                            <!--end::Payment method=-->
-                                            <!--begin::Date=-->
-                                            <td data-order="2020-12-14T20:43:00+05:00">14 Dec 2020, 8:43 pm</td>
-                                            <!--end::Date=-->
-                                            <!--begin::Action=-->
-                                            <td class="text-end">
-                                                <a href="#" class="btn btn-sm btn-light btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-                                                    Actions
-                                                    <!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
-                                                    <span class="svg-icon svg-icon-5 m-0">
+                                        <td>
+                                            <div class="d-flex justify-content-end flex-shrink-0">
+                                                @*<a href="#" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
+                                                    <!--begin::Svg Icon | path: icons/duotune/general/gen019.svg-->
+                                                    <span class="svg-icon svg-icon-3">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                                            <path d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z" fill="black"></path>
+                                                            <path d="M17.5 11H6.5C4 11 2 9 2 6.5C2 4 4 2 6.5 2H17.5C20 2 22 4 22 6.5C22 9 20 11 17.5 11ZM15 6.5C15 7.9 16.1 9 17.5 9C18.9 9 20 7.9 20 6.5C20 5.1 18.9 4 17.5 4C16.1 4 15 5.1 15 6.5Z" fill="black"></path>
+                                                            <path opacity="0.3" d="M17.5 22H6.5C4 22 2 20 2 17.5C2 15 4 13 6.5 13H17.5C20 13 22 15 22 17.5C22 20 20 22 17.5 22ZM4 17.5C4 18.9 5.1 20 6.5 20C7.9 20 9 18.9 9 17.5C9 16.1 7.9 15 6.5 15C5.1 15 4 16.1 4 17.5Z" fill="black"></path>
+                                                        </svg>
+                                                    </span>
+                                                    <!--end::Svg Icon-->
+                                                </a>*@
+                                                <a href="javascript:void(0);" lid="@leadId" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 leadEdit" @*id="kt_drawer_example_basic_button"*@>
+                                                    <!--begin::Svg Icon | path: icons/duotune/art/art005.svg-->
+                                                    <span class="svg-icon svg-icon-3">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                            <path opacity="0.3" d="M21.4 8.35303L19.241 10.511L13.485 4.755L15.643 2.59595C16.0248 2.21423 16.5426 1.99988 17.0825 1.99988C17.6224 1.99988 18.1402 2.21423 18.522 2.59595L21.4 5.474C21.7817 5.85581 21.9962 6.37355 21.9962 6.91345C21.9962 7.45335 21.7817 7.97122 21.4 8.35303ZM3.68699 21.932L9.88699 19.865L4.13099 14.109L2.06399 20.309C1.98815 20.5354 1.97703 20.7787 2.03189 21.0111C2.08674 21.2436 2.2054 21.4561 2.37449 21.6248C2.54359 21.7934 2.75641 21.9115 2.989 21.9658C3.22158 22.0201 3.4647 22.0084 3.69099 21.932H3.68699Z" fill="black"></path>
+                                                            <path d="M5.574 21.3L3.692 21.928C3.46591 22.0032 3.22334 22.0141 2.99144 21.9594C2.75954 21.9046 2.54744 21.7864 2.3789 21.6179C2.21036 21.4495 2.09202 21.2375 2.03711 21.0056C1.9822 20.7737 1.99289 20.5312 2.06799 20.3051L2.696 18.422L5.574 21.3ZM4.13499 14.105L9.891 19.861L19.245 10.507L13.489 4.75098L4.13499 14.105Z" fill="black"></path>
                                                         </svg>
                                                     </span>
                                                     <!--end::Svg Icon-->
                                                 </a>
-                                                <!--begin::Menu-->
-                                                <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
-                                                    <!--begin::Menu item-->
-                                                    <div class="menu-item px-3">
-                                                        <a href="view.html" class="menu-link px-3">View</a>
-                                                    </div>
-                                                    <!--end::Menu item-->
-                                                    <!--begin::Menu item-->
-                                                    <div class="menu-item px-3">
-                                                        <a href="#" class="menu-link px-3" data-kt-customer-table-filter="delete_row">Delete</a>
-                                                    </div>
-                                                    <!--end::Menu item-->
-                                                </div>
-                                                <!--end::Menu-->
-                                            </td>
-                                            <!--end::Action=-->
-                                        </tr>
-
-
-                                        <tr class="odd">
-                                                <!--begin::Checkbox-->
-                                                <td>
-                                                    <div class="form-check form-check-sm form-check-custom form-check-solid">
-                                                        <input class="form-check-input" type="checkbox" value="1">
-                                                    </div>
-                                                </td>
-                                                <!--end::Checkbox-->
-                                                <!--begin::Name=-->
-                                                <td>
-                                                    <a href="view.html" class="text-gray-800 text-hover-primary mb-1">Max Smith</a>
-                                                </td>
-                                                <!--end::Name=-->
-                                                <!--begin::Email=-->
-                                                <td>
-                                                    <a href="#" class="text-gray-600 text-hover-primary mb-1">max@kt.com</a>
-                                                </td>
-                                                <!--end::Email=-->
-                                                <!--begin::Company=-->
-                                                <td>Bistro Union</td>
-                                                <!--end::Company=-->
-                                                <!--begin::Payment method=-->
-                                                <td data-filter="mastercard">
-                                                    <img src="../../assets/media/svg/card-logos/mastercard.svg" class="w-35px me-3" alt="">**** 3204
-                                                </td>
-                                                <!--end::Payment method=-->
-                                                <!--begin::Date=-->
-                                                <td data-order="2020-11-12T14:01:00+05:00">12 Nov 2020, 2:01 pm</td>
-                                                <!--end::Date=-->
-                                                <!--begin::Action=-->
-                                                <td class="text-end">
-                                                    <a href="#" class="btn btn-sm btn-light btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-                                                        Actions
-                                                        <!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
-                                                        <span class="svg-icon svg-icon-5 m-0">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                                                <path d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z" fill="black"></path>
-                                                            </svg>
-                                                        </span>
-                                                        <!--end::Svg Icon-->
-                                                    </a>
-                                                    <!--begin::Menu-->
-                                                    <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
-                                                        <!--begin::Menu item-->
-                                                        <div class="menu-item px-3">
-                                                            <a href="view.html" class="menu-link px-3">View</a>
-                                                        </div>
-                                                        <!--end::Menu item-->
-                                                        <!--begin::Menu item-->
-                                                        <div class="menu-item px-3">
-                                                            <a href="#" class="menu-link px-3" data-kt-customer-table-filter="delete_row">Delete</a>
-                                                        </div>
-                                                        <!--end::Menu item-->
-                                                    </div>
-                                                    <!--end::Menu-->
-                                                </td>
-                                                <!--end::Action=-->
-                                            </tr>
-                                            <tr class="even">
-                                                <!--begin::Checkbox-->
-                                                <td>
-                                                    <div class="form-check form-check-sm form-check-custom form-check-solid">
-                                                        <input class="form-check-input" type="checkbox" value="1">
-                                                    </div>
-                                                </td>
-                                                <!--end::Checkbox-->
-                                                <!--begin::Name=-->
-                                                <td>
-                                                    <a href="view.html" class="text-gray-800 text-hover-primary mb-1">Sean Bean</a>
-                                                </td>
-                                                <!--end::Name=-->
-                                                <!--begin::Email=-->
-                                                <td>
-                                                    <a href="#" class="text-gray-600 text-hover-primary mb-1">sean@dellito.com</a>
-                                                </td>
-                                                <!--end::Email=-->
-                                                <!--begin::Company=-->
-                                                <td>Astro Limited</td>
-                                                <!--end::Company=-->
-                                                <!--begin::Payment method=-->
-                                                <td data-filter="american_express">
-                                                    <img src="../../assets/media/svg/card-logos/american-express.svg" class="w-35px me-3" alt="">**** 7794
-                                                </td>
-                                                <!--end::Payment method=-->
-                                                <!--begin::Date=-->
-                                                <td data-order="2020-10-21T17:54:00+05:00">21 Oct 2020, 5:54 pm</td>
-                                                <!--end::Date=-->
-                                                <!--begin::Action=-->
-                                                <td class="text-end">
-                                                    <a href="#" class="btn btn-sm btn-light btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-                                                        Actions
-                                                        <!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
-                                                        <span class="svg-icon svg-icon-5 m-0">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                                                <path d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z" fill="black"></path>
-                                                            </svg>
-                                                        </span>
-                                                        <!--end::Svg Icon-->
-                                                    </a>
-                                                    <!--begin::Menu-->
-                                                    <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
-                                                        <!--begin::Menu item-->
-                                                        <div class="menu-item px-3">
-                                                            <a href="view.html" class="menu-link px-3">View</a>
-                                                        </div>
-                                                        <!--end::Menu item-->
-                                                        <!--begin::Menu item-->
-                                                        <div class="menu-item px-3">
-                                                            <a href="#" class="menu-link px-3" data-kt-customer-table-filter="delete_row">Delete</a>
-                                                        </div>
-                                                        <!--end::Menu item-->
-                                                    </div>
-                                                    <!--end::Menu-->
-                                                </td>
-                                                <!--end::Action=-->
-                                            </tr>
-                                            <tr class="odd">
-                                                <!--begin::Checkbox-->
-                                                <td>
-                                                    <div class="form-check form-check-sm form-check-custom form-check-solid">
-                                                        <input class="form-check-input" type="checkbox" value="1">
-                                                    </div>
-                                                </td>
-                                                <!--end::Checkbox-->
-                                                <!--begin::Name=-->
-                                                <td>
-                                                    <a href="view.html" class="text-gray-800 text-hover-primary mb-1">Brian Cox</a>
-                                                </td>
-                                                <!--end::Name=-->
-                                                <!--begin::Email=-->
-                                                <td>
-                                                    <a href="#" class="text-gray-600 text-hover-primary mb-1">brian@exchange.com</a>
-                                                </td>
-                                                <!--end::Email=-->
-                                                <!--begin::Company=-->
-                                                <td>-</td>
-                                                <!--end::Company=-->
-                                                <!--begin::Payment method=-->
-                                                <td data-filter="visa">
-                                                    <img src="../../assets/media/svg/card-logos/visa.svg" class="w-35px me-3" alt="">**** 6779
-                                                </td>
-                                                <!--end::Payment method=-->
-                                                <!--begin::Date=-->
-                                                <td data-order="2020-10-19T07:32:00+05:00">19 Oct 2020, 7:32 am</td>
-                                                <!--end::Date=-->
-                                                <!--begin::Action=-->
-                                                <td class="text-end">
-                                                    <a href="#" class="btn btn-sm btn-light btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-                                                        Actions
-                                                        <!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
-                                                        <span class="svg-icon svg-icon-5 m-0">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                                                <path d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z" fill="black"></path>
-                                                            </svg>
-                                                        </span>
-                                                        <!--end::Svg Icon-->
-                                                    </a>
-                                                    <!--begin::Menu-->
-                                                    <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
-                                                        <!--begin::Menu item-->
-                                                        <div class="menu-item px-3">
-                                                            <a href="view.html" class="menu-link px-3">View</a>
-                                                        </div>
-                                                        <!--end::Menu item-->
-                                                        <!--begin::Menu item-->
-                                                        <div class="menu-item px-3">
-                                                            <a href="#" class="menu-link px-3" data-kt-customer-table-filter="delete_row">Delete</a>
-                                                        </div>
-                                                        <!--end::Menu item-->
-                                                    </div>
-                                                    <!--end::Menu-->
-                                                </td>
-                                                <!--end::Action=-->
-                                            </tr>
-                                            <tr class="even">
-                                                <!--begin::Checkbox-->
-                                                <td>
-                                                    <div class="form-check form-check-sm form-check-custom form-check-solid">
-                                                        <input class="form-check-input" type="checkbox" value="1">
-                                                    </div>
-                                                </td>
-                                                <!--end::Checkbox-->
-                                                <!--begin::Name=-->
-                                                <td>
-                                                    <a href="view.html" class="text-gray-800 text-hover-primary mb-1">Mikaela Collins</a>
-                                                </td>
-                                                <!--end::Name=-->
-                                                <!--begin::Email=-->
-                                                <td>
-                                                    <a href="#" class="text-gray-600 text-hover-primary mb-1">mik@pex.com</a>
-                                                </td>
-                                                <!--end::Email=-->
-                                                <!--begin::Company=-->
-                                                <td>Keenthemes</td>
-                                                <!--end::Company=-->
-                                                <!--begin::Payment method=-->
-                                                <td data-filter="american_express">
-                                                    <img src="../../assets/media/svg/card-logos/american-express.svg" class="w-35px me-3" alt="">**** 1790
-                                                </td>
-                                                <!--end::Payment method=-->
-                                                <!--begin::Date=-->
-                                                <td data-order="2020-09-23T00:37:00+05:00">23 Sep 2020, 12:37 am</td>
-                                                <!--end::Date=-->
-                                                <!--begin::Action=-->
-                                                <td class="text-end">
-                                                    <a href="#" class="btn btn-sm btn-light btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-                                                        Actions
-                                                        <!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
-                                                        <span class="svg-icon svg-icon-5 m-0">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                                                <path d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z" fill="black"></path>
-                                                            </svg>
-                                                        </span>
-                                                        <!--end::Svg Icon-->
-                                                    </a>
-                                                    <!--begin::Menu-->
-                                                    <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
-                                                        <!--begin::Menu item-->
-                                                        <div class="menu-item px-3">
-                                                            <a href="view.html" class="menu-link px-3">View</a>
-                                                        </div>
-                                                        <!--end::Menu item-->
-                                                        <!--begin::Menu item-->
-                                                        <div class="menu-item px-3">
-                                                            <a href="#" class="menu-link px-3" data-kt-customer-table-filter="delete_row">Delete</a>
-                                                        </div>
-                                                        <!--end::Menu item-->
-                                                    </div>
-                                                    <!--end::Menu-->
-                                                </td>
-                                                <!--end::Action=-->
-                                            </tr>
-                                            <tr class="odd">
-                                                <!--begin::Checkbox-->
-                                                <td>
-                                                    <div class="form-check form-check-sm form-check-custom form-check-solid">
-                                                        <input class="form-check-input" type="checkbox" value="1">
-                                                    </div>
-                                                </td>
-                                                <!--end::Checkbox-->
-                                                <!--begin::Name=-->
-                                                <td>
-                                                    <a href="view.html" class="text-gray-800 text-hover-primary mb-1">Francis Mitcham</a>
-                                                </td>
-                                                <!--end::Name=-->
-                                                <!--begin::Email=-->
-                                                <td>
-                                                    <a href="#" class="text-gray-600 text-hover-primary mb-1">f.mit@kpmg.com</a>
-                                                </td>
-                                                <!--end::Email=-->
-                                                <!--begin::Company=-->
-                                                <td>Paypal</td>
-                                                <!--end::Company=-->
-                                                <!--begin::Payment method=-->
-                                                <td data-filter="mastercard">
-                                                    <img src="../../assets/media/svg/card-logos/mastercard.svg" class="w-35px me-3" alt="">**** 7118
-                                                </td>
-                                                <!--end::Payment method=-->
-                                                <!--begin::Date=-->
-                                                <td data-order="2020-09-11T15:15:00+05:00">11 Sep 2020, 3:15 pm</td>
-                                                <!--end::Date=-->
-                                                <!--begin::Action=-->
-                                                <td class="text-end">
-                                                    <a href="#" class="btn btn-sm btn-light btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-                                                        Actions
-                                                        <!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
-                                                        <span class="svg-icon svg-icon-5 m-0">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                                                <path d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z" fill="black"></path>
-                                                            </svg>
-                                                        </span>
-                                                        <!--end::Svg Icon-->
-                                                    </a>
-                                                    <!--begin::Menu-->
-                                                    <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
-                                                        <!--begin::Menu item-->
-                                                        <div class="menu-item px-3">
-                                                            <a href="view.html" class="menu-link px-3">View</a>
-                                                        </div>
-                                                        <!--end::Menu item-->
-                                                        <!--begin::Menu item-->
-                                                        <div class="menu-item px-3">
-                                                            <a href="#" class="menu-link px-3" data-kt-customer-table-filter="delete_row">Delete</a>
-                                                        </div>
-                                                        <!--end::Menu item-->
-                                                    </div>
-                                                    <!--end::Menu-->
-                                                </td>
-                                                <!--end::Action=-->
-                                            </tr>
-                                            <tr class="even">
-                                                <!--begin::Checkbox-->
-                                                <td>
-                                                    <div class="form-check form-check-sm form-check-custom form-check-solid">
-                                                        <input class="form-check-input" type="checkbox" value="1">
-                                                    </div>
-                                                </td>
-                                                <!--end::Checkbox-->
-                                                <!--begin::Name=-->
-                                                <td>
-                                                    <a href="view.html" class="text-gray-800 text-hover-primary mb-1">Olivia Wild</a>
-                                                </td>
-                                                <!--end::Name=-->
-                                                <!--begin::Email=-->
-                                                <td>
-                                                    <a href="#" class="text-gray-600 text-hover-primary mb-1">olivia@corpmail.com</a>
-                                                </td>
-                                                <!--end::Email=-->
-                                                <!--begin::Company=-->
-                                                <td>-</td>
-                                                <!--end::Company=-->
-                                                <!--begin::Payment method=-->
-                                                <td data-filter="american_express">
-                                                    <img src="../../assets/media/svg/card-logos/american-express.svg" class="w-35px me-3" alt="">**** 6807
-                                                </td>
-                                                <!--end::Payment method=-->
-                                                <!--begin::Date=-->
-                                                <td data-order="2020-09-03T01:08:00+05:00">03 Sep 2020, 1:08 am</td>
-                                                <!--end::Date=-->
-                                                <!--begin::Action=-->
-                                                <td class="text-end">
-                                                    <a href="#" class="btn btn-sm btn-light btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-                                                        Actions
-                                                        <!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
-                                                        <span class="svg-icon svg-icon-5 m-0">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                                                <path d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z" fill="black"></path>
-                                                            </svg>
-                                                        </span>
-                                                        <!--end::Svg Icon-->
-                                                    </a>
-                                                    <!--begin::Menu-->
-                                                    <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
-                                                        <!--begin::Menu item-->
-                                                        <div class="menu-item px-3">
-                                                            <a href="view.html" class="menu-link px-3">View</a>
-                                                        </div>
-                                                        <!--end::Menu item-->
-                                                        <!--begin::Menu item-->
-                                                        <div class="menu-item px-3">
-                                                            <a href="#" class="menu-link px-3" data-kt-customer-table-filter="delete_row">Delete</a>
-                                                        </div>
-                                                        <!--end::Menu item-->
-                                                    </div>
-                                                    <!--end::Menu-->
-                                                </td>
-                                                <!--end::Action=-->
-                                            </tr>
-                                            <tr class="odd">
-                                                <!--begin::Checkbox-->
-                                                <td>
-                                                    <div class="form-check form-check-sm form-check-custom form-check-solid">
-                                                        <input class="form-check-input" type="checkbox" value="1">
-                                                    </div>
-                                                </td>
-                                                <!--end::Checkbox-->
-                                                <!--begin::Name=-->
-                                                <td>
-                                                    <a href="view.html" class="text-gray-800 text-hover-primary mb-1">Neil Owen</a>
-                                                </td>
-                                                <!--end::Name=-->
-                                                <!--begin::Email=-->
-                                                <td>
-                                                    <a href="#" class="text-gray-600 text-hover-primary mb-1">owen.neil@gmail.com</a>
-                                                </td>
-                                                <!--end::Email=-->
-                                                <!--begin::Company=-->
-                                                <td>Paramount</td>
-                                                <!--end::Company=-->
-                                                <!--begin::Payment method=-->
-                                                <td data-filter="visa">
-                                                    <img src="../../assets/media/svg/card-logos/visa.svg" class="w-35px me-3" alt="">**** 9083
-                                                </td>
-                                                <!--end::Payment method=-->
-                                                <!--begin::Date=-->
-                                                <td data-order="2020-09-01T16:58:00+05:00">01 Sep 2020, 4:58 pm</td>
-                                                <!--end::Date=-->
-                                                <!--begin::Action=-->
-                                                <td class="text-end">
-                                                    <a href="#" class="btn btn-sm btn-light btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-                                                        Actions
-                                                        <!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
-                                                        <span class="svg-icon svg-icon-5 m-0">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                                                <path d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z" fill="black"></path>
-                                                            </svg>
-                                                        </span>
-                                                        <!--end::Svg Icon-->
-                                                    </a>
-                                                    <!--begin::Menu-->
-                                                    <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
-                                                        <!--begin::Menu item-->
-                                                        <div class="menu-item px-3">
-                                                            <a href="view.html" class="menu-link px-3">View</a>
-                                                        </div>
-                                                        <!--end::Menu item-->
-                                                        <!--begin::Menu item-->
-                                                        <div class="menu-item px-3">
-                                                            <a href="#" class="menu-link px-3" data-kt-customer-table-filter="delete_row">Delete</a>
-                                                        </div>
-                                                        <!--end::Menu item-->
-                                                    </div>
-                                                    <!--end::Menu-->
-                                                </td>
-                                                <!--end::Action=-->
-                                            </tr>
-                                            <tr class="even">
-                                                <!--begin::Checkbox-->
-                                                <td>
-                                                    <div class="form-check form-check-sm form-check-custom form-check-solid">
-                                                        <input class="form-check-input" type="checkbox" value="1">
-                                                    </div>
-                                                </td>
-                                                <!--end::Checkbox-->
-                                                <!--begin::Name=-->
-                                                <td>
-                                                    <a href="view.html" class="text-gray-800 text-hover-primary mb-1">Dan Wilson</a>
-                                                </td>
-                                                <!--end::Name=-->
-                                                <!--begin::Email=-->
-                                                <td>
-                                                    <a href="#" class="text-gray-600 text-hover-primary mb-1">dam@consilting.com</a>
-                                                </td>
-                                                <!--end::Email=-->
-                                                <!--begin::Company=-->
-                                                <td>Trinity Studio</td>
-                                                <!--end::Company=-->
-                                                <!--begin::Payment method=-->
-                                                <td data-filter="visa">
-                                                    <img src="../../assets/media/svg/card-logos/visa.svg" class="w-35px me-3" alt="">**** 5571
-                                                </td>
-                                                <!--end::Payment method=-->
-                                                <!--begin::Date=-->
-                                                <td data-order="2020-08-18T15:34:00+05:00">18 Aug 2020, 3:34 pm</td>
-                                                <!--end::Date=-->
-                                                <!--begin::Action=-->
-                                                <td class="text-end">
-                                                    <a href="#" class="btn btn-sm btn-light btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-                                                        Actions
-                                                        <!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
-                                                        <span class="svg-icon svg-icon-5 m-0">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                                                <path d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z" fill="black"></path>
-                                                            </svg>
-                                                        </span>
-                                                        <!--end::Svg Icon-->
-                                                    </a>
-                                                    <!--begin::Menu-->
-                                                    <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
-                                                        <!--begin::Menu item-->
-                                                        <div class="menu-item px-3">
-                                                            <a href="view.html" class="menu-link px-3">View</a>
-                                                        </div>
-                                                        <!--end::Menu item-->
-                                                        <!--begin::Menu item-->
-                                                        <div class="menu-item px-3">
-                                                            <a href="#" class="menu-link px-3" data-kt-customer-table-filter="delete_row">Delete</a>
-                                                        </div>
-                                                        <!--end::Menu item-->
-                                                    </div>
-                                                    <!--end::Menu-->
-                                                </td>
-                                                <!--end::Action=-->
-                                            </tr>*@
-                                </tbody>
+                                                <a href="javascript:void(0);" lid="@leadId" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm leadEdit">
+                                                    <!--begin::Svg Icon | path: icons/duotune/general/gen027.svg-->
+                                                    <span class="svg-icon svg-icon-3">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                            <path d="M5 9C5 8.44772 5.44772 8 6 8H18C18.5523 8 19 8.44772 19 9V18C19 19.6569 17.6569 21 16 21H8C6.34315 21 5 19.6569 5 18V9Z" fill="black"></path>
+                                                            <path opacity="0.5" d="M5 5C5 4.44772 5.44772 4 6 4H18C18.5523 4 19 4.44772 19 5V5C19 5.55228 18.5523 6 18 6H6C5.44772 6 5 5.55228 5 5V5Z" fill="black"></path>
+                                                            <path opacity="0.5" d="M9 4C9 3.44772 9.44772 3 10 3H14C14.5523 3 15 3.44772 15 4V4H9V4Z" fill="black"></path>
+                                                        </svg>
+                                                    </span>
+                                                    <!--end::Svg Icon-->
+                                                </a>
+                                            </div>
+                                        </td>
+                                       
+                                    </tr>
+                                            }
+                                        }
+                                    }
+                                  </tbody>
                                 <!--end::Table body-->
                             </table>
                         </div><div class="row"><div class="col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start"><div class="dataTables_length" id="kt_customers_table_length"><label><select name="kt_customers_table_length" aria-controls="kt_customers_table" class="form-select form-select-sm form-select-solid"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select></label></div></div><div class="col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end"><div class="dataTables_paginate paging_simple_numbers" id="kt_customers_table_paginate"><ul class="pagination"><li class="paginate_button page-item previous disabled" id="kt_customers_table_previous"><a href="#" aria-controls="kt_customers_table" data-dt-idx="0" tabindex="0" class="page-link"><i class="previous"></i></a></li><li class="paginate_button page-item active"><a href="#" aria-controls="kt_customers_table" data-dt-idx="1" tabindex="0" class="page-link">1</a></li><li class="paginate_button page-item "><a href="#" aria-controls="kt_customers_table" data-dt-idx="2" tabindex="0" class="page-link">2</a></li><li class="paginate_button page-item "><a href="#" aria-controls="kt_customers_table" data-dt-idx="3" tabindex="0" class="page-link">3</a></li><li class="paginate_button page-item "><a href="#" aria-controls="kt_customers_table" data-dt-idx="4" tabindex="0" class="page-link">4</a></li><li class="paginate_button page-item next" id="kt_customers_table_next"><a href="#" aria-controls="kt_customers_table" data-dt-idx="5" tabindex="0" class="page-link"><i class="next"></i></a></li></ul></div></div></div>
@@ -975,7 +404,7 @@
                                 <h2 class="fw-bolder">Add a Customer</h2>
                                 <!--end::Modal title-->
                                 <!--begin::Close-->
-                                <div id="kt_modal_add_customer_close" class="btn btn-icon btn-sm btn-active-icon-primary">
+                                <div id="kt_modal_add_customer_close" class="btn btn-icon btn-sm btn-active-icon-primary modal_close">
                                     <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
                                     <span class="svg-icon svg-icon-1">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -1391,119 +820,126 @@
             </div>
             <!--end::Modal - Customers - Add-->
             <!--begin::Modal - Adjust Balance-->
-            <div class="modal fade" id="kt_customers_export_modal" tabindex="-1" aria-hidden="true">
-                <!--begin::Modal dialog-->
-                <div class="modal-dialog modal-dialog-centered mw-650px">
-                    <!--begin::Modal content-->
-                    <div class="modal-content">
-                        <!--begin::Modal header-->
-                        <div class="modal-header">
-                            <!--begin::Modal title-->
-                            <h2 class="fw-bolder">Export Customers</h2>
-                            <!--end::Modal title-->
-                            <!--begin::Close-->
-                            <div id="kt_customers_export_close" class="btn btn-icon btn-sm btn-active-icon-primary">
-                                <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
-                                <span class="svg-icon svg-icon-1">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                        <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="black" />
-                                        <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="black" />
-                                    </svg>
-                                </span>
-                                <!--end::Svg Icon-->
-                            </div>
-                            <!--end::Close-->
-                        </div>
-                        <!--end::Modal header-->
-                        <!--begin::Modal body-->
-                        <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
-                            <!--begin::Form-->
-                            <form id="kt_customers_export_form" class="form" action="#">
-                                <!--begin::Input group-->
-                                <div class="fv-row mb-10">
-                                    <!--begin::Label-->
-                                    <label class="fs-5 fw-bold form-label mb-5">Select Export Format:</label>
-                                    <!--end::Label-->
-                                    <!--begin::Input-->
-                                    <select data-control="select2" data-placeholder="Select a format" data-hide-search="true" name="format" class="form-select form-select-solid">
-                                        <option value="excell">Excel</option>
-                                        <option value="pdf">PDF</option>
-                                        <option value="cvs">CVS</option>
-                                        <option value="zip">ZIP</option>
-                                    </select>
-                                    <!--end::Input-->
-                                </div>
-                                <!--end::Input group-->
-                                <!--begin::Input group-->
-                                <div class="fv-row mb-10">
-                                    <!--begin::Label-->
-                                    <label class="fs-5 fw-bold form-label mb-5">Select Date Range:</label>
-                                    <!--end::Label-->
-                                    <!--begin::Input-->
-                                    <input class="form-control form-control-solid" placeholder="Pick a date" name="date" />
-                                    <!--end::Input-->
-                                </div>
-                                <!--end::Input group-->
-                                <!--begin::Row-->
-                                <div class="row fv-row mb-15">
-                                    <!--begin::Label-->
-                                    <label class="fs-5 fw-bold form-label mb-5">Payment Type:</label>
-                                    <!--end::Label-->
-                                    <!--begin::Radio group-->
-                                    <div class="d-flex flex-column">
-                                        <!--begin::Radio button-->
-                                        <label class="form-check form-check-custom form-check-sm form-check-solid mb-3">
-                                            <input class="form-check-input" type="checkbox" value="1" checked="checked" name="payment_type" />
-                                            <span class="form-check-label text-gray-600 fw-bold">All</span>
-                                        </label>
-                                        <!--end::Radio button-->
-                                        <!--begin::Radio button-->
-                                        <label class="form-check form-check-custom form-check-sm form-check-solid mb-3">
-                                            <input class="form-check-input" type="checkbox" value="2" checked="checked" name="payment_type" />
-                                            <span class="form-check-label text-gray-600 fw-bold">Visa</span>
-                                        </label>
-                                        <!--end::Radio button-->
-                                        <!--begin::Radio button-->
-                                        <label class="form-check form-check-custom form-check-sm form-check-solid mb-3">
-                                            <input class="form-check-input" type="checkbox" value="3" name="payment_type" />
-                                            <span class="form-check-label text-gray-600 fw-bold">Mastercard</span>
-                                        </label>
-                                        <!--end::Radio button-->
-                                        <!--begin::Radio button-->
-                                        <label class="form-check form-check-custom form-check-sm form-check-solid">
-                                            <input class="form-check-input" type="checkbox" value="4" name="payment_type" />
-                                            <span class="form-check-label text-gray-600 fw-bold">American Express</span>
-                                        </label>
-                                        <!--end::Radio button-->
-                                    </div>
-                                    <!--end::Input group-->
-                                </div>
-                                <!--end::Row-->
-                                <!--begin::Actions-->
-                                <div class="text-center">
-                                    <button type="reset" id="kt_customers_export_cancel" class="btn btn-light me-3">Discard</button>
-                                    <button type="submit" id="kt_customers_export_submit" class="btn btn-primary">
-                                        <span class="indicator-label">Submit</span>
-                                        <span class="indicator-progress">
-                                            Please wait...
-                                            <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
-                                        </span>
-                                    </button>
-                                </div>
-                                <!--end::Actions-->
-                            </form>
-                            <!--end::Form-->
-                        </div>
-                        <!--end::Modal body-->
-                    </div>
-                    <!--end::Modal content-->
-                </div>
-                <!--end::Modal dialog-->
-            </div>
+            
             <!--end::Modal - New Card-->
             <!--end::Modals-->
         </div>
         <!--end::Container-->
     </div>
-    <!--end::Post-->
+    <!--end::Post-->  
+
 </div>
+<script>
+
+    $(document).off("click", ".generic_modal_button").on("click", ".generic_modal_button", function (event) {
+        var hh = $(this).attr('data-mid');
+        var aid = $(this).attr('data-aid');
+        debugger;
+        event.preventDefault();  
+        var callurl = "";     
+        $("#generic_modal .modal-dialog").attr('class', 'modal-dialog modal-dialog-centered mw-650px');  
+        $("#generic_modal .modal-body").attr('class', 'modal-body scroll-y mx-5 mx-xl-15 pt-0');      
+        var datah2 = $(this).attr('data-h2');
+        $("#" + hh + " .modal-header h2").html(datah2);
+        $("#" + hh).modal('show');
+       if (aid == "LeadList")
+        callurl = "/Leads/_LeadsColumnSettings?aid=1" ;
+       else if (aid == "LeadEdit")
+           callurl = "/Leads/_LeadsColumnSettings?aid=2";     
+
+        var service = new Service();
+        var result = service.get(callurl)[1];
+        $("#generic_modal .modal-body").html(result);
+        $("#Lead_List_Column_Setting_submit").attr("data-aid", aid);
+       
+     
+    });
+    $(document).off("click", "#Lead_List_Column_Setting_submit").on("click", "#Lead_List_Column_Setting_submit", function (event) {
+        event.preventDefault();    
+        var aid = $("#Lead_List_Column_Setting_submit").attr('data-aid');
+        var array = [];
+        $("input:checkbox[name=CustTableInfo]:checked").each(function () {
+            array.push($(this).val());
+        });
+        var UserScope = "";
+        $("input:radio[name=UserScope]:checked").each(function () {        
+            UserScope = $(this).val();
+        });
+        var objjj = new Object();
+        if (UserScope =="Current")
+            objjj.IsCurrentUser = true;
+        else
+            objjj.IsCurrentUser = false;
+        objjj.ColumnId = array;  
+        var Callurl = "";
+        if (aid == "LeadList")     
+            Callurl = "/Leads/_LeadsColumnSettings";
+        else if (aid == "LeadEdit")
+            Callurl = "/Leads/_LeadsEditColumnSettings";
+        var service = new Service();
+        var result = service.post(Callurl, objjj, true, function (res) { @* response *@});
+    });
+
+    $(document).off("click", ".leadEdit").on("click", ".leadEdit", function (event) {
+        event.preventDefault();
+        var hh = $(this).attr('lid');
+        //$("#generic_modal .modal-dialog").attr('class', 'modal-dialog modal-xl'); 
+        //$("#generic_modal .modal-body").attr('class', 'modal-body scroll-y mx-5 mx-xl-15 pt-0'); 
+
+        var service = new Service();
+        var result = service.get("/Leads/_LeadsColumnDataById")[1];
+        //$("#generic_modal .modal-body").html(result);   
+        //$("#generic_modal").modal('show');   
+       // var getInputs = $("#generic_modal :input");
+        $("#kt_content").append(result);
+        KTDrawer.createInstances();
+        var drawerElement = document.querySelector("#kt_drawer_example_basicEdit_Lead_1");
+        var drawer = KTDrawer.getInstance(drawerElement);      
+        drawer.show();
+        //KTModalNewCard.init();
+        var getInputs = $("#kt_drawer_example_basicEdit_Lead_1 :input");
+        debugger;
+        //  getInputs[3].id
+        for (var i = 0; i < getInputs.length; i++) {
+            if (getInputs[3] && getInputs[3].id && getInputs[3].id.includes("Date")) {
+                $("#" + getInputs[3].id).flatpickr({                  
+                    dateFormat: "Y-m-d",
+                });
+            }
+        }  
+        var forms = document.querySelectorAll('.needs-validation')
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })       
+    });
+
+   @* (function () {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })()*@
+    
+</script>

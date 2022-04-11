@@ -73,6 +73,10 @@
       <Project>{ad00c902-2106-45ac-9323-4a76b279651c}</Project>
       <Name>Library.Extensions</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Library.Lookups\Library.Lookups.csproj">
+      <Project>{B132A99A-D652-4DF4-9017-CA1A5633B45B}</Project>
+      <Name>Library.Lookups</Name>
+    </ProjectReference>
     <ProjectReference Include="..\VM.CRM\VM.CRM.csproj">
       <Project>{f6d7bbd3-f822-4607-b245-d88f9af4f542}</Project>
       <Name>VM.CRM</Name>

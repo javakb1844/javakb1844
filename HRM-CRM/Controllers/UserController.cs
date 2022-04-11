@@ -16,8 +16,9 @@ namespace HRM_CRM.Controllers
         UserServices userService = new UserServices();
         // GET: User
         [HttpGet]
-        public ActionResult Login()
+        public ActionResult Login(string returl)
         {
+            ViewBag.RetUrl = returl;
             return View();
         }
         [HttpPost]

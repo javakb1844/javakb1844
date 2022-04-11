@@ -1,0 +1,58 @@
+﻿@model  Result<List<ListLeadListCoulmnSettingViewModel>>
+@using Library.Core.Services;
+@using Services.CRM;
+@using VM.CRM;
+@{
+    Layout = null;
+}
+<form id="generic_modal_form" class="form" action="#">
+    <div class="row fv-row mb-15">
+        <!--begin::Label-->
+        <label class="fs-5 fw-bold form-label mb-5">Lead List Column Setting:</label>
+        <!--end::Label-->
+        <!--begin::Radio group-->
+        <div class="d-flex flex-column">
+            <!--begin::Radio button-->
+            @if (Model.IsNotNull() && Model.Data.CountedPositive())
+            {
+                foreach (var item in Model.Data.Where(x => x.ParentLID == 0).OrderBy(x => x.ColumnId).ToListSafely())
+                {
+                    <label class="form-check form-check-custom form-check-sm form-check-solid mb-3">
+                        <input class="form-check-input CustTableInfo" type="checkbox" value="@item.ColumnId" colid="@item.CustTableInfoLID" @if (item.IsVisible == true) { @("checked=\"checked\"") } name="CustTableInfo" />
+                        <span class="form-check-label text-gray-600 fw-bold">
+                            @item.ColumnName.Replace("/", "")  @if (item.EmpCustTableInfoLID > 0 && item.EmpIsVisible == true)
+                            {@("✓")}
+                        </span>
+
+                    </label>
+                }
+                <div class="d-flex flex-column flex-wrap fw-bold" data-kt-customer-table-filter="payment_type" style="margin-top:15px">
+                    <!--begin::Option-->
+                    <label class="form-check form-check-sm form-check-custom form-check-solid mb-3 me-5">
+                        <input class="form-check-input UserScope" type="radio" name="UserScope" value="All" checked="checked">
+                        <span class="form-check-label text-gray-600">All</span>
+                    </label>
+                    <!--end::Option-->
+                    <!--begin::Option-->
+                    <label class="form-check form-check-sm form-check-custom form-check-solid mb-3 me-5">
+                        <input class="form-check-input UserScope" type="radio" name="UserScope" value="Current">
+                        <span class="form-check-label text-gray-600">Current User</span>
+                    </label>
+                </div>
+
+                <div class="text-center">
+                    <button type="reset" id="generic_modal_cancel" class="btn btn-light me-3">Discard</button>
+                    <button type="submit" id="Lead_List_Column_Setting_submit" class="btn btn-primary">
+                        <span class="indicator-label">Submit</span>
+                        <span class="indicator-progress">
+                            Please wait...
+                            <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                        </span>
+                    </button>
+                </div>
+            }
+
+        </div>
+        <!--end::Input group-->
+    </div>
+</form>
