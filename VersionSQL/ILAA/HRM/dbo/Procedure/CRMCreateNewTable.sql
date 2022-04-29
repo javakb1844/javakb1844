@@ -20,6 +20,34 @@ BEGIN
 
 SET QUOTED_IDENTIFIER ON
 declare @vari varchar(max)
+BEGIN TRY
+set @vari='CREATE TABLE [CUST].['+cast (@ProductSaleProfileId as varchar(3))+'_TableColumnInfo](
+	[TableColumnInfoLId]  [bigint] IDENTITY(1,1) NOT NULL,
+	[ColumnName] [varchar](200) NULL,
+	[ColumnNameDB] [varchar](200) NULL,
+	[ParentName] [varchar](500) NULL,
+	[ASCaption] [varchar](500) NULL,
+	[TableName] [varchar](500) NULL,
+	[ProductSaleProfileId] [int] NOT NULL,
+	[ColumnCatId] [int] NULL,
+	[ColumnType] [varchar](300) NULL,
+	[CreateDate] [datetime] NULL,
+	[CreatedBy] [bigint] NULL,
+	[ColumnStatudId] [int] NULL,
+	[UpdatedDate] [datetime] NULL,
+	[UpdatedBy] [bigint] NULL,
+	[ParentLId]  [bigint] NULL,
+	[ForginKeyTableName] [varchar](500) NULL
+	 CONSTRAINT [PK_TableColumnInfo] PRIMARY KEY CLUSTERED 
+(
+	[TableColumnInfoLId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+ALTER TABLE [CUST].['+cast (@ProductSaleProfileId as varchar(3))+'_TableColumnInfo] ADD  CONSTRAINT [DF_TableColumnInfo_'+cast (@ProductSaleProfileId as varchar(3))+'_ColumnCatId]  DEFAULT ((0)) FOR [ColumnCatId]
+ALTER TABLE [CUST].['+cast (@ProductSaleProfileId as varchar(3))+'_TableColumnInfo] ADD  CONSTRAINT [DF_TableColumnInfo_'+cast (@ProductSaleProfileId as varchar(3))+'_ColumnStatudId]  DEFAULT ((0)) FOR [ColumnStatudId]
+ALTER TABLE [CUST].['+cast (@ProductSaleProfileId as varchar(3))+'_TableColumnInfo] ADD  CONSTRAINT [DF_TableColumnInfo_'+cast (@ProductSaleProfileId as varchar(3))+'_ProductSaleProfileId]  DEFAULT ((0)) FOR [ProductSaleProfileId]
+ALTER TABLE [CUST].['+cast (@ProductSaleProfileId as varchar(3))+'_TableColumnInfo] ADD  CONSTRAINT [DF_TableColumnInfo_'+cast (@ProductSaleProfileId as varchar(3))+'_ParentLId]  DEFAULT ((0)) FOR [ParentLId]';
+ exec(@vari)	
 
 
 set @vari='CREATE TABLE [CUST].['+cast (@ProductSaleProfileId as varchar(3))+'_LeadStatus](
@@ -31,6 +59,11 @@ set @vari='CREATE TABLE [CUST].['+cast (@ProductSaleProfileId as varchar(3))+'_L
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]';
   --exec(@vari)
+
+  
+
+
+
   set @vari='INSERT INTO [CUST].['+cast (@ProductSaleProfileId as varchar(3))+'_LeadStatus] ([LeadStatus])VALUES(''working'')';
   -- exec(@vari)
 
@@ -42,9 +75,13 @@ set @vari='CREATE TABLE [CUST].['+cast (@ProductSaleProfileId as varchar(3))+'_L
 	[LeadSourceId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]';
---  exec(@vari)
+  exec(@vari)
+
+
+
+
   set @vari='INSERT INTO [CUST].['+cast (@ProductSaleProfileId as varchar(3))+'_LeadSource] ([LeadSource])VALUES(''Facebook'')';
- --  exec(@vari)
+   exec(@vari)
  set @vari='CREATE TABLE [CUST].['+cast (@ProductSaleProfileId as varchar(3))+'_LeadMaster](
 	[LID] [bigint] IDENTITY(1,1) NOT NULL,
 	[LeadName] [varchar](500) NULL,
@@ -202,9 +239,20 @@ exec(@vari)
 
 
 
+/* column info*/
+set @vari='INSERT INTO [CUST].['+cast (@ProductSaleProfileId as varchar(3))+'_TableColumnInfo] ([ColumnName] ,[TableName] ,[ColumnCatId] ,[ColumnType] ,[CreateDate] ,[CreatedBy] ,[ColumnStatudId]  ,[UpdatedDate]  ,[UpdatedBy] ,[ParentId] ,[ForginKeyTableName])
+     VALUES     (''LeadStatusId''  ,''[CUST].['+cast (@ProductSaleProfileId as varchar(3))+'_LeadStatus]''  ,1   ,''[int] IDENTITY''  ,getdate()  ,0  ,1  ,NULL   ,0  0 ,NULL)';
+exec(@vari)
+set @vari='INSERT INTO [CUST].['+cast (@ProductSaleProfileId as varchar(3))+'_TableColumnInfo] ([ColumnName] ,[TableName] ,[ColumnCatId] ,[ColumnType] ,[CreateDate] ,[CreatedBy] ,[ColumnStatudId]  ,[UpdatedDate]  ,[UpdatedBy] ,[ParentId] ,[ForginKeyTableName])
+     VALUES     (''LeadStatus''  ,''[CUST].['+cast (@ProductSaleProfileId as varchar(3))+'_LeadStatus]''  ,1   ,''varchar(200)''  ,getdate()  ,0  ,1  ,NULL   ,0  0 ,NULL)';
+exec(@vari)
+  set @vari='INSERT INTO [CUST].['+cast (@ProductSaleProfileId as varchar(3))+'_TableColumnInfo] ([ColumnName] ,[TableName]                                                              ,[ColumnCatId] ,[ColumnType]   ,[CreateDate] ,[CreatedBy] ,[ColumnStatudId]  ,[UpdatedDate]  ,[UpdatedBy] ,[ParentId] ,[ForginKeyTableName])
+																					 VALUES     (''LeadSourceId''  ,''[CUST].['+cast (@ProductSaleProfileId as varchar(3))+'_LeadSource]''  ,1          ,''[int] IDENTITY''  ,getdate()   ,0                ,1                 ,NULL          ,0            0                 ,NULL)';
+exec(@vari)
 
-
-
+  set @vari='INSERT INTO [CUST].['+cast (@ProductSaleProfileId as varchar(3))+'_TableColumnInfo] ([ColumnName] ,[TableName]                                                              ,[ColumnCatId] ,[ColumnType]   ,[CreateDate] ,[CreatedBy] ,[ColumnStatudId]  ,[UpdatedDate]  ,[UpdatedBy] ,[ParentId] ,[ForginKeyTableName])
+																					 VALUES     (''LeadSource''  ,''[CUST].['+cast (@ProductSaleProfileId as varchar(3))+'_LeadSource]''  ,1          ,''varchar(200)''  ,getdate()   ,0                ,1                 ,NULL          ,0            0                 ,NULL)';
+exec(@vari)
 
 
 
@@ -274,6 +322,18 @@ ALTER TABLE [CUST].['+cast (@ProductSaleProfileId as varchar(3))+'_Employee] ADD
 ALTER TABLE [CUST].['+cast (@ProductSaleProfileId as varchar(3))+'_Employee] ADD  CONSTRAINT [DF_Employee_'+cast (@ProductSaleProfileId as varchar(3))+'_ProductSaleProfileId]  DEFAULT ((0)) FOR [ProductSaleProfileId]';
 
 -- exec(@vari)	
-
+ END TRY
+  BEGIN CATCH
+    INSERT INTO dbo.DB_Errors
+    VALUES
+  (SUSER_SNAME(),
+   ERROR_NUMBER(),
+   ERROR_STATE(),
+   ERROR_SEVERITY(),
+   ERROR_LINE(),
+   ERROR_PROCEDURE(),
+   ERROR_MESSAGE(),
+   GETDATE(),@ProductSaleProfileId,@vari);
+  END CATCH
 
 END
