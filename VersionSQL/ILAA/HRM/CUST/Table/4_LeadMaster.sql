@@ -17,6 +17,7 @@ CREATE TABLE [CUST].[4_LeadMaster](
 	[LastModifiedByLID] [bigint] NOT NULL,
 	[ProductSaleProfileId] [int] NOT NULL,
 	[AsignToLID] [bigint] NOT NULL,
+	[LeadCity] [varchar](1000) NULL,
  CONSTRAINT [PK_LeadMaster_4] PRIMARY KEY CLUSTERED 
 (
 	[LID] ASC

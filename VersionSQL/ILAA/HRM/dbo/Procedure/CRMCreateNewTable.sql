@@ -235,10 +235,37 @@ set @vari= 'INSERT [CUST].['+cast (@ProductSaleProfileId as varchar(3))+'_CustTa
 --print (@vari)	
 exec(@vari)	
 
+ --declare @vari varchar(max)
+ --declare @ProductSaleProfileId int=4
+set @vari='SET IDENTITY_INSERT [CUST].['+cast (@ProductSaleProfileId as varchar(3))+'_TableColumnInfo] ON 
+INSERT INTO [CUST].['+cast (@ProductSaleProfileId as varchar(3))+'_TableColumnInfo] (TableColumnInfoLId,[ColumnName],ColumnNameDB, [ParentName],[ASCaption],[TableName] ,[ColumnCatId] ,[ColumnType] ,[CreateDate] ,[CreatedBy] ,[ColumnStatudId]  ,[UpdatedDate]  ,[UpdatedBy] ,[ParentLId] ,ProductSaleProfileId,[ForginKeyTableName])
 
 
+SELECT TOP (1000) 
+ ColumnId as   TableColumnInfoLId   
+     ,
+	  
+	  [ColumnName]
+	 ,replace(case when parentlid=0 and ParentName is not null then [ParentName] when  ParentLID=0 and ParentName is null then [ASCaption] else NULL end,''/'','''') as    [ColumnNameDB]
+      ,[ParentName]
+      ,[ASCaption]    
+     ,''[CUST].['+cast(@ProductSaleProfileId as varchar(13))+'_CustTableInfo]'' as [TableName]
+      ,[LookColumnTypeId] as [ColumnCatId]
+     ,NULL as [ColumnType]
+	 , getdate() as [CreateDate]
+	 ,0 as [CreatedBy]
+	 ,1 as [ColumnStatudId]
+	 ,NULL as [UpdatedDate]
+	 ,0 as [UpdatedBy]
+      ,[ParentLID]  
+     ,[ProductSaleProfileId]	 , case when [ParentLID] >0 then case when  ParentLID in(9,11,13) then ''dbo.Employee'' else ''[CUST].['+cast(@ProductSaleProfileId as varchar(13))+'_''+replace(replace(ParentName,''id'',''''),''/'','''')+'']'' end end  as [ForginKeyTableName]
+     
+  FROM [HRM].[CUST].['+cast(@ProductSaleProfileId as varchar(13))+'_CustTableInfo]
+  where EmployeeId=0 and TableId=1
+  SET IDENTITY_INSERT  [CUST].['+cast(@ProductSaleProfileId as varchar(13))+'_TableColumnInfo] OFF';
 
-
+  print (@vari)	
+--exec(@vari)	
 /* column info*/
 set @vari='INSERT INTO [CUST].['+cast (@ProductSaleProfileId as varchar(3))+'_TableColumnInfo] ([ColumnName] ,[TableName] ,[ColumnCatId] ,[ColumnType] ,[CreateDate] ,[CreatedBy] ,[ColumnStatudId]  ,[UpdatedDate]  ,[UpdatedBy] ,[ParentId] ,[ForginKeyTableName])
      VALUES     (''LeadStatusId''  ,''[CUST].['+cast (@ProductSaleProfileId as varchar(3))+'_LeadStatus]''  ,1   ,''[int] IDENTITY''  ,getdate()  ,0  ,1  ,NULL   ,0  0 ,NULL)';
